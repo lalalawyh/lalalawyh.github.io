@@ -210,8 +210,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
 <p><strong>zlib（010/pngcheck）</strong>：</p>
 <p>用pngcheck查看或者复制进虚拟机打卡终端输入命令“binwalk -e  文件名”生成文件夹进行查看</p>
 <p><strong>lsb隐写/lsb加密（zsteg/stegsolve）</strong>：</p>
-<p>lsb又称最低有效位隐写，即通过最低两位的修改进行隐写。可利用stegsolve选择通道进行分析（学习地址：</p>
-<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/cat47/p/11483478.html" >stegsolve使用方法 - cat47 - 博客园 (cnblogs.com)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>）；也可以在虚拟机中打开终端输入“zsteg 文件名”命令进行查看（需安装zsteg），如果还是没有所需信息，则可输入命令“zsteg -a 文件名”进行更多信息的获取。（如果需要保存文件则在终端输入命令“zsteg -e 文件所在通道通道 源文件名 &gt;所要保存的文件名”）</p>
+<p>lsb又称最低有效位隐写，即通过最低两位的修改进行隐写。可利用stegsolve选择通道进行分析（学习地址：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/cat47/p/11483478.html" >stegsolve使用方法 - cat47 - 博客园 (cnblogs.com)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>）；也可以在虚拟机中打开终端输入“zsteg 文件名”命令进行查看（需安装zsteg），如果还是没有所需信息，则可输入命令“zsteg -a 文件名”进行更多信息的获取。（如果需要保存文件则在终端输入命令“zsteg -e 文件所在通道通道 源文件名 &gt;所要保存的文件名”）</p>
 <p>save text与save bin的区别：save text在复制时会将十六进制与文本一齐复制下来；而save bin想复制十六进制则可单独复制十六进制，复制文本也一样。</p>
 <p><strong>wbs43open（bmp）</strong>：</p>
 <p>利用wbs43open输入密钥进行文件分离，查看隐写内容。</p>
