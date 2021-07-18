@@ -6,7 +6,7 @@
 <meta property="og:description" content="MISC初步学习                           misc图片隐写       注释：本文所说的文件名均包括扩展名                     1.Misc简介       概念：Misc为英文miscellaneous的前四个字母，杂项、混合体、大杂烩的意思。 主要类型：（1）数据编码&#x2F;图片密码；（2）图片隐写；（3）音频&amp;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-07-17T07:22:22.000Z">
-<meta property="article:modified_time" content="2021-07-18T08:45:21.971Z">
+<meta property="article:modified_time" content="2021-07-18T08:56:35.328Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary"><title>第二篇博客 | lalalawyh的博客</title><link ref="canonical" href="http://example.com/2021/07/17/%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
 var CONFIG = {
@@ -208,7 +208,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
 <p><strong>IHDR、IDAT</strong>：</p>
 <p>IHDR表示图片的宽和高，可利用010进行修改，修改后需要进行保存。一般来说只修改高，修改宽会导致图片不能正确显示，修改高往大的改。</p>
 <p>如果用010打开一张图片它下面显示报错，则说明它的高可能被修改了。可利用校验和计算来判断高是否被修改，也可用脚本爆破一下得知原来的高度。</p>
-<p>IDAT数据块不能变，变了就不能显示了。（小知识：写满上一个块后才会进入下一个块的填写。）</p>
+<p>IDAT数据块不能变，变了就不能显示了。（小知识：写满上一个块后才会进入下一个块的填写。如果发现上一个块没写满就填写下一个块则可能存在隐写。）</p>
 <p>010复制快捷键：ctrl+shift+c</p>
 <p>python多行输入固定写法，三个单引号</p>
 <p><strong>zlib（010/pngcheck）</strong>：</p>
