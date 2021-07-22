@@ -54,8 +54,8 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
 <figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">MAX=<span class="number">25</span>//数据位数开平方</span><br><span class="line">pic=Image.new(<span class="string">&quot;RGB&quot;</span>,(MAX,MAX))</span><br><span class="line"><span class="built_in">str</span>=<span class="string">&quot;数据(二进制数)&quot;</span></span><br><span class="line">i=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,MAX):</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,MAX):</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">str</span>[i]==<span class="string">&#x27;1&#x27;</span>):</span><br><span class="line">            pic.putpixel([x,y],(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            pic.putpixel([x,y](<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>))</span><br><span class="line">        i=i+<span class="number">1</span></span><br><span class="line">pic.show()</span><br><span class="line">pic.save(<span class="string">&quot;文件名（包括文件类型即扩展名）&quot;</span>)</span><br></pre></td></tr></table></div></figure>
 
 <p>两个方法：（遇到的问题将另外整理出来一篇。）</p>
-<p>（1）python直接运行（需要配置所需库）（2）虚拟机Linux环境下用python运行（需要注意版本）</p>
-<p><strong>二进制转图片（口令红包彩蛋）：</strong></p>
+<p>（1）python直接运行（需配置所需库）（2）虚拟机Linux环境下用python运行（需注意版本）</p>
+<p><strong>二进制转图片：</strong></p>
 <p>二进制转为十六进制（可借助在线工具，也可借助python脚本）再用十六进制编辑器（winhex/010等）生成文件进行保存，文件类型需自行根据开头结尾的数值进行判断。</p>
 
         <h4 id="2-常见编码（jjencode、uuencode、jsfuck、brainfuck、ook！、敲击码、二维码）"   >
@@ -69,7 +69,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
 <p><strong>推荐软件：Cyberchef</strong>，可以在左侧operations处输入“magic”然后直接将字符串拖入框框进行自动识别，也可以自己一个个试（输入64、16等）。转换时记得将当前没有使用的模块断掉。</p>
 <p>（1）base64：</p>
 <p>编码原理：Base64编码要求把3个8位字节转化为4个6位字节，之后在6位的前面补两个0，形成8位一个字节的形式（即4个8位字节）。6位2进制能表示的最大数是2的6次方是64，因此共64个字符（A-Z，a-z，0-9，+，/），=不属于编码字符，而是填充字符。</p>
-<img src="https://gimg2.baidu.com/image_search/2F3532359439.png&refer=http%3A%2F%2Fwww.sunansheng.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg"  style="zoom:50%;" />
+<img src="/images/%E7%AC%AC%E4%B8%89%E7%AF%87%E5%8D%9A%E5%AE%A2/cdn2.lmonkey.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg" alt="点击查看源网页" style="zoom:50%;" />
 
 <p>（2）base36：</p>
 <p>规则：Base36包含0~9的数字，加上所有26个字母，不区分大小写，不包含任何标点，所有的字母要不全大写，要不全小写。</p>
@@ -78,12 +78,14 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
 <p>规则：采用的字符集为”9个数字+ 49个字母“：<br>“123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ”，Base58是纯数字与字母组成而且去掉了容易弓|起视觉混淆的字符(0: 数字零，O:大写O, I:大写i，l:小写L)。</p>
 <p>特点：base58不适用数字“0”，字母大写“O”，字母大写“I”，和字母小写：“l”，以及“+”和“/”符号。</p>
 <p>（4）base62：</p>
-<p>规则：26个字母的大小写再加上0-9，一共62个字符，相比于base64只是去掉了两个符号（+和/）</p>
+<p>规则：26个字母大小写再加0-9，共62个字符，相比于base64只是去掉了两个符号（+和/）</p>
 <p>特点：密文由62个字符（0-9，a-z，A-Z）组成。</p>
 <p>（5）base85：不常用</p>
 <p>规则：一种类似于base64的二进制文本编码形式，通过使用五个SACII字符来表示四个字节的二进制数据。例如：它用于将图像嵌入到Adobe PDF文件中。</p>
 <p>（6）base91、base92：</p>
-<p>base91：<br>特点:由91个字符(0-9，a-Z，A-Z，!#$%&amp;()*+,./:;&lt;=&gt;?@[]^_`{|}”)组成<br>base92：</p>
+<p>base91：</p>
+<p>特点:由91个字符(0-9，a-Z，A-Z，!#$%&amp;()*+,./:;&lt;=&gt;?@[]^_`{|}”)组成</p>
+<p>base92：</p>
 <p>特点：比base91多一个字符~</p>
 <p><strong>morse：</strong></p>
 <p>定义：摩尔斯点码（morse code）是一种时通时断的信号代码，通过不同的排列顺序来表达不同的英文字母、数字和标点符号。由美国人艾尔菲德·维尔与萨缪尔·摩尔斯于1836年发明。是一种早期的数字化通信方式。</p>
@@ -117,13 +119,13 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></he
 <p>经典题：short ook！藏到图片的ISP里面，放在最低有效位，难发现。</p>
 <p><strong>敲击码：</strong></p>
 <p>定义：以一种非常简单的方式对文本信息进行编码的方法，因该编码对信息通过使用一系列敲击声音来编码而命名，敲击码是基于5*5方格来实现的，不同点是把K字母整合到了C字母里面。</p>
-<img src="C:/Users/86152/Desktop/QQ%E5%9B%BE%E7%89%8720210722212146.png" alt="QQ图片20210722212146" style="zoom:80%;" />
+<img src="/images/%E7%AC%AC%E4%B8%89%E7%AF%87%E5%8D%9A%E5%AE%A2/QQ%E5%9B%BE%E7%89%8720210722212146.png" alt="QQ图片20210722212146"  />
 
 <p><strong>二维码：</strong></p>
 <p>定义：用某种特定几何图形按一定规律在平面分布的黑白相间的图片记录数据符号信息。分为堆叠式/行排式二维码又称堆积式二维码或层排式二维条码，其编码原理是建立在一维条码基础上，按需要堆积成二行或多行。</p>
 <p>常见：Code16k、Code49、PDF417。矩阵式二维码（矩阵式二维条码又称棋盘式二维条码，是在一个矩形空间通过黑、白像素在矩形中的不同分布进行编码）：最常见QR CODE（特点：存储大容量信息；支持所有类型的数据；在小空间内打印；解码速度快。基本结构：格式信息：纠错等级+版本信息：即二维码的规格，QR码符号共有40种规格的矩阵）</p>
 <p>常考：补定位点和纠错等级。——&gt;可利用工具QRazyBox等选择正确纠错等级后手动进行填充补全二维码。</p>
-<img   src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.glodon.com%2Fupload%2F2014-10-10%2Fe4bad3c1-1b20-4e34-92c8-cffa9f8c3921.jpg&refer=http%3A%2F%2Fwww.glodon.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629552226&t=ca30e806ffd98c6c09db63072189a796" style=""  alt="点击查看源网页" style="zoom: 80%;" />
+<img src="/images/%E7%AC%AC%E4%B8%89%E7%AF%87%E5%8D%9A%E5%AE%A2/u=34054438,971394809&fm=26&fmt=auto&gp=0.jpg" alt="点击查看源网页" style="zoom: 80%;" />
 
 
         <h4 id="3-稀奇古怪的编码（社会主义核心价值观、与佛论禅、熊曰-与熊问道等）"   >
