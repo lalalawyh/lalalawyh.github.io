@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><meta name="theme-color" content="#2d4356"><meta name="baidu-site-verification"><title>第四篇博客 | lalalawyh的博客</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="lalalawyh的博客" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/highlight/atom-one-dark.min.css"><script type="text/javascript" src="/plugins/highlight/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();
+</script><script type="text/javascript" src="/js/ready.js" async></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">lalalawyh的博客</a></h1></div><p class="m-desc">心之所向，无惧无悔,<br>愿求仁得仁，复无怨怼！</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">第四篇博客</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2021/07/20/%E7%AC%AC%E5%9B%9B%E7%AF%87%E5%8D%9A%E5%AE%A2/">2021-07-20</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h2 id="MISC初步学习"><a href="#MISC初步学习" class="headerlink" title="MISC初步学习"></a>MISC初步学习</h2><h3 id="流量分析"><a href="#流量分析" class="headerlink" title="流量分析"></a>流量分析</h3><h4 id="小知识："><a href="#小知识：" class="headerlink" title="小知识："></a>小知识：</h4><p>注释：可练习题目进行掌握</p>
+<p>（1）在使用抓包软件进行流量分析时，抓到的包往往含有数据链路层、网络层、传输层、应用层四个部分，其中每一个部分在传递到不同的层面的时候会被利用并丢弃。</p>
+<p>（2）wreshark抓到的包工作在数据链路层（若网卡特殊则也可抓到物理层，启动慢是因为在寻找接口），而burpsuite抓到的http包则工作在应用层。</p>
+<p>（3）物理层传输方式：WIFI无线通信（电磁波）、千兆网线（八根导线，百兆为四根）</p>
+<p>（4）当同时连接网线和WIFI时，因为物理网口的跃点数比无线网口的跃点数低，跃点数越低则优先级越高，故选择以太网接口进行查看。</p>
+<p>（5）视频/直播的数据很多是走UDP通道的。</p>
+<p>（6）http与https：https协议是加密的</p>
+<p>（7）加密协议统称为tls</p>
+<p>（8）集线器会将信号转发给除了发送源的其他所有端口，因此不安全，容易被窃听。</p>
+<p>（9）当多台计算机通过交换机（对照交换表精准转发，隔离冲突域）相连时，它们采用的通信方式是数据链路层的协议。当某台计算机想给另一个计算机发送消息时，需要在以太帧头中指明发送方和接收方的地址，交换机在接收到信号之后会根据这个地址正确地将信号转发至某一个端口（即网线），从而避免了网络内所有计算机都能收到信号。以太帧中的数据是我们想要传输的信息，包括接下来的IP数据包。想要转发给其它所有计算机的时候，目的MAC地址改为全0（广播地址）。</p>
+<p>（10）当网卡地址变动时需刷新交换表，因此启用网络层配一个虚拟地址即IP地址，IP地址和MAC地址可以一对多也可以多对一。ARP协议将网络地址转换为物理地址。</p>
+<p>（11）路由器进行跨网段转发。家用路由器集成多种功能。</p>
+<p>（12）QQ聊天基于QICQ协议。</p>
+<p>（13）用软件ubuntu连接服务器后输入命令nc -l 8888对8888端口进行监听。在windows powershell中输入命令ncat git.nepwn com 8888回车后输入内容，便可在ubuntu窗口接收到。</p>
+<p>可在windows powershell中输入命令nslookup git.nepwn com进行服务器IP地址的查询。</p>
+<p>可在ubuntu中输入命令ncat -lk 8888 –chat来进行多人聊天服务器的安装。</p>
+<p>（14）http基于tcp，http端口为80。</p>
+<p>（15）要分析病毒或者恶意软件建议在虚拟机里进行，这样就不会干扰到我们的宿主机。</p>
+<p>（16）用wireshark/科来网络分析系统分析报文寻找flag。</p>
+<p>有时查找到的flag需要用在线工具进行解密，有时在用wireshark做流量分析时也要将软件进行解密设置（打开对应的密钥文件），否则flag藏在加密的数据包里面而无法查找。</p>
+<p>有些在请求包里面的题目可以用一般的流量导出的方法，然后在ubuntu中输入命令grep flag -rna .进行查找。</p>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">John Doe</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2021/07/20/%E7%AC%AC%E5%9B%9B%E7%AF%87%E5%8D%9A%E5%AE%A2/">http://example.com/2021/07/20/第四篇博客/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="http://example.com">John Doe的博客</a>！</span></div></blockquote></div></article><div class="p-info box"></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.</span> <span class="toc-text">MISC初步学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90"><span class="toc-number">1.1.</span> <span class="toc-text">流量分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%8F%E7%9F%A5%E8%AF%86%EF%BC%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">小知识：</span></a></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="next" href="/2021/07/19/%E7%AC%AC%E4%B8%89%E7%AF%87%E5%8D%9A%E5%AE%A2/">第三篇博客 &gt;</a></div><div id="valine-comment"><style type="text/css">.night .v[data-class=v] a { color: #0F9FB4 !important; }
+.night .v[data-class=v] a:hover { color: #216C73 !important; }
+.night .v[data-class=v] li { list-style: inherit; }
+.night .v[data-class=v] .vwrap { border: 1px solid #223441; border-radius: 0; }
+.night .v[data-class=v] .vwrap:hover { box-shadow: 0 0 6px 1px #223441; }
+.night .v[data-class=v] .vbtn { border-radius: 0; background: none; }
+.night .v[data-class=v] .vlist .vcard .vh { border-bottom-color: #293D4E; }
+.night .v[data-class=v] .vwrap .vheader .vinput { border-bottom-color: #223441; }
+.night .v[data-class=v] .vwrap .vheader .vinput:focus { border-bottom-color: #339EB4; }
+.night .v[data-class=v] code, .night .v[data-class=v] pre,.night .v[data-class=v] .vlist .vcard .vhead .vsys { background: #203240 !important; }
+.night .v[data-class=v] code, .night .v[data-class=v] pre { color: #F0F0F0; font-size: 95%; }
+.v[data-class=v] .vcards .vcard .vh {border-bottom-color: #223441; }
+.night .v[data-class=v] .vcards .vcard .vcontent.expand:before {background: linear-gradient(180deg,rgba(38,57,73,.4),rgba(38,57,73,.9));}
+.night .v[data-class=v] .vcards .vcard .vcontent.expand:after {background: rgba(38,57,73,.9)}
+</style><div id="vcomment"></div><script src="//cdn.bootcdn.net/ajax/libs/valine/1.4.14/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'',
+  appKey:'',
+  lang: 'zh-cn',
+  placeholder:'ヾﾉ≧∀≦)o Come on, say something...',
+  avatar:'identicon',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script></div></section><footer><p>Copyright © 2016 - 2021 <a href="/." rel="nofollow">lalalawyh的博客</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script></body></html>
