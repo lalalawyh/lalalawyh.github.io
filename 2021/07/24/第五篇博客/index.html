@@ -1,0 +1,169 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><meta name="theme-color" content="#ffb6c1"><meta name="baidu-site-verification"><title>第五篇博客 | 云芽的博客</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="云芽的博客" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/highlight/atom-one-dark.min.css"><script type="text/javascript" src="/plugins/highlight/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();
+</script><script type="text/javascript" src="/js/ready.js" async></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">云芽的博客</a></h1></div><p class="m-desc">好好fighting，好好waiting!</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">第五篇博客</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2021/07/24/%E7%AC%AC%E4%BA%94%E7%AF%87%E5%8D%9A%E5%AE%A2/">2021-07-24</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h2 id="CRYPTO初步学习"><a href="#CRYPTO初步学习" class="headerlink" title="CRYPTO初步学习"></a>CRYPTO初步学习</h2><h3 id="古典密码学介绍"><a href="#古典密码学介绍" class="headerlink" title="古典密码学介绍"></a>古典密码学介绍</h3><p>注！还需进行理解学习</p>
+<p>学习链接：39.100.234.129</p>
+<h4 id="1-什么是密码学"><a href="#1-什么是密码学" class="headerlink" title="1.什么是密码学"></a>1.什么是密码学</h4><p><strong>小知识：</strong></p>
+<p>（1）密码学不只是计算机科学的内容，密码学的研究包括历史、政治学、工程、语言军事学、伦理、数学和工业技术学等。</p>
+<p>（2）CTF中的古典密码学题目有时也会出现在杂项里面，古典加密常常不给出加密算法，需要判断或者尝试一下。而CTF中的现代加密常常会给出加密算法,或者以一些形式提示某种常用的加密算法。即通过公开的加密算法和题目给<br>的条件来思考解密的算法并加以实现。</p>
+<p><strong>分类：</strong></p>
+<p>（1）<strong>古典密码学</strong>主要关注信息的保密书写和传递，以及与其相对应的破译方法。</p>
+<p>（2）<strong>现代密码学</strong>不只关注信息保密问题，还同时涉及信息完整性验证、信息发布的不可抵赖性、以及在分布式计算中产生的来源于内部和外部的攻击的所有信息安全的问题。</p>
+<p>（3）在有关密码学的一-些描述中,常使用Alice和Bob作为两个想要传递消息的两个人，Eve是想要从传递的密文中窃取明文信息的人。</p>
+<p>（4）对于一组函数ε= (E，D) :<br>E为加密函数( encryption function)，密钥k ，明文m ，那么密文c = E(k,m).<br>D为解密函数( decryption function)，密钥k ，密文m ，那么明文m= D(k,c).<br>——&gt;<strong>D(k,E(k,m)) = m.</strong></p>
+<h4 id="2-凯撒加密"><a href="#2-凯撒加密" class="headerlink" title="2.凯撒加密"></a>2.凯撒加密</h4><p><strong>定义：</strong>凯撒加密（Caesar cipher）是一种最简单且最广为人知的加密技术，它属于替代加密，明文中的所有字母都在字母表上向后（或向前）按照一个固定数目进行偏移后被替换成密文。</p>
+<p><strong>方法：</strong>凯撒加密会生成一个一一对应的密码表，加密和解密过程都是通过查表完成的。<br>和很多其他的单表替换加密一样,凯撒加密是十分不安全的。可以把移位值看作密钥key ,不难想到,在明文空间为26个英文字母时,有效的密钥只有25个。所以很容易枚举出来。</p>
+<p><strong>脚本：</strong></p>
+<pre><code class="python">#明文变密文，根据自己设定的固定数目将明文进行移位生成对应密文
+form string import ascii_uppercase
+Plaintext=&quot;明文&quot;
+Key=想要移位的位数
+Plaintext=Plaintext.upper()
+Ciphertext=&quot;&quot;
+for i in Plaintext:
+    if i not in ascii_uppercase:
+        Ciphertext +=i
+    else:
+        Ciphertext +=chr(((ord(i)-ord(&quot;A&quot;)-Key)%26)+ord(&quot;A&quot;))
+print(Ciphertext)
+</code></pre>
+<pre><code class="python">#密文变明文：把密文对应的所有结果都输出来，再判断哪个具有可读性即为所解明文
+from string import ascii_uppercase
+Ciphertext=&quot;密文&quot;
+Ciphertext=Ciphertext=Ciphertext.upper()
+def shift(Key):
+    Plaintext=&quot;&quot;
+    for i in Ciphertext:
+        if i not in ascii_uppercase:
+            Plaintext +=i
+        else: 
+            Plaintext +=chr(((ord(i)-ord(&quot;A&quot;)-Key)%26)+ord(&quot;A&quot;))
+     return Plaintext
+for Key in range(26):
+    print(shift(Key))
+</code></pre>
+<h4 id="3-关键词加密"><a href="#3-关键词加密" class="headerlink" title="3.关键词加密"></a>3.关键词加密</h4><p><strong>定义：</strong>关键词加密( keyword cipher )也是一种单表替代加密，与凯撒加密不同之处在于密钥可以更为复杂。</p>
+<p><strong>方法：</strong>加密时需要选择一个关键词,如果这个关键词有重复的字母，去除除第一次出现之外的所有的相同的字母。例如,如果选定的关键词为“success”，则使用“suce”。将该关键词写在字母表的下方,并用字母表的其他字母按标准的顺序填写余下的空间。这样就构建了字母一一对应的关系 ，加密时用下面一行中的字母对应替换上面一行的字母；解密时用上面一行中的字母对应替换下面一行的字母。</p>
+<p>例题：</p>
+<p>the keyword is MAGICNET</p>
+<img src="../images/%E7%AC%AC%E4%BA%94%E7%AF%87%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%872.png" alt="图片2" style="zoom:50%;" />
+
+<h4 id="4-仿射加密"><a href="#4-仿射加密" class="headerlink" title="4.仿射加密"></a>4.仿射加密</h4><p>也是一种单表替代加密，生成一个密码表后进行替代加密。</p>
+<p><strong>加密：</strong>在仿射加密中,每个字母都对应一个数字(字母a-z分别对应数字0-25)，仿射加密法的密钥为0~ 25之间的数字对(a,b) , a与26的最大公约数必须为1,即GCD(a,26)=1,这就是说，能整除a和26的数只有1,例如a=2就是不可以的，因为GCD(2,26) = 2,a = 5就可以,因为只有1能整除5和26。p 为明文字母对应的数字, c为密文字母对应的数字。<br>——&gt;c=a·p + b (mod 26)</p>
+<p><strong>解密：</strong>解密时需要计算(或枚举)密钥数字对中a的逆元，也就是a对26的模反数。模反数可以简单理解为整数环中的倒数，a乘以a的模反数对26取模等于1。例如5对26的逆元就是21。所以一个数乘以a ，再乘以a的逆元，就能算回原来的数。</p>
+<p>求逆元可以用Python的第三方包gmpy2的invert函数：</p>
+<pre><code class="python">from gmpy2 import invert
+print(invert(5,26)) #21
+</code></pre>
+<p>解密时已知密钥对(a，b) ，以及密文c ，可以通过下面的同余式计算出明文p。<br>——&gt;p=a^-1^(c-b) mod 26</p>
+<p><strong>例图：</strong></p>
+<pre><code class="python">from string import digits,ascii_lowercase#读取数字和小写字母的字符串
+from secret import numers,A,B#从题目文件中读取数字、A和B
+assert min([i in digits for i in numbers])#提示：numbers里面的字符都是digits里面的
+flag = &quot;flag&#123;&quot;+&quot;&quot;.join([ascii_lowercase[int(i)]for i in numbers])+&quot;&#125;&quot;#把数字转换为字母，例如0对A
+assert numbers == &quot;&quot;.join([str(ascii_lowercase.find(i))for i in flag[5:-1]])#与上一行意思相同，防止出错
+Ciphertext = &quot;&quot;#开始加密
+for i in flag:#注意扫描进行加密
+    if i not in ascii_lowercase:
+        Ciphertext += i#判断扫描的字符是否在小写字母里面，如果不在则照抄然后扫描下一个，例如“&#123;”直接保留
+    else:
+        Ciphertext += ascii_lowercase[(ascii_lowercase.find(i)*A+B) % 26]
+print(&quot;Ciphertext =&quot;,Ciphertext)#对小写字母进行加密
+#Ciphertext = vjsg&#123;dckvzksr&#125;
+</code></pre>
+<p>解密的话先把a和b爆破出来，然后求A的逆元，由于密钥对(a，b)的两个变量有效的值都是小于26的，所以枚举也是完全可以承受的。得到(a, b)之后就可以正常解密了。</p>
+<p><strong>总结：</strong>仿射加密本质上也是通过密钥对(a, b)生成了一个密码表，明文和密文中的字母具有一一对应的关系 ，且a与模数26互素保证了不重不漏。所以仿射加密也是一种单表替换加密，虽然比前面两种生成密码表的方式复杂一些，但也是顶不住针对单表替换的密码分析的。</p>
+<h4 id="5-单表替代密码分析"><a href="#5-单表替代密码分析" class="headerlink" title="5.单表替代密码分析"></a>5.单表替代密码分析</h4><p><strong>方法：</strong>可以利用不同的英文字母在文段中的出现频率特征，来帮助我们判断某个字母被替换成了某个字母的可能性。</p>
+<img src="../images/%E7%AC%AC%E4%BA%94%E7%AF%87%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%873.png" alt="图片3" style="zoom: 80%;" />
+
+<p>词频分析不仅针对单个字母的出现频率，同时有很多连续的两个字母出现频率较高（双联字母bigrams），也可以辅助我们进行分析。</p>
+<p>以下是平均在1000个单词中，各双联字母出现的次数：</p>
+<img src="../images/%E7%AC%AC%E4%BA%94%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210727184422285.png" alt="image-20210727184422285" style="zoom:50%;" />
+
+<p>另外，如果有一个较大的单词库，还可以通过单词的格式，进一步帮助我们缩小可能的范围，例如单词happy为12334格式，success为1233411格式，那么被进行单表替换后，它的格式并不会发生改变。这种模式匹配的优点在于即使密文长度较短，也能尽可能能找到接近真相的结果。</p>
+<p><strong>注意：</strong>密文有空格的话使用词频分析，除非把空格位置找到。</p>
+<p><strong>推荐网站：</strong><a target="_blank" rel="noopener" href="https://quipqiup.com/">https://quipqiup.com/</a></p>
+<h4 id="6-维吉尼亚加密"><a href="#6-维吉尼亚加密" class="headerlink" title="6.维吉尼亚加密"></a>6.维吉尼亚加密</h4><p><strong>定义：</strong>维吉尼亚密码是使用一系列凯撒密码组成密码字母表的加密算法，属于多表密码。为了生成密码，需要使用表格法。这一表格包括了26行字母表，每一行都由前一行向左偏移一位得到。具体使用哪一行字母表进行编译是基于密钥进行的，在过程中会不断地变换。</p>
+<img src="../images/%E7%AC%AC%E4%BA%94%E7%AF%87%E5%8D%9A%E5%AE%A2/u=3049389388,2093541746&fm=26&fmt=auto&gp=0.jpg" alt="img" style="zoom:50%;" />
+
+<p><strong>加密：</strong></p>
+<p>例如：</p>
+<p>明文：ATTACKATDAWN</p>
+<p>选择关键词：LEMON，重复关键词，直到长度和明文相同，作为密钥LEMONLEMONLE</p>
+<p>通过等长的明文和密钥，依次查表得到密文：LXFOPVEFRNHR</p>
+<p><strong>特点：</strong>维吉尼亚加密可以避免直接的词频分析攻击，密文在统计上没有明显的规律，但是任然可以对其进行破解。</p>
+<p>首先提出破解方法的Frederick Kasiski是基于这样一个简单的观察“密钥的重复部分与明文中的重复部分的连接，在密文中也产生一个重复部分”。</p>
+<p>如果一个字符串在明文中重复，并且被密钥相同的部分加密，那么在密文中也会出现重复的字符串。</p>
+<p><strong>解密：</strong></p>
+<p>先进行关键词长度的判断，一旦确定了关键词的长度，余下的问题就只是如何使用该信息去找到真正的关键词了。关键词的长度揭示了密文可以被如何破解成单码加密的一个集合。</p>
+<p>关键词的长度为n，那么破解维吉尼亚加密的问题就变成了解决n个单表加密的问题，需要有足够长的密文，然后通过词频分析逐个解决问题。</p>
+<p>注：在单表加密中，无论什么密码表，相同的密文字母对应的明文字母也相同，但是在多表加密中，相同的密文字母可能映射出不同的明文字母。</p>
+<h4 id="7-替换和编码"><a href="#7-替换和编码" class="headerlink" title="7.替换和编码"></a>7.替换和编码</h4><p>使用python脚本进制转换：</p>
+<pre><code class="python">x = 123456 #十进制整数
+x_hex = hex(x)[2:] #十进制转十六进制
+x_bin = bin(x)[2:] #十进制转二进制
+print(x_hex, x_bin) #1e240 11110001001000000
+a = int(x_hex, 16) #十六进制转十进制
+b = int(x_bin, 2) #二进制转十进制
+print(a, b) #123456 123456
+</code></pre>
+<p>字符串（str）类型和字节（bytes）类型相互转换：</p>
+<pre><code class="python">s = &quot;flag&#123;this_is_flag&#125;&quot; #字符串类型
+s_bytes = s.encode() #字符串类型转字节类型
+s_str = s_bytes.encode() #字节类型转字符串类型
+print(s_bytes, s_str) #b&#39;flag&#123;this_is_flag&#125;&#39; flag&#123;this_is_flag&#125;
+</code></pre>
+<p>base64编码解码：</p>
+<pre><code class="python">import base64
+s = b&#39;flag&#123;this_is_flag&#125;&#39; #字节类型
+s_encode = base64.b64encode(s)#进行base64编码
+s_decode = base64.b64decode(s_encode) #继续宁base64解码
+print(s_encode, s_edcode) #b&#39;ZmxhZ3t0aGlzX2lzX2ZsYWd9&#39; b&#39;flag&#123;tihs_is_flag&#125;
+</code></pre>
+<p>整数和字节类型的转换：</p>
+<p>这种类型转换在密码方向题目中很常见，整数类型可以直接参与数学计算，字节类型会展示可读的字符</p>
+<pre><code class="python">from Crypto.Util.number import *
+s = b&#39;flag&#123;this_is_flag&#125;&#39; #字节类型
+s_int = byte_to_long(s) #字节类型转为整数
+s_bytes = long_to_bytes(s_int) #证书转为字节类型
+print(s_int, s_bytes)
+</code></pre>
+<p>不在范围内的字符（不可显示的）会以/-x……的形式显示出其的十六进制。</p>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">yunya</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2021/07/24/%E7%AC%AC%E4%BA%94%E7%AF%87%E5%8D%9A%E5%AE%A2/">http://example.com/2021/07/24/第五篇博客/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="http://example.com">yunya的博客</a>！</span></div></blockquote></div></article><div class="p-info box"></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CRYPTO%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.</span> <span class="toc-text">CRYPTO初步学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81%E5%AD%A6%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.</span> <span class="toc-text">古典密码学介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%AF%86%E7%A0%81%E5%AD%A6"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.什么是密码学</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%87%AF%E6%92%92%E5%8A%A0%E5%AF%86"><span class="toc-number">1.1.2.</span> <span class="toc-text">2.凯撒加密</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%85%B3%E9%94%AE%E8%AF%8D%E5%8A%A0%E5%AF%86"><span class="toc-number">1.1.3.</span> <span class="toc-text">3.关键词加密</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E4%BB%BF%E5%B0%84%E5%8A%A0%E5%AF%86"><span class="toc-number">1.1.4.</span> <span class="toc-text">4.仿射加密</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%8D%95%E8%A1%A8%E6%9B%BF%E4%BB%A3%E5%AF%86%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-number">1.1.5.</span> <span class="toc-text">5.单表替代密码分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A%E5%8A%A0%E5%AF%86"><span class="toc-number">1.1.6.</span> <span class="toc-text">6.维吉尼亚加密</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E6%9B%BF%E6%8D%A2%E5%92%8C%E7%BC%96%E7%A0%81"><span class="toc-number">1.1.7.</span> <span class="toc-text">7.替换和编码</span></a></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2021/07/25/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A21/">&lt; 新手解题博客1</a><a class="next" href="/2021/07/24/%E7%AC%AC%E5%85%AD%E7%AF%87%E5%8D%9A%E5%AE%A2/">第六篇博客 &gt;</a></div><div id="valine-comment"><style type="text/css">.night .v[data-class=v] a { color: #0F9FB4 !important; }
+.night .v[data-class=v] a:hover { color: #216C73 !important; }
+.night .v[data-class=v] li { list-style: inherit; }
+.night .v[data-class=v] .vwrap { border: 1px solid #223441; border-radius: 0; }
+.night .v[data-class=v] .vwrap:hover { box-shadow: 0 0 6px 1px #223441; }
+.night .v[data-class=v] .vbtn { border-radius: 0; background: none; }
+.night .v[data-class=v] .vlist .vcard .vh { border-bottom-color: #293D4E; }
+.night .v[data-class=v] .vwrap .vheader .vinput { border-bottom-color: #223441; }
+.night .v[data-class=v] .vwrap .vheader .vinput:focus { border-bottom-color: #339EB4; }
+.night .v[data-class=v] code, .night .v[data-class=v] pre,.night .v[data-class=v] .vlist .vcard .vhead .vsys { background: #203240 !important; }
+.night .v[data-class=v] code, .night .v[data-class=v] pre { color: #F0F0F0; font-size: 95%; }
+.v[data-class=v] .vcards .vcard .vh {border-bottom-color: #223441; }
+.night .v[data-class=v] .vcards .vcard .vcontent.expand:before {background: linear-gradient(180deg,rgba(38,57,73,.4),rgba(38,57,73,.9));}
+.night .v[data-class=v] .vcards .vcard .vcontent.expand:after {background: rgba(38,57,73,.9)}
+</style><div id="vcomment"></div><script src="//cdn.bootcdn.net/ajax/libs/valine/1.4.14/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'',
+  appKey:'',
+  lang: 'zh-cn',
+  placeholder:'ヾﾉ≧∀≦)o Come on, say something...',
+  avatar:'identicon',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script></div></section><footer><p>Copyright © 2016 - 2021 <a href="/." rel="nofollow">云芽的博客</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script></body></html>
