@@ -1,6 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><meta name="theme-color" content="#ffb6c1"><meta name="baidu-site-verification"><title>第八篇博客 | 云芽的博客</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="云芽的博客" type="application/atom+xml">
 </head><link rel="stylesheet" type="text/css" href="/plugins/highlight/atom-one-dark.min.css"><script type="text/javascript" src="/plugins/highlight/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();
-</script><script type="text/javascript" src="/js/ready.js" async></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">云芽的博客</a></h1></div><p class="m-desc">好好fighting，好好waiting!</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">第八篇博客</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2021/08/03/%E7%AC%AC%E5%85%AB%E7%AF%87%E5%8D%9A%E5%AE%A2/">2021-08-03</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h2 id="WEB初步学习"><a href="#WEB初步学习" class="headerlink" title="WEB初步学习"></a>WEB初步学习</h2><h3 id="PHP-amp-amp-SSRF"><a href="#PHP-amp-amp-SSRF" class="headerlink" title="PHP &amp;&amp; SSRF"></a>PHP &amp;&amp; SSRF</h3><h4 id="前言——渗透测试："><a href="#前言——渗透测试：" class="headerlink" title="前言——渗透测试："></a>前言——渗透测试：</h4><p><strong>定义：</strong></p>
+</script><script type="text/javascript" src="/js/ready.js" async></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">云芽的博客</a></h1></div><p class="m-desc">好好fighting，好好waiting!</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">第八篇博客</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2021/08/03/%E7%AC%AC%E5%85%AB%E7%AF%87%E5%8D%9A%E5%AE%A2/">2021-08-03</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h2 id="WEB初步学习"><a href="#WEB初步学习" class="headerlink" title="WEB初步学习"></a>WEB初步学习</h2><h3 id="PHP-amp-amp-SSRF"><a href="#PHP-amp-amp-SSRF" class="headerlink" title="PHP &amp;&amp; SSRF"></a>PHP &amp;&amp; SSRF</h3><p>注：还需学习利用SSRF漏洞进行攻击</p>
+<h4 id="前言——渗透测试："><a href="#前言——渗透测试：" class="headerlink" title="前言——渗透测试："></a>前言——渗透测试：</h4><p><strong>定义：</strong></p>
 <p>渗透测试是一种通过模拟使用黑客的技术和方法，挖掘目标系统的安全漏洞，取得系统的控制权，访问系统的机密数据，并发现可能影响业务持续运作安全隐患的一种安全测试和评估方式。<br><u>渗透测试和黑客入侵最大区别在于渗透测试是经过客户授权</u>，采用可控制、非破坏性质的方法和手段发现目标和网络设备中存在弱点，帮助管理者知道自己网络所面临的问题，同时提供安全加固建议，帮助客户提升系统的安全性。</p>
 <p><strong>分类：</strong></p>
 <p><u>黑盒测试</u>：是指测试人员在不清楚被测单位内部技术架构的情况下，从外部对网络设施的安全性进行测试的过程。黑盒测试借助于真实世界的黑客方法，黑客工具，有组织有步骤的对目标系统进行逐步的渗透和入侵，揭示目标系统中一些已知的和未知的安全漏洞，并评估这些漏洞是否可以被不法分子利用，并造成业务和资产损失。<br><u>白盒测试</u>：测试人员可以获取被测单位的网络结构和各种底层技术。在此基础上，使用针对性的测试方法和工具，可以以较小的代价发现和验证系统最严重的安全漏洞。（代码审计必不可少，读懂代码找漏洞）<br>在实际渗透中，两者各有利弊，需要视情况选择和进行，有时还需将两个结合起来使用。</p>
@@ -23,7 +24,7 @@
 <p>事实上，代码审计也有多种思路：例如可以选择先通读代码，理解结构和功能后再从中发现问题——但这种方式的缺点显而易见：十分耗时且令人头疼，不太适用于代码量大的情况；也可以依据经验寻找易出现问题的关键功能——这往往也可以与黑盒测试相结合，定位<br>功能对应的代码后找到关键函数，正向或反向的追踪其中用到的变量（例如文件下载功能处<br>若未经过滤则可能存在任意文件下载漏洞，发现该功能后定位代码段，找到其使用的功能函<br>数——可能是file_get_contents或者别的什么，追踪它使用的变量是否有做安全过滤)；甚至你可以直接尝试定向的挖掘某一类漏洞——依旧是通过可能涉及的函数去寻找……<br>但无论你使用哪种方法进行漏洞挖掘，阅读代码的能力是必不可少的。也就是，你至少得知道开发者在做什么。</p>
 <h4 id="浅谈SSRF漏洞"><a href="#浅谈SSRF漏洞" class="headerlink" title="浅谈SSRF漏洞"></a>浅谈SSRF漏洞</h4><p><strong>SSRF的定义与成因：</strong></p>
 <p>SSRF(Server-Side Request Forgery：服务器端请求伪造)是一种由攻击者构造形成，由服务端发起请求的一个安全漏洞。一般情况下，SSRF攻击的目标是从外网无法访问的内部系统。(正是因为它是由服务端发起的，所以它能够请求到与它相连而与外网隔离的内部系统)<br>SSRF漏洞形成的原因大都是由于服务端提供了从其他服务器应用获取数据的功能且没有对目标地址做过滤与限制。比如从指定URL地址获取网页文本内容,加载指定地址的图片，下载等等。</p>
-<p><strong>代码尝试：</strong></p>
+<p><strong>SSRF代码层成因：</strong>（代码审计需观察有无以下类似写法，变量是否未经任何过滤就传到危险函数中）</p>
 <pre><code class="php">//file_get_contents
 &lt;?php
   if(isset($_POST[&#39;url&#39;]))//isset()为判断是否有设置括号中的函数即检测变量是否已设置并且非null
@@ -47,8 +48,90 @@
 ?&gt;
 </code></pre>
 <p>在浏览器中输入本地ip/文件名?url=<a target="_blank" rel="noopener" href="http://www.baidu.com(需要给url赋值,否则会报错)则会打开百度的页面/">http://www.baidu.com（需要给url赋值，否则会报错）则会打开百度的页面</a></p>
+<pre><code class="php">//fsockopen
+&lt;?php
+   function GetFile($host,$port,$link) &#123;
+      $fp = fsockopen($host, intval($port), $errno, $errstr, 30);
+      if (!$fp)&#123;
+          echo &quot;serrstr (error number $errno) \n&quot;;
+      &#125;else &#123;
+          $out = &quot;GET $link HTTP/1.1irin&quot;;
+          $out .=&quot;Host: $hostirin&quot;;
+          $out .= &quot;Connection: closeirinirin&quot;;$out .=&quot;\rin&quot;;
+          fwrite($fp,$out);
+          $contents=&#39;&#39;;
+          while (!feof($fp)) &#123;
+              $contents.=fgets($fp,1024);
+           &#125;
+           fclose($fp);
+           return $contents;
+      &#125;
+   &#125;
+?&gt;
+</code></pre>
+<pre><code class="php">//curl
+&lt;?php
+    if (isset($_POST[&#39;url&#39;]))&#123;
+        $1ink = $_POST[&#39;ur1&#39;];
+        $curlobj = cur1_init();
+        curl_setopt($curlobj, CURLOPT_POST, 0);
+        curl_setopt($curlobj, CURLOPT_URL,$link);
+        curl_setopt($curlobj, CURLOPT_RETURNTRANSFER, 1);
+        $result=curl_exec($curlobj); 
+        curl_close($cur1obj);
+        $filename = &#39;./curled/&#39;.rand().&#39;.txt&#39;;
+        $file_put_contents($filename, $result);
+        echo $result ;
+    &#125;
+?&gt;
+</code></pre>
 <p><strong>SSRF的危害：</strong></p>
-<p>-内网探测<br>-利用file协议读取本地文件等等<br>-向内部任意主机的任意端口发送精心构造的Payload，从而攻击内网的web应用，主要是使用GET参数就可以实现的攻击(比如struts2，sqli等)<br>-DOS攻击(请求大文件，始终保持连接Keep-Alive Always)</p>
+<p>-内网探测<br>-利用file协议读取本地文件等等<br>-向内部（内网）任意主机的任意端口发送精心构造的Payload，从而攻击内网的应用，主要是使用GET参数就可以实现的攻击(比如struts2，sqli等)<br>-DOS攻击(请求大文件，始终保持连接Keep-Alive Always)</p>
+<p><strong>SSRF漏洞的验证：</strong></p>
+<ol>
+<li>排除法：浏览器f12（或右上角的三个点–更多工具–开发者工具）查看源代码看是否是在本地进行了请求<br>比如:该资源地址类型为 <a target="_blank" rel="noopener" href="http://www.xxx.com/a.php?image=">http://www.xxx.com/a.php?image=</a> (地址)的（即对该地址进行请求操作）就可能存在SSRF漏洞（本例可能存在对任意网址请求的漏洞）</li>
+<li>dnslog/requestbin等工具/平台进行测试或监听，看是否被访问。</li>
+</ol>
+<p><u>曾经常考</u>：在网站的根目录下放一个flag.php文件。如下。</p>
+<pre><code class="php">&lt;?php
+    $flag = &quot;flag&#123;well,You get_ 1t&#125;&quot; ;
+    if ($_SERVER[&#39;REMOTE_ADDR&#39;] !== $_SERVER[&#39;HTTP_HOST&#39;])&#123;
+        echo &quot;You are not a local visitor, access is forbidden!&quot; ;
+    &#125;//该代码意味着只有从本地访问才有可能输出flag    
+    else&#123;
+        echo $flag;
+    &#125;
+?&gt;
+</code></pre>
+<p>如何访问：<a target="_blank" rel="noopener" href="http://x.x.x.x/?url=flag.php%EF%BC%88%E9%80%9A%E8%BF%87%E8%AE%BF%E9%97%AE%E6%9C%AC%E5%9C%B0%E6%9D%A5%E6%89%93%E5%BC%80flag.php%E6%96%87%E4%BB%B6%EF%BC%89">http://x.x.x.x/?url=flag.php（通过访问本地来打开flag.php文件）</a></p>
+<p><strong>一些绕过：</strong>（仅提供思路，而非用下面方式一定能绕过。应该依据对方的具体代码以及具体过滤形式选择绕过方式）</p>
+<ol>
+<li><p>加端口.  127.0.0.1:80 </p>
+</li>
+<li><p>短网址</p>
+</li>
+<li><p>指向任意IP的域名xip.io 127.0.1.xip.io</p>
+</li>
+<li><p>IP限制绕过</p>
+<p>十进制转换 (转换成16进制再转换回来，把.换成0，<a target="_blank" rel="noopener" href="http://0x7f000001,十进制就是http//2130706433">http://0x7f000001，十进制就是http://2130706433</a> )<br>八进制转换<a target="_blank" rel="noopener" href="http://127.0.0.1/">http://0177.0.0.1</a></p>
+<p>十六进制转换<a target="_blank" rel="noopener" href="http://127.0.0.1/">http://0x7f.0.0.1</a></p>
+<p>不同进制组合转换</p>
+</li>
+<li><p> @绕过</p>
+</li>
+</ol>
+<p>   <a target="_blank" rel="noopener" href="http://www.bai.com@127.0.0.1(实际访问的还是127.0.0.1这个本地)/">http://www.bai.com@127.0.0.1（实际访问的还是127.0.0.1这个本地）</a></p>
+<ol start="6">
+<li><p>后面跟参数（寻找功能点以发现参数）</p>
+<p> <a target="_blank" rel="noopener" href="http://127.0.0.1/?a=sdagwasdwfa">http://127.0.0.1?a=sdagwasdwfa</a></p>
+</li>
+</ol>
+<p><u>小知识</u>：</p>
+<p>完整url：“协议：//用户名：密码@网址/网站文件？参数名=参数值#锚点”</p>
+<p>当内网存在redis/mongodb/mysql等，也可以考虑同ssrf漏洞去进一步攻击</p>
+<p>内网攻击可以采用”gopher://“或”dict://“协议</p>
+<p>内网端口扫描可以用”dict://“或”http://“协议等，使用协议需要根据SSRF是如何造成的来具体分析。（内网扫端口并无特定端口）</p>
+<p>边界机器存在ssrf，通过dict或者http等协议扫本地端口或内网网段（如本地的5000端口上存在一个flaskweb，那么请求127.0.0.1：5000的时候能访问到，内网同理）找到内网web应用后通过http协议访问并尝试攻击，如果要发生post请求可以使用gopher，知道到内网脆弱应用后可以通过gopher协议进行攻击。</p>
 </div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">yunya</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2021/08/03/%E7%AC%AC%E5%85%AB%E7%AF%87%E5%8D%9A%E5%AE%A2/">http://example.com/2021/08/03/第八篇博客/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="http://example.com">yunya的博客</a>！</span></div></blockquote></div></article><div class="p-info box"></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#WEB%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.</span> <span class="toc-text">WEB初步学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP-amp-amp-SSRF"><span class="toc-number">1.1.</span> <span class="toc-text">PHP &amp;&amp; SSRF</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%E2%80%94%E2%80%94%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%EF%BC%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">前言——渗透测试：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP%E5%85%A5%E9%97%A8"><span class="toc-number">1.1.2.</span> <span class="toc-text">PHP入门</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%85%E8%B0%88SSRF%E6%BC%8F%E6%B4%9E"><span class="toc-number">1.1.3.</span> <span class="toc-text">浅谈SSRF漏洞</span></a></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="next" href="/2021/08/01/%E7%AC%AC%E4%B8%83%E7%AF%87%E5%8D%9A%E5%AE%A2/">第七篇博客 &gt;</a></div><div id="valine-comment"><style type="text/css">.night .v[data-class=v] a { color: #0F9FB4 !important; }
 .night .v[data-class=v] a:hover { color: #216C73 !important; }
 .night .v[data-class=v] li { list-style: inherit; }
