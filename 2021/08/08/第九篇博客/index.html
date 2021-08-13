@@ -1,0 +1,120 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><meta name="theme-color" content="#ffb6c1"><meta name="baidu-site-verification"><title>第九篇博客 | 云芽的博客</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="云芽的博客" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/highlight/atom-one-dark.min.css"><script type="text/javascript" src="/plugins/highlight/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();
+</script><script type="text/javascript" src="/js/ready.js" async></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">云芽的博客</a></h1></div><p class="m-desc">好好fighting，好好waiting!</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">第九篇博客</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2021/08/08/%E7%AC%AC%E4%B9%9D%E7%AF%87%E5%8D%9A%E5%AE%A2/">2021-08-08</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h2 id="WEB初步学习"><a href="#WEB初步学习" class="headerlink" title="WEB初步学习"></a>WEB初步学习</h2><h3 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h3><h4 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h4><p><strong>前置知识：</strong></p>
+<ol>
+<li><p>有编程语言基础，了解php中常见的与mysql相关的函数和类</p>
+</li>
+<li><p>了解 mysql 数据库的一些基本的使用：增删改查</p>
+</li>
+<li><p>知道如何搭建web环境。(windows:推荐使用phpstudy)</p>
+</li>
+<li><p>熟悉python脚本的使用，能够快速生成exp<br><strong>工具：</strong></p>
+</li>
+<li><p>Phpstudy：便于我们快速搭建web环境(在官网<a target="_blank" rel="noopener" href="https://www.xp.cn中下载/">https://www.xp.cn中下载</a>)</p>
+<p>在官网中下载phpstudy后打开，在环境的web server中添加套件，建议新手选择阿帕奇Apache。（图中为8.1.0版本）选择数据库版本后可以在设置中配置数据库文件。</p>
+<img src="/images/%E7%AC%AC%E4%B9%9D%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210811222200141.png" alt="image-20210811222200141" style="zoom: 50%;" /></li>
+<li><p>PhpStorm，Pycharm：用来写代码的。</p>
+</li>
+<li><p> Burpsuite：抓包</p>
+</li>
+<li><p>Sqli-labs：一个sql注入的靶场。地址如下：<a target="_blank" rel="noopener" href="https://github.com/Rinkish/Sqli_Edited_Version">https://github.com/Rinkish/Sqli_Edited_Version</a></p>
+</li>
+<li><p>Hackbar:一款谷歌插件，便于我们测试payload。使用开发者模式安装<a target="_blank" rel="noopener" href="https://wws.lanzous.com/iqbvnlh1ina%E5%AF%86%E7%A0%81:2hdi%EF%BC%88%E4%BB%A5Edge%E4%B8%BA%E4%BE%8B%EF%BC%89%E4%B8%8B%E8%BD%BD%E5%AE%8C%E6%88%90%E8%A7%A3%E5%8E%8B%E5%90%8E%EF%BC%8C%E6%89%93%E5%BC%80%E5%8F%B3%E4%B8%8A%E8%A7%92%E4%B8%89%E4%B8%AA%E7%82%B9%E9%80%89%E6%8B%A9%E6%89%A9%E5%B1%95%E4%B8%AD%E7%9A%84%E5%BC%80%E5%8F%91%E8%80%85%E6%A8%A1%E5%BC%8F%EF%BC%8C%E7%84%B6%E5%90%8E%E5%8A%A0%E8%BD%BD%E8%A7%A3%E5%8E%8B%E7%9A%84hackbar%E6%96%87%E4%BB%B6%E3%80%82">https://wws.lanzous.com/iqbvnlh1ina密码:2hdi（以Edge为例）下载完成解压后，打开右上角三个点选择扩展中的开发者模式，然后加载解压的hackbar文件。</a></p>
+</li>
+</ol>
+<p><strong>可学习博客：</strong><a target="_blank" rel="noopener" href="https://www.mrkaixin.top/">https://www.mrkaixin.top/</a></p>
+<h4 id="数据库基础"><a href="#数据库基础" class="headerlink" title="数据库基础"></a>数据库基础</h4><p><u>简单理解Mysql结构</u>：一个数据库里有若干个表，表里面有若干条信息，信息是根据字段来存储的</p>
+<p><strong>Mysql基础操作：</strong>（在命令窗口中执行）</p>
+<p>获得纯净的mysql：dmysql（d ps–&gt;dmysql–&gt;d ps–&gt;de19–&gt;#ls)；</p>
+<p>登录数据库：mysql -uroot -p；</p>
+<p>查看库名/当前数据库有哪些：show databases命令（自带数据库：==information_schema==、mysql、performance_schema、sys）；</p>
+<p>创建库：create database  新建数据库名称；</p>
+<p>删除库：drop database 所删数据库名称；</p>
+<p>使用库/数据库切换：use 所调用数据库名称；</p>
+<p><strong>Mysql表的一些基本操作：</strong></p>
+<p>创建表格：create table 表格名称(元素）；查看表格结构：desc 表格名称；例如：</p>
+<img src="/images/%E7%AC%AC%E4%B9%9D%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210811230738987.png" alt="image-20210811230738987" style="zoom: 67%;" />
+
+<p>增删改查语句：（对应上图）</p>
+<ol>
+<li>Insert :<br>insert into 数据库 values(‘id’, ‘name’ );（注：id和name不是固定的，是因为我们上图创建的表格元素为id和name，一一对应）</li>
+<li>Delete :<br>delete from 数据库 where xxxx;（注：若无where xxx则默认删除表格全部数据）</li>
+<li>Update :<br>update 数据库 set name =‘x’ where id = 3;</li>
+<li>Select :（可用于查看表格内容）<br>select * from 数据库;（注：*可输出表格全部字段，如果用命令“select 元素 from 数据库”则只输出该元素下的数据）</li>
+</ol>
+<p><strong>Mysql常用的变量（函数）：</strong></p>
+<ol>
+<li>Database() //查看当前数据库名——&gt;select database()可获取当前数据库名</li>
+<li>User() //用户——&gt;select user()可获取当前用户名</li>
+<li>Version() // mysql 版本——&gt;select version()可获取当前mysql的版本</li>
+<li>@@basedir //安装路径——&gt;select @@basedir可获取mysql的安装路径</li>
+</ol>
+<p><strong>Mysql常用的符号：</strong></p>
+<p>逻辑运算符：&amp;（and）、||（or）、^（xor异或）</p>
+<p><strong>Mysql常用的函数：</strong></p>
+<ol>
+<li>字符串截取函数<br>●Substr(database(),1,1)<br>●Subtring<br>●Mid(database(),1,1)<br>●Left(database() ,1)</li>
+<li>编码函数<br>●Ascii()<br>●Hex()<br>●Char() // ascii()的逆函数</li>
+<li>文件函数<br>●Load_ file() //读取文件内容</li>
+</ol>
+<h4 id="搭建SQLI-Labs"><a href="#搭建SQLI-Labs" class="headerlink" title="搭建SQLI-Labs"></a>搭建SQLI-Labs</h4><ol>
+<li><p>获取源码：</p>
+<p>地址：<a target="_blank" rel="noopener" href="http://github.com/Rinkish/Sqli_Edited_Version">http://github.com/Rinkish/Sqli_Edited_Version</a></p>
+<p>使用：git clone <a target="_blank" rel="noopener" href="http://github.com/Rinkish/Sqli_Edited_Version%E6%88%96%E7%82%B9%E5%87%BB%E4%B8%8B%E8%BD%BD%E9%83%BD%E6%98%AF%E5%8F%AF%E4%BB%A5%E7%9A%84%E3%80%82">http://github.com/Rinkish/Sqli_Edited_Version或点击下载都是可以的。</a></p>
+<img src="/images/%E7%AC%AC%E4%B9%9D%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210813232801257.png" alt="image-20210813232801257" style="zoom: 25%;" />
+
+<p>在命令窗口输入d run -p 30001:80 -d acgpiano/sqli-labs进行一键搭建</p>
+</li>
+<li><p>搭建：按图中顺序进行操作</p>
+<img src="/images/%E7%AC%AC%E4%B9%9D%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210813233538184.png" alt="image-20210813233538184" style="zoom:50%;" />
+
+<p>完成后可尝试阿帕奇和myaql等套件来启动环境</p>
+<p>在刚才的下载的解压文件夹中找到sql-connections修改db-creds.inc（sqli-libs的配置信息）中的用户名和密码即可</p>
+</li>
+<li><p>初始化数据库</p>
+<p> 可以输入localhost或本地ip地址进行访问</p>
+<p>使用数据库之前点击setup/reset database for labs进行初始化</p>
+<p><u>注：推荐学习dockrt的教程：</u></p>
+<p><a target="_blank" rel="noopener" href="https://yeasy.gitbooks.io/docker_practice/container/daemon.html">https://yeasy.gitbooks.io/docker_practice/container/daemon.html</a></p>
+</li>
+</ol>
+<p>​     </p>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">yunya</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2021/08/08/%E7%AC%AC%E4%B9%9D%E7%AF%87%E5%8D%9A%E5%AE%A2/">http://example.com/2021/08/08/第九篇博客/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="http://example.com">yunya的博客</a>！</span></div></blockquote></div></article><div class="p-info box"></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#WEB%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.</span> <span class="toc-text">WEB初步学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5"><span class="toc-number">1.1.</span> <span class="toc-text">sql注入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">前言：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80"><span class="toc-number">1.1.2.</span> <span class="toc-text">数据库基础</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%90%AD%E5%BB%BASQLI-Labs"><span class="toc-number">1.1.3.</span> <span class="toc-text">搭建SQLI-Labs</span></a></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2021/08/13/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/">&lt; 第十篇博客</a><a class="next" href="/2021/08/03/%E7%AC%AC%E5%85%AB%E7%AF%87%E5%8D%9A%E5%AE%A2/">第八篇博客 &gt;</a></div><div id="valine-comment"><style type="text/css">.night .v[data-class=v] a { color: #0F9FB4 !important; }
+.night .v[data-class=v] a:hover { color: #216C73 !important; }
+.night .v[data-class=v] li { list-style: inherit; }
+.night .v[data-class=v] .vwrap { border: 1px solid #223441; border-radius: 0; }
+.night .v[data-class=v] .vwrap:hover { box-shadow: 0 0 6px 1px #223441; }
+.night .v[data-class=v] .vbtn { border-radius: 0; background: none; }
+.night .v[data-class=v] .vlist .vcard .vh { border-bottom-color: #293D4E; }
+.night .v[data-class=v] .vwrap .vheader .vinput { border-bottom-color: #223441; }
+.night .v[data-class=v] .vwrap .vheader .vinput:focus { border-bottom-color: #339EB4; }
+.night .v[data-class=v] code, .night .v[data-class=v] pre,.night .v[data-class=v] .vlist .vcard .vhead .vsys { background: #203240 !important; }
+.night .v[data-class=v] code, .night .v[data-class=v] pre { color: #F0F0F0; font-size: 95%; }
+.v[data-class=v] .vcards .vcard .vh {border-bottom-color: #223441; }
+.night .v[data-class=v] .vcards .vcard .vcontent.expand:before {background: linear-gradient(180deg,rgba(38,57,73,.4),rgba(38,57,73,.9));}
+.night .v[data-class=v] .vcards .vcard .vcontent.expand:after {background: rgba(38,57,73,.9)}
+</style><div id="vcomment"></div><script src="//cdn.bootcdn.net/ajax/libs/valine/1.4.14/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'',
+  appKey:'',
+  lang: 'zh-cn',
+  placeholder:'ヾﾉ≧∀≦)o Come on, say something...',
+  avatar:'identicon',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script></div></section><footer><p>Copyright © 2016 - 2021 <a href="/." rel="nofollow">云芽的博客</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script></body></html>
