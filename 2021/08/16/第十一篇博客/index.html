@@ -175,10 +175,76 @@
 <p>从NMI引脚收到的中断。那基本上全是硬伤，CPU都没有运行下去的必要了<br>可屏蔽中断是通过INTR引脚进入CPU的，外部设备如硬盘、网卡等发出的中断都是可屏蔽中断，可屏蔽的意思是此外部设备发出的中断，CPU可以不必理会，因为它不会让系统宕机，所以可以通过eflags寄存器的IF位将所有这些外部设备的中断屏蔽<br>中断处理程序分为上半部和下半部两部分，把中断处理程序中需要立即执行的部分(分分钟不能耽误的部分）划分到上半部，这部分是要限时执行的，所以通常情况下只完成中断应答或硬件复位等重要紧迫的工作。而中断处理程序中那些不紧急的部分则被推迟到下半部中去完成。由于中断处理程序的上半部是刻不容缓要执行的，所以上半部是在关中断不被打扰的情况下执行的。当上半部执行完成后就把中断打开了，下半部也属于中断处理程序，所以中断处理程序下半部则是在开中断的情况下执行的，如果有新的中断发生，原来这个旧中断的下半部就会被换下CPU,先执行新的中断处理程序的上半部，等待线程调度机制为旧中断处理程序择—日期（就是指调度算法认为的某个恰当时机)后，再调度其上CPU 完成其下半部的执行</p>
 <p>不可屏蔽中断是通过NMI引脚进入CPU的，它表示系统中发生了致命的错误，它等同于宜布:计算机的运行到此结束了<br>CPU收到中断后通过中断向量表或中断描述符表(中断向量表是实模式下的中断处理程序数组，在保护模式下已经被中断描述符表代替)来寻找解决方法<br>中断发起时，相应的中断向量号通过NMI或INTR弓|脚被传入CPU,中断向量号是中断向量表或中断描述符表里中断项的下标CPU 根据此中断向量号在中断向量表或中断描述符表中检索对应的中断处理程序并去执行</p>
 <p><u>内中断：</u></p>
-<p>除0错误（0不能作为除数）<br>单步中断–执行一条指令之后就会引起一次中断<br>执行into指令–into这是中断溢出指令，它所触发的中断向量号是4.不过，能否引发4号中断是要看eflags标志寄存器中的OF位是否为1,如果是1才会引发中断，否则什么都不做<br>执行int指令–int 8位立即数通过它进行系统调用，8位立即数可表示256种中断，这与处理器所支持的中断数是相吻合的.<br>异常<br>fault – 可挽救，例如缺页<br>trap (int3)  –（<br>abort – 遇到不可挽救的错误时终止指令</p>
-<p><u>端口</u>：</p>
+<p>除0错误（0不能作为除数）<br>单步中断–执行一条指令之后就会引起一次中断<br>执行into指令–into这是中断溢出指令，它所触发的中断向量号是4.不过，能否引发4号中断是要看eflags标志寄存器中的OF位是否为1,如果是1才会引发中断，否则什么都不做<br>执行int指令–int 8位立即数通过它进行系统调用，8位立即数可表示256种中断，这与处理器所支持的中断数是相吻合的.<br>异常<br>fault – 可挽救，例如缺页<br>trap (int3)  – 陷阱<br>abort – 遇到不可挽救的错误时终止指令</p>
+<p><u>端口</u>：（可由cpu进行读写的寄存器）</p>
 <p>in指令一般用来从端口读数据，dx存端口号，读的数据存到al或者ax里面，具体是选择al还<br>是ax是根据对应端口指代的寄存器位数来决定的<br>in al, dx<br>in ax, dx<br>out指令一般用来往端口写数据， 同样dx存端口号，与in指令不同的是out指令也可以使用<br>立即数来指明端口号，然后要写入的数据使用al或者ax来存，同样具体是选择al还是ax是根<br>据对应端口指代的寄存器位数来决定的<br>out dx, al<br>out dx,ax<br>out立即数, al<br>out立即数, ax</p>
-<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4></div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">yunya</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2021/08/16/%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">http://example.com/2021/08/16/第十一篇博客/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="http://example.com">yunya的博客</a>！</span></div></blockquote></div></article><div class="p-info box"></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RE%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.</span> <span class="toc-text">RE初步学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#X86%E6%B1%87%E7%BC%96"><span class="toc-number">1.1.</span> <span class="toc-text">X86汇编</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%86%E5%8F%B2"><span class="toc-number">1.1.1.</span> <span class="toc-text">历史</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.1.2.</span> <span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.1.3.</span> <span class="toc-text">寄存器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4"><span class="toc-number">1.1.4.</span> <span class="toc-text">指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.1.5.</span> <span class="toc-text">实例</span></a></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="next" href="/2021/08/14/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/">第十篇博客 &gt;</a></div><div id="valine-comment"><style type="text/css">.night .v[data-class=v] a { color: #0F9FB4 !important; }
+<p><u>Intel汇编与AT&amp;T汇编的区别：</u></p>
+<p>x86/amd64汇编指令的两大风格分别是Intel汇编与AT&amp;T汇编，分别被Microsoft Windows/Visual C++与GNU/Gas采用（Gas也可使用Intel汇编风格）：</p>
+<img src="/images/%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210831190724948.png" alt="image-20210831190724948" style="zoom:67%;" />
+
+<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><p><u>内联汇编</u>：</p>
+<p><u>基本内联汇编</u><br>基本内联汇编的格式如下:<br>asm [volatile] (“assembly code”)<br>asm和_ asm_ 是一样的，volatile和_ volatile_ 是一样的，volatile的功能是告诉gcc（编译器）不要修改我写的汇编代码，assembly code表示汇编代码</p>
+<p>assembly code的规则</p>
+<ol>
+<li><p>指令必须用双引号引起来，无论双引号中是一条指令还是多条指令</p>
+</li>
+<li><p>一对双引号不能跨行，如果跨行需要在结尾用反斜杠’\\‘转移</p>
+</li>
+<li><p>指令之间用分号”;”、换行符”\n”或换行符加制表符”\n\t”分隔</p>
+</li>
+</ol>
+<p><u>扩展内联汇编</u><br>格式如下<br>asm  [volatile] (“assembly code” :output : iuput : clobber/modify)<br>output：用来指定汇编代码的数据如何输出给C代码使用<br>input：用来指定C语言中数据如何输入给汇编使用<br>clobber/modify：汇编代码执行后会破坏一些内存或寄存器资源， 通过此项通知编译器，可能造成寄存器或内存数据的破坏，这样gcc就知道哪些寄存器或内存需要提前保护起来</p>
+<p><u>寄存器约束</u><br>寄存器约束就是要求gcc使用哪个寄存器，将input或output中变量约束在某个寄存器<br>中。</p>
+<p>常见的寄存器约束有:</p>
+<p>-a：表示寄存器eax/ax/al<br>-r：表示任意这6个通用寄存器之一: eax/ebx/ecx/edx/esi/edi</p>
+<p>-b：表示寄存器ebx/bx/bl</p>
+<p>-g：表示可以存放到任意地点(寄存器和内存)。相当于除了同q一样外，还可以让gcc安排在内存中<br>-c：表示寄存器ecx/cx/cI<br>-A：把eax和edx组合成64位整数</p>
+<p>-d：表示寄存器edx/dx/dl<br>-f：表示浮点寄存器<br>-D：表示寄存器edi/di</p>
+<p>-t：表示第1个浮点寄存器</p>
+<p>-S：表示寄存器esi/si<br>-u：表示第2个浮点寄存器</p>
+<p>-q：表示任意这4个通用寄存器之一： eax/ebx/ecx/edx</p>
+<p><u>内存约束</u><br>内存约束是要求gcc直接将位于input和output中的C变量的内存地址作为内联汇编代码的操作数，不需要寄存器做中转，直接进行内存读写，也就是汇编代码的操作数是C变量的指针。</p>
+<p>-m：表示操作数可以使用任意一种内存形式。</p>
+<p>-o：操作数为内存变量， 但访问它是通过偏移量的形式访问，即包含offset_address的格<br>式。</p>
+<p><u>立即数约束</u><br>此约束要求gcc在传值的时候不通过内存和寄存器，直接作为立即数传给汇编代码。由于立即数不是变量，只能作为右值，所以只能放在input中。</p>
+<p>-i：表示操作数为整数立即数</p>
+<p>-F：表示操作数为浮点数立即数</p>
+<p>-I： 表示操作数为0<del>31之间的立即数<br>-J：表示操作数为0</del> 63之间的立即数</p>
+<p>-N：表示操作数为0~ 255之间的立即數<br>-O：表示操作数为0~32之间的立即数</p>
+<p>-X：表示操作数为任何类型立即数</p>
+<p><u>通用约束</u><br>0<del>9:此约束只用在input部分，但表示可与output和input中第n个操作数用相同的寄存器或内存。<br><u>序号占位符</u><br>序号占位符是对在output和input中的操作数，按照它们从左到右出现的次序从0开始编号，一直到9，也就是说最多支持10个序号占位符。操作数用在assembly code中，引用它的格式是%0</del>9。</p>
+<p><u>名称占位符</u><br>名称占位符与序号占位符不同，序号占位符靠本身出现在output和input中的位置就能被编译器辨识出来。而名称占位序需要在output 和input中把操作数显式地起个名字，它用这样的格式来标识操作数: [名称]”约束名” (C 变量)这样， 该约束对应的汇编操作数便有了名字，在assembly code中引用操作数时，采用%[名称]的形式就可以了。这次我们用8位除法举例，例如下面这段程序</p>
+<pre><code class="c">#include&lt;stdio.h&gt;
+void main()&#123;
+        int in_a=18,in_b=3,out=0;
+        asm(&quot;divb%[divisor];movb % %al,%[resul]&quot; \
+           :result]&quot;(out)\
+           :&quot;a&quot;(in_a),[divisor]&quot;m&quot;(in_b)\
+             );
+          pritf(&quot;result is %dn&quot;,out);
+&#125;
+</code></pre>
+<p><u>操作数类型修饰符</u><br>在output中有以下3种。<br>=：表示操作数是只写，相当于为output括号中的C变量赋值，如=a(C, _var),此修饰符相当于c_yar= eax.<br>+：表示操作数是可读写的，告诉gcc所约束的寄存器或内存先被读入，再被写入。<br>&amp;：表示此output中的操作数要独占所约束(分配)的寄存器，只供output使用，任何input中所分配的寄存器不能与此相同。注意，当表达式中有多个修饰符时，&amp;要与约束名挨着，不能分隔。<br>在input中:<br>%：该操作数可以和下一个输入操作数互换。</p>
+<p>一般情况下，input 中的C变量是只读的，output 中的C变量是只写的。</p>
+<p>函数原型</p>
+<pre><code>void *memcpy(void*dest,const void *src,size_t n);
+static void *___memcpy(void *dest, const void *src, size_t n)
+&#123;
+        long d0,d1,d2;
+        asm volatile(
+                *rep ; movsq\n\t&quot;
+                *movq%4,%%rcx\n\t&quot;
+&#39;rep ; movsb\n\t&quot;
+                :*&quot;=&amp;c&quot;(d0),&quot;= &amp;D&quot;(d1),&quot;=&amp;S&quot;(d2)
+                :&quot;0&quot;(n&gt;&gt;3),&quot;g&quot;(n&amp;7),&quot;1&quot;(dest),&quot;2&quot;(src)
+                : &quot;memory&quot;);
+         return dest;
+&#125;
+</code></pre>
+<p>小作业：用汇编语言实现memset函数</p>
+<p>以上引用书籍：</p>
+<p>[1]操作系统真象还原<br>[2]王爽汇编语言<br>[3]维基百科</p>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">yunya</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2021/08/16/%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">http://example.com/2021/08/16/第十一篇博客/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="http://example.com">yunya的博客</a>！</span></div></blockquote></div></article><div class="p-info box"></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RE%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.</span> <span class="toc-text">RE初步学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#X86%E6%B1%87%E7%BC%96"><span class="toc-number">1.1.</span> <span class="toc-text">X86汇编</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%86%E5%8F%B2"><span class="toc-number">1.1.1.</span> <span class="toc-text">历史</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.1.2.</span> <span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.1.3.</span> <span class="toc-text">寄存器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4"><span class="toc-number">1.1.4.</span> <span class="toc-text">指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.1.5.</span> <span class="toc-text">实例</span></a></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2021/08/31/%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/">&lt; 第十二篇博客</a><a class="next" href="/2021/08/14/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/">第十篇博客 &gt;</a></div><div id="valine-comment"><style type="text/css">.night .v[data-class=v] a { color: #0F9FB4 !important; }
 .night .v[data-class=v] a:hover { color: #216C73 !important; }
 .night .v[data-class=v] li { list-style: inherit; }
 .night .v[data-class=v] .vwrap { border: 1px solid #223441; border-radius: 0; }
