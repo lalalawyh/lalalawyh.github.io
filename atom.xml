@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-09-05T11:21:51.364Z</updated>
+  <updated>2021-09-05T12:04:22.201Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,12 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>新手解题博客3</title>
+    <link href="http://example.com/2021/09/05/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/"/>
+    <id>http://example.com/2021/09/05/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/</id>
+    <published>2021-09-05T11:39:04.000Z</published>
+    <updated>2021-09-05T12:04:22.201Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="CTFHUB"><a href="#CTFHUB" class="headerlink" title="CTFHUB"></a>CTFHUB</h2><h3 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h3><h4 id="前置技能——HTTP协议"><a href="#前置技能——HTTP协议" class="headerlink" title="前置技能——HTTP协议"></a>前置技能——HTTP协议</h4><p><strong>请求方式</strong></p><p>题目：</p><img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210905194147045.png" alt="image-20210905194147045" style="zoom:33%;" /><p>解题：</p><p>猜想CTF**B请求方式为ctfhub</p><p>姿势1：burpsuite抓包</p><p>使用burpsuite进行抓包，发送到repeatr把get方式改为CTFHUB的请求方式，点击send，就会返回含有flag的数据包。如下图。（图来自<a href="https://blog.csdn.net/hgjiayou/article/details/106212933%EF%BC%89">https://blog.csdn.net/hgjiayou/article/details/106212933）</a></p><img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210905195259986.png" alt="image-20210905195259986" style="zoom:60%;" /><p>姿势2：curl命令</p><p>在cmd命令窗口中输入“curl -v -X CTFHUB <a href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E2%80%9D%E5%8D%B3%E5%8F%AF%E5%BE%97%E5%88%B0flag%E4%BF%A1%E6%81%AF">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php”即可得到flag信息</a></p><img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210905195437094.png" alt="image-20210905195437094" style="zoom:45%;" /><p>补充知识：</p><p>curl</p><p><strong>cURL</strong>是一个利用URL语法在<a href="https://baike.baidu.com/item/%E5%91%BD%E4%BB%A4%E8%A1%8C">命令行</a>下工作的文件传输工具。用来请求 Web 服务器。</p><p>学习链接：<a href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html">https://www.ruanyifeng.com/blog/2019/09/curl-reference.html</a></p><p>curl -v -X CTFHUB <a href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E8%A1%A8%E7%A4%BA%E4%BB%A5CTFHUB%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E8%AE%BF%E9%97%AEhttp://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E5%B9%B6%E6%9F%A5%E7%9C%8B%E9%80%9A%E4%BF%A1%E5%85%A8%E8%BF%87%E7%A8%8B%E3%80%82">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php表示以CTFHUB请求方式访问http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php并查看通信全过程。</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;CTFHUB&quot;&gt;&lt;a href=&quot;#CTFHUB&quot; class=&quot;headerlink&quot; title=&quot;CTFHUB&quot;&gt;&lt;/a&gt;CTFHUB&lt;/h2&gt;&lt;h3 id=&quot;WEB&quot;&gt;&lt;a href=&quot;#WEB&quot; class=&quot;headerlink&quot; title=&quot;WEB</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>ctf基础学习-2</title>
     <link href="http://example.com/2021/09/05/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/"/>
     <id>http://example.com/2021/09/05/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/</id>
     <published>2021-09-05T11:21:51.000Z</published>
-    <updated>2021-09-05T11:21:51.364Z</updated>
+    <updated>2021-09-05T11:26:38.550Z</updated>
     
+    <content type="html"><![CDATA[<h2 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;WEB&quot;&gt;&lt;a href=&quot;#WEB&quot; class=&quot;headerlink&quot; title=&quot;WEB&quot;&gt;&lt;/a&gt;WEB&lt;/h2&gt;</summary>
+      
     
     
     
@@ -31,17 +58,17 @@
   
   <entry>
     <title>ctf基础学习-1</title>
-    <link href="http://example.com/2021/09/05/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/"/>
-    <id>http://example.com/2021/09/05/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/</id>
+    <link href="http://example.com/2021/09/05/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-1/"/>
+    <id>http://example.com/2021/09/05/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-1/</id>
     <published>2021-09-05T10:26:20.000Z</published>
-    <updated>2021-09-05T11:21:33.089Z</updated>
+    <updated>2021-09-05T11:26:32.171Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><h4 id="CTF简介"><a href="#CTF简介" class="headerlink" title="CTF简介"></a>CTF简介</h4><p> CTF意译为“夺旗赛”。其大致流程是，参赛团队之间通过进行攻防对抗、程序分析等形式，率先从主办方给出的比赛环境中得到一串具有一定格式的字符串或其他内容（flag），并将其提交给主办方，从而夺得分数。 flag所表示的为目标服务器上存储的一些敏感机密的信息。</p><p>选手利用目标的一些漏洞，获取到flag，其表示的即为在真实的黑客攻击中窃取到的机密信息。 一般情况下flag拥有固定格式为<code>flag&#123;xxxxx&#125;</code>，有些比赛会把flag关键词替换，利用固定格式来反推flag也是一种常见的解题思路。</p><p>通常来说CTF是以团队为单位进行参赛。每个团队3-5人(具体根据主办方要求决定)，在整个比赛过程中既要每个选手拥有某个方向的漏洞挖掘能力，也要同队选手之间的相互配合。</p><h4 id="竞赛模式"><a href="#竞赛模式" class="headerlink" title="竞赛模式"></a>竞赛模式</h4><p>在CTF中主要包含以下5个大类的题目，有些比赛会根据自己的侧重点单独添加某个分类，例如<code>移动设备(Mobile)</code>, <code>电子取证(Forensics)</code>等，近年来也会出来混合类型的题目，例如在Web中存在一个二进制程序，需要选手先利用Web的漏洞获取到二进制程序，之后通过逆向或是Pwn等方式获得最终flag.</p><p><strong>Jeopardy-解题</strong></p><p>参数队伍通过与在线环境交互或文件离线分析，解决网络安全技术挑战获取相应分值。</p><p>一般会设置 一血(First Blood) 、 二血(Second Blood) 、 三血(Third Blood) ，也即最先完成的前三支队伍会获得额外分值。还有一种流行的计分规则是设置每道题目的初始分数后，根据该题的成功解答队伍数，来逐渐降低该题的分值，也就是说如果解答这道题的人数越多，那么这道题的分值就越低。最后会下降到一个保底分值后便不再下降。</p><p>一般称以上的计分方式为动态积分题目类型主要包含 Web 网络攻防 、 RE 逆向工程 、 Pwn 二进制漏洞利用 、 Crypto 密码攻击以及 Misc 安全杂项 这五个类别，个别比赛会根据题目类型进行扩展。</p><p><strong>AwD-攻防模式</strong></p><p>Attack with Defense(AwD)全称攻防模式，在攻防模式CTF赛制中，参赛队伍连接到同一个网络空间。主办方会预先为每个参赛队分配要防守的主机，该主机称之为GameBox，每个队伍之间的GameBox配置及漏洞是完全一致的，选手需要防护自己的GameBox不被攻击的同时挖掘漏洞并攻击对手服务来得分。比赛一般都会持续24至48小时左右。AwD通常仅包含Web及Pwn两种类型的题目。</p><p><strong>RHG-自动化【AI自动化】</strong></p><p>Robo Hacking Game(RHG)该利用人工智能或是AI或是自动化攻击程序来全自动的挖掘并利用漏洞，考验选手对于漏洞理解以及工程化能力。比赛开始前(一般为1-4周左右)主办方会给出测试环境以及相关接口文档。选手需要编写自动化程序来请求接口获取题目相关信息，该类程序通常称之为bot，在程序中全自动访问并挖掘目标漏洞，完成利用漏洞攻击并获取flag的过程。获取到的flag也由程序自动化提交。</p><p><strong>RW-真实世界</strong></p><p>该赛制着重考察选手在面对真实的环境下的漏洞挖掘与利用能力。通常RW模式出题也会围绕着能够应用于真实渗透攻击当中的漏洞，一般来说RW常见题型为VM/Docker逃逸、针对浏览器的攻击、针对IoT/Car等设备的攻击。</p><p>题目给出该网站的一些信息(源代码/数据库等等)，选手经过本地挖掘漏洞之后，提交展示申请，排期到了之后进行上台展示。注意，因为RW模式是以展示效果来作为题目是否完成的准则，所以在RW模式中并<code>不存在Flag</code>。</p><p><strong>KoH-抢占山头</strong></p><p>选手面对的是一个黑盒的目标，需要先挖掘漏洞并利用漏洞控制目标。将自己的队伍标识(队伍名称或是Token之类)写入到指定文件。随后在该主机上进行加固等操作防止其他队伍攻击。</p><p><strong>Mix【混合】</strong></p><p>混合模式结合了以上多种模式。例如参赛队伍通过解题(Jeopardy)可以获取一些初始分数，然后通过攻防对抗(AwD)进行得分增减的零和游戏，最终以得分高低分出胜负。</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="CTF简介"><a href="#CTF简介" class="headerlink" title="CTF简介"></a>CTF简介</h3><p> CTF意译为“夺旗赛”。其大致流程是，参赛团队之间通过进行攻防对抗、程序分析等形式，率先从主办方给出的比赛环境中得到一串具有一定格式的字符串或其他内容（flag），并将其提交给主办方，从而夺得分数。 flag所表示的为目标服务器上存储的一些敏感机密的信息。</p><p>选手利用目标的一些漏洞，获取到flag，其表示的即为在真实的黑客攻击中窃取到的机密信息。 一般情况下flag拥有固定格式为<code>flag&#123;xxxxx&#125;</code>，有些比赛会把flag关键词替换，利用固定格式来反推flag也是一种常见的解题思路。</p><p>通常来说CTF是以团队为单位进行参赛。每个团队3-5人(具体根据主办方要求决定)，在整个比赛过程中既要每个选手拥有某个方向的漏洞挖掘能力，也要同队选手之间的相互配合。</p><h3 id="竞赛模式"><a href="#竞赛模式" class="headerlink" title="竞赛模式"></a>竞赛模式</h3><p>在CTF中主要包含以下5个大类的题目，有些比赛会根据自己的侧重点单独添加某个分类，例如<code>移动设备(Mobile)</code>, <code>电子取证(Forensics)</code>等，近年来也会出来混合类型的题目，例如在Web中存在一个二进制程序，需要选手先利用Web的漏洞获取到二进制程序，之后通过逆向或是Pwn等方式获得最终flag.</p><h4 id="Jeopardy-解题"><a href="#Jeopardy-解题" class="headerlink" title="Jeopardy-解题"></a>Jeopardy-解题</h4><p>参数队伍通过与在线环境交互或文件离线分析，解决网络安全技术挑战获取相应分值。</p><p>一般会设置 一血(First Blood) 、 二血(Second Blood) 、 三血(Third Blood) ，也即最先完成的前三支队伍会获得额外分值。还有一种流行的计分规则是设置每道题目的初始分数后，根据该题的成功解答队伍数，来逐渐降低该题的分值，也就是说如果解答这道题的人数越多，那么这道题的分值就越低。最后会下降到一个保底分值后便不再下降。</p><p>一般称以上的计分方式为动态积分题目类型主要包含 Web 网络攻防 、 RE 逆向工程 、 Pwn 二进制漏洞利用 、 Crypto 密码攻击以及 Misc 安全杂项 这五个类别，个别比赛会根据题目类型进行扩展。</p><h4 id="AwD-攻防模式"><a href="#AwD-攻防模式" class="headerlink" title="AwD-攻防模式"></a>AwD-攻防模式</h4><p>Attack with Defense(AwD)全称攻防模式，在攻防模式CTF赛制中，参赛队伍连接到同一个网络空间。主办方会预先为每个参赛队分配要防守的主机，该主机称之为GameBox，每个队伍之间的GameBox配置及漏洞是完全一致的，选手需要防护自己的GameBox不被攻击的同时挖掘漏洞并攻击对手服务来得分。比赛一般都会持续24至48小时左右。AwD通常仅包含Web及Pwn两种类型的题目。</p><h4 id="RHG-自动化【AI自动化】"><a href="#RHG-自动化【AI自动化】" class="headerlink" title="RHG-自动化【AI自动化】"></a>RHG-自动化【AI自动化】</h4><p>Robo Hacking Game(RHG)该利用人工智能或是AI或是自动化攻击程序来全自动的挖掘并利用漏洞，考验选手对于漏洞理解以及工程化能力。比赛开始前(一般为1-4周左右)主办方会给出测试环境以及相关接口文档。选手需要编写自动化程序来请求接口获取题目相关信息，该类程序通常称之为bot，在程序中全自动访问并挖掘目标漏洞，完成利用漏洞攻击并获取flag的过程。获取到的flag也由程序自动化提交。</p><h4 id="RW-真实世界"><a href="#RW-真实世界" class="headerlink" title="RW-真实世界"></a>RW-真实世界</h4><p>该赛制着重考察选手在面对真实的环境下的漏洞挖掘与利用能力。通常RW模式出题也会围绕着能够应用于真实渗透攻击当中的漏洞，一般来说RW常见题型为VM/Docker逃逸、针对浏览器的攻击、针对IoT/Car等设备的攻击。</p><p>题目给出该网站的一些信息(源代码/数据库等等)，选手经过本地挖掘漏洞之后，提交展示申请，排期到了之后进行上台展示。注意，因为RW模式是以展示效果来作为题目是否完成的准则，所以在RW模式中并<code>不存在Flag</code>。</p><h4 id="KoH-抢占山头"><a href="#KoH-抢占山头" class="headerlink" title="KoH-抢占山头"></a>KoH-抢占山头</h4><p>选手面对的是一个黑盒的目标，需要先挖掘漏洞并利用漏洞控制目标。将自己的队伍标识(队伍名称或是Token之类)写入到指定文件。随后在该主机上进行加固等操作防止其他队伍攻击。</p><h4 id="Mix【混合】"><a href="#Mix【混合】" class="headerlink" title="Mix【混合】"></a>Mix【混合】</h4><p>混合模式结合了以上多种模式。例如参赛队伍通过解题(Jeopardy)可以获取一些初始分数，然后通过攻防对抗(AwD)进行得分增减的零和游戏，最终以得分高低分出胜负。</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;h3 id=&quot;基础知识&quot;&gt;&lt;a href=&quot;#基础知识&quot; class=&quot;headerlink&quot; title=&quot;基础知识&quot;&gt;&lt;/a&gt;基础知识&lt;/h3&gt;&lt;h4 id=&quot;CTF简介&quot;&gt;&lt;a href=&quot;#CTF简介&quot; class=&quot;headerlink&quot; title=&quot;CTF简介&quot;&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;基础知识&quot;&gt;&lt;a href=&quot;#基础知识&quot; class=&quot;headerlink&quot; title=&quot;基础知识&quot;&gt;&lt;/a&gt;基础知识&lt;/h2&gt;&lt;h3 id=&quot;CTF简介&quot;&gt;&lt;a href=&quot;#CTF简介&quot; class=&quot;headerlink&quot; title=&quot;CTF简介&quot;&gt;</summary>
       
     
     
