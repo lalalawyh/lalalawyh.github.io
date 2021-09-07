@@ -39,11 +39,13 @@
 <p>题目：</p>
 <img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908002154159.png" alt="image-20210908002154159" style="zoom:30%;" />
 
-<p>解题：<br>用扫描工具查找是否有备份文件。在url后面加上“/<a target="_blank" rel="noopener" href="http://www.zip”后进行访问,会下载一个压缩包.打开如下图所示./">www.zip”后进行访问，会下载一个压缩包。打开如下图所示。</a></p>
+<p>解题：</p>
+<p>使用扫描工具（如：dirbuster）对网站目录进行扫描查找是否有备份文件，扫描的文件名和类型就是提示给出的，最终扫描得到<a target="_blank" rel="noopener" href="https://blog.csdn.net/www.zip">www.zip文件，输入网址URL/www.zip</a>得到压缩文件，解压后打开如下图所示。</p>
 <img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908002334915.png" alt="image-20210908002334915" style="zoom:40%;" />
 
 <p>在原题目网页的url后面加上“/flag_3254114626.txt”进行访问即可获取到flag。</p>
 <p><u>bak文件</u></p>
+<p>题目：</p>
 </div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">yunya</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2021/09/05/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/">http://example.com/2021/09/05/新手解题博客3/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="http://example.com">yunya的博客</a>！</span></div></blockquote></div></article><div class="p-info box"></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CTFHUB"><span class="toc-number">1.</span> <span class="toc-text">CTFHUB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WEB"><span class="toc-number">1.1.</span> <span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD%E2%80%94%E2%80%94HTTP%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.1.1.</span> <span class="toc-text">前置技能——HTTP协议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE%E2%80%94%E2%80%94%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2"><span class="toc-number">1.1.2.</span> <span class="toc-text">工具配置——信息泄露</span></a></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="next" href="/2021/09/05/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/">ctf基础学习-2 &gt;</a></div><div id="valine-comment"><style type="text/css">.night .v[data-class=v] a { color: #0F9FB4 !important; }
 .night .v[data-class=v] a:hover { color: #216C73 !important; }
 .night .v[data-class=v] li { list-style: inherit; }
