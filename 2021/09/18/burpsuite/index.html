@@ -5,17 +5,44 @@
 <h4 id="安装与使用"><a href="#安装与使用" class="headerlink" title="安装与使用"></a>安装与使用</h4><p><strong>burpsuite安装：</strong></p>
 <p>我是直接在应用上安装的burpsuite社区版。也可进入官网下载。</p>
 <p>官网链接：<a target="_blank" rel="noopener" href="https://portswigger.net/burp">https://portswigger.net/burp</a></p>
-<img src="../images/burpsuite/image-20210918003959781.png" alt="image-20210918003959781" style="zoom:33%;" />
+<img src="/images/burpsuite/image-20210918003959781.png" alt="image-20210918003959781" style="zoom:33%;" />
 
 <p><strong>浏览器代理设置：</strong></p>
 <p>点击浏览器页面右上角进入设置拉到最低找到网络设置而后点击设置。</p>
-<img src="../images/burpsuite/image-20210918004410626.png" alt="image-20210918004410626" style="zoom:25%;" />
+<img src="/images/burpsuite/image-20210918004410626.png" alt="image-20210918004410626" style="zoom:25%;" />
 
-<p>将代理设置成与burpsuite上的相同。</p>
-<img src="../images/burpsuite/image-20210918004523344.png" alt="image-20210918004523344" style="zoom:25%;" />
+<p>点手动配置代理将代理设置成与burpsuite上的相同。</p>
+<img src="/images/burpsuite/image-20210918004523344.png" alt="image-20210918004523344" style="zoom:25%;" />
+
+<img src="/images/burpsuite/image-20210918005522266.png" alt="image-20210918005522266" style="zoom:45%;" />
+
+<p><strong>！此处还需解开个限制</strong></p>
+<img src="/images/burpsuite/image-20210918005659174.png" alt="image-20210918005659174" style="zoom:50%;" />
 
 
 
+<p>方法：</p>
+<p>打开设置将<img src="/images/burpsuite/image-20210918005938252.png" alt="image-20210918005938252" style="zoom:50%;" />改为<img src="/images/burpsuite/image-20210918010015702.png" alt="image-20210918010015702" style="zoom:60%;" /></p>
+<p>在访问后的搜索框内输入network.proxy.allow_hijacking_localhost，将fasle改为true。</p>
+<img src="/images/burpsuite/image-20210918010107193.png" alt="image-20210918010107193" style="zoom:30%;" />
+
+<p>修改完成后回到设置会发现变化。</p>
+<img src="/images/burpsuite/image-20210918010254513.png" alt="image-20210918010254513" style="zoom:60%;" />
+
+<p><strong>使用：（以爆破为栗子）</strong></p>
+<p>先将浏览器的代理关闭即不使用代理方可访问题目网站。</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210913005916028.png" alt="image-20210913005916028" style="zoom:50%;" />
+
+<p>此为ctfhub中的弱口令题目，猜测用户名为admin，只需要爆破密码即可。</p>
+<p>将浏览器的代理开启，打开burpsuite进行抓包，输入用户名admin以及任一密码（例如：123）</p>
+<p>右击下图命令选择send to intruder进行爆破</p>
+<img src="/images/burpsuite/image-20210918010923654.png" alt="image-20210918010923654" style="zoom:33%;" />
+
+<p>设置intruder——payload，导入字典后点击start attack</p>
+<img src="/images/burpsuite/image-20210918011229722.png" alt="image-20210918011229722" style="zoom:32.5%;" />
+
+<p>找到爆破长度不同的即为密码，查看response得到flag。</p>
+<img src="/images/burpsuite/image-20210918011351469.png" alt="image-20210918011351469" style="zoom:40%;" />
 </div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">yunya</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2021/09/18/burpsuite/">http://example.com/2021/09/18/burpsuite/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="http://example.com">yunya的博客</a>！</span></div></blockquote></div></article><div class="p-info box"></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#burpsuite%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">burpsuite安装与使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.0.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="toc-number">1.0.2.</span> <span class="toc-text">安装与使用</span></a></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="next" href="/2021/09/05/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/">新手解题博客3 &gt;</a></div><div id="valine-comment"><style type="text/css">.night .v[data-class=v] a { color: #0F9FB4 !important; }
 .night .v[data-class=v] a:hover { color: #216C73 !important; }
 .night .v[data-class=v] li { list-style: inherit; }
