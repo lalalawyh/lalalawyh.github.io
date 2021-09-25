@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-09-17T17:14:24.555Z</updated>
+  <updated>2021-09-25T16:15:27.448Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>dirsearch</title>
+    <link href="http://example.com/2021/09/25/dirsearch/"/>
+    <id>http://example.com/2021/09/25/dirsearch/</id>
+    <published>2021-09-24T17:54:01.000Z</published>
+    <updated>2021-09-25T16:15:27.448Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="dirsearch安装与使用"><a href="#dirsearch安装与使用" class="headerlink" title="dirsearch安装与使用"></a>dirsearch安装与使用</h2><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>dirsearch是一个python开发的目录扫描工具，目的是扫描网站的敏感文件和目录从而找到突破口。</p><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>进入官网下载<a href="https://github.com/maurosoria/dirsearch%EF%BC%8C%E7%82%B9%E5%87%BB%E4%BB%A3%E7%A0%81code%E7%84%B6%E5%90%8E%E4%B8%8B%E8%BD%BD%E5%8E%8B%E7%BC%A9%E5%8C%85%E3%80%82">https://github.com/maurosoria/dirsearch，点击代码code然后下载压缩包。</a></p><img src="/images/dirsearch/image-20210925153641733.png" alt="image-20210925153641733" style="zoom:50%;" /><p>下载完成后解压。打开进入到dirsearch目录，cmd进入到dirsearch.py目录。可直接在这个目录下输入cmd进入，这样就不需要cd一级一级的进入了。</p><img src="/images/dirsearch/image-20210925154051408.png" alt="image-20210925154051408" style="zoom:33%;" /><p>输入命令python dirsearch.py -u <a href="https://www.baidu.com/">https://www.baidu.com</a> -e *进行测试。</p><p>问题1：出现ModuleNotFoundError: No module named ‘chardet’</p><img src="/images/dirsearch/image-20210925154920335.png" alt="image-20210925154920335" style="zoom:63%;" /><p>解决方法：手动进入网址<a href="https://github.com/chardet/chardet%E4%B8%8B%E8%BD%BDchardet%E6%A8%A1%E5%9D%97%E3%80%82%E8%A7%A3%E5%8E%8B%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8Ccmd%E8%BF%9B%E5%85%A5%E5%91%BD%E4%BB%A4%E7%AA%97%E5%8F%A3%E8%BE%93%E5%85%A5%E5%91%BD%E4%BB%A4python">https://github.com/chardet/chardet下载chardet模块。解压打开文件夹，cmd进入命令窗口输入命令python</a> setup.py install进行安装。</p><img src="/images/dirsearch/image-20210925160047567.png" alt="image-20210925160047567" style="zoom:33%;" /><p>问题2：出现ModuleNotFoundError: No module named ‘markupsafe’</p><img src="/images/dirsearch/image-20210925160213872.png" alt="image-20210925160213872" style="zoom:63%;" /><p>解决方法：直接win+R召唤出命令窗口，输入命令pip install markupsafe进行安装。</p><p>没有问题之后再次进行测试就可以了。</p><img src="/images/dirsearch/image-20210925160510879.png" alt="image-20210925160510879" style="zoom:70%;" />]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;dirsearch安装与使用&quot;&gt;&lt;a href=&quot;#dirsearch安装与使用&quot; class=&quot;headerlink&quot; title=&quot;dirsearch安装与使用&quot;&gt;&lt;/a&gt;dirsearch安装与使用&lt;/h2&gt;&lt;h4 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot;</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>burpsuite</title>
