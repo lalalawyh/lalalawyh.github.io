@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><meta name="theme-color" content="#ffb6c1"><meta name="baidu-site-verification"><title>第三篇博客 | 云芽的博客</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="云芽的博客" type="application/atom+xml">
+</head><link rel="stylesheet" type="text/css" href="/plugins/highlight/atom-one-dark.min.css"><script type="text/javascript" src="/plugins/highlight/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();
+</script><script type="text/javascript" src="/js/ready.js" async></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">云芽的博客</a></h1></div><p class="m-desc">好好fighting，好好waiting!</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">第三篇博客</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2021/07/19/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%B8%89%E7%AF%87%E5%8D%9A%E5%AE%A2/">2021-07-19</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h2 id="MISC初步学习"><a href="#MISC初步学习" class="headerlink" title="MISC初步学习"></a>MISC初步学习</h2><h3 id="数据编码"><a href="#数据编码" class="headerlink" title="数据编码"></a>数据编码</h3><h4 id="1-常见进制（01-二进制、hex）"><a href="#1-常见进制（01-二进制、hex）" class="headerlink" title="1.常见进制（01/二进制、hex）"></a>1.常见进制（01/二进制、hex）</h4><p><strong>（1）进制转换：</strong></p>
+<p><strong>二进制转ascii码：</strong></p>
+<p>二进制转化为十进制再对照ascii码表查找。</p>
+<p>二进制转图片（hex）；二进制转万物……</p>
+<p>二进制进位规则是“逢二进一”，借位规则是“以一当二”。</p>
+<p><strong>二进制转morse码：</strong></p>
+<p>二进制转十进制，然后对照ascii码表找相应字符。——&gt;初学者可以浏览器上搜索摩斯密码解密利用在线工具解读morse码，等熟练掌握之后可以用自己的python库或者自行编写一个小程序。</p>
+<p><strong>二进制转二维码（绘图）：</strong>利用python的PIL库编写脚本</p>
+<pre><code class="python">from PIL import Image
+MAX=25//数据位数开平方
+pic=Image.new(&quot;RGB&quot;,(MAX,MAX))
+str=&quot;数据(二进制数)&quot;
+i=0
+for y in range(0,MAX):
+    for x in range(0,MAX):
+        if(str[i]==&#39;1&#39;):
+            pic.putpixel([x,y],(0,0,0))
+        else:
+            pic.putpixel([x,y](255,255,255))
+        i=i+1
+pic.show()
+pic.save(&quot;文件名（包括文件类型即扩展名）&quot;)
+</code></pre>
+<p>两个方法：（遇到的问题将另外整理出来一篇。）</p>
+<p>（1）python直接运行（需配置所需库）（2）虚拟机Linux环境下用python运行（需注意版本）</p>
+<p><strong>二进制转图片：</strong></p>
+<p>二进制转为十六进制（可借助在线工具，也可借助python脚本）再用十六进制编辑器（winhex/010等）生成文件进行保存，文件类型需自行根据开头结尾的数值进行判断。</p>
+<h4 id="2-常见编码（jjencode、uuencode、jsfuck、brainfuck、ook！、敲击码、二维码）"><a href="#2-常见编码（jjencode、uuencode、jsfuck、brainfuck、ook！、敲击码、二维码）" class="headerlink" title="2.常见编码（jjencode、uuencode、jsfuck、brainfuck、ook！、敲击码、二维码）"></a>2.常见编码（jjencode、uuencode、jsfuck、brainfuck、ook！、敲击码、二维码）</h4><p>注意：未明确说明编码方式则去浏览器搜索在线工具帮忙转换/加解密。</p>
+<p><strong>Ascii码：</strong></p>
+<p>是基于拉丁字母的一套电脑编码系统，主要用于显示现代英语。二进制转换为十进制后对照ASCII码表查找。</p>
+<img src="/images/%E7%AC%AC%E4%B8%89%E7%AF%87%E5%8D%9A%E5%AE%A2/image1.bubuko.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg" alt="点击查看源网页" style="zoom:50%;" />
+
+<p><strong>Base家族：</strong></p>
+<p><strong>推荐软件：Cyberchef</strong>，可以在左侧operations处输入“magic”然后直接将字符串拖入框框进行自动识别，也可以自己一个个试（输入64、16等）。转换时记得将当前没有使用的模块断掉。</p>
+<p>（1）base64：</p>
+<p>编码原理：Base64编码要求把3个8位字节转化为4个6位字节，之后在6位的前面补两个0，形成8位一个字节的形式（即4个8位字节）。6位2进制能表示的最大数是2的6次方是64，因此共64个字符（A-Z，a-z，0-9，+，/），=不属于编码字符，而是填充字符。</p>
+<img src="/images/%E7%AC%AC%E4%B8%89%E7%AF%87%E5%8D%9A%E5%AE%A2/cdn2.lmonkey.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg" alt="点击查看源网页" style="zoom:50%;" />
+
+<p>（2）base36：</p>
+<p>规则：Base36包含0~9的数字，加上所有26个字母，不区分大小写，不包含任何标点，所有的字母要不全大写，要不全小写。</p>
+<p>特点：密文由36个字符（0-9，a-z/A-Z）组成，加密仅支持整数数字，解密仅支持字符串，不支持中文。</p>
+<p>（3）base58：</p>
+<p>规则：采用的字符集为”9个数字+ 49个字母“：<br>“123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ”，Base58是纯数字与字母组成而且去掉了容易弓|起视觉混淆的字符(0: 数字零，O:大写O, I:大写i，l:小写L)。</p>
+<p>特点：base58不适用数字“0”，字母大写“O”，字母大写“I”，和字母小写：“l”，以及“+”和“/”符号。</p>
+<p>（4）base62：</p>
+<p>规则：26个字母大小写再加0-9，共62个字符，相比于base64只是去掉了两个符号（+和/）</p>
+<p>特点：密文由62个字符（0-9，a-z，A-Z）组成。</p>
+<p>（5）base85：不常用</p>
+<p>规则：一种类似于base64的二进制文本编码形式，通过使用五个SACII字符来表示四个字节的二进制数据。例如：它用于将图像嵌入到Adobe PDF文件中。</p>
+<p>（6）base91、base92：</p>
+<p>base91：</p>
+<p>特点:由91个字符(0-9，a-Z，A-Z，!#$%&amp;()*+,./:;&lt;=&gt;?@[]^_`{|}”)组成</p>
+<p>base92：</p>
+<p>特点：比base91多一个字符~</p>
+<p><strong>morse：</strong></p>
+<p>定义：摩尔斯点码（morse code）是一种时通时断的信号代码，通过不同的排列顺序来表达不同的英文字母、数字和标点符号。由美国人艾尔菲德·维尔与萨缪尔·摩尔斯于1836年发明。是一种早期的数字化通信方式。</p>
+<p>国际摩尔斯电码规则：</p>
+<p>（1）一点的长度是一个单位；</p>
+<p>（2）一划是三个单位；</p>
+<p>（3）在一个字母中点划之间的间隔是一点；</p>
+<p>（4）两个字母之间的间隔是三点（一划）；</p>
+<p>（5）两个单词之间的间隔是七点。</p>
+<p><strong>shellcode：</strong>在后台</p>
+<p>定义：是一段利用软件漏洞而执行的代码，shellcode为16进制的机器码，因为经常让攻击者获得shell而得名。</p>
+<p>方法：shellcode从十六进制转换为十进制再查ASCII码表。</p>
+<p><strong>urlencode：</strong></p>
+<p>定义：url编码又叫百分号编码，是一种统一资源定位（URL）编码方式。URL地址（常说网址）规定了常用的数字，字母可以直接使用，另外一批作为特殊用户字符也可以直接用（/,:@等），剩下的其他所有字符必须通过%xx编码处理。</p>
+<p>方法：在该字节ascii码的16进制字符前面加%，如空格字符，ascii码是32，对应16进制是“20”，那么urlencode编码结果是：%20。</p>
+<p><strong>unicode：</strong></p>
+<p>中文又称万国码、国际码、统一码、单一码，是计算机科学领域的业界标准。</p>
+<p>有两种形式：（1）“\u”开头；（2）“&amp;#x”开头，“；”结果。</p>
+<p><strong>aaencode：</strong></p>
+<p>可以将JS代码转换成常用的网络表情，也就是我们说的颜文字js加密。</p>
+<p><strong>jjencode：</strong></p>
+<p>由交换符、等号、下划线、括号、加号组成。</p>
+<p><strong>uuencode：</strong></p>
+<p>uuencode是二进制信息和文字信息之间的转换编码，也就是机器和人眼识读的转换。常见于电子邮件信息的传输，目前已被多用途互联网邮件扩展（MIME）大量取代。</p>
+<p><strong>jsfuck：</strong></p>
+<p>可以只用6个字符<a href=""></a>!+来编写JavaScript程序。</p>
+<p><strong>brainfuck：</strong>+&lt;&gt;[]-.</p>
+<p><strong>Ook!与short ook！:</strong></p>
+<p>（1）Ook：全部由Ook！组成</p>
+<p>（2）short ook！：.?!</p>
+<p>经典题：short ook！藏到图片的ISP里面，放在最低有效位，难发现。</p>
+<p><strong>敲击码：</strong></p>
+<p>定义：以一种非常简单的方式对文本信息进行编码的方法，因该编码对信息通过使用一系列敲击声音来编码而命名，敲击码是基于5*5方格来实现的，不同点是把K字母整合到了C字母里面。</p>
+<img src="/images/%E7%AC%AC%E4%B8%89%E7%AF%87%E5%8D%9A%E5%AE%A2/QQ%E5%9B%BE%E7%89%8720210722212146.png" alt="QQ图片20210722212146"  />
+
+<p><strong>二维码：</strong></p>
+<p>定义：用某种特定几何图形按一定规律在平面分布的黑白相间的图片记录数据符号信息。分为堆叠式/行排式二维码又称堆积式二维码或层排式二维条码，其编码原理是建立在一维条码基础上，按需要堆积成二行或多行。</p>
+<p>常见：Code16k、Code49、PDF417。矩阵式二维码（矩阵式二维条码又称棋盘式二维条码，是在一个矩形空间通过黑、白像素在矩形中的不同分布进行编码）：最常见QR CODE（特点：存储大容量信息；支持所有类型的数据；在小空间内打印；解码速度快。基本结构：格式信息：纠错等级+版本信息：即二维码的规格，QR码符号共有40种规格的矩阵）</p>
+<p>常考：补定位点和纠错等级。——&gt;可利用工具QRazyBox等选择正确纠错等级后手动进行填充补全二维码。</p>
+<img src="/images/%E7%AC%AC%E4%B8%89%E7%AF%87%E5%8D%9A%E5%AE%A2/u=34054438,971394809&fm=26&fmt=auto&gp=0.jpg" alt="点击查看源网页" style="zoom: 80%;" />
+
+<h4 id="3-稀奇古怪的编码（社会主义核心价值观、与佛论禅、熊曰-与熊问道等）"><a href="#3-稀奇古怪的编码（社会主义核心价值观、与佛论禅、熊曰-与熊问道等）" class="headerlink" title="3.稀奇古怪的编码（社会主义核心价值观、与佛论禅、熊曰/与熊问道等）"></a>3.稀奇古怪的编码（社会主义核心价值观、与佛论禅、熊曰/与熊问道等）</h4><p>（1）社会主义核心价值观编码：由二十四个字的社会主义核心价值观组成。</p>
+<p>（2）与佛论禅：格式：“佛曰：+佛语”</p>
+<p>（3）与熊问道：类似与佛论禅，开头为“熊曰”。</p>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">yunya</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2021/07/19/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%B8%89%E7%AF%87%E5%8D%9A%E5%AE%A2/">http://example.com/2021/07/19/ctf学习/第三篇博客/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="http://example.com">yunya的博客</a>！</span></div></blockquote></div></article><div class="p-info box"></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC%E5%88%9D%E6%AD%A5%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.</span> <span class="toc-text">MISC初步学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BC%96%E7%A0%81"><span class="toc-number">1.1.</span> <span class="toc-text">数据编码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%B8%B8%E8%A7%81%E8%BF%9B%E5%88%B6%EF%BC%8801-%E4%BA%8C%E8%BF%9B%E5%88%B6%E3%80%81hex%EF%BC%89"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.常见进制（01&#x2F;二进制、hex）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%B8%B8%E8%A7%81%E7%BC%96%E7%A0%81%EF%BC%88jjencode%E3%80%81uuencode%E3%80%81jsfuck%E3%80%81brainfuck%E3%80%81ook%EF%BC%81%E3%80%81%E6%95%B2%E5%87%BB%E7%A0%81%E3%80%81%E4%BA%8C%E7%BB%B4%E7%A0%81%EF%BC%89"><span class="toc-number">1.1.2.</span> <span class="toc-text">2.常见编码（jjencode、uuencode、jsfuck、brainfuck、ook！、敲击码、二维码）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%A8%80%E5%A5%87%E5%8F%A4%E6%80%AA%E7%9A%84%E7%BC%96%E7%A0%81%EF%BC%88%E7%A4%BE%E4%BC%9A%E4%B8%BB%E4%B9%89%E6%A0%B8%E5%BF%83%E4%BB%B7%E5%80%BC%E8%A7%82%E3%80%81%E4%B8%8E%E4%BD%9B%E8%AE%BA%E7%A6%85%E3%80%81%E7%86%8A%E6%9B%B0-%E4%B8%8E%E7%86%8A%E9%97%AE%E9%81%93%E7%AD%89%EF%BC%89"><span class="toc-number">1.1.3.</span> <span class="toc-text">3.稀奇古怪的编码（社会主义核心价值观、与佛论禅、熊曰&#x2F;与熊问道等）</span></a></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2021/07/20/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%9B%9B%E7%AF%87%E5%8D%9A%E5%AE%A2/">&lt; 第四篇博客</a><a class="next" href="/2021/07/17/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/">第二篇博客 &gt;</a></div><div id="valine-comment"><style type="text/css">.night .v[data-class=v] a { color: #0F9FB4 !important; }
+.night .v[data-class=v] a:hover { color: #216C73 !important; }
+.night .v[data-class=v] li { list-style: inherit; }
+.night .v[data-class=v] .vwrap { border: 1px solid #223441; border-radius: 0; }
+.night .v[data-class=v] .vwrap:hover { box-shadow: 0 0 6px 1px #223441; }
+.night .v[data-class=v] .vbtn { border-radius: 0; background: none; }
+.night .v[data-class=v] .vlist .vcard .vh { border-bottom-color: #293D4E; }
+.night .v[data-class=v] .vwrap .vheader .vinput { border-bottom-color: #223441; }
+.night .v[data-class=v] .vwrap .vheader .vinput:focus { border-bottom-color: #339EB4; }
+.night .v[data-class=v] code, .night .v[data-class=v] pre,.night .v[data-class=v] .vlist .vcard .vhead .vsys { background: #203240 !important; }
+.night .v[data-class=v] code, .night .v[data-class=v] pre { color: #F0F0F0; font-size: 95%; }
+.v[data-class=v] .vcards .vcard .vh {border-bottom-color: #223441; }
+.night .v[data-class=v] .vcards .vcard .vcontent.expand:before {background: linear-gradient(180deg,rgba(38,57,73,.4),rgba(38,57,73,.9));}
+.night .v[data-class=v] .vcards .vcard .vcontent.expand:after {background: rgba(38,57,73,.9)}
+</style><div id="vcomment"></div><script src="//cdn.bootcdn.net/ajax/libs/valine/1.4.14/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'',
+  appKey:'',
+  lang: 'zh-cn',
+  placeholder:'ヾﾉ≧∀≦)o Come on, say something...',
+  avatar:'identicon',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script></div></section><footer><p>Copyright © 2016 - 2021 <a href="/." rel="nofollow">云芽的博客</a> | <strong><a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></strong><br><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span></span> <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span></span> | Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a>Theme with<a rel="nofollow" target="_blank" href="https://github.com/litreily/snark-hexo"> snark.</a></p></footer></div></div></div><script type="text/javascript" src="/js/search.js"></script><script type="text/javascript" src="/js/top.js"></script><script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+    search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.1" async></script></body></html>

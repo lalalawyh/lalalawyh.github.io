@@ -79,10 +79,10 @@
   
   <entry>
     <title>解题—CTFHUB—WEB</title>
-    <link href="http://example.com/2021/09/05/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/"/>
-    <id>http://example.com/2021/09/05/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/</id>
+    <link href="http://example.com/2021/09/05/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/"/>
+    <id>http://example.com/2021/09/05/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/</id>
     <published>2021-09-05T11:39:04.000Z</published>
-    <updated>2021-09-28T16:40:08.796Z</updated>
+    <updated>2021-09-28T16:51:40.749Z</updated>
     
     <content type="html"><![CDATA[<h2 id="CTFHUB"><a href="#CTFHUB" class="headerlink" title="CTFHUB"></a>CTFHUB</h2><h3 id="WEB前置技能"><a href="#WEB前置技能" class="headerlink" title="WEB前置技能"></a>WEB前置技能</h3><h4 id="HTTP协议——请求方式"><a href="#HTTP协议——请求方式" class="headerlink" title="HTTP协议——请求方式"></a>HTTP协议——请求方式</h4><p>题目：</p><img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210905194147045.png" alt="image-20210905194147045" style="zoom:33%;" /><p>解题：</p><p>猜想CTF**B请求方式为ctfhub</p><p>姿势1：burpsuite抓包</p><p>使用burpsuite进行抓包，发送到repeatr把get方式改为CTFHUB的请求方式，点击send，就会返回含有flag的数据包。如下图。（图来自<a href="https://blog.csdn.net/hgjiayou/article/details/106212933%EF%BC%89">https://blog.csdn.net/hgjiayou/article/details/106212933）</a></p><img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210905195259986.png" alt="image-20210905195259986" style="zoom:60%;" /><p>姿势2：curl命令</p><p>在cmd命令窗口中输入“curl -v -X CTFHUB <a href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E2%80%9D%E5%8D%B3%E5%8F%AF%E5%BE%97%E5%88%B0flag%E4%BF%A1%E6%81%AF">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php”即可得到flag信息</a></p><img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210905195437094.png" alt="image-20210905195437094" style="zoom:45%;" /><p>补充知识：</p><p>curl</p><p><strong>cURL</strong>是一个利用URL语法在<a href="https://baike.baidu.com/item/%E5%91%BD%E4%BB%A4%E8%A1%8C">命令行</a>下工作的文件传输工具。用来请求 Web 服务器。</p><p>学习链接：<a href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html">https://www.ruanyifeng.com/blog/2019/09/curl-reference.html</a></p><p>curl -v -X CTFHUB <a href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E8%A1%A8%E7%A4%BA%E4%BB%A5CTFHUB%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E8%AE%BF%E9%97%AEhttp://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E5%B9%B6%E6%9F%A5%E7%9C%8B%E9%80%9A%E4%BF%A1%E5%85%A8%E8%BF%87%E7%A8%8B%E3%80%82">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php表示以CTFHUB请求方式访问http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php并查看通信全过程。</a></p><h3 id="WEB工具配置"><a href="#WEB工具配置" class="headerlink" title="WEB工具配置"></a>WEB工具配置</h3><h4 id="信息泄露"><a href="#信息泄露" class="headerlink" title="信息泄露"></a>信息泄露</h4><h5 id="目录遍历"><a href="#目录遍历" class="headerlink" title="目录遍历"></a>目录遍历</h5><p>题目：</p><img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908000017640.png" alt="image-20210908000017640" style="zoom:35%;" /><p>解题：</p><p>点击文件2即可找到flag</p><h5 id="PHPINFO"><a href="#PHPINFO" class="headerlink" title="PHPINFO"></a>PHPINFO</h5><p>题目：</p><p>点击题目所给链接后再点击查看phpinfo进行查看</p><img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908000834589.png" alt="image-20210908000834589" style="zoom:35%;" /><p>解题：</p><p>启动网页查找功能，输入ctfhub或ctf进行搜索即可找到flag，如下图所示。</p><img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908000603599.png" alt="image-20210908000603599" style="zoom:30%;" /><h5 id="备份文件下载"><a href="#备份文件下载" class="headerlink" title="备份文件下载"></a>备份文件下载</h5><h6 id="网站源码"><a href="#网站源码" class="headerlink" title="网站源码"></a>网站源码</h6><p>（待完善如何找到<a href="http://www.zip)/">www.zip）</a></p><p>题目：</p><img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908002154159.png" alt="image-20210908002154159" style="zoom:30%;" /><p>解题：</p><p>使用扫描工具（如：dirbuster）对网站目录进行扫描查找是否有备份文件，扫描的文件名和类型就是提示给出的，最终扫描得到<a href="https://blog.csdn.net/www.zip">www.zip文件，输入网址URL/www.zip</a>得到压缩文件，解压后打开如下图所示。</p><img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908002334915.png" alt="image-20210908002334915" style="zoom:40%;" /><p>在原题目网页的url后面加上“/flag_3254114626.txt”进行访问即可获取到flag。</p><h6 id="bak文件泄露"><a href="#bak文件泄露" class="headerlink" title="bak文件泄露"></a>bak文件泄露</h6><p>题目：</p><img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908162052011.png" alt="image-20210908162052011" style="zoom:30%;" /><p>解题：</p><p>当开发人员在线上环境中对源代码进行了备份操作，并且将备份文件放在了 web 目录下，就会引起网站源码泄露。有些时候网站管理员可能为了方便，会在修改某个文件的时候先复制一份，将其命名为xxx.bak。而大部分Web Server对bak文件并不做任何处理，导致可以直接下载，从而获取到网站某个文件的源代码。</p><p>根据题目所给提示，可知flag应该在index.php的备份文件里面，于是访问/index.php.bak，下载文件得到flag。如果下载是安装包则将文件的打开方式改为记事本，即可查看文件内容。</p><img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908162308629.png" alt="image-20210908162308629" style="zoom:25%;" /><h6 id="vim缓存"><a href="#vim缓存" class="headerlink" title="vim缓存"></a>vim缓存</h6><p>题目：</p><img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908163037011.png" alt="image-20210908163037011" style="zoom:40%;" /><p>解题：</p><p>访问/.index.php.swp（注意那个点.），得到交换文件.swp。可以利用vim命令进行复原，vim命令需要在linux环境下执行，因此将文件放进虚拟机中，在终端输入命令“vim -r index.php.swp”后根据提示点击enter等即可找到flag。</p><img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908173754648.png" alt="image-20210908173754648" style="zoom:70%;" /><p>补充知识：</p><p>当开发人员在线上环境中使用 vim 编辑器，在使用过程中会留下 vim 编辑器缓存，当vim异常退出时，缓存会一直留在服务器上，引起网站源码泄露。</p><p>非正常关闭vim编辑器时会生成一个.swp文件，如果编辑完成之后，正常退出，那么这个swp文件就会被自动删除。在使用vim时会创建临时缓存文件，关闭vim时缓存文件则会被删除，当vim异常退出后，因为未处理缓存文件，导致可以通过缓存文件恢复原始文件内容。</p><p>以 index.php 为例：第一次产生的交换文件名为 .index.php.swp；再次意外退出后，将会产生名为 .index.php.swo 的交换文件；第三次产生的交换文件则为 .index.php.swn。</p><h6 id="DS-Store"><a href="#DS-Store" class="headerlink" title=".DS_Store"></a>.DS_Store</h6><p>题目：</p><img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908181300032.png" alt="image-20210908181300032" style="zoom:40%;" /><p>解题：</p><p>.DS_Store 是 Mac OS 保存文件夹的自定义属性的隐藏文件。通过.DS_Store可以知道这个目录里面所有文件的清单。</p><p>猜测直接访问/.DS_Store（注意有个点.）看有什么收获，发现下载了一个文件DS_Store，放进虚拟机，用命令”cat DS_Store”打开发现是一个特殊文件。</p><img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908181628218.png" alt="image-20210908181628218" style="zoom:60%;" /><p>利用浏览器访问，将“0b7abce98d55b13ab29ec4fdebcb2239.txt”放在url后面进行访问即可得到flag。</p><img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908181801977.png" alt="image-20210908181801977" style="zoom:53%;" /><h5 id="Git泄露"><a href="#Git泄露" class="headerlink" title="Git泄露"></a>Git泄露</h5><p>当前大量开发人员使用git进行版本控制，对站点自动部署。如果配置不当,可能会将.git文件夹直接部署到线上环境。这就引起了git泄露漏洞。请尝试使用BugScanTeam的GitHack完成以下题目。</p><h6 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h6><p>题目：</p><img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908182154099.png" alt="image-20210908182154099" style="zoom:40%;" /><p>解题：</p><p>使用dirsearch扫描url，发现url低下存在敏感文件.git</p><p>命令：python3 dirsearch.py -u <url> -e * </p><p>使用GitHack进行文件恢复，然后在GitHack所在目录下的dist目录下得到恢复的文件。</p><p>python2 GitHack.py <url>  (url格式：http(s)://xxx/.git)</p><p>进入dist目录中的刚恢复的文件内打开git，读取git日志，发现：</p><img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210926023538190.png" alt="image-20210926023538190" style="zoom:50%;" /><p>回退到“add flag”的那个版本，即可查看flag</p><img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210926024140589.png" alt="image-20210926024140589" style="zoom:50%;" /><p>补充知识：</p><p>Git 基本操作的学习地址：<a href="https://www.runoob.com/git/git-basic-operations.html">Git 基本操作 | 菜鸟教程 (runoob.com)</a></p><p>创建仓库命令</p><table><thead><tr><th align="left">命令</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">git init</td><td align="left">初始化仓库</td></tr><tr><td align="left">git clone</td><td align="left">拷贝一份远程仓库，也就是下载一个项目。</td></tr></tbody></table><p>提交与修改</p><p>Git 的工作就是创建和保存你的项目的快照及与之后的快照进行对比。</p><p>下表列出了有关创建与提交你的项目的快照的命令：</p><table><thead><tr><th align="left">命令</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">git add</td><td align="left">添加文件到仓库</td></tr><tr><td align="left">git status</td><td align="left">查看仓库当前的状态，显示有变更的文件。</td></tr><tr><td align="left">git diff</td><td align="left">比较文件的不同，即暂存区和工作区的差异。</td></tr><tr><td align="left">git commit</td><td align="left">提交暂存区到本地仓库。</td></tr><tr><td align="left">git reset</td><td align="left">回退版本。</td></tr><tr><td align="left">git rm</td><td align="left">删除工作区文件。</td></tr><tr><td align="left">git mv</td><td align="left">移动或重命名工作区文件。</td></tr></tbody></table><p>提交日志</p><table><thead><tr><th align="left">命令</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">git log</td><td align="left">查看历史提交记录</td></tr><tr><td align="left">git blame <file></td><td align="left">以列表形式查看指定文件的历史修改记录</td></tr></tbody></table><p>远程操作</p><table><thead><tr><th align="left">命令</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">git remote</td><td align="left">远程仓库操作</td></tr><tr><td align="left">git fetch</td><td align="left">从远程获取代码库</td></tr><tr><td align="left">git pull</td><td align="left">下载远程代码并合并</td></tr><tr><td align="left">git push</td><td align="left">上传远程代码并合并</td></tr></tbody></table><h6 id="Stash"><a href="#Stash" class="headerlink" title="Stash"></a>Stash</h6><p>题目：</p><img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928115357915.png" alt="image-20210928115357915" style="zoom:40%;" /><p>解题：</p><p>用dirsearch扫描发现.git文件，GitHack恢复到本地dist目录下，进入恢复的目录下打开git操作</p><p>扫描命令：python3 dirsearch.py -u <URL> -e *</p><img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928120503060.png" alt="image-20210928120503060" style="zoom: 33%;" /><p>这里使用Stash栈pop出flag。</p><img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928121008083.png" alt="image-20210928121008083" style="zoom:50%;" /><p>补充知识：</p><p>git stash的基本使用方法：</p><p>​    git stash是git一个很有用的命令，它的作用是把当前未提交的修改暂存起来，让仓库还原到最后一次提交的状态。常用于更新、同步代码或者保存多个修改版本等情况下。git stash命令会将仓库中的修改保存，建立一条stash信息，默认的说明信息是最后一次提交的节点号和提交说明。</p><ol><li>git stash save ‘说明信息’：说明信息是指定的内容，更加利于了解stash的内容。</li><li>git stash list：列出当前仓库下所有的stash条目，每一条stash用stash@{n}标识。</li><li>git stash pop [stash]： 将stash的内容弹出，默认弹出最上面的那条，即stash@{0}。此外还可以在pop后加stash@{n}来指定要弹出的stash条目。</li><li>git stash drop [stash]：丢弃stash条目，默认丢弃最上面的那条，即stash@{0}，此外还可以在drop后加stash@{n}来指定要丢弃的stash条目。</li><li>git stash clear ：清除所有的stash条目。</li><li>git show stash@{n}：当有多条记录并且过了一段时间忘记stash内容时通过该命令可以查看stash的具体内容</li></ol><ul><li>git stash不针对特定的分支，切换分支后，stash内容不变，所以弹出时要小心；</li><li>git stash pop或者drop后，stash的序号会自动改变，连续弹出时要注意。</li></ul><h6 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h6><p>题目：</p><img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928124401461.png" alt="image-20210928124401461" style="zoom:43%;" /><p>解题：</p><p>老规矩dirsearch扫描一波发现git泄露。</p><img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928124330847.png" alt="image-20210928124330847" style="zoom:33%;" /><p>方法一：git check</p><ol><li>python2版本的GitHack修复后</li></ol><img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928130455525.png" alt="image-20210928130455525" style="zoom:50%;" /><ol start="2"><li>python3版本的GitHack修复后进入文件夹可以发现藏有flag的txt文件点击查看即可。</li></ol><img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928125953075.png" alt="image-20210928125953075" style="zoom:50%;" /><p>方法二：git log</p><img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928130101590.png" alt="image-20210928130101590" style="zoom:53%;" /><p>补充知识：</p><p>Git 本地数据管理，大概可以分为三个区，工作区,暂存区和版本库。</p><p>工作区（Working Directory）：是直接编辑的地方</p><p>暂存区（Stage 或 Index）：数据暂时存放的区域，可在工作区和版本库之间进行数据的友好交流。</p><p>版本库（commit History）：存放已经提交的数据，push 的时候，就是把这个区的数据 push 到远程仓库了。</p><h5 id="SVN泄露"><a href="#SVN泄露" class="headerlink" title="SVN泄露"></a>SVN泄露</h5><p>题目：</p><p>解题：</p><p>当开发人员使用 SVN 进行版本控制，对站点自动部署。如果配置不当,可能会将.svn文件夹直接部署到线上环境。这就引起了 SVN 泄露漏洞。</p><h4 id="密码口令"><a href="#密码口令" class="headerlink" title="密码口令"></a>密码口令</h4><h5 id="弱口令"><a href="#弱口令" class="headerlink" title="弱口令"></a><strong>弱口令</strong></h5><p>题目：</p><img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210913005916028.png" alt="image-20210913005916028" style="zoom:50%;" /><p>解题：<br>通常认为容易被别人（他们有可能对你很了解）猜测到或被破解工具破解的口令均为弱口令。</p><p>基本思路：需要利用burpsuite进行抓包并爆破（burpsuite安装与使用在另一篇）</p><img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210918003336718.png" alt="image-20210918003336718" style="zoom:35%;" /><p>注：提交flag时需要注意空格。</p><h5 id="默认口令"><a href="#默认口令" class="headerlink" title="默认口令"></a>默认口令</h5><p>题目：<br><img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210922193319188.png" alt="image-20210922193319188" style="zoom:25%;" />     </p><p>解题：</p><p>题目是默认口令因此直接上网查找——账号：eyougw 密码：admin@(eyou)——登录成功即可得到flag</p><img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210922193732318.png" alt="image-20210922193732318" style="zoom:55%;" /><p>注：常见的网络安全设备默认密码：</p><table><thead><tr><th>设备</th><th>默认账号</th><th>默认密码</th></tr></thead><tbody><tr><td>深信服产品</td><td>sangfor</td><td>sangfor sangfor@2018 sangfor@2019</td></tr><tr><td>深信服科技 AD</td><td></td><td>dlanrecover</td></tr><tr><td>深信服负载均衡 AD 3.6</td><td>admin</td><td>admin</td></tr><tr><td>深信服WAC ( WNS V2.6)</td><td>admin</td><td>admin</td></tr><tr><td>深信服VPN</td><td>Admin</td><td>Admin</td></tr><tr><td>深信服ipsec-VPN (SSL 5.5)</td><td>Admin</td><td>Admin</td></tr><tr><td>深信服AC6.0</td><td>admin</td><td>admin</td></tr><tr><td>SANGFOR防火墙</td><td>admin</td><td>sangfor</td></tr><tr><td>深信服AF(NGAF V2.2)</td><td>admin</td><td>sangfor</td></tr><tr><td>深信服NGAF下一代应用防火墙(NGAF V4.3)</td><td>admin</td><td>admin</td></tr><tr><td>深信服AD3.9</td><td>admin</td><td>admin</td></tr><tr><td>深信服上网行为管理设备数据中心</td><td>Admin</td><td>密码为空</td></tr><tr><td>SANGFOR_AD_v5.1</td><td>admin</td><td>admin</td></tr><tr><td>网御漏洞扫描系统</td><td>leadsec</td><td>leadsec</td></tr><tr><td>天阗入侵检测与管理系统 V7.0</td><td>Admin</td><td>venus70</td></tr><tr><td></td><td>Audit</td><td>venus70</td></tr><tr><td></td><td>adm</td><td>venus70</td></tr><tr><td>天阗入侵检测与管理系统 V6.0</td><td>Admin</td><td>venus60</td></tr><tr><td></td><td>Audit</td><td>venus60</td></tr><tr><td></td><td>adm</td><td>venus60</td></tr><tr><td>网御WAF集中控制中心(V3.0R5.0)</td><td>admin</td><td>leadsec.waf</td></tr><tr><td></td><td>audit</td><td>leadsec.waf</td></tr><tr><td></td><td>adm</td><td>leadsec.waf</td></tr><tr><td>联想网御</td><td>administrator</td><td>administrator</td></tr><tr><td>网御事件服务器</td><td>admin</td><td>admin123</td></tr><tr><td>联想网御防火墙PowerV</td><td>administrator</td><td>administrator</td></tr><tr><td>联想网御入侵检测系统</td><td>lenovo</td><td>default</td></tr><tr><td>网络卫士入侵检测系统</td><td>admin</td><td>talent</td></tr><tr><td>网御入侵检测系统V3.2.72.0</td><td>adm</td><td>leadsec32</td></tr><tr><td></td><td>admin</td><td>leadsec32</td></tr><tr><td>联想网御入侵检测系统IDS</td><td>root</td><td>111111</td></tr><tr><td></td><td>admin</td><td>admin123</td></tr><tr><td>科来网络回溯分析系统</td><td>csadmin</td><td>colasoft</td></tr><tr><td>中控考勤机web3.0</td><td>administrator</td><td>123456</td></tr><tr><td>H3C iMC</td><td>admin</td><td>admin</td></tr><tr><td>H3C SecPath系列</td><td>admin</td><td>admin</td></tr><tr><td>H3C S5120-SI</td><td>test</td><td>123</td></tr><tr><td>H3C智能管理中心</td><td>admin</td><td>admin</td></tr><tr><td>H3C ER3100</td><td>admin</td><td>adminer3100</td></tr><tr><td>H3C ER3200</td><td>admin</td><td>adminer3200</td></tr><tr><td>H3C ER3260</td><td>admin</td><td>adminer3260</td></tr><tr><td>H3C</td><td>admin</td><td>adminer</td></tr><tr><td></td><td>admin</td><td>admin</td></tr><tr><td></td><td>admin</td><td>h3capadmin</td></tr><tr><td></td><td>h3c</td><td>h3c</td></tr><tr><td>360天擎</td><td>admin</td><td>admin</td></tr><tr><td>网神防火墙</td><td>firewall</td><td>firewall</td></tr><tr><td>天融信防火墙NGFW4000</td><td>superman</td><td>talent</td></tr><tr><td>黑盾防火墙</td><td>admin</td><td>admin</td></tr><tr><td></td><td>rule</td><td>abc123</td></tr><tr><td></td><td>audit</td><td>abc123</td></tr><tr><td>华为防火墙</td><td>telnetuser</td><td>telnetpwd</td></tr><tr><td>ftpuser</td><td>ftppwd</td><td></td></tr><tr><td>方正防火墙</td><td>admin</td><td>admin</td></tr><tr><td>飞塔防火墙</td><td>admin</td><td>密码为空</td></tr><tr><td>Juniper_SSG__5防火墙</td><td>netscreen</td><td>netscreen</td></tr><tr><td>中新金盾硬件防火墙</td><td>admin</td><td>123</td></tr><tr><td>kill防火墙(冠群金辰)</td><td>admin</td><td>sys123</td></tr><tr><td>天清汉马USG防火墙</td><td>admin</td><td>venus.fw</td></tr><tr><td></td><td>Audit</td><td>venus.audit</td></tr><tr><td></td><td>useradmin</td><td>venus.user</td></tr><tr><td>阿姆瑞特防火墙</td><td>admin</td><td>manager</td></tr><tr><td>山石网科</td><td>hillstone</td><td>hillstone</td></tr><tr><td>绿盟安全审计系统</td><td>weboper</td><td>weboper</td></tr><tr><td></td><td>webaudit</td><td>webaudit</td></tr><tr><td></td><td>conadmin</td><td>conadmin</td></tr><tr><td></td><td>admin</td><td>admin</td></tr><tr><td></td><td>shell</td><td>shell</td></tr><tr><td>绿盟产品</td><td></td><td>nsfocus123</td></tr><tr><td>TopAudit日志审计系统</td><td>superman</td><td>talent</td></tr><tr><td>LogBase日志管理综合审计系统</td><td>admin</td><td>safetybase</td></tr><tr><td>网神SecFox运维安全管理与审计系统</td><td>admin</td><td>!1fw@2soc#3vpn</td></tr><tr><td>天融信数据库审计系统</td><td>superman</td><td>telent</td></tr><tr><td>Hillstone安全审计平台</td><td>hillstone</td><td>hillstone</td></tr><tr><td>网康日志中心</td><td>ns25000</td><td>ns25000</td></tr><tr><td>网络安全审计系统（中科新业）</td><td>admin</td><td>123456</td></tr><tr><td>天玥网络安全审计系统</td><td>Admin</td><td>cyberaudit</td></tr><tr><td>明御WEB应用防火墙</td><td>admin</td><td>admin</td></tr><tr><td></td><td>admin</td><td>adminadmin</td></tr><tr><td>明御攻防实验室平台</td><td>root</td><td>123456</td></tr><tr><td>明御安全网关</td><td>admin</td><td>adminadmin</td></tr><tr><td>明御运维审计与册风险控制系统</td><td>admin</td><td>1q2w3e</td></tr><tr><td></td><td>system</td><td>1q2w3e4r</td></tr><tr><td></td><td>auditor</td><td>1q2w3e4r</td></tr><tr><td></td><td>operator</td><td>1q2w3e4r</td></tr><tr><td>明御网站卫士</td><td>sysmanager</td><td>sysmanager888</td></tr><tr><td>亿邮邮件网关</td><td>eyouuser</td><td>eyou_admin</td></tr><tr><td></td><td>eyougw</td><td>admin@(eyou)</td></tr><tr><td></td><td>admin</td><td>+-ccccc</td></tr><tr><td></td><td>admin</td><td>cyouadmin</td></tr><tr><td>Websense邮件安全网关</td><td>administrator</td><td>admin</td></tr><tr><td>梭子鱼邮件存储网关</td><td>admin</td><td>admin</td></tr></tbody></table><h4 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h4>]]></content>
     
@@ -99,8 +99,8 @@
   
   <entry>
     <title>ctf基础学习-2</title>
-    <link href="http://example.com/2021/09/05/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/"/>
-    <id>http://example.com/2021/09/05/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/</id>
+    <link href="http://example.com/2021/09/05/ctf%E5%AD%A6%E4%B9%A0/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/"/>
+    <id>http://example.com/2021/09/05/ctf%E5%AD%A6%E4%B9%A0/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/</id>
     <published>2021-09-05T11:21:51.000Z</published>
     <updated>2021-09-05T11:26:38.550Z</updated>
     
@@ -119,8 +119,8 @@
   
   <entry>
     <title>ctf基础学习-1</title>
-    <link href="http://example.com/2021/09/05/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-1/"/>
-    <id>http://example.com/2021/09/05/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-1/</id>
+    <link href="http://example.com/2021/09/05/ctf%E5%AD%A6%E4%B9%A0/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-1/"/>
+    <id>http://example.com/2021/09/05/ctf%E5%AD%A6%E4%B9%A0/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-1/</id>
     <published>2021-09-05T10:26:20.000Z</published>
     <updated>2021-09-05T11:26:32.171Z</updated>
     
@@ -139,8 +139,8 @@
   
   <entry>
     <title>第十二篇博客</title>
-    <link href="http://example.com/2021/08/31/%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://example.com/2021/08/31/%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
+    <link href="http://example.com/2021/08/31/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://example.com/2021/08/31/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
     <published>2021-08-31T10:54:44.000Z</published>
     <updated>2021-09-02T11:45:49.683Z</updated>
     
@@ -159,8 +159,8 @@
   
   <entry>
     <title>第十一篇博客</title>
-    <link href="http://example.com/2021/08/16/%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://example.com/2021/08/16/%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
+    <link href="http://example.com/2021/08/16/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://example.com/2021/08/16/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
     <published>2021-08-16T15:58:27.000Z</published>
     <updated>2021-08-31T12:00:38.921Z</updated>
     
@@ -179,8 +179,8 @@
   
   <entry>
     <title>第十篇博客</title>
-    <link href="http://example.com/2021/08/14/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://example.com/2021/08/14/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
+    <link href="http://example.com/2021/08/14/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://example.com/2021/08/14/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
     <published>2021-08-14T15:52:45.000Z</published>
     <updated>2021-08-19T01:43:28.313Z</updated>
     
@@ -199,8 +199,8 @@
   
   <entry>
     <title>第八篇博客</title>
-    <link href="http://example.com/2021/08/03/%E7%AC%AC%E5%85%AB%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://example.com/2021/08/03/%E7%AC%AC%E5%85%AB%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
+    <link href="http://example.com/2021/08/03/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%85%AB%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://example.com/2021/08/03/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%85%AB%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
     <published>2021-08-03T14:52:37.000Z</published>
     <updated>2021-08-07T16:59:02.153Z</updated>
     
@@ -219,8 +219,8 @@
   
   <entry>
     <title>第六篇博客</title>
-    <link href="http://example.com/2021/07/24/%E7%AC%AC%E5%85%AD%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://example.com/2021/07/24/%E7%AC%AC%E5%85%AD%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
+    <link href="http://example.com/2021/07/24/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%85%AD%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://example.com/2021/07/24/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%85%AD%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
     <published>2021-07-24T06:09:18.000Z</published>
     <updated>2021-07-29T16:55:13.892Z</updated>
     
@@ -239,8 +239,8 @@
   
   <entry>
     <title>第五篇博客</title>
-    <link href="http://example.com/2021/07/24/%E7%AC%AC%E4%BA%94%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://example.com/2021/07/24/%E7%AC%AC%E4%BA%94%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
+    <link href="http://example.com/2021/07/24/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%BA%94%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://example.com/2021/07/24/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%BA%94%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
     <published>2021-07-24T06:06:41.000Z</published>
     <updated>2021-07-27T11:50:32.059Z</updated>
     
@@ -259,8 +259,8 @@
   
   <entry>
     <title>第四篇博客</title>
-    <link href="http://example.com/2021/07/20/%E7%AC%AC%E5%9B%9B%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://example.com/2021/07/20/%E7%AC%AC%E5%9B%9B%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
+    <link href="http://example.com/2021/07/20/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%9B%9B%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://example.com/2021/07/20/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%9B%9B%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
     <published>2021-07-20T14:29:17.000Z</published>
     <updated>2021-07-23T15:01:30.936Z</updated>
     
@@ -279,10 +279,10 @@
   
   <entry>
     <title>第三篇博客</title>
-    <link href="http://example.com/2021/07/19/%E7%AC%AC%E4%B8%89%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://example.com/2021/07/19/%E7%AC%AC%E4%B8%89%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
+    <link href="http://example.com/2021/07/19/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%B8%89%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://example.com/2021/07/19/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%B8%89%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
     <published>2021-07-19T14:36:28.000Z</published>
-    <updated>2021-07-22T15:55:37.412Z</updated>
+    <updated>2021-08-15T07:18:02.759Z</updated>
     
     <content type="html"><![CDATA[<h2 id="MISC初步学习"><a href="#MISC初步学习" class="headerlink" title="MISC初步学习"></a>MISC初步学习</h2><h3 id="数据编码"><a href="#数据编码" class="headerlink" title="数据编码"></a>数据编码</h3><h4 id="1-常见进制（01-二进制、hex）"><a href="#1-常见进制（01-二进制、hex）" class="headerlink" title="1.常见进制（01/二进制、hex）"></a>1.常见进制（01/二进制、hex）</h4><p><strong>（1）进制转换：</strong></p><p><strong>二进制转ascii码：</strong></p><p>二进制转化为十进制再对照ascii码表查找。</p><p>二进制转图片（hex）；二进制转万物……</p><p>二进制进位规则是“逢二进一”，借位规则是“以一当二”。</p><p><strong>二进制转morse码：</strong></p><p>二进制转十进制，然后对照ascii码表找相应字符。——&gt;初学者可以浏览器上搜索摩斯密码解密利用在线工具解读morse码，等熟练掌握之后可以用自己的python库或者自行编写一个小程序。</p><p><strong>二进制转二维码（绘图）：</strong>利用python的PIL库编写脚本</p><pre><code class="python">from PIL import ImageMAX=25//数据位数开平方pic=Image.new(&quot;RGB&quot;,(MAX,MAX))str=&quot;数据(二进制数)&quot;i=0for y in range(0,MAX):    for x in range(0,MAX):        if(str[i]==&#39;1&#39;):            pic.putpixel([x,y],(0,0,0))        else:            pic.putpixel([x,y](255,255,255))        i=i+1pic.show()pic.save(&quot;文件名（包括文件类型即扩展名）&quot;)</code></pre><p>两个方法：（遇到的问题将另外整理出来一篇。）</p><p>（1）python直接运行（需配置所需库）（2）虚拟机Linux环境下用python运行（需注意版本）</p><p><strong>二进制转图片：</strong></p><p>二进制转为十六进制（可借助在线工具，也可借助python脚本）再用十六进制编辑器（winhex/010等）生成文件进行保存，文件类型需自行根据开头结尾的数值进行判断。</p><h4 id="2-常见编码（jjencode、uuencode、jsfuck、brainfuck、ook！、敲击码、二维码）"><a href="#2-常见编码（jjencode、uuencode、jsfuck、brainfuck、ook！、敲击码、二维码）" class="headerlink" title="2.常见编码（jjencode、uuencode、jsfuck、brainfuck、ook！、敲击码、二维码）"></a>2.常见编码（jjencode、uuencode、jsfuck、brainfuck、ook！、敲击码、二维码）</h4><p>注意：未明确说明编码方式则去浏览器搜索在线工具帮忙转换/加解密。</p><p><strong>Ascii码：</strong></p><p>是基于拉丁字母的一套电脑编码系统，主要用于显示现代英语。二进制转换为十进制后对照ASCII码表查找。</p><img src="/images/%E7%AC%AC%E4%B8%89%E7%AF%87%E5%8D%9A%E5%AE%A2/image1.bubuko.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg" alt="点击查看源网页" style="zoom:50%;" /><p><strong>Base家族：</strong></p><p><strong>推荐软件：Cyberchef</strong>，可以在左侧operations处输入“magic”然后直接将字符串拖入框框进行自动识别，也可以自己一个个试（输入64、16等）。转换时记得将当前没有使用的模块断掉。</p><p>（1）base64：</p><p>编码原理：Base64编码要求把3个8位字节转化为4个6位字节，之后在6位的前面补两个0，形成8位一个字节的形式（即4个8位字节）。6位2进制能表示的最大数是2的6次方是64，因此共64个字符（A-Z，a-z，0-9，+，/），=不属于编码字符，而是填充字符。</p><img src="/images/%E7%AC%AC%E4%B8%89%E7%AF%87%E5%8D%9A%E5%AE%A2/cdn2.lmonkey.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg" alt="点击查看源网页" style="zoom:50%;" /><p>（2）base36：</p><p>规则：Base36包含0~9的数字，加上所有26个字母，不区分大小写，不包含任何标点，所有的字母要不全大写，要不全小写。</p><p>特点：密文由36个字符（0-9，a-z/A-Z）组成，加密仅支持整数数字，解密仅支持字符串，不支持中文。</p><p>（3）base58：</p><p>规则：采用的字符集为”9个数字+ 49个字母“：<br>“123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ”，Base58是纯数字与字母组成而且去掉了容易弓|起视觉混淆的字符(0: 数字零，O:大写O, I:大写i，l:小写L)。</p><p>特点：base58不适用数字“0”，字母大写“O”，字母大写“I”，和字母小写：“l”，以及“+”和“/”符号。</p><p>（4）base62：</p><p>规则：26个字母大小写再加0-9，共62个字符，相比于base64只是去掉了两个符号（+和/）</p><p>特点：密文由62个字符（0-9，a-z，A-Z）组成。</p><p>（5）base85：不常用</p><p>规则：一种类似于base64的二进制文本编码形式，通过使用五个SACII字符来表示四个字节的二进制数据。例如：它用于将图像嵌入到Adobe PDF文件中。</p><p>（6）base91、base92：</p><p>base91：</p><p>特点:由91个字符(0-9，a-Z，A-Z，!#$%&amp;()*+,./:;&lt;=&gt;?@[]^_`{|}”)组成</p><p>base92：</p><p>特点：比base91多一个字符~</p><p><strong>morse：</strong></p><p>定义：摩尔斯点码（morse code）是一种时通时断的信号代码，通过不同的排列顺序来表达不同的英文字母、数字和标点符号。由美国人艾尔菲德·维尔与萨缪尔·摩尔斯于1836年发明。是一种早期的数字化通信方式。</p><p>国际摩尔斯电码规则：</p><p>（1）一点的长度是一个单位；</p><p>（2）一划是三个单位；</p><p>（3）在一个字母中点划之间的间隔是一点；</p><p>（4）两个字母之间的间隔是三点（一划）；</p><p>（5）两个单词之间的间隔是七点。</p><p><strong>shellcode：</strong>在后台</p><p>定义：是一段利用软件漏洞而执行的代码，shellcode为16进制的机器码，因为经常让攻击者获得shell而得名。</p><p>方法：shellcode从十六进制转换为十进制再查ASCII码表。</p><p><strong>urlencode：</strong></p><p>定义：url编码又叫百分号编码，是一种统一资源定位（URL）编码方式。URL地址（常说网址）规定了常用的数字，字母可以直接使用，另外一批作为特殊用户字符也可以直接用（/,:@等），剩下的其他所有字符必须通过%xx编码处理。</p><p>方法：在该字节ascii码的16进制字符前面加%，如空格字符，ascii码是32，对应16进制是“20”，那么urlencode编码结果是：%20。</p><p><strong>unicode：</strong></p><p>中文又称万国码、国际码、统一码、单一码，是计算机科学领域的业界标准。</p><p>有两种形式：（1）“\u”开头；（2）“&amp;#x”开头，“；”结果。</p><p><strong>aaencode：</strong></p><p>可以将JS代码转换成常用的网络表情，也就是我们说的颜文字js加密。</p><p><strong>jjencode：</strong></p><p>由交换符、等号、下划线、括号、加号组成。</p><p><strong>uuencode：</strong></p><p>uuencode是二进制信息和文字信息之间的转换编码，也就是机器和人眼识读的转换。常见于电子邮件信息的传输，目前已被多用途互联网邮件扩展（MIME）大量取代。</p><p><strong>jsfuck：</strong></p><p>可以只用6个字符<a href=""></a>!+来编写JavaScript程序。</p><p><strong>brainfuck：</strong>+&lt;&gt;[]-.</p><p><strong>Ook!与short ook！:</strong></p><p>（1）Ook：全部由Ook！组成</p><p>（2）short ook！：.?!</p><p>经典题：short ook！藏到图片的ISP里面，放在最低有效位，难发现。</p><p><strong>敲击码：</strong></p><p>定义：以一种非常简单的方式对文本信息进行编码的方法，因该编码对信息通过使用一系列敲击声音来编码而命名，敲击码是基于5*5方格来实现的，不同点是把K字母整合到了C字母里面。</p><img src="/images/%E7%AC%AC%E4%B8%89%E7%AF%87%E5%8D%9A%E5%AE%A2/QQ%E5%9B%BE%E7%89%8720210722212146.png" alt="QQ图片20210722212146"  /><p><strong>二维码：</strong></p><p>定义：用某种特定几何图形按一定规律在平面分布的黑白相间的图片记录数据符号信息。分为堆叠式/行排式二维码又称堆积式二维码或层排式二维条码，其编码原理是建立在一维条码基础上，按需要堆积成二行或多行。</p><p>常见：Code16k、Code49、PDF417。矩阵式二维码（矩阵式二维条码又称棋盘式二维条码，是在一个矩形空间通过黑、白像素在矩形中的不同分布进行编码）：最常见QR CODE（特点：存储大容量信息；支持所有类型的数据；在小空间内打印；解码速度快。基本结构：格式信息：纠错等级+版本信息：即二维码的规格，QR码符号共有40种规格的矩阵）</p><p>常考：补定位点和纠错等级。——&gt;可利用工具QRazyBox等选择正确纠错等级后手动进行填充补全二维码。</p><img src="/images/%E7%AC%AC%E4%B8%89%E7%AF%87%E5%8D%9A%E5%AE%A2/u=34054438,971394809&fm=26&fmt=auto&gp=0.jpg" alt="点击查看源网页" style="zoom: 80%;" /><h4 id="3-稀奇古怪的编码（社会主义核心价值观、与佛论禅、熊曰-与熊问道等）"><a href="#3-稀奇古怪的编码（社会主义核心价值观、与佛论禅、熊曰-与熊问道等）" class="headerlink" title="3.稀奇古怪的编码（社会主义核心价值观、与佛论禅、熊曰/与熊问道等）"></a>3.稀奇古怪的编码（社会主义核心价值观、与佛论禅、熊曰/与熊问道等）</h4><p>（1）社会主义核心价值观编码：由二十四个字的社会主义核心价值观组成。</p><p>（2）与佛论禅：格式：“佛曰：+佛语”</p><p>（3）与熊问道：类似与佛论禅，开头为“熊曰”。</p>]]></content>
     
@@ -299,8 +299,8 @@
   
   <entry>
     <title>第二篇博客</title>
-    <link href="http://example.com/2021/07/17/%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://example.com/2021/07/17/%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
+    <link href="http://example.com/2021/07/17/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://example.com/2021/07/17/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
     <published>2021-07-17T07:22:22.000Z</published>
     <updated>2021-07-18T08:58:27.053Z</updated>
     
@@ -319,8 +319,8 @@
   
   <entry>
     <title>第一篇博客</title>
-    <link href="http://example.com/2021/07/15/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://example.com/2021/07/15/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
+    <link href="http://example.com/2021/07/15/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://example.com/2021/07/15/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
     <published>2021-07-15T15:29:03.000Z</published>
     <updated>2021-09-05T11:13:11.064Z</updated>
     
@@ -339,8 +339,8 @@
   
   <entry>
     <title>解题—攻防世界</title>
-    <link href="http://example.com/2021/07/13/%E8%A7%A3%E9%A2%98-%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/"/>
-    <id>http://example.com/2021/07/13/%E8%A7%A3%E9%A2%98-%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/</id>
+    <link href="http://example.com/2021/07/13/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/"/>
+    <id>http://example.com/2021/07/13/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/</id>
     <published>2021-07-13T15:42:39.000Z</published>
     <updated>2021-09-26T06:32:28.845Z</updated>
     
@@ -359,8 +359,8 @@
   
   <entry>
     <title>解题—BUUCTF</title>
-    <link href="http://example.com/2021/07/12/%E8%A7%A3%E9%A2%98-BUUCTF/"/>
-    <id>http://example.com/2021/07/12/%E8%A7%A3%E9%A2%98-BUUCTF/</id>
+    <link href="http://example.com/2021/07/12/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-BUUCTF/"/>
+    <id>http://example.com/2021/07/12/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-BUUCTF/</id>
     <published>2021-07-12T15:42:21.000Z</published>
     <updated>2021-09-26T06:32:38.751Z</updated>
     
