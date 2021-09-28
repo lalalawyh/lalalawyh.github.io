@@ -8,7 +8,7 @@
       <link href="/2021/09/29/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dvcs-ripper/"/>
       <url>/2021/09/29/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dvcs-ripper/</url>
       
-        <content type="html"><![CDATA[<h2 id="dvcs-ripper安装与使用"><a href="#dvcs-ripper安装与使用" class="headerlink" title="dvcs-ripper安装与使用"></a>dvcs-ripper安装与使用</h2><p>适用于Linux系统，windows用户可以安装在虚拟机上。</p><h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>一款perl的版本控制软件信息泄露利用工具，支持SVN, GIT, Mercurial/hg, bzr…</p><h4 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h4>]]></content>
+        <content type="html"><![CDATA[<h2 id="dvcs-ripper安装与使用"><a href="#dvcs-ripper安装与使用" class="headerlink" title="dvcs-ripper安装与使用"></a>dvcs-ripper安装与使用</h2><p>注：适用于Linux系统，windows用户可以安装在虚拟机上。</p><h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>一款perl的版本控制软件信息泄露利用工具，支持SVN, GIT, Mercurial/hg, bzr…</p><h4 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h4>]]></content>
       
       
       

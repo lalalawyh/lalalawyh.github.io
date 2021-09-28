@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-09-28T17:29:10.994Z</updated>
+  <updated>2021-09-28T17:34:12.138Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,14 +21,14 @@
     <link href="http://example.com/2021/09/29/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dvcs-ripper/"/>
     <id>http://example.com/2021/09/29/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dvcs-ripper/</id>
     <published>2021-09-28T17:19:05.000Z</published>
-    <updated>2021-09-28T17:29:10.994Z</updated>
+    <updated>2021-09-28T17:34:12.138Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="dvcs-ripper安装与使用"><a href="#dvcs-ripper安装与使用" class="headerlink" title="dvcs-ripper安装与使用"></a>dvcs-ripper安装与使用</h2><p>适用于Linux系统，windows用户可以安装在虚拟机上。</p><h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>一款perl的版本控制软件信息泄露利用工具，支持SVN, GIT, Mercurial/hg, bzr…</p><h4 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h4>]]></content>
+    <content type="html"><![CDATA[<h2 id="dvcs-ripper安装与使用"><a href="#dvcs-ripper安装与使用" class="headerlink" title="dvcs-ripper安装与使用"></a>dvcs-ripper安装与使用</h2><p>注：适用于Linux系统，windows用户可以安装在虚拟机上。</p><h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>一款perl的版本控制软件信息泄露利用工具，支持SVN, GIT, Mercurial/hg, bzr…</p><h4 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h4>]]></content>
     
     
       
       
-    <summary type="html">&lt;h2 id=&quot;dvcs-ripper安装与使用&quot;&gt;&lt;a href=&quot;#dvcs-ripper安装与使用&quot; class=&quot;headerlink&quot; title=&quot;dvcs-ripper安装与使用&quot;&gt;&lt;/a&gt;dvcs-ripper安装与使用&lt;/h2&gt;&lt;p&gt;适用于Linux系统，win</summary>
+    <summary type="html">&lt;h2 id=&quot;dvcs-ripper安装与使用&quot;&gt;&lt;a href=&quot;#dvcs-ripper安装与使用&quot; class=&quot;headerlink&quot; title=&quot;dvcs-ripper安装与使用&quot;&gt;&lt;/a&gt;dvcs-ripper安装与使用&lt;/h2&gt;&lt;p&gt;注：适用于Linux系统，w</summary>
       
     
     
