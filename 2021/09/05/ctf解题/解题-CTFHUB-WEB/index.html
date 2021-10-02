@@ -749,7 +749,115 @@
 <td>admin</td>
 </tr>
 </tbody></table>
-<h4 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h4></div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">yunya</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2021/09/05/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/">http://example.com/2021/09/05/ctf解题/解题-CTFHUB-WEB/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="http://example.com">yunya的博客</a>！</span></div></blockquote></div></article><div class="p-info box"></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CTFHUB"><span class="toc-number">1.</span> <span class="toc-text">CTFHUB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WEB%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD"><span class="toc-number">1.1.</span> <span class="toc-text">WEB前置技能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP%E5%8D%8F%E8%AE%AE%E2%80%94%E2%80%94%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F"><span class="toc-number">1.1.1.</span> <span class="toc-text">HTTP协议——请求方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEB%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.</span> <span class="toc-text">WEB工具配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2"><span class="toc-number">1.2.1.</span> <span class="toc-text">信息泄露</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">目录遍历</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#PHPINFO"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">PHPINFO</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">备份文件下载</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%BD%91%E7%AB%99%E6%BA%90%E7%A0%81"><span class="toc-number">1.2.1.3.1.</span> <span class="toc-text">网站源码</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#bak%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2"><span class="toc-number">1.2.1.3.2.</span> <span class="toc-text">bak文件泄露</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#vim%E7%BC%93%E5%AD%98"><span class="toc-number">1.2.1.3.3.</span> <span class="toc-text">vim缓存</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#DS-Store"><span class="toc-number">1.2.1.3.4.</span> <span class="toc-text">.DS_Store</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Git%E6%B3%84%E9%9C%B2"><span class="toc-number">1.2.1.4.</span> <span class="toc-text">Git泄露</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Log"><span class="toc-number">1.2.1.4.1.</span> <span class="toc-text">Log</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Stash"><span class="toc-number">1.2.1.4.2.</span> <span class="toc-text">Stash</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Index"><span class="toc-number">1.2.1.4.3.</span> <span class="toc-text">Index</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#SVN%E6%B3%84%E9%9C%B2"><span class="toc-number">1.2.1.5.</span> <span class="toc-text">SVN泄露</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#HG%E6%B3%84%E9%9C%B2"><span class="toc-number">1.2.1.6.</span> <span class="toc-text">HG泄露</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E5%8F%A3%E4%BB%A4"><span class="toc-number">1.2.2.</span> <span class="toc-text">密码口令</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BC%B1%E5%8F%A3%E4%BB%A4"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">弱口令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E5%8F%A3%E4%BB%A4"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">默认口令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5"><span class="toc-number">1.2.3.</span> <span class="toc-text">SQL注入</span></a></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2021/09/18/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/burpsuite/">&lt; burpsuite</a><a class="next" href="/2021/09/05/ctf%E5%AD%A6%E4%B9%A0/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/">ctf基础学习-2 &gt;</a></div><div id="valine-comment"><style type="text/css">.night .v[data-class=v] a { color: #0F9FB4 !important; }
+<h4 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h4><h4 id="整数型注入"><a href="#整数型注入" class="headerlink" title="整数型注入"></a>整数型注入</h4><p>题目：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211002152004693.png" alt="image-20211002152004693" style="zoom:33%;" />
+
+<p>解题：</p>
+<p>输入1得到回显：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211002152056741.png" alt="image-20211002152056741" style="zoom:33%;" />
+
+<p>判断有无注入点——利用恒真恒假来判断是否修改语句有用，输入1 and 1=2 （或者-1）无回显，代表有注入点：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211002155314940.png" alt="image-20211002155314940" style="zoom:33%;" />
+
+<p>判断字段数——利用order by来获取回显的信息判断字段数，发现输入1 order by 2有回显，而输入1 order by 3无回显，说明字段数为2：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211002155931833.png" alt="image-20211002155931833" style="zoom:33%;" />
+
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211002160120526.png" alt="image-20211002160120526" style="zoom:33%;" />
+
+<p> 利用1 and 1=2 （或者-1）恒假语句来把原先的sql语句不执行，执行我们union select语句</p>
+<p>查库名——输入命令：1 and 1=2  union select 1,database() ，发现数据库名为sqli</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211002160309024.png" alt="image-20211002160309024" style="zoom:33%;" />
+
+<p>查该数据库的表——接下来输入命令：1 and 1=2  union select 1,group_concat(table_name) from information_schema.tables where table_schema=’sqli’查看sqli数据库里面的表，找到flag表</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211002160512535.png" alt="image-20211002160512535" style="zoom:33%;" />
+
+<p>查看表字段——输入命令：1 and 1=2  union select 1,group_concat(column_name) from information_schema.columns where table_name=’flag’查看表里面flag里面的列的名字</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211002161127931.png" alt="image-20211002161127931" style="zoom:33%;" />
+
+<p>查看数据——发现flag表里面的字段列是flag，便用sqli.flag查看里面的字段数据，输入命令：1 and 1=2  union select 1,flag from sqli.flag即可找到flag.</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211002160942057.png" alt="image-20211002160942057" style="zoom:33%;" />
+
+<p>补充知识：</p>
+<table>
+<thead>
+<tr>
+<th>语句</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>union select</td>
+<td>联合查询，联合注入常用</td>
+</tr>
+<tr>
+<td>database()</td>
+<td>回显当前连接的数据库</td>
+</tr>
+<tr>
+<td>version()</td>
+<td>查看当前sql的版本如：mysql 1.2.3， mariadb-4.5.6</td>
+</tr>
+<tr>
+<td>group_concat()</td>
+<td>把产生的同一分组中的值用,连接，形成一个字符串</td>
+</tr>
+<tr>
+<td>information_schema</td>
+<td>存了很多mysql信息的数据库</td>
+</tr>
+<tr>
+<td>information_schema.schemata information_schema</td>
+<td>库的一个表,名为schemata</td>
+</tr>
+<tr>
+<td>schema_name schemata</td>
+<td>表中存储mysql所有数据库名字的字段</td>
+</tr>
+<tr>
+<td>information_schema.tables</td>
+<td>存了mysql所有的表</td>
+</tr>
+<tr>
+<td>table_schema tables</td>
+<td>表中存每个表对应的数据库名的字段</td>
+</tr>
+<tr>
+<td>table_name</td>
+<td>表的名字和table_schema一一对应</td>
+</tr>
+<tr>
+<td>information_schema.columns columns</td>
+<td>表存了所有的列的信息</td>
+</tr>
+<tr>
+<td>column_name</td>
+<td>当你知道一个表的名字时，可通过次字段获得表中的所有字段名(列名)</td>
+</tr>
+<tr>
+<td>table_name</td>
+<td>表的名字和column_name一一对应</td>
+</tr>
+<tr>
+<td>left(str,num)</td>
+<td>字符串从左开始截取num个字符</td>
+</tr>
+<tr>
+<td>right(str, num)</td>
+<td>字符串从右开始截取num个字符</td>
+</tr>
+<tr>
+<td>substr(str,N,M)</td>
+<td>字符串，从第N个字符开始，截取M个字符</td>
+</tr>
+<tr>
+<td>select updatexml(1,concat(0x7e,database(),0x7e),1);</td>
+<td>这里注意，只在databse()处改你想要的内容即可报错回显</td>
+</tr>
+</tbody></table>
+<h4 id="字符型注入"><a href="#字符型注入" class="headerlink" title="字符型注入"></a>字符型注入</h4><p>题目：</p>
+<p>解题：</p>
+<p>SQL注入 字符型注入, 尝试获取数据库中的 flag。</p>
+</div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">yunya</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2021/09/05/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/">http://example.com/2021/09/05/ctf解题/解题-CTFHUB-WEB/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="http://example.com">yunya的博客</a>！</span></div></blockquote></div></article><div class="p-info box"></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CTFHUB"><span class="toc-number">1.</span> <span class="toc-text">CTFHUB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WEB%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD"><span class="toc-number">1.1.</span> <span class="toc-text">WEB前置技能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP%E5%8D%8F%E8%AE%AE%E2%80%94%E2%80%94%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F"><span class="toc-number">1.1.1.</span> <span class="toc-text">HTTP协议——请求方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WEB%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.</span> <span class="toc-text">WEB工具配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2"><span class="toc-number">1.2.1.</span> <span class="toc-text">信息泄露</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">目录遍历</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#PHPINFO"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">PHPINFO</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">备份文件下载</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%BD%91%E7%AB%99%E6%BA%90%E7%A0%81"><span class="toc-number">1.2.1.3.1.</span> <span class="toc-text">网站源码</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#bak%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2"><span class="toc-number">1.2.1.3.2.</span> <span class="toc-text">bak文件泄露</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#vim%E7%BC%93%E5%AD%98"><span class="toc-number">1.2.1.3.3.</span> <span class="toc-text">vim缓存</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#DS-Store"><span class="toc-number">1.2.1.3.4.</span> <span class="toc-text">.DS_Store</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Git%E6%B3%84%E9%9C%B2"><span class="toc-number">1.2.1.4.</span> <span class="toc-text">Git泄露</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Log"><span class="toc-number">1.2.1.4.1.</span> <span class="toc-text">Log</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Stash"><span class="toc-number">1.2.1.4.2.</span> <span class="toc-text">Stash</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#Index"><span class="toc-number">1.2.1.4.3.</span> <span class="toc-text">Index</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#SVN%E6%B3%84%E9%9C%B2"><span class="toc-number">1.2.1.5.</span> <span class="toc-text">SVN泄露</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#HG%E6%B3%84%E9%9C%B2"><span class="toc-number">1.2.1.6.</span> <span class="toc-text">HG泄露</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E5%8F%A3%E4%BB%A4"><span class="toc-number">1.2.2.</span> <span class="toc-text">密码口令</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BC%B1%E5%8F%A3%E4%BB%A4"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">弱口令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E5%8F%A3%E4%BB%A4"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">默认口令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5"><span class="toc-number">1.2.3.</span> <span class="toc-text">SQL注入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E5%9E%8B%E6%B3%A8%E5%85%A5"><span class="toc-number">1.2.4.</span> <span class="toc-text">整数型注入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%B3%A8%E5%85%A5"><span class="toc-number">1.2.5.</span> <span class="toc-text">字符型注入</span></a></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="prev" href="/2021/09/18/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/burpsuite/">&lt; burpsuite</a><a class="next" href="/2021/09/05/ctf%E5%AD%A6%E4%B9%A0/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/">ctf基础学习-2 &gt;</a></div><div id="valine-comment"><style type="text/css">.night .v[data-class=v] a { color: #0F9FB4 !important; }
 .night .v[data-class=v] a:hover { color: #216C73 !important; }
 .night .v[data-class=v] li { list-style: inherit; }
 .night .v[data-class=v] .vwrap { border: 1px solid #223441; border-radius: 0; }
