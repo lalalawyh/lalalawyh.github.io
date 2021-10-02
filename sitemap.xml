@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/2021/10/02/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/sqli-labs/</loc>
+    
+    <lastmod>2021-10-02</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://example.com/2021/10/02/ctf%E5%AD%A6%E4%B9%A0/SQL%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/</loc>
     
     <lastmod>2021-10-02</lastmod>
@@ -10,13 +17,6 @@
   
   <url>
     <loc>http://example.com/2021/09/05/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/</loc>
-    
-    <lastmod>2021-10-02</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/10/02/ctf%E8%A7%A3%E9%A2%98/sqli-labs/</loc>
     
     <lastmod>2021-10-02</lastmod>
     
