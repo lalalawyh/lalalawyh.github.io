@@ -1,60 +1,62 @@
 <!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><meta name="theme-color" content="#ffb6c1"><meta name="baidu-site-verification"><title>CTFHUB(WEB)-信息泄露 | 云芽的博客</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="云芽的博客" type="application/atom+xml">
 </head><link rel="stylesheet" type="text/css" href="/plugins/highlight/atom-one-dark.min.css"><script type="text/javascript" src="/plugins/highlight/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();
 </script><script type="text/javascript" src="/js/ready.js" async></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">云芽的博客</a></h1></div><p class="m-desc">好好fighting，好好waiting!</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">CTFHUB(WEB)-信息泄露</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/">2021-10-04</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h3 id="WEB工具配置"><a href="#WEB工具配置" class="headerlink" title="WEB工具配置"></a>WEB工具配置</h3><h4 id="信息泄露"><a href="#信息泄露" class="headerlink" title="信息泄露"></a>信息泄露</h4><h5 id="目录遍历"><a href="#目录遍历" class="headerlink" title="目录遍历"></a>目录遍历</h5><p>题目：</p>
-<img src="/images/%25E6%2596%25B0%25E6%2589%258B%25E8%25A7%25A3%25E9%25A2%2598%25E5%258D%259A%25E5%25AE%25A23/image-20210908000017640.png" alt="image-20210908000017640" style="zoom:35%;" />
+<img src="/source/images/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/image-20211004013340391.png" alt="image-20211004013340391" style="zoom:35%;" />
 
 <p>解题：</p>
-<p>点击文件2即可找到flag</p>
+<p>一路点击文件查看即可找到flag</p>
+<img src="/source/images/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/image-20211004013641358.png" alt="image-20211004013641358" style="zoom:35%;" />
+
 <h5 id="PHPINFO"><a href="#PHPINFO" class="headerlink" title="PHPINFO"></a>PHPINFO</h5><p>题目：</p>
 <p>点击题目所给链接后再点击查看phpinfo进行查看</p>
-<img src="C:/images/%25E6%2596%25B0%25E6%2589%258B%25E8%25A7%25A3%25E9%25A2%2598%25E5%258D%259A%25E5%25AE%25A23/image-20210908000834589.png" alt="image-20210908000834589" style="zoom:35%;" />
+<img src="/source/images/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/image-20211004013908030.png" alt="image-20211004013908030" style="zoom:33%;" />
 
 <p>解题：</p>
 <p>启动网页查找功能，输入ctfhub或ctf进行搜索即可找到flag，如下图所示。</p>
-<img src="C:/images/%25E6%2596%25B0%25E6%2589%258B%25E8%25A7%25A3%25E9%25A2%2598%25E5%258D%259A%25E5%25AE%25A23/image-20210908000603599.png" alt="image-20210908000603599" style="zoom:30%;" />
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908000603599.png" alt="image-20210908000603599" style="zoom:30%;" />
 
 <h5 id="备份文件下载"><a href="#备份文件下载" class="headerlink" title="备份文件下载"></a>备份文件下载</h5><h6 id="网站源码"><a href="#网站源码" class="headerlink" title="网站源码"></a>网站源码</h6><p>（待完善如何找到<a target="_blank" rel="noopener" href="http://www.zip)/">www.zip）</a></p>
 <p>题目：</p>
-<img src="C:/images/%25E6%2596%25B0%25E6%2589%258B%25E8%25A7%25A3%25E9%25A2%2598%25E5%258D%259A%25E5%25AE%25A23/image-20210908002154159.png" alt="image-20210908002154159" style="zoom:30%;" />
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908002154159.png" alt="image-20210908002154159" style="zoom:30%;" />
 
 <p>解题：</p>
 <p>使用扫描工具（如：dirbuster）对网站目录进行扫描查找是否有备份文件，扫描的文件名和类型就是提示给出的，最终扫描得到<a target="_blank" rel="noopener" href="https://blog.csdn.net/www.zip">www.zip文件，输入网址URL/www.zip</a>得到压缩文件，解压后打开如下图所示。</p>
-<img src="C:/images/%25E6%2596%25B0%25E6%2589%258B%25E8%25A7%25A3%25E9%25A2%2598%25E5%258D%259A%25E5%25AE%25A23/image-20210908002334915.png" alt="image-20210908002334915" style="zoom:40%;" />
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908002334915.png" alt="image-20210908002334915" style="zoom:40%;" />
 
 <p>在原题目网页的url后面加上“/flag_3254114626.txt”进行访问即可获取到flag。</p>
 <h6 id="bak文件泄露"><a href="#bak文件泄露" class="headerlink" title="bak文件泄露"></a>bak文件泄露</h6><p>题目：</p>
-<img src="C:/images/%25E6%2596%25B0%25E6%2589%258B%25E8%25A7%25A3%25E9%25A2%2598%25E5%258D%259A%25E5%25AE%25A23/image-20210908162052011.png" alt="image-20210908162052011" style="zoom:30%;" />
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908162052011.png" alt="image-20210908162052011" style="zoom:30%;" />
 
 <p>解题：</p>
 <p>当开发人员在线上环境中对源代码进行了备份操作，并且将备份文件放在了 web 目录下，就会引起网站源码泄露。有些时候网站管理员可能为了方便，会在修改某个文件的时候先复制一份，将其命名为xxx.bak。而大部分Web Server对bak文件并不做任何处理，导致可以直接下载，从而获取到网站某个文件的源代码。</p>
 <p>根据题目所给提示，可知flag应该在index.php的备份文件里面，于是访问/index.php.bak，下载文件得到flag。如果下载是安装包则将文件的打开方式改为记事本，即可查看文件内容。</p>
-<img src="C:/images/%25E6%2596%25B0%25E6%2589%258B%25E8%25A7%25A3%25E9%25A2%2598%25E5%258D%259A%25E5%25AE%25A23/image-20210908162308629.png" alt="image-20210908162308629" style="zoom:25%;" />
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908162308629.png" alt="image-20210908162308629" style="zoom:25%;" />
 
 <h6 id="vim缓存"><a href="#vim缓存" class="headerlink" title="vim缓存"></a>vim缓存</h6><p>题目：</p>
-<img src="C:/images/%25E6%2596%25B0%25E6%2589%258B%25E8%25A7%25A3%25E9%25A2%2598%25E5%258D%259A%25E5%25AE%25A23/image-20210908163037011.png" alt="image-20210908163037011" style="zoom:40%;" />
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908163037011.png" alt="image-20210908163037011" style="zoom:40%;" />
 
 <p>解题：</p>
 <p>访问/.index.php.swp（注意那个点.），得到交换文件.swp。可以利用vim命令进行复原，vim命令需要在linux环境下执行，因此将文件放进虚拟机中，在终端输入命令“vim -r index.php.swp”后根据提示点击enter等即可找到flag。</p>
-<img src="C:/images/%25E6%2596%25B0%25E6%2589%258B%25E8%25A7%25A3%25E9%25A2%2598%25E5%258D%259A%25E5%25AE%25A23/image-20210908173754648.png" alt="image-20210908173754648" style="zoom:70%;" />
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908173754648.png" alt="image-20210908173754648" style="zoom:70%;" />
 
 <p>补充知识：</p>
 <p>当开发人员在线上环境中使用 vim 编辑器，在使用过程中会留下 vim 编辑器缓存，当vim异常退出时，缓存会一直留在服务器上，引起网站源码泄露。</p>
 <p>非正常关闭vim编辑器时会生成一个.swp文件，如果编辑完成之后，正常退出，那么这个swp文件就会被自动删除。在使用vim时会创建临时缓存文件，关闭vim时缓存文件则会被删除，当vim异常退出后，因为未处理缓存文件，导致可以通过缓存文件恢复原始文件内容。</p>
 <p>以 index.php 为例：第一次产生的交换文件名为 .index.php.swp；再次意外退出后，将会产生名为 .index.php.swo 的交换文件；第三次产生的交换文件则为 .index.php.swn。</p>
 <h6 id="DS-Store"><a href="#DS-Store" class="headerlink" title=".DS_Store"></a>.DS_Store</h6><p>题目：</p>
-<img src="C:/images/%25E6%2596%25B0%25E6%2589%258B%25E8%25A7%25A3%25E9%25A2%2598%25E5%258D%259A%25E5%25AE%25A23/image-20210908181300032.png" alt="image-20210908181300032" style="zoom:40%;" />
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908181300032.png" alt="image-20210908181300032" style="zoom:40%;" />
 
 <p>解题：</p>
 <p>.DS_Store 是 Mac OS 保存文件夹的自定义属性的隐藏文件。通过.DS_Store可以知道这个目录里面所有文件的清单。</p>
 <p>猜测直接访问/.DS_Store（注意有个点.）看有什么收获，发现下载了一个文件DS_Store，放进虚拟机，用命令”cat DS_Store”打开发现是一个特殊文件。</p>
-<img src="C:/images/%25E6%2596%25B0%25E6%2589%258B%25E8%25A7%25A3%25E9%25A2%2598%25E5%258D%259A%25E5%25AE%25A23/image-20210908181628218.png" alt="image-20210908181628218" style="zoom:60%;" />
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908181628218.png" alt="image-20210908181628218" style="zoom:60%;" />
 
 <p>利用浏览器访问，将“0b7abce98d55b13ab29ec4fdebcb2239.txt”放在url后面进行访问即可得到flag。</p>
-<img src="C:/images/%25E6%2596%25B0%25E6%2589%258B%25E8%25A7%25A3%25E9%25A2%2598%25E5%258D%259A%25E5%25AE%25A23/image-20210908181801977.png" alt="image-20210908181801977" style="zoom:53%;" />
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908181801977.png" alt="image-20210908181801977" style="zoom:53%;" />
 
 <h5 id="Git泄露"><a href="#Git泄露" class="headerlink" title="Git泄露"></a>Git泄露</h5><p>当前大量开发人员使用git进行版本控制，对站点自动部署。如果配置不当,可能会将.git文件夹直接部署到线上环境。这就引起了git泄露漏洞。请尝试使用BugScanTeam的GitHack完成以下题目。</p>
 <h6 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h6><p>题目：</p>
-<img src="C:/images/%25E6%2596%25B0%25E6%2589%258B%25E8%25A7%25A3%25E9%25A2%2598%25E5%258D%259A%25E5%25AE%25A23/image-20210908182154099.png" alt="image-20210908182154099" style="zoom:40%;" />
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908182154099.png" alt="image-20210908182154099" style="zoom:40%;" />
 
 <p>解题：</p>
 <p>使用dirsearch扫描url，发现url低下存在敏感文件.git</p>
@@ -62,10 +64,10 @@
 <p>使用GitHack进行文件恢复，然后在GitHack所在目录下的dist目录下得到恢复的文件。</p>
 <p>python2 GitHack.py <url>  (url格式：http(s)://xxx/.git)</p>
 <p>进入dist目录中的刚恢复的文件内打开git，读取git日志，发现：</p>
-<img src="C:/images/%25E8%25A7%25A3%25E9%25A2%2598-CTFHUB-WEB/image-20210926023538190.png" alt="image-20210926023538190" style="zoom:50%;" />
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210926023538190.png" alt="image-20210926023538190" style="zoom:50%;" />
 
 <p>回退到“add flag”的那个版本，即可查看flag</p>
-<img src="C:/images/%25E8%25A7%25A3%25E9%25A2%2598-CTFHUB-WEB/image-20210926024140589.png" alt="image-20210926024140589" style="zoom:50%;" />
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210926024140589.png" alt="image-20210926024140589" style="zoom:50%;" />
 
 <p>补充知识：</p>
 <p>Git 基本操作的学习地址：<a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-basic-operations.html">Git 基本操作 | 菜鸟教程 (runoob.com)</a></p>
@@ -168,15 +170,15 @@
 </tr>
 </tbody></table>
 <h6 id="Stash"><a href="#Stash" class="headerlink" title="Stash"></a>Stash</h6><p>题目：</p>
-<img src="C:/images/%25E8%25A7%25A3%25E9%25A2%2598-CTFHUB-WEB/image-20210928115357915.png" alt="image-20210928115357915" style="zoom:40%;" />
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928115357915.png" alt="image-20210928115357915" style="zoom:40%;" />
 
 <p>解题：</p>
 <p>用dirsearch扫描发现.git文件，GitHack恢复到本地dist目录下，进入恢复的目录下打开git操作</p>
 <p>扫描命令：python3 dirsearch.py -u <URL> -e *</p>
-<img src="C:/images/%25E8%25A7%25A3%25E9%25A2%2598-CTFHUB-WEB/image-20210928120503060.png" alt="image-20210928120503060" style="zoom: 33%;" />
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928120503060.png" alt="image-20210928120503060" style="zoom: 33%;" />
 
 <p>这里使用Stash栈pop出flag。</p>
-<img src="C:/images/%25E8%25A7%25A3%25E9%25A2%2598-CTFHUB-WEB/image-20210928121008083.png" alt="image-20210928121008083" style="zoom:50%;" />
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928121008083.png" alt="image-20210928121008083" style="zoom:50%;" />
 
 <p>补充知识：</p>
 <p>git stash的基本使用方法：</p>
@@ -194,18 +196,18 @@
 <li>git stash pop或者drop后，stash的序号会自动改变，连续弹出时要注意。</li>
 </ul>
 <h6 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h6><p>题目：</p>
-<img src="C:/images/%25E8%25A7%25A3%25E9%25A2%2598-CTFHUB-WEB/image-20210928124401461.png" alt="image-20210928124401461" style="zoom:43%;" />
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928124401461.png" alt="image-20210928124401461" style="zoom:43%;" />
 
 <p>解题：</p>
 <p>老规矩dirsearch扫描一波发现git泄露。</p>
-<img src="C:/images/%25E8%25A7%25A3%25E9%25A2%2598-CTFHUB-WEB/image-20210928124330847.png" alt="image-20210928124330847" style="zoom:33%;" />
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928124330847.png" alt="image-20210928124330847" style="zoom:33%;" />
 
 <p>方法一：githack</p>
 <p>GitHack修复后进入文件夹可以发现藏有flag的txt文件点击查看即可。</p>
-<img src="C:/images/%25E8%25A7%25A3%25E9%25A2%2598-CTFHUB-WEB/image-20210928125953075.png" alt="image-20210928125953075" style="zoom:50%;" />
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928125953075.png" alt="image-20210928125953075" style="zoom:50%;" />
 
 <p>方法二：git log</p>
-<img src="C:/images/%25E8%25A7%25A3%25E9%25A2%2598-CTFHUB-WEB/image-20210928130101590.png" alt="image-20210928130101590" style="zoom:53%;" />
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928130101590.png" alt="image-20210928130101590" style="zoom:53%;" />
 
 <p>方法三：git diff（暂时不会）</p>
 <p>补充知识：</p>
@@ -214,35 +216,35 @@
 <p>暂存区（Stage 或 Index）：数据暂时存放的区域，可在工作区和版本库之间进行数据的友好交流。</p>
 <p>版本库（commit History）：存放已经提交的数据，push 的时候，就是把这个区的数据 push 到远程仓库了。</p>
 <h5 id="SVN泄露"><a href="#SVN泄露" class="headerlink" title="SVN泄露"></a>SVN泄露</h5><p>题目：</p>
-<img src="C:/source/images/%25E8%25A7%25A3%25E9%25A2%2598-CTFHUB-WEB/image-20211001184333517.png" alt="image-20211001184333517" style="zoom:45%;" />
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001184333517.png" alt="image-20211001184333517" style="zoom:45%;" />
 
 <p>解题：</p>
 <p>当开发人员使用 SVN 进行版本控制，对站点自动部署。如果配置不当,可能会将.svn文件夹直接部署到线上环境。这就引起了 SVN 泄露漏洞。</p>
 <p>进入dvcs-ripper-master文件夹右键进入终端，输入命令./rip-svn.pl -v -u <a target="_blank" rel="noopener" href="http://challenge-277a34a7a99ae035.sandbox.ctfhub.com:10800/.svn/">http://challenge-277a34a7a99ae035.sandbox.ctfhub.com:10800/.svn/</a></p>
-<img src="C:/source/images/%25E8%25A7%25A3%25E9%25A2%2598-CTFHUB-WEB/image-20211001213038426.png" alt="image-20211001213038426" style="zoom:50%;" />
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001213038426.png" alt="image-20211001213038426" style="zoom:50%;" />
 
 <p>再tree看看：根据提示安装：sudo apt install tree。然后输入命令：tree .svn进行查看</p>
-<img src="C:/source/images/%25E8%25A7%25A3%25E9%25A2%2598-CTFHUB-WEB/image-20211001183200968.png" alt="image-20211001183200968" style="zoom:50%;" />
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001183200968.png" alt="image-20211001183200968" style="zoom:50%;" />
 
 <p>需要注意的是，.svn是隐藏文件，在linux下必须ls -al才能看到。<br>根据题目的提示，Flag 在服务端旧版本的源代码中。<br>注意tree中的pristine，里面一般存储的是代码的历史版本。直接进入目录，然后读取文件就可以得到flag了：</p>
-<img src="C:/source/images/%25E8%25A7%25A3%25E9%25A2%2598-CTFHUB-WEB/image-20211001183703701.png" alt="image-20211001183703701" style="zoom:50%;" />
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001183703701.png" alt="image-20211001183703701" style="zoom:50%;" />
 
 <p>由于我在文件夹中没有看到那些文件夹，所以是一路cd进到be文件夹，再用cat命令打开文件查看flag。</p>
 <p>如果想要查看.svn等文件夹，则需要打开隐藏文件夹，即dvcs-ripper-master——查看——显示隐藏文件。</p>
 <h5 id="HG泄露"><a href="#HG泄露" class="headerlink" title="HG泄露"></a>HG泄露</h5><p>题目：</p>
-<img src="C:/source/images/%25E8%25A7%25A3%25E9%25A2%2598-CTFHUB-WEB/image-20211001210824951.png" alt="image-20211001210824951" style="zoom:45%;" />
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001210824951.png" alt="image-20211001210824951" style="zoom:45%;" />
 
 <p>解题：</p>
 <p>当开发人员使用 Mercurial 进行版本控制，对站点自动部署。如果配置不当,可能会将.hg 文件夹直接部署到线上环境。这就引起了 hg 泄露漏洞。</p>
 <p>进入dvcs-ripper-master文件夹右键进入终端，输入命令../rip-hg.pl -v -u <a target="_blank" rel="noopener" href="http://challenge-fe4e72352d16deb4.sandbox.ctfhub.com:10800/.hg/">http://challenge-fe4e72352d16deb4.sandbox.ctfhub.com:10800/.hg/</a></p>
-<img src="C:/source/images/%25E8%25A7%25A3%25E9%25A2%2598-CTFHUB-WEB/image-20211001214109400.png" alt="image-20211001214109400" style="zoom:50%;" />
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001214109400.png" alt="image-20211001214109400" style="zoom:50%;" />
 
 <p>输入命令tree .hg查看，并进入hg/store/fncache文件，发现flag文件名是flag_284118509.txt。</p>
-<img src="C:/source/images/%25E8%25A7%25A3%25E9%25A2%2598-CTFHUB-WEB/image-20211001215438781.png" alt="image-20211001215438781" style="zoom:50%;" />
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001215438781.png" alt="image-20211001215438781" style="zoom:50%;" />
 
 <p>接下来有两种查看flag的方法。（flag文件名根据所在环境而不同）</p>
 <p>方法一：根据题目提示手工解决，浏览器地址栏输入URL/flag_284118509.txt即可得到flag。</p>
-<img src="C:/source/images/%25E8%25A7%25A3%25E9%25A2%2598-CTFHUB-WEB/image-20211001215836673.png" alt="image-20211001215836673" style="zoom:50%;" />
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001215836673.png" alt="image-20211001215836673" style="zoom:50%;" />
 
 <p>方法二：输入命令 curl URL/flag_3010023750.txt即可得到flag。</p>
 <img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001220617369.png" alt="image-20211001220617369" style="zoom:50%;" />
