@@ -1,32 +1,51 @@
 <!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><meta name="theme-color" content="#ffb6c1"><meta name="baidu-site-verification"><title>CTFHUB(WEB)-XSS | 云芽的博客</title><link rel="stylesheet" type="text/css" href="/css/style.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.png"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="云芽的博客" type="application/atom+xml">
 </head><link rel="stylesheet" type="text/css" href="/plugins/highlight/atom-one-dark.min.css"><script type="text/javascript" src="/plugins/highlight/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();
-</script><script type="text/javascript" src="/js/ready.js" async></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">云芽的博客</a></h1></div><p class="m-desc">好好fighting，好好waiting!</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">CTFHUB(WEB)-XSS</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-XSS/">2021-10-04</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h3 id="WEB工具配置"><a href="#WEB工具配置" class="headerlink" title="WEB工具配置"></a>WEB工具配置</h3><h4 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h4><h5 id="反射型"><a href="#反射型" class="headerlink" title="反射型"></a>反射型</h5><p>题目：<br>解题：</p>
-<img src="/images/CTFHUB-WEB-XSS/image-20211004003932087.png" alt="image-20211004003932087" style="zoom:30%;" />
+</script><script type="text/javascript" src="/js/ready.js" async></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"><body class="night"><div class="mobile-head" id="mobile-head"><div class="navbar-icon"><span></span><span></span><span></span></div><div class="navbar-title"><a href="/">LITREILY</a></div><div class="navbar-search"><!--= show a circle here--></div></div><div class="h-wrapper" id="menu"><nav class="h-head box"><div class="m-hdimg"><a class="hdimg img" href="/"><img class="nofancybox" src="/img/profile.jpg" width="128" height="128"></a><h1 class="ttl"><a href="/">云芽的博客</a></h1></div><p class="m-desc">好好fighting，好好waiting!</p><div class="m-nav"><ul><li><span class="dot">●</span><a href="/archives/">归档</a></li><li><span class="dot">●</span><a href="/categories/">分类</a></li><li><span class="dot">●</span><a href="/tags/">标签</a></li><li><span class="dot">●</span><a href="/about/">关于</a></li><li><span class="dot">●</span><a href="/atom.xml">RSS</a></li><li class="m-sch"><form class="form" id="j-formsch" method="get"><input class="txt" type="text" id="local-search-input" name="q" value="搜索" onfocus="if(this.value=='搜索'){this.value='';}" onblur="if(this.value==''){this.value='搜索';}"><input type="text" style="display:none;"></form></li></ul><div id="local-search-result"></div></div></nav></div><div id="back2Top"><a class="fa fa-arrow-up" title="Back to top" href="#"></a></div><div class="box" id="container"><div class="l-wrapper"><div class="l-content box"><div class="l-post l-post-art"><article class="p-art"><div class="p-header box"><h1 class="p-title">CTFHUB(WEB)-XSS</h1><div class="p-info"><span class="p-date"><i class="fa fa-calendar"></i><a href="/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-XSS/">2021-10-04</a></span><span class="p-view" id="busuanzi_container_page_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_page_pv"></span></span></div></div><div class="p-content"><h3 id="WEB工具配置"><a href="#WEB工具配置" class="headerlink" title="WEB工具配置"></a>WEB工具配置</h3><h4 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h4><h5 id="反射型"><a href="#反射型" class="headerlink" title="反射型"></a>反射型</h5><p>题目：</p>
+<img src="/source/images/CTFHUB-WEB-XSS/image-20211006003106095.png" alt="image-20211006003106095" style="zoom:30%;" />
 
+<p>解题：</p>
+<p>发现第一个输入框与下面Hello后的内容相同，猜测可以通过该输入，改变页面内容。</p>
+<img src="/source/images/CTFHUB-WEB-XSS/image-20211006003153225.png" alt="image-20211006003153225" style="zoom:30%;" />
 
+<p>利用输入<script>alert('xss')</script>进行测试：</p>
+<img src="/images/CTFHUB-WEB-XSS/image-20211004004910837.png" alt="image-20211004004910837" style="zoom:30%;" />
 
+<p>默认使用get方式发送Payload，成功弹窗:</p>
+<img src="/images/CTFHUB-WEB-XSS/image-20211004004810311.png" alt="image-20211004004810311" style="zoom:50%;" />
+
+<p>经过测试，第二个输入框输入URL时，返回successfully，猜测在后台进行访问。</p>
+<img src="/source/images/CTFHUB-WEB-XSS/image-20211006003641544.png" alt="image-20211006003641544" style="zoom:30%;" />
+
+<p>在xss测试平台上注册账号根据提示创建项目：<a target="_blank" rel="noopener" href="https://xss8.cc/login/%E6%88%96http://xsscom.com//index.php?do=login">https://xss8.cc/login/或http://xsscom.com//index.php?do=login</a></p>
+<img src="/source/images/CTFHUB-WEB-XSS/image-20211006004444569.png" alt="image-20211006004444569" style="zoom:30%;" />
+
+<p>把XSS测试平台给出的代码复制到第一个输入框中进行注入</p>
 <img src="/images/CTFHUB-WEB-XSS/image-20211004004113722.png" alt="image-20211004004113722" style="zoom:33%;" />
 
+<p>submit后在第二个框中访问第一个框注入XSS脚本后的网址</p>
 <img src="/images/CTFHUB-WEB-XSS/image-20211004004418547.png" alt="image-20211004004418547" style="zoom:33%;" />
 
+<p>点击send1后在XSS测试平台查看注入结果，即可得到flag。</p>
+<img src="/source/images/CTFHUB-WEB-XSS/image-20211006004336944.png" alt="image-20211006004336944" style="zoom:30%;" />
 
-
-<img src="/images/CTFHUB-WEB-XSS/image-20211004004715981.png" alt="image-20211004004715981" style="zoom:33%;" />
-
-
-
-<img src="/images/CTFHUB-WEB-XSS/image-20211004004810311.png" alt="image-20211004004810311" style="zoom:33%;" />
-
-
-
-<img src="/images/CTFHUB-WEB-XSS/image-20211004004910837.png" alt="image-20211004004910837" style="zoom:33%;" />
-
-
-
-
-
-
-
+<p><strong>总结</strong>：<br>xss一般的用途是获取他人的cookie。cookie相当于每个人的登录凭证，如果得到了别人的cookie就可以不用输账号密码，直接登录。所以flag一定不可能藏在自己的cookie里，自己的cookie能直接在浏览器的控制台里知道。题目应该是让我们获得别人的cookie，但这是ctf的题目，不是公共的服务，没有其他用户，所以ctf模拟了一个机器人。我们的目标就是获得这个机器人的cookie，然后”盗它的号”，所以flag也就藏在cookie里了。第二个文本框就是模拟别人点击这个包含xss的链接的情形。（简记：注入xss脚本在他人访问时获取cookie）</p>
+<p><strong>补充知识</strong>：</p>
+<p>XSS攻击（跨站脚本攻击）：</p>
+<p>通常指的是通过利用<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BD%91%E9%A1%B5/99347">网页</a>开发时留下的漏洞，通过巧妙的方法注入恶意指令代码到网页，使用户加载并执行攻击者</p>
+<p>恶意制造的网页程序。这些恶意网页程序通常是JavaScript，但实际上也可以包括Java、 VBScript、ActiveX、 </p>
+<p>Flash 或者甚至是普通的HTML。攻击成功后，攻击者可能得到包括但不限于更高的权限（如执行一些操作）、私</p>
+<p>密网页内容、会话和cookie等各种内容。</p>
+<p>从攻击代码的工作方式可以分为三个类型：</p>
+<p>（1）持久型跨站：最直接的危害类型，跨站代码存储在服务器（数据库）。</p>
+<p>（2）非持久型跨站：反射型跨站脚本漏洞，最普遍的类型。用户访问服务器-跨站链接-返回跨站代码。</p>
+<p>（3）DOM跨站（DOM XSS）：DOM（document object model文档对象模型），客户端脚本处理逻辑导致的安全问题。</p>
+<p>基于DOM的XSS漏洞是指受害者端的网页脚本在修改本地页面DOM环境时未进行合理的处置，而使得攻击脚本被执行。在整个攻击过程中，服务器响应的页面并没有发生变化，引起客户端脚本执行结果差异的原因是对本地DOM的恶意篡改利用。</p>
+<p>常用的XSS攻击手段和目的有：</p>
+<p>1、盗用<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/cookie/1119">cookie</a>，获取敏感信息。</p>
+<p>2、利用植入Flash，通过crossdomain权限设置进一步获取更高权限；或者利用<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Java/85979">Java</a>等得到类似的操作。</p>
+<p>3、利用<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/iframe/4446518">iframe</a>、frame、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/XMLHttpRequest/6788735">XMLHttpRequest</a>或上述Flash等方式，以（被攻击）用户的身份执行一些管理动作，或执行一些一般的如发微博、加好友、发私信等操作。</p>
+<p>4、利用可被攻击的域受到其他域信任的特点，以受信任来源的身份请求一些平时不允许的操作，如进行不当的投票活动。</p>
+<p>5、在访问量极大的一些页面上的XSS可以攻击一些小型网站，实现DDoS攻击的效果。</p>
 </div><div class="p-copyright"><blockquote><div class="p-copyright-author"><span class="p-copyright-key">本文作者：</span><span class="p-copytight-value"><a href="mailto:litreily@163.com">yunya</a></span></div><div class="p-copyright-link"><span class="p-copyright-key">本文链接：</span><span class="p-copytight-value"><a href="/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-XSS/">http://example.com/2021/10/04/ctf解题/CTFHUB-WEB-XSS/</a></span></div><div class="p-copyright-note"><span class="p-copyright-key">版权声明：</span><span class="p-copytight-value">本博客所有文章除特殊声明外，均采用<a rel="nofollow" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/"> CC BY-NC 4.0 </a>许可协议。转载请注明出处 <a href="http://example.com">yunya的博客</a>！</span></div></blockquote></div></article><div class="p-info box"></div><aside id="toc"><div class="toc-title">目录</div><nav><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#WEB%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">WEB工具配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#XSS"><span class="toc-number">1.1.</span> <span class="toc-text">XSS</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E5%9E%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">反射型</span></a></li></ol></li></ol></li></ol></nav></aside></div><section class="p-ext"><div class="l-pager l-pager-dtl box"><a class="next" href="/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/">CTFHUB(WEB)-SQL注入 &gt;</a></div><div id="valine-comment"><style type="text/css">.night .v[data-class=v] a { color: #0F9FB4 !important; }
 .night .v[data-class=v] a:hover { color: #216C73 !important; }
 .night .v[data-class=v] li { list-style: inherit; }
