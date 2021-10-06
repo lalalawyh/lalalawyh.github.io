@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E5%AF%86%E7%A0%81%E5%8F%A3%E4%BB%A4/</loc>
+    
+    <lastmod>2021-10-06</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/10/03/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-sqli-labs/</loc>
+    
+    <lastmod>2021-10-06</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/08/14/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/</loc>
+    
+    <lastmod>2021-10-06</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/10/02/ctf%E5%AD%A6%E4%B9%A0/sql%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-1/</loc>
+    
+    <lastmod>2021-10-06</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://example.com/friends/index.html</loc>
     
     <lastmod>2021-10-06</lastmod>
@@ -51,20 +79,6 @@
   </url>
   
   <url>
-    <loc>http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E5%AF%86%E7%A0%81%E5%8F%A3%E4%BB%A4/</loc>
-    
-    <lastmod>2021-10-06</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/10/03/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-sqli-labs/</loc>
-    
-    <lastmod>2021-10-06</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://example.com/2021/07/12/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-BUUCTF/</loc>
     
     <lastmod>2021-10-06</lastmod>
@@ -101,13 +115,6 @@
   
   <url>
     <loc>http://example.com/2021/09/29/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dvcs-ripper/</loc>
-    
-    <lastmod>2021-10-06</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/10/02/ctf%E5%AD%A6%E4%B9%A0/sql%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-1/</loc>
     
     <lastmod>2021-10-06</lastmod>
     
@@ -173,13 +180,6 @@
     <loc>http://example.com/2021/08/16/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</loc>
     
     <lastmod>2021-08-31</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/08/14/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/</loc>
-    
-    <lastmod>2021-08-19</lastmod>
     
   </url>
   
@@ -273,6 +273,13 @@
   
   <url>
     <loc>http://example.com/categories/ctf%E8%A7%A3%E9%A2%98/</loc>
+    <lastmod>2021-10-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/categories/ctf%E8%A7%A3%E9%A2%98-web/</loc>
     <lastmod>2021-10-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

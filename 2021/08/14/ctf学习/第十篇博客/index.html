@@ -128,13 +128,13 @@ $sql = &quot;select * from data where id =&#39; &quot; . $id .&quot;&#39;&quot;;
 </code></pre>
 <p>答案是：id=1’#或1’– -</p>
 <p>分析：如果我们只输入一个单引号，原本sql语句中多余的单引号就会导致整个aql语句报错。因此在后面加上#或–来将多余的单引号注释掉。</p>
+<p>注：常见的注释符：%23（#）、-–+、；%00、`、……</p>
 <p>方法二：不使用注释符闭合</p>
 <p>sql语句如下：</p>
 <pre><code class="sql">$id = $_GET[&#39;id&#39;];
 $sql = &quot;select * from data where id = &#39;$id&#39; limit 0,1&quot;;
 </code></pre>
 <p>答案：id=1’ or ‘1’=’1即构造select * from data where id = ‘1’ or ‘1’=’1’</p>
-<p>注：常见的注释符：%23（#）、–+、；%00、`、……</p>
 <p>方法三：CTF中有时会把常用注释符以及单引号都给ban了，那又该怎么闭合呢？</p>
 <pre><code class="sql">$id = $_GET[&#39;id&#39;];
 $sql = &quot;select * from data where username= &#39;&quot; .$username .&quot;&#39;and password = &#39;&quot;.$password.&quot;&#39; &quot;;
