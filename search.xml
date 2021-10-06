@@ -66,6 +66,269 @@
 ]]></content>
   </entry>
   <entry>
+    <title>GitHack</title>
+    <url>/2021/09/26/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/GitHack/</url>
+    <content><![CDATA[<h2 id="GitHack安装与使用"><a href="#GitHack安装与使用" class="headerlink" title="GitHack安装与使用"></a>GitHack安装与使用</h2><p>注：python3之前已配置好，不再多讲。应该基本同于python2。</p>
+<h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>GitHack是一个.git泄露利用脚本，通过泄露的.git文件夹下的文件，重建还原工程源代码。渗透测试人员、攻击者，可以进一步审计代码，挖掘：文件上传，SQL注射等安全漏洞。</p>
+<h4 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h4><p>网上下载到的githack基本只适用于python2。而目前大部分使用的python版本都是python3。</p>
+<h4 id="方案一：安装python2来运行githack"><a href="#方案一：安装python2来运行githack" class="headerlink" title="方案一：安装python2来运行githack"></a>方案一：安装python2来运行githack</h4><p><strong>下载python2和python3</strong></p>
+<p>官网<a href="https://www.python.org/%E4%B8%8B%E8%BD%BDpython2%E5%92%8Cpython3%E6%88%96%E8%80%85%E5%BA%94%E7%94%A8%E5%95%86%E5%9F%8E%E4%B8%AD%E4%B8%8B%E8%BD%BD%E3%80%82%E5%AE%89%E8%A3%85%E5%BB%BA%E8%AE%AE%E4%B8%80%E8%B7%AF%E9%BB%98%E8%AE%A4next%E4%B8%8B%E5%8E%BB%E3%80%82">https://www.python.org/下载python2和python3或者应用商城中下载。安装建议一路默认next下去。</a></p>
+<p><strong>配置python2.x的环境变量</strong></p>
+<p>需要将两个目录添加到path环境变量中：</p>
+<ul>
+<li>python命令文件所在目录： python 2.x安装目录</li>
+<li>pip、easy_install等其他脚本文件所在目录： python 2.x安装目录下的Scripts目录</li>
+</ul>
+<p>找到此电脑选择属性或者右键我的电脑找到属性——&gt;高级系统设置——&gt;环境变量——&gt;用户变量下的PATH——&gt;编辑</p>
+<p>将下面这两行内容添加到Path变量的<strong>开始位置</strong>：（先新建后上移到第一行）<br>C:\Python27<br>C:\Python27\Scripts\</p>
+<p><strong>将python 2.x 和 python 3.x的相关命令区分开来</strong></p>
+<p>找到 python2 和 python3 的安装目录，修改 python2.x 和 python3.x 中 <strong>python.exe</strong> 的名称为 <strong>python2.exe</strong>和 <strong>python3.exe</strong>。</p>
+<p>然后运行cmd命令，输入python2 可以运行 python2.x 版本，输入 python3 即可运行 python3.x 版本。如下图。</p>
+<img src="/images/GitHack/image-20210926021728278.png" alt="image-20210926021728278" style="zoom:37%;" />
+
+<p><strong>解决两者pip共存问题</strong></p>
+<p>Python安装包需要用到包管理工具pip，但当同时安装python2和python3的时候，pip只是其中一个版本。为了保证共存，需要分别重新安装pip。</p>
+<p>1.安装pip2：在命令窗口中输入：python2 -m pip install –upgrade pip –force-reinstall，如下图显示重新安装成功。</p>
+<img src="/images/GitHack/image-20210926022035773.png" alt="image-20210926022035773" style="zoom:30%;" />
+
+<p>2.安装 pip3： 在命令窗口中输入：python3 -m pip install –upgrade pip –force-reinstall 。如果没有成功则可能在之前已经重新安装过pip.exe了，需要将它从文件夹中删除再输入命令。如下图显示重新安装成功。</p>
+<img src="/images/GitHack/image-20210926022756669.png" alt="image-20210926022756669" style="zoom:50%;" />
+
+<p>3.现在可以通过pip2 -V 和 pip3-V 查看两个版本的pip信息，以后只需运行 pip2 install XXX 和 pip3 install XXX 即可安装各自的python包。到这里 pip共存问题 也已经解决啦！</p>
+<p><strong>使用GitHack</strong></p>
+<p>在含有GitHack.py的文件夹的地址栏中输入cmd打开命令窗口</p>
+<p>输入命令：python2 GitHack.py URL.git来使用githack</p>
+<img src="/images/GitHack/image-20210926023209128.png" alt="image-20210926023209128" style="zoom:30%;" />
+
+<h4 id="方案二：修改文件，使之适应python3环境"><a href="#方案二：修改文件，使之适应python3环境" class="headerlink" title="方案二：修改文件，使之适应python3环境"></a>方案二：修改文件，使之适应python3环境</h4><p>将python2文件修改为python3文件：</p>
+<p>python2的print改为python3的print()；</p>
+<p>python3中合并了部分包，需要将import xxx改为from xxx import xxx。</p>
+<p>其余根据运行提示来修改。</p>
+<p>输入命令：python3 GitHack.py URL.git来使用githack</p>
+<img src="/images/GitHack/image-20210927005148911.png" alt="image-20210927005148911" style="zoom:30%;" />
+]]></content>
+      <categories>
+        <category>工具安装指南</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>VMware</title>
+    <url>/2021/07/10/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/VMware/</url>
+    <content><![CDATA[<h2 id="虚拟机issue"><a href="#虚拟机issue" class="headerlink" title="虚拟机issue"></a>虚拟机issue</h2><p>注：本文虚拟机为VMware Workstation 16 Player（非商业用途）且以ubuntu-16.04.7-desktop-amd64（Linux系统）为镜像。</p>
+<p>安装好后打开软件，点击创建新虚拟机。按照提示步骤完成即可。</p>
+<p>快捷键ctrl+alt+t可以召唤终端，利用命令sudo passwd root设置root模式密码。设置完成后，可用命令su root进入特权模式/管理员模式。用命令python -V（大写）和pip -V查询python和pip版本，ubuntu自带的python2的版本是2.7.12，python3的版本是3.5.2，pip版本是8.1.1。</p>
+<img src="/images/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210810234635531.png" alt="image-20210810234635531" style="zoom: 67%;" />
+
+<p>如果没有查询到则根据提示输入命令sudo apt install python-pip进行下载。</p>
+<img src="/images/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210810234119104.png" alt="image-20210810234119104" style="zoom: 67%;" />
+
+<p>安装过程中很多错误产生的都是因为这两个的版本太低。</p>
+<p>解决方法：用命令wget <a href="https://bootstrap.pypa.io/pip/3.5/get-pip.py%E5%9C%A8%E8%AF%A5%E7%BD%91%E5%9D%80%E4%B8%8B%E8%BD%BDpip%E3%80%82">https://bootstrap.pypa.io/pip/3.5/get-pip.py在该网址下载pip。</a></p>
+<img src="/images/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210810235410784.png" alt="image-20210810235410784" style="zoom:50%;" />
+
+<p>这个网址可以安装和python3兼容的pip 20.3.4版本。</p>
+<img src="/images/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210811000107849.png" alt="image-20210811000107849" style="zoom:50%;" />
+
+<p>按上述操作完成后，各版本如下。</p>
+<img src="/images/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210811000322681.png" alt="image-20210811000322681" style="zoom: 67%;" />
+
+<p>之后如果要用python运行文件，建议使用python3。</p>
+<p>格式：python3 文件名（包括扩展名）。例如：python3 flag.py</p>
+<p>如果要进入某个文件夹则用命令“cd 文件夹”</p>
+<img src="/images/VMware/image-20210814203832735.png" alt="image-20210814203832735" style="zoom: 67%;" />
+
+<p>小tip：小白不建议更新工具等，除非万不得已，不然系统提示的更新忽略即可，否则可能出现新的问题。</p>
+<p>在利用Linux系统（虚拟机）的vim命令修复文件时，如果出现下图情况，则输入命令“sudo apt-get install ctags”后再输入“sudo apt-get install vim”，执行完毕后就可以正常访问了。</p>
+<img src="/images/VMware/image-20210908174145951.png" alt="image-20210908174145951" style="zoom:50%;" />
+
+
+
+]]></content>
+      <categories>
+        <category>工具安装指南</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>dirsearch</title>
+    <url>/2021/09/25/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dirsearch/</url>
+    <content><![CDATA[<h2 id="dirsearch安装与使用"><a href="#dirsearch安装与使用" class="headerlink" title="dirsearch安装与使用"></a>dirsearch安装与使用</h2><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>dirsearch是一个python开发的目录扫描工具，目的是扫描网站的敏感文件和目录从而找到突破口。</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>进入官网下载<a href="https://github.com/maurosoria/dirsearch%EF%BC%8C%E7%82%B9%E5%87%BB%E4%BB%A3%E7%A0%81code%E7%84%B6%E5%90%8E%E4%B8%8B%E8%BD%BD%E5%8E%8B%E7%BC%A9%E5%8C%85%E3%80%82">https://github.com/maurosoria/dirsearch，点击代码code然后下载压缩包。</a></p>
+<img src="/images/dirsearch/image-20210925153641733.png" alt="image-20210925153641733" style="zoom:50%;" />
+
+<p>下载完成后解压。打开进入到dirsearch目录，cmd进入到dirsearch.py目录。可直接在这个目录下输入cmd进入，这样就不需要cd一级一级的进入了。</p>
+<img src="/images/dirsearch/image-20210925154051408.png" alt="image-20210925154051408" style="zoom:33%;" />
+
+<p>输入命令python dirsearch.py -u <a href="https://www.baidu.com/">https://www.baidu.com</a> -e *进行测试。</p>
+<p>问题1：出现ModuleNotFoundError: No module named ‘chardet’</p>
+<img src="/images/dirsearch/image-20210925154920335.png" alt="image-20210925154920335" style="zoom:63%;" />
+
+<p>解决方法：手动进入网址<a href="https://github.com/chardet/chardet%E4%B8%8B%E8%BD%BDchardet%E6%A8%A1%E5%9D%97%E3%80%82%E8%A7%A3%E5%8E%8B%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8Ccmd%E8%BF%9B%E5%85%A5%E5%91%BD%E4%BB%A4%E7%AA%97%E5%8F%A3%E8%BE%93%E5%85%A5%E5%91%BD%E4%BB%A4python">https://github.com/chardet/chardet下载chardet模块。解压打开文件夹，cmd进入命令窗口输入命令python</a> setup.py install进行安装。</p>
+<img src="/images/dirsearch/image-20210925160047567.png" alt="image-20210925160047567" style="zoom:33%;" />
+
+<p>问题2：出现ModuleNotFoundError: No module named ‘markupsafe’</p>
+<img src="/images/dirsearch/image-20210925160213872.png" alt="image-20210925160213872" style="zoom:63%;" />
+
+<p>解决方法：直接win+R召唤出命令窗口，输入命令pip install markupsafe进行安装。</p>
+<p>没有问题之后再次进行测试就可以了。</p>
+<img src="/images/dirsearch/image-20210925160510879.png" alt="image-20210925160510879" style="zoom:70%;" />
+
+]]></content>
+      <categories>
+        <category>工具安装指南</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>burpsuite</title>
+    <url>/2021/09/18/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/burpsuite/</url>
+    <content><![CDATA[<h2 id="burpsuite安装与使用"><a href="#burpsuite安装与使用" class="headerlink" title="burpsuite安装与使用"></a>burpsuite安装与使用</h2><p>注：建议与火狐浏览器配合使用。</p>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>Burp Suite 是用于攻击web 应用程序的集成平台，包含了许多工具。Burp Suite为这些工具设计了许多接口，以加快攻击应用程序的过程。所有工具都共享一个请求，并能处理对应的HTTP 消息、持久性、认证、代理、日志、警报。</p>
+<h4 id="安装与使用"><a href="#安装与使用" class="headerlink" title="安装与使用"></a>安装与使用</h4><p><strong>burpsuite安装：</strong></p>
+<p>我是直接在应用上安装的burpsuite社区版。也可进入官网下载。</p>
+<p>官网链接：<a href="https://portswigger.net/burp">https://portswigger.net/burp</a></p>
+<img src="/images/burpsuite/image-20210918003959781.png" alt="image-20210918003959781" style="zoom:33%;" />
+
+<p><strong>浏览器代理设置：</strong></p>
+<p>点击浏览器页面右上角进入设置拉到最低找到网络设置而后点击设置。</p>
+<img src="/images/burpsuite/image-20210918004410626.png" alt="image-20210918004410626" style="zoom:25%;" />
+
+<p>点手动配置代理将代理设置成与burpsuite上的相同。</p>
+<img src="/images/burpsuite/image-20210918004523344.png" alt="image-20210918004523344" style="zoom:25%;" />
+
+<img src="/images/burpsuite/image-20210918005522266.png" alt="image-20210918005522266" style="zoom:45%;" />
+
+<p><strong>！此处还需解开个限制</strong></p>
+<img src="/images/burpsuite/image-20210918005659174.png" alt="image-20210918005659174" style="zoom:50%;" />
+
+
+
+<p>方法：</p>
+<p>打开设置将<img src="/images/burpsuite/image-20210918005938252.png" alt="image-20210918005938252" style="zoom:50%;" />改为<img src="/images/burpsuite/image-20210918010015702.png" alt="image-20210918010015702" style="zoom:60%;" /></p>
+<p>在访问后的搜索框内输入network.proxy.allow_hijacking_localhost，将fasle改为true。</p>
+<img src="/images/burpsuite/image-20210918010107193.png" alt="image-20210918010107193" style="zoom:30%;" />
+
+<p>修改完成后回到设置会发现变化。</p>
+<img src="/images/burpsuite/image-20210918010254513.png" alt="image-20210918010254513" style="zoom:60%;" />
+
+<p><strong>使用：（以爆破为栗子）</strong></p>
+<p>先将浏览器的代理关闭即不使用代理方可访问题目网站。</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210913005916028.png" alt="image-20210913005916028" style="zoom:50%;" />
+
+<p>此为ctfhub中的弱口令题目，猜测用户名为admin，只需要爆破密码即可。</p>
+<p>将浏览器的代理开启，打开burpsuite进行抓包，输入用户名admin以及任一密码（例如：123）</p>
+<p>右击下图命令选择send to intruder进行爆破</p>
+<img src="/images/burpsuite/image-20210918010923654.png" alt="image-20210918010923654" style="zoom:33%;" />
+
+<p>设置intruder——payload，导入字典后点击start attack</p>
+<img src="/images/burpsuite/image-20210918011229722.png" alt="image-20210918011229722" style="zoom:32.5%;" />
+
+<p>找到爆破长度不同的即为密码，查看response得到flag。</p>
+<img src="/images/burpsuite/image-20210918011351469.png" alt="image-20210918011351469" style="zoom:40%;" />
+]]></content>
+      <categories>
+        <category>工具安装指南</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>dvcs-ripper</title>
+    <url>/2021/09/29/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dvcs-ripper/</url>
+    <content><![CDATA[<h2 id="dvcs-ripper安装与使用"><a href="#dvcs-ripper安装与使用" class="headerlink" title="dvcs-ripper安装与使用"></a>dvcs-ripper安装与使用</h2><p>注：适用于Linux系统，windows用户可以安装在虚拟机上。</p>
+<h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>一款perl的版本控制软件信息泄露利用工具，支持SVN, GIT, Mercurial/hg, bzr…</p>
+<h4 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h4><p>在网址<a href="https://github.com/kost/dvcs-ripper%E4%B8%8A%E8%BF%9B%E8%A1%8C%E4%B8%8B%E8%BD%BD%E5%8E%8B%E7%BC%A9%E5%8C%85%EF%BC%8C%E8%A7%A3%E5%8E%8B%E5%90%8E%E6%8B%96%E8%BF%9B%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%AD%E3%80%82">https://github.com/kost/dvcs-ripper上进行下载压缩包，解压后拖进虚拟机中。</a></p>
+<p>进行简单配置相关要求的组件：sudo apt-get install perl libio-socket-ssl-perl libdbd-sqlite3-perl libclass-dbi-perl libio-all-lwp-perl</p>
+<h4 id="栗子"><a href="#栗子" class="headerlink" title="栗子"></a>栗子</h4><p>以ctfhub的svn泄露为栗子。</p>
+<p>进入dvcs-ripper-master文件夹右键进入终端，输入命令perl rip-svn.pl -u <a href="http://challenge-277a34a7a99ae035.sandbox.ctfhub.com:10800/.svn/">http://challenge-277a34a7a99ae035.sandbox.ctfhub.com:10800/.svn/</a></p>
+<img src="/source/images/dvcs-ripper/image-20211001182915450.png" alt="image-20211001182915450" style="zoom:50%;" />
+
+<p>再tree看看：根据提示安装：sudo apt install tree。然后输入命令：tree .svn进行查看</p>
+<img src="/source/images/dvcs-ripper/image-20211001183200968.png" alt="image-20211001183200968" style="zoom:50%;" />
+
+<p>需要注意的是，.svn是隐藏文件，在linux下必须ls -al才能看到。<br>根据题目的提示，Flag 在服务端旧版本的源代码中。<br>注意tree中的pristine，里面一般存储的是代码的历史版本。直接进入目录，然后读取文件就可以得到flag了：</p>
+<img src="/source/images/dvcs-ripper/image-20211001183703701.png" alt="image-20211001183703701" style="zoom:50%;" />
+
+<p>由于我在文件夹中没有看到那些文件夹，所以是一路cd进到be文件夹，再用cat命令打开文件查看flag。</p>
+]]></content>
+      <categories>
+        <category>工具安装指南</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>sqli-labs</title>
+    <url>/2021/10/02/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/sqli-labs/</url>
+    <content><![CDATA[<h2 id="sqli-labs"><a href="#sqli-labs" class="headerlink" title="sqli-labs"></a>sqli-labs</h2><h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>SQLI-LABS 是一个学习 SQLI 的平台 GET 和 POST 场景涵盖了以下实验室：</p>
+<ol>
+<li>基于错误的注入（联合选择）<ol>
+<li>细绳</li>
+<li>虎牙</li>
+</ol>
+</li>
+<li>基于错误的注入（基于双重注入）</li>
+<li>盲注：1.Boolian based 2.Time Based</li>
+<li>更新查询注入。</li>
+<li>插入查询注入。</li>
+<li>标头注射。1.基于Referer。2.基于UserAgent。3.基于Cookie。</li>
+<li>二阶注射</li>
+<li>绕过WAF<ol>
+<li>绕过黑名单过滤器 剥离评论 剥离 OR &amp; AND 剥离空格和评论 剥离 UNION &amp; SELECT</li>
+<li>阻抗失配</li>
+</ol>
+</li>
+<li>绕过addslashes()</li>
+<li>绕过 mysql_real_escape_string。（特殊情况下）</li>
+<li>堆叠 SQL 注入。</li>
+<li>二级通道提取</li>
+</ol>
+<h4 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h4><p>需要安装以下环境 </p>
+<ol>
+<li><p>apache+mysql+php </p>
+</li>
+<li><p>Tomcat+mysql+java（部分关卡需要）</p>
+</li>
+</ol>
+<p>下载sqli-labs地址：<a href="https://github.com/Audi-1/sqli-labs">https://github.com/Audi-1/sqli-labs</a></p>
+<p>下载phpstudy地址：<a href="https://www.xp.cn/download.html">https://www.xp.cn/download.html</a></p>
+<p>将下载的 SQLi-Labs.zip 解压到phpstudy网站根目录下即WWW文件夹中。</p>
+<img src="../../source/images/sqli-labs/image-20211003014314499.png" alt="image-20211003014314499" style="zoom:50%;" />
+
+<p>修改 db-creds.inc 里（sqli-labs-master下的sql-connections文件夹中）的代码如下：因为phpstudy默认的mysql数据库地址是“127.0.0.1 或 localhost”，用户名和密码都是”root”。主要是修改’$dbpass‘为root。</p>
+<img src="../../source/images/sqli-labs/image-20211003014504175.png" alt="image-20211003014504175" style="zoom:50%;" />
+
+<p><strong>旧版</strong>：</p>
+<p>启动phpstudy.exe</p>
+<img src="../../source/images/sqli-labs/image-20211003015239021.png" alt="image-20211003015239021" style="zoom:50%;" />
+
+<p>在浏览器地址栏输入：<a href="http://127.0.0.1/sqli-labs/%EF%BC%88%E5%9B%A0%E5%85%B7%E4%BD%93%E6%96%87%E4%BB%B6%E5%92%8C%E8%AE%BE%E7%BD%AE%E8%80%8C%E5%B7%B2%EF%BC%89">http://127.0.0.1/sqli-labs/（因具体文件和设置而已）</a></p>
+<img src="../../source/images/sqli-labs/image-20211003015514897.png" alt="image-20211003015514897" style="zoom:50%;" />
+
+<p><strong>新版</strong>：</p>
+<p>启动框框中的三个套件：</p>
+<img src="../../source/images/sqli-labs/image-20211003020935371.png" alt="image-20211003020935371" style="zoom:30%;" />
+
+<p>注意网站的物理路径和Nginx设置的网站目录要正确。</p>
+<p>在浏览器地址栏输入：<a href="http://localhost/sqli-labs-master/">http://localhost/sqli-labs-master/</a></p>
+<img src="../../source/images/sqli-labs/image-20211003021439234.png" alt="image-20211003021439234" style="zoom:50%;" />
+
+
+
+<p>点击第一个，如下图所示即安装成功：</p>
+<img src="../../source/images/sqli-labs/image-20211003022438705.png" alt="image-20211003022438705" style="zoom:25%;" />
+
+<p>如果出现如下图错误，则进入软件管理选择php5版本安装，再进入网站——管理——php版本即可。</p>
+<img src="../../source/images/sqli-labs/image-20211003022738317.png" alt="image-20211003022738317" style="zoom:30%;" />
+
+<p>然后浏览器打开 “<a href="http://localhost/sqli-labs-master&quot;%E5%90%91%E4%B8%8B%E7%BF%BB%EF%BC%8C%E5%B0%B1%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%E6%9C%89%E5%BE%88%E5%A4%9A%E4%B8%8D%E5%90%8C%E7%9A%84%E6%B3%A8%E5%85%A5%E7%82%B9%E4%BA%86%EF%BC%8C%E5%88%86%E4%B8%BA%E5%9F%BA%E6%9C%ACSQL%E6%B3%A8%E5%85%A5%E3%80%81%E9%AB%98%E7%BA%A7SQL%E6%B3%A8%E5%85%A5%E3%80%81SQL%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%E3%80%81%E6%8C%91%E6%88%98%E5%9B%9B%E4%B8%AA%E9%83%A8%E4%BB%BD%EF%BC%8C%E6%80%BB%E5%85%B1%E7%BA%A675%E4%B8%AASQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E3%80%82">http://localhost/sqli-labs-master&quot;向下翻，就可以看到有很多不同的注入点了，分为基本SQL注入、高级SQL注入、SQL堆叠注入、挑战四个部份，总共约75个SQL注入漏洞。</a></p>
+<img src="../../source/images/sqli-labs/image-20211003023448081.png" alt="image-20211003023448081" style="zoom:30%;" />
+
+]]></content>
+      <categories>
+        <category>工具安装指南</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ctf基础学习-2</title>
+    <url>/2021/09/05/ctf%E5%AD%A6%E4%B9%A0/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/</url>
+    <content><![CDATA[<h2 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h2>]]></content>
+  </entry>
+  <entry>
     <title>ctf基础学习-1</title>
     <url>/2021/09/05/ctf%E5%AD%A6%E4%B9%A0/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-1/</url>
     <content><![CDATA[<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="CTF简介"><a href="#CTF简介" class="headerlink" title="CTF简介"></a>CTF简介</h3><p> CTF意译为“夺旗赛”。其大致流程是，参赛团队之间通过进行攻防对抗、程序分析等形式，率先从主办方给出的比赛环境中得到一串具有一定格式的字符串或其他内容（flag），并将其提交给主办方，从而夺得分数。 flag所表示的为目标服务器上存储的一些敏感机密的信息。</p>
@@ -82,11 +345,6 @@
 <h4 id="KoH-抢占山头"><a href="#KoH-抢占山头" class="headerlink" title="KoH-抢占山头"></a>KoH-抢占山头</h4><p>选手面对的是一个黑盒的目标，需要先挖掘漏洞并利用漏洞控制目标。将自己的队伍标识(队伍名称或是Token之类)写入到指定文件。随后在该主机上进行加固等操作防止其他队伍攻击。</p>
 <h4 id="Mix【混合】"><a href="#Mix【混合】" class="headerlink" title="Mix【混合】"></a>Mix【混合】</h4><p>混合模式结合了以上多种模式。例如参赛队伍通过解题(Jeopardy)可以获取一些初始分数，然后通过攻防对抗(AwD)进行得分增减的零和游戏，最终以得分高低分出胜负。</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>ctf基础学习-2</title>
-    <url>/2021/09/05/ctf%E5%AD%A6%E4%B9%A0/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/</url>
-    <content><![CDATA[<h2 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h2>]]></content>
   </entry>
   <entry>
     <title>sql基础学习-2</title>
@@ -151,13 +409,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>sql基础学习-1</title>
-    <url>/2021/10/02/ctf%E5%AD%A6%E4%B9%A0/sql%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-1/</url>
-    <content><![CDATA[<h2 id="sql基础学习"><a href="#sql基础学习" class="headerlink" title="sql基础学习"></a>sql基础学习</h2><p>注：为菜鸟教程学习笔记</p>
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><strong>SQL</strong> (Structured Query Language：结构化查询语言) 是用于管理关系数据库管理系统（RDBMS）。 SQL 的范围包括数据插入、查询、更新和删除，数据库模式创建和修改，以及数据访问控制。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>第一篇博客</title>
     <url>/2021/07/15/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h2 id="网络安全入门学习"><a href="#网络安全入门学习" class="headerlink" title="网络安全入门学习"></a>网络安全入门学习</h2><h3 id="几个网络安全方向的缩写科普"><a href="#几个网络安全方向的缩写科普" class="headerlink" title="几个网络安全方向的缩写科普"></a>几个网络安全方向的缩写科普</h3><h4 id="1-web安全"><a href="#1-web安全" class="headerlink" title="1. web安全"></a>1. web安全</h4><p>Web类题目大部分情况下和网、Web、HTTP等相关技能有关。主要考察选手对于Web攻防的一些知识技巧。诸如<code>SQL注入</code>、<code>XSS</code>、<code>代码执行</code>、<code>代码审计</code>等等都是很常见的考点。一般情况下Web题目只会给出一个能够访问的URL。部分题目会给出附件。</p>
@@ -197,6 +448,13 @@
 <p>​        2.利用hook注入。</p>
 <h4 id="6-misc杂项"><a href="#6-misc杂项" class="headerlink" title="6.misc杂项"></a>6.misc杂项</h4><p>Misc意为杂项，即不包含在以上分类的题目都会放到这个分类。题目会给出一个附件。选手下载该附件进行分析，最终得出flag<br>常见的题型有图片隐写、视频隐写、文档隐写、流量分析、协议分析、游戏、IoT相关等等。五花八门，种类繁多。</p>
 <p>​        主要就是指“取证、隐写”等 一 些其它的方向。例如：GIF图片隐写、PDF隐写、流量隐写、二维码复原。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>sql基础学习-1</title>
+    <url>/2021/10/02/ctf%E5%AD%A6%E4%B9%A0/sql%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-1/</url>
+    <content><![CDATA[<h2 id="sql基础学习"><a href="#sql基础学习" class="headerlink" title="sql基础学习"></a>sql基础学习</h2><p>注：为菜鸟教程学习笔记</p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><strong>SQL</strong> (Structured Query Language：结构化查询语言) 是用于管理关系数据库管理系统（RDBMS）。 SQL 的范围包括数据插入、查询、更新和删除，数据库模式创建和修改，以及数据访问控制。</p>
 ]]></content>
   </entry>
   <entry>
@@ -299,138 +557,6 @@ pic.save(&quot;文件名（包括文件类型即扩展名）&quot;)
 <h4 id="3-稀奇古怪的编码（社会主义核心价值观、与佛论禅、熊曰-与熊问道等）"><a href="#3-稀奇古怪的编码（社会主义核心价值观、与佛论禅、熊曰-与熊问道等）" class="headerlink" title="3.稀奇古怪的编码（社会主义核心价值观、与佛论禅、熊曰/与熊问道等）"></a>3.稀奇古怪的编码（社会主义核心价值观、与佛论禅、熊曰/与熊问道等）</h4><p>（1）社会主义核心价值观编码：由二十四个字的社会主义核心价值观组成。</p>
 <p>（2）与佛论禅：格式：“佛曰：+佛语”</p>
 <p>（3）与熊问道：类似与佛论禅，开头为“熊曰”。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>第五篇博客</title>
-    <url>/2021/07/24/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%BA%94%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h2 id="CRYPTO初步学习"><a href="#CRYPTO初步学习" class="headerlink" title="CRYPTO初步学习"></a>CRYPTO初步学习</h2><h3 id="古典密码学介绍"><a href="#古典密码学介绍" class="headerlink" title="古典密码学介绍"></a>古典密码学介绍</h3><p>注！还需进行理解学习</p>
-<h4 id="1-什么是密码学"><a href="#1-什么是密码学" class="headerlink" title="1.什么是密码学"></a>1.什么是密码学</h4><p><strong>小知识：</strong></p>
-<p>（1）密码学不只是计算机科学的内容，密码学的研究包括历史、政治学、工程、语言军事学、伦理、数学和工业技术学等。</p>
-<p>（2）CTF中的古典密码学题目有时也会出现在杂项里面，古典加密常常不给出加密算法，需要判断或者尝试一下。而CTF中的现代加密常常会给出加密算法,或者以一些形式提示某种常用的加密算法。即通过公开的加密算法和题目给<br>的条件来思考解密的算法并加以实现。</p>
-<p><strong>分类：</strong></p>
-<p>（1）<strong>古典密码学</strong>主要关注信息的保密书写和传递，以及与其相对应的破译方法。</p>
-<p>（2）<strong>现代密码学</strong>不只关注信息保密问题，还同时涉及信息完整性验证、信息发布的不可抵赖性、以及在分布式计算中产生的来源于内部和外部的攻击的所有信息安全的问题。</p>
-<p>（3）在有关密码学的一-些描述中,常使用Alice和Bob作为两个想要传递消息的两个人，Eve是想要从传递的密文中窃取明文信息的人。</p>
-<p>（4）对于一组函数ε= (E，D) :<br>E为加密函数( encryption function)，密钥k ，明文m ，那么密文c = E(k,m).<br>D为解密函数( decryption function)，密钥k ，密文m ，那么明文m= D(k,c).<br>——&gt;<strong>D(k,E(k,m)) = m.</strong></p>
-<h4 id="2-凯撒加密"><a href="#2-凯撒加密" class="headerlink" title="2.凯撒加密"></a>2.凯撒加密</h4><p><strong>定义：</strong>凯撒加密（Caesar cipher）是一种最简单且最广为人知的加密技术，它属于替代加密，明文中的所有字母都在字母表上向后（或向前）按照一个固定数目进行偏移后被替换成密文。</p>
-<p><strong>方法：</strong>凯撒加密会生成一个一一对应的密码表，加密和解密过程都是通过查表完成的。<br>和很多其他的单表替换加密一样,凯撒加密是十分不安全的。可以把移位值看作密钥key ,不难想到,在明文空间为26个英文字母时,有效的密钥只有25个。所以很容易枚举出来。</p>
-<p><strong>脚本：</strong></p>
-<pre><code class="python">#明文变密文，根据自己设定的固定数目将明文进行移位生成对应密文
-form string import ascii_uppercase
-Plaintext=&quot;明文&quot;
-Key=想要移位的位数
-Plaintext=Plaintext.upper()
-Ciphertext=&quot;&quot;
-for i in Plaintext:
-    if i not in ascii_uppercase:
-        Ciphertext +=i
-    else:
-        Ciphertext +=chr(((ord(i)-ord(&quot;A&quot;)-Key)%26)+ord(&quot;A&quot;))
-print(Ciphertext)
-</code></pre>
-<pre><code class="python">#密文变明文：把密文对应的所有结果都输出来，再判断哪个具有可读性即为所解明文
-from string import ascii_uppercase
-Ciphertext=&quot;密文&quot;
-Ciphertext=Ciphertext=Ciphertext.upper()
-def shift(Key):
-    Plaintext=&quot;&quot;
-    for i in Ciphertext:
-        if i not in ascii_uppercase:
-            Plaintext +=i
-        else: 
-            Plaintext +=chr(((ord(i)-ord(&quot;A&quot;)-Key)%26)+ord(&quot;A&quot;))
-     return Plaintext
-for Key in range(26):
-    print(shift(Key))
-</code></pre>
-<h4 id="3-关键词加密"><a href="#3-关键词加密" class="headerlink" title="3.关键词加密"></a>3.关键词加密</h4><p><strong>定义：</strong>关键词加密( keyword cipher )也是一种单表替代加密，与凯撒加密不同之处在于密钥可以更为复杂。</p>
-<p><strong>方法：</strong>加密时需要选择一个关键词,如果这个关键词有重复的字母，去除除第一次出现之外的所有的相同的字母。例如,如果选定的关键词为“success”，则使用“suce”。将该关键词写在字母表的下方,并用字母表的其他字母按标准的顺序填写余下的空间。这样就构建了字母一一对应的关系 ，加密时用下面一行中的字母对应替换上面一行的字母；解密时用上面一行中的字母对应替换下面一行的字母。</p>
-<p>例题：</p>
-<p>the keyword is MAGICNET</p>
-<img src="/images/%E7%AC%AC%E4%BA%94%E7%AF%87%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%872.png" alt="图片2" style="zoom:50%;" />
-
-<h4 id="4-仿射加密"><a href="#4-仿射加密" class="headerlink" title="4.仿射加密"></a>4.仿射加密</h4><p>也是一种单表替代加密，生成一个密码表后进行替代加密。</p>
-<p><strong>加密：</strong>在仿射加密中,每个字母都对应一个数字(字母a-z分别对应数字0-25)，仿射加密法的密钥为0~ 25之间的数字对(a,b) , a与26的最大公约数必须为1,即GCD(a,26)=1,这就是说，能整除a和26的数只有1,例如a=2就是不可以的，因为GCD(2,26) = 2,a = 5就可以,因为只有1能整除5和26。p 为明文字母对应的数字, c为密文字母对应的数字。<br>——&gt;c=a·p + b (mod 26)</p>
-<p><strong>解密：</strong>解密时需要计算(或枚举)密钥数字对中a的逆元，也就是a对26的模反数。模反数可以简单理解为整数环中的倒数，a乘以a的模反数对26取模等于1。例如5对26的逆元就是21。所以一个数乘以a ，再乘以a的逆元，就能算回原来的数。</p>
-<p>求逆元可以用Python的第三方包gmpy2的invert函数：</p>
-<pre><code class="python">from gmpy2 import invert
-print(invert(5,26)) #21
-</code></pre>
-<p>解密时已知密钥对(a，b) ，以及密文c ，可以通过下面的同余式计算出明文p。<br>——&gt;p=a^-1^(c-b) mod 26</p>
-<p><strong>例题：</strong></p>
-<pre><code class="python">from string import digits,ascii_lowercase#读取数字和小写字母的字符串
-from secret import numers,A,B#从题目文件中读取数字、A和B
-assert min([i in digits for i in numbers])#提示：numbers里面的字符都是digits里面的
-flag = &quot;flag&#123;&quot;+&quot;&quot;.join([ascii_lowercase[int(i)]for i in numbers])+&quot;&#125;&quot;#把数字转换为字母，例如0对A
-assert numbers == &quot;&quot;.join([str(ascii_lowercase.find(i))for i in flag[5:-1]])#与上一行意思相同，防止出错
-Ciphertext = &quot;&quot;#开始加密
-for i in flag:#注意扫描进行加密
-    if i not in ascii_lowercase:
-        Ciphertext += i#判断扫描的字符是否在小写字母里面，如果不在则照抄然后扫描下一个，例如“&#123;”直接保留
-    else:
-        Ciphertext += ascii_lowercase[(ascii_lowercase.find(i)*A+B) % 26]
-print(&quot;Ciphertext =&quot;,Ciphertext)#对小写字母进行加密
-#Ciphertext = vjsg&#123;dckvzksr&#125;
-</code></pre>
-<p>解密的话先把a和b爆破出来，然后求A的逆元，由于密钥对(a，b)的两个变量有效的值都是小于26的，所以枚举也是完全可以承受的。得到(a, b)之后就可以正常解密了。</p>
-<p><strong>总结：</strong>仿射加密本质上也是通过密钥对(a, b)生成了一个密码表，明文和密文中的字母具有一一对应的关系 ，且a与模数26互素保证了不重不漏。所以仿射加密也是一种单表替换加密，虽然比前面两种生成密码表的方式复杂一些，但也是顶不住针对单表替换的密码分析的。</p>
-<h4 id="5-单表替代密码分析"><a href="#5-单表替代密码分析" class="headerlink" title="5.单表替代密码分析"></a>5.单表替代密码分析</h4><p><strong>方法：</strong>可以利用不同的英文字母在文段中的出现频率特征，来帮助我们判断某个字母被替换成了某个字母的可能性。</p>
-<img src="/images/%E7%AC%AC%E4%BA%94%E7%AF%87%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%873.png" alt="图片3" style="zoom:80%;" />
-
-<p>词频分析不仅针对单个字母的出现频率，同时有很多连续的两个字母出现频率较高（双联字母bigrams），也可以辅助我们进行分析。</p>
-<p>以下是平均在1000个单词中，各双联字母出现的次数：</p>
-<img src="/images/%E7%AC%AC%E4%BA%94%E7%AF%87%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%875.png" alt="图片5" style="zoom:50%;" />
-
-<p>另外，如果有一个较大的单词库，还可以通过单词的格式，进一步帮助我们缩小可能的范围，例如单词happy为12334格式，success为1233411格式，那么被进行单表替换后，它的格式并不会发生改变。这种模式匹配的优点在于即使密文长度较短，也能尽可能能找到接近真相的结果。</p>
-<p><strong>注意：</strong>密文有空格的话使用词频分析，除非把空格位置找到。</p>
-<p><strong>推荐网站：</strong><a href="https://quipqiup.com/">https://quipqiup.com/</a></p>
-<h4 id="6-维吉尼亚加密"><a href="#6-维吉尼亚加密" class="headerlink" title="6.维吉尼亚加密"></a>6.维吉尼亚加密</h4><p><strong>定义：</strong>维吉尼亚密码是使用一系列凯撒密码组成密码字母表的加密算法，属于多表密码。为了生成密码，需要使用表格法。这一表格包括了26行字母表，每一行都由前一行向左偏移一位得到。具体使用哪一行字母表进行编译是基于密钥进行的，在过程中会不断地变换。</p>
-<img src="https://img2.baidu.com/it/u=3049389388,2093541746&fm=26&fmt=auto&gp=0.jpg" alt="img" style="zoom:50%;" />
-
-<p><strong>加密：</strong></p>
-<p>例如：</p>
-<p>明文：ATTACKATDAWN</p>
-<p>选择关键词：LEMON，重复关键词，直到长度和明文相同，作为密钥LEMONLEMONLE</p>
-<p>通过等长的明文和密钥，依次查表得到密文：LXFOPVEFRNHR</p>
-<p><strong>特点：</strong>维吉尼亚加密可以避免直接的词频分析攻击，密文在统计上没有明显的规律，但是任然可以对其进行破解。</p>
-<p>首先提出破解方法的Frederick Kasiski是基于这样一个简单的观察“密钥的重复部分与明文中的重复部分的连接，在密文中也产生一个重复部分”。</p>
-<p>如果一个字符串在明文中重复，并且被密钥相同的部分加密，那么在密文中也会出现重复的字符串。</p>
-<p><strong>解密：</strong></p>
-<p>先进行关键词长度的判断，一旦确定了关键词的长度，余下的问题就只是如何使用该信息去找到真正的关键词了。关键词的长度揭示了密文可以被如何破解成单码加密的一个集合。</p>
-<p>关键词的长度为n，那么破解维吉尼亚加密的问题就变成了解决n个单表加密的问题，需要有足够长的密文，然后通过词频分析逐个解决问题。</p>
-<p>注：在单表加密中，无论什么密码表，相同的密文字母对应的明文字母也相同，但是在多表加密中，相同的密文字母可能映射出不同的明文字母。</p>
-<h4 id="7-替换和编码"><a href="#7-替换和编码" class="headerlink" title="7.替换和编码"></a>7.替换和编码</h4><p>使用python脚本进制转换：</p>
-<pre><code class="python">x = 123456 #十进制整数
-x_hex = hex(x)[2:] #十进制转十六进制
-x_bin = bin(x)[2:] #十进制转二进制
-print(x_hex, x_bin) #1e240 11110001001000000
-a = int(x_hex, 16) #十六进制转十进制
-b = int(x_bin, 2) #二进制转十进制
-print(a, b) #123456 123456
-</code></pre>
-<p>字符串（str）类型和字节（bytes）类型相互转换：</p>
-<pre><code class="python">s = &quot;flag&#123;this_is_flag&#125;&quot; #字符串类型
-s_bytes = s.encode() #字符串类型转字节类型
-s_str = s_bytes.encode() #字节类型转字符串类型
-print(s_bytes, s_str) #b&#39;flag&#123;this_is_flag&#125;&#39; flag&#123;this_is_flag&#125;
-</code></pre>
-<p>base64编码解码：</p>
-<pre><code class="python">import base64
-s = b&#39;flag&#123;this_is_flag&#125;&#39; #字节类型
-s_encode = base64.b64encode(s)#进行base64编码
-s_decode = base64.b64decode(s_encode) #继续宁base64解码
-print(s_encode, s_edcode) #b&#39;ZmxhZ3t0aGlzX2lzX2ZsYWd9&#39; b&#39;flag&#123;tihs_is_flag&#125;
-</code></pre>
-<p>整数和字节类型的转换：</p>
-<p>这种类型转换在密码方向题目中很常见，整数类型可以直接参与数学计算，字节类型会展示可读的字符</p>
-<pre><code class="python">from Crypto.Util.number import *
-s = b&#39;flag&#123;this_is_flag&#125;&#39; #字节类型
-s_int = byte_to_long(s) #字节类型转为整数
-s_bytes = long_to_bytes(s_int) #证书转为字节类型
-print(s_int, s_bytes)
-</code></pre>
-<p>不在范围内的字符（不可显示的）会以/-x……的形式显示出其的十六进制。</p>
 ]]></content>
   </entry>
   <entry>
@@ -611,6 +737,138 @@ print(s_int, s_bytes)
 <p>（8）双图隐写</p>
 <p>（9）stegpy</p>
 <p>（10）silenteye</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>第五篇博客</title>
+    <url>/2021/07/24/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%BA%94%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2 id="CRYPTO初步学习"><a href="#CRYPTO初步学习" class="headerlink" title="CRYPTO初步学习"></a>CRYPTO初步学习</h2><h3 id="古典密码学介绍"><a href="#古典密码学介绍" class="headerlink" title="古典密码学介绍"></a>古典密码学介绍</h3><p>注！还需进行理解学习</p>
+<h4 id="1-什么是密码学"><a href="#1-什么是密码学" class="headerlink" title="1.什么是密码学"></a>1.什么是密码学</h4><p><strong>小知识：</strong></p>
+<p>（1）密码学不只是计算机科学的内容，密码学的研究包括历史、政治学、工程、语言军事学、伦理、数学和工业技术学等。</p>
+<p>（2）CTF中的古典密码学题目有时也会出现在杂项里面，古典加密常常不给出加密算法，需要判断或者尝试一下。而CTF中的现代加密常常会给出加密算法,或者以一些形式提示某种常用的加密算法。即通过公开的加密算法和题目给<br>的条件来思考解密的算法并加以实现。</p>
+<p><strong>分类：</strong></p>
+<p>（1）<strong>古典密码学</strong>主要关注信息的保密书写和传递，以及与其相对应的破译方法。</p>
+<p>（2）<strong>现代密码学</strong>不只关注信息保密问题，还同时涉及信息完整性验证、信息发布的不可抵赖性、以及在分布式计算中产生的来源于内部和外部的攻击的所有信息安全的问题。</p>
+<p>（3）在有关密码学的一-些描述中,常使用Alice和Bob作为两个想要传递消息的两个人，Eve是想要从传递的密文中窃取明文信息的人。</p>
+<p>（4）对于一组函数ε= (E，D) :<br>E为加密函数( encryption function)，密钥k ，明文m ，那么密文c = E(k,m).<br>D为解密函数( decryption function)，密钥k ，密文m ，那么明文m= D(k,c).<br>——&gt;<strong>D(k,E(k,m)) = m.</strong></p>
+<h4 id="2-凯撒加密"><a href="#2-凯撒加密" class="headerlink" title="2.凯撒加密"></a>2.凯撒加密</h4><p><strong>定义：</strong>凯撒加密（Caesar cipher）是一种最简单且最广为人知的加密技术，它属于替代加密，明文中的所有字母都在字母表上向后（或向前）按照一个固定数目进行偏移后被替换成密文。</p>
+<p><strong>方法：</strong>凯撒加密会生成一个一一对应的密码表，加密和解密过程都是通过查表完成的。<br>和很多其他的单表替换加密一样,凯撒加密是十分不安全的。可以把移位值看作密钥key ,不难想到,在明文空间为26个英文字母时,有效的密钥只有25个。所以很容易枚举出来。</p>
+<p><strong>脚本：</strong></p>
+<pre><code class="python">#明文变密文，根据自己设定的固定数目将明文进行移位生成对应密文
+form string import ascii_uppercase
+Plaintext=&quot;明文&quot;
+Key=想要移位的位数
+Plaintext=Plaintext.upper()
+Ciphertext=&quot;&quot;
+for i in Plaintext:
+    if i not in ascii_uppercase:
+        Ciphertext +=i
+    else:
+        Ciphertext +=chr(((ord(i)-ord(&quot;A&quot;)-Key)%26)+ord(&quot;A&quot;))
+print(Ciphertext)
+</code></pre>
+<pre><code class="python">#密文变明文：把密文对应的所有结果都输出来，再判断哪个具有可读性即为所解明文
+from string import ascii_uppercase
+Ciphertext=&quot;密文&quot;
+Ciphertext=Ciphertext=Ciphertext.upper()
+def shift(Key):
+    Plaintext=&quot;&quot;
+    for i in Ciphertext:
+        if i not in ascii_uppercase:
+            Plaintext +=i
+        else: 
+            Plaintext +=chr(((ord(i)-ord(&quot;A&quot;)-Key)%26)+ord(&quot;A&quot;))
+     return Plaintext
+for Key in range(26):
+    print(shift(Key))
+</code></pre>
+<h4 id="3-关键词加密"><a href="#3-关键词加密" class="headerlink" title="3.关键词加密"></a>3.关键词加密</h4><p><strong>定义：</strong>关键词加密( keyword cipher )也是一种单表替代加密，与凯撒加密不同之处在于密钥可以更为复杂。</p>
+<p><strong>方法：</strong>加密时需要选择一个关键词,如果这个关键词有重复的字母，去除除第一次出现之外的所有的相同的字母。例如,如果选定的关键词为“success”，则使用“suce”。将该关键词写在字母表的下方,并用字母表的其他字母按标准的顺序填写余下的空间。这样就构建了字母一一对应的关系 ，加密时用下面一行中的字母对应替换上面一行的字母；解密时用上面一行中的字母对应替换下面一行的字母。</p>
+<p>例题：</p>
+<p>the keyword is MAGICNET</p>
+<img src="/images/%E7%AC%AC%E4%BA%94%E7%AF%87%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%872.png" alt="图片2" style="zoom:50%;" />
+
+<h4 id="4-仿射加密"><a href="#4-仿射加密" class="headerlink" title="4.仿射加密"></a>4.仿射加密</h4><p>也是一种单表替代加密，生成一个密码表后进行替代加密。</p>
+<p><strong>加密：</strong>在仿射加密中,每个字母都对应一个数字(字母a-z分别对应数字0-25)，仿射加密法的密钥为0~ 25之间的数字对(a,b) , a与26的最大公约数必须为1,即GCD(a,26)=1,这就是说，能整除a和26的数只有1,例如a=2就是不可以的，因为GCD(2,26) = 2,a = 5就可以,因为只有1能整除5和26。p 为明文字母对应的数字, c为密文字母对应的数字。<br>——&gt;c=a·p + b (mod 26)</p>
+<p><strong>解密：</strong>解密时需要计算(或枚举)密钥数字对中a的逆元，也就是a对26的模反数。模反数可以简单理解为整数环中的倒数，a乘以a的模反数对26取模等于1。例如5对26的逆元就是21。所以一个数乘以a ，再乘以a的逆元，就能算回原来的数。</p>
+<p>求逆元可以用Python的第三方包gmpy2的invert函数：</p>
+<pre><code class="python">from gmpy2 import invert
+print(invert(5,26)) #21
+</code></pre>
+<p>解密时已知密钥对(a，b) ，以及密文c ，可以通过下面的同余式计算出明文p。<br>——&gt;p=a^-1^(c-b) mod 26</p>
+<p><strong>例题：</strong></p>
+<pre><code class="python">from string import digits,ascii_lowercase#读取数字和小写字母的字符串
+from secret import numers,A,B#从题目文件中读取数字、A和B
+assert min([i in digits for i in numbers])#提示：numbers里面的字符都是digits里面的
+flag = &quot;flag&#123;&quot;+&quot;&quot;.join([ascii_lowercase[int(i)]for i in numbers])+&quot;&#125;&quot;#把数字转换为字母，例如0对A
+assert numbers == &quot;&quot;.join([str(ascii_lowercase.find(i))for i in flag[5:-1]])#与上一行意思相同，防止出错
+Ciphertext = &quot;&quot;#开始加密
+for i in flag:#注意扫描进行加密
+    if i not in ascii_lowercase:
+        Ciphertext += i#判断扫描的字符是否在小写字母里面，如果不在则照抄然后扫描下一个，例如“&#123;”直接保留
+    else:
+        Ciphertext += ascii_lowercase[(ascii_lowercase.find(i)*A+B) % 26]
+print(&quot;Ciphertext =&quot;,Ciphertext)#对小写字母进行加密
+#Ciphertext = vjsg&#123;dckvzksr&#125;
+</code></pre>
+<p>解密的话先把a和b爆破出来，然后求A的逆元，由于密钥对(a，b)的两个变量有效的值都是小于26的，所以枚举也是完全可以承受的。得到(a, b)之后就可以正常解密了。</p>
+<p><strong>总结：</strong>仿射加密本质上也是通过密钥对(a, b)生成了一个密码表，明文和密文中的字母具有一一对应的关系 ，且a与模数26互素保证了不重不漏。所以仿射加密也是一种单表替换加密，虽然比前面两种生成密码表的方式复杂一些，但也是顶不住针对单表替换的密码分析的。</p>
+<h4 id="5-单表替代密码分析"><a href="#5-单表替代密码分析" class="headerlink" title="5.单表替代密码分析"></a>5.单表替代密码分析</h4><p><strong>方法：</strong>可以利用不同的英文字母在文段中的出现频率特征，来帮助我们判断某个字母被替换成了某个字母的可能性。</p>
+<img src="/images/%E7%AC%AC%E4%BA%94%E7%AF%87%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%873.png" alt="图片3" style="zoom:80%;" />
+
+<p>词频分析不仅针对单个字母的出现频率，同时有很多连续的两个字母出现频率较高（双联字母bigrams），也可以辅助我们进行分析。</p>
+<p>以下是平均在1000个单词中，各双联字母出现的次数：</p>
+<img src="/images/%E7%AC%AC%E4%BA%94%E7%AF%87%E5%8D%9A%E5%AE%A2/%E5%9B%BE%E7%89%875.png" alt="图片5" style="zoom:50%;" />
+
+<p>另外，如果有一个较大的单词库，还可以通过单词的格式，进一步帮助我们缩小可能的范围，例如单词happy为12334格式，success为1233411格式，那么被进行单表替换后，它的格式并不会发生改变。这种模式匹配的优点在于即使密文长度较短，也能尽可能能找到接近真相的结果。</p>
+<p><strong>注意：</strong>密文有空格的话使用词频分析，除非把空格位置找到。</p>
+<p><strong>推荐网站：</strong><a href="https://quipqiup.com/">https://quipqiup.com/</a></p>
+<h4 id="6-维吉尼亚加密"><a href="#6-维吉尼亚加密" class="headerlink" title="6.维吉尼亚加密"></a>6.维吉尼亚加密</h4><p><strong>定义：</strong>维吉尼亚密码是使用一系列凯撒密码组成密码字母表的加密算法，属于多表密码。为了生成密码，需要使用表格法。这一表格包括了26行字母表，每一行都由前一行向左偏移一位得到。具体使用哪一行字母表进行编译是基于密钥进行的，在过程中会不断地变换。</p>
+<img src="https://img2.baidu.com/it/u=3049389388,2093541746&fm=26&fmt=auto&gp=0.jpg" alt="img" style="zoom:50%;" />
+
+<p><strong>加密：</strong></p>
+<p>例如：</p>
+<p>明文：ATTACKATDAWN</p>
+<p>选择关键词：LEMON，重复关键词，直到长度和明文相同，作为密钥LEMONLEMONLE</p>
+<p>通过等长的明文和密钥，依次查表得到密文：LXFOPVEFRNHR</p>
+<p><strong>特点：</strong>维吉尼亚加密可以避免直接的词频分析攻击，密文在统计上没有明显的规律，但是任然可以对其进行破解。</p>
+<p>首先提出破解方法的Frederick Kasiski是基于这样一个简单的观察“密钥的重复部分与明文中的重复部分的连接，在密文中也产生一个重复部分”。</p>
+<p>如果一个字符串在明文中重复，并且被密钥相同的部分加密，那么在密文中也会出现重复的字符串。</p>
+<p><strong>解密：</strong></p>
+<p>先进行关键词长度的判断，一旦确定了关键词的长度，余下的问题就只是如何使用该信息去找到真正的关键词了。关键词的长度揭示了密文可以被如何破解成单码加密的一个集合。</p>
+<p>关键词的长度为n，那么破解维吉尼亚加密的问题就变成了解决n个单表加密的问题，需要有足够长的密文，然后通过词频分析逐个解决问题。</p>
+<p>注：在单表加密中，无论什么密码表，相同的密文字母对应的明文字母也相同，但是在多表加密中，相同的密文字母可能映射出不同的明文字母。</p>
+<h4 id="7-替换和编码"><a href="#7-替换和编码" class="headerlink" title="7.替换和编码"></a>7.替换和编码</h4><p>使用python脚本进制转换：</p>
+<pre><code class="python">x = 123456 #十进制整数
+x_hex = hex(x)[2:] #十进制转十六进制
+x_bin = bin(x)[2:] #十进制转二进制
+print(x_hex, x_bin) #1e240 11110001001000000
+a = int(x_hex, 16) #十六进制转十进制
+b = int(x_bin, 2) #二进制转十进制
+print(a, b) #123456 123456
+</code></pre>
+<p>字符串（str）类型和字节（bytes）类型相互转换：</p>
+<pre><code class="python">s = &quot;flag&#123;this_is_flag&#125;&quot; #字符串类型
+s_bytes = s.encode() #字符串类型转字节类型
+s_str = s_bytes.encode() #字节类型转字符串类型
+print(s_bytes, s_str) #b&#39;flag&#123;this_is_flag&#125;&#39; flag&#123;this_is_flag&#125;
+</code></pre>
+<p>base64编码解码：</p>
+<pre><code class="python">import base64
+s = b&#39;flag&#123;this_is_flag&#125;&#39; #字节类型
+s_encode = base64.b64encode(s)#进行base64编码
+s_decode = base64.b64decode(s_encode) #继续宁base64解码
+print(s_encode, s_edcode) #b&#39;ZmxhZ3t0aGlzX2lzX2ZsYWd9&#39; b&#39;flag&#123;tihs_is_flag&#125;
+</code></pre>
+<p>整数和字节类型的转换：</p>
+<p>这种类型转换在密码方向题目中很常见，整数类型可以直接参与数学计算，字节类型会展示可读的字符</p>
+<pre><code class="python">from Crypto.Util.number import *
+s = b&#39;flag&#123;this_is_flag&#125;&#39; #字节类型
+s_int = byte_to_long(s) #字节类型转为整数
+s_bytes = long_to_bytes(s_int) #证书转为字节类型
+print(s_int, s_bytes)
+</code></pre>
+<p>不在范围内的字符（不可显示的）会以/-x……的形式显示出其的十六进制。</p>
 ]]></content>
   </entry>
   <entry>
@@ -1187,32 +1445,6 @@ ebp -&gt; ebp
 ]]></content>
   </entry>
   <entry>
-    <title>第四篇博客</title>
-    <url>/2021/07/20/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%9B%9B%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h2 id="MISC初步学习"><a href="#MISC初步学习" class="headerlink" title="MISC初步学习"></a>MISC初步学习</h2><h3 id="流量分析"><a href="#流量分析" class="headerlink" title="流量分析"></a>流量分析</h3><h4 id="小知识："><a href="#小知识：" class="headerlink" title="小知识："></a>小知识：</h4><p>注释：可练习题目进行掌握</p>
-<p>（1）在使用抓包软件进行流量分析时，抓到的包往往含有数据链路层、网络层、传输层、应用层四个部分，其中每一个部分在传递到不同的层面的时候会被利用并丢弃。</p>
-<p>（2）wreshark抓到的包工作在数据链路层（若网卡特殊则也可抓到物理层，启动慢是因为在寻找接口），而burpsuite抓到的http包则工作在应用层。</p>
-<p>（3）物理层传输方式：WIFI无线通信（电磁波）、千兆网线（八根导线，百兆为四根）</p>
-<p>（4）当同时连接网线和WIFI时，因为物理网口的跃点数比无线网口的跃点数低，跃点数越低则优先级越高，故选择以太网接口进行查看。</p>
-<p>（5）视频/直播的数据很多是走UDP通道的。</p>
-<p>（6）http与https：https协议是加密的</p>
-<p>（7）加密协议统称为tls</p>
-<p>（8）集线器会将信号转发给除了发送源的其他所有端口，因此不安全，容易被窃听。</p>
-<p>（9）当多台计算机通过交换机（对照交换表精准转发，隔离冲突域）相连时，它们采用的通信方式是数据链路层的协议。当某台计算机想给另一个计算机发送消息时，需要在以太帧头中指明发送方和接收方的地址，交换机在接收到信号之后会根据这个地址正确地将信号转发至某一个端口（即网线），从而避免了网络内所有计算机都能收到信号。以太帧中的数据是我们想要传输的信息，包括接下来的IP数据包。想要转发给其它所有计算机的时候，目的MAC地址改为全0（广播地址）。</p>
-<p>（10）当网卡地址变动时需刷新交换表，因此启用网络层配一个虚拟地址即IP地址，IP地址和MAC地址可以一对多也可以多对一。ARP协议将网络地址转换为物理地址。</p>
-<p>（11）路由器进行跨网段转发。家用路由器集成多种功能。</p>
-<p>（12）QQ聊天基于QICQ协议。</p>
-<p>（13）用软件ubuntu连接服务器后输入命令nc -l 8888对8888端口进行监听。在windows powershell中输入命令ncat git.nepwn com 8888回车后输入内容，便可在ubuntu窗口接收到。</p>
-<p>可在windows powershell中输入命令nslookup git.nepwn com进行服务器IP地址的查询。</p>
-<p>可在ubuntu中输入命令ncat -lk 8888 –chat来进行多人聊天服务器的安装。</p>
-<p>（14）http基于tcp，http端口为80。</p>
-<p>（15）要分析病毒或者恶意软件建议在虚拟机里进行，这样就不会干扰到我们的宿主机。</p>
-<p>（16）用wireshark/科来网络分析系统分析报文寻找flag。</p>
-<p>有时查找到的flag需要用在线工具进行解密，有时在用wireshark做流量分析时也要将软件进行解密设置（打开对应的密钥文件），否则flag藏在加密的数据包里面而无法查找。</p>
-<p>有些在请求包里面的题目可以用一般的流量导出的方法，然后在ubuntu中输入命令grep flag -rna .进行查找。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>第十篇博客</title>
     <url>/2021/08/14/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h2 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h2><h3 id="常见注入姿势："><a href="#常见注入姿势：" class="headerlink" title="常见注入姿势："></a>常见注入姿势：</h3><h4 id="联合查询注入"><a href="#联合查询注入" class="headerlink" title="联合查询注入"></a>联合查询注入</h4><p>联合查询的基本要求：1.查询列数必须一致；2.查询语句的查询的各列类型、顺序最好一致。</p>
@@ -1372,264 +1604,6 @@ except Exception:
 ]]></content>
   </entry>
   <entry>
-    <title>GitHack</title>
-    <url>/2021/09/26/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/GitHack/</url>
-    <content><![CDATA[<h2 id="GitHack安装与使用"><a href="#GitHack安装与使用" class="headerlink" title="GitHack安装与使用"></a>GitHack安装与使用</h2><p>注：python3之前已配置好，不再多讲。应该基本同于python2。</p>
-<h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>GitHack是一个.git泄露利用脚本，通过泄露的.git文件夹下的文件，重建还原工程源代码。渗透测试人员、攻击者，可以进一步审计代码，挖掘：文件上传，SQL注射等安全漏洞。</p>
-<h4 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h4><p>网上下载到的githack基本只适用于python2。而目前大部分使用的python版本都是python3。</p>
-<h4 id="方案一：安装python2来运行githack"><a href="#方案一：安装python2来运行githack" class="headerlink" title="方案一：安装python2来运行githack"></a>方案一：安装python2来运行githack</h4><p><strong>下载python2和python3</strong></p>
-<p>官网<a href="https://www.python.org/%E4%B8%8B%E8%BD%BDpython2%E5%92%8Cpython3%E6%88%96%E8%80%85%E5%BA%94%E7%94%A8%E5%95%86%E5%9F%8E%E4%B8%AD%E4%B8%8B%E8%BD%BD%E3%80%82%E5%AE%89%E8%A3%85%E5%BB%BA%E8%AE%AE%E4%B8%80%E8%B7%AF%E9%BB%98%E8%AE%A4next%E4%B8%8B%E5%8E%BB%E3%80%82">https://www.python.org/下载python2和python3或者应用商城中下载。安装建议一路默认next下去。</a></p>
-<p><strong>配置python2.x的环境变量</strong></p>
-<p>需要将两个目录添加到path环境变量中：</p>
-<ul>
-<li>python命令文件所在目录： python 2.x安装目录</li>
-<li>pip、easy_install等其他脚本文件所在目录： python 2.x安装目录下的Scripts目录</li>
-</ul>
-<p>找到此电脑选择属性或者右键我的电脑找到属性——&gt;高级系统设置——&gt;环境变量——&gt;用户变量下的PATH——&gt;编辑</p>
-<p>将下面这两行内容添加到Path变量的<strong>开始位置</strong>：（先新建后上移到第一行）<br>C:\Python27<br>C:\Python27\Scripts\</p>
-<p><strong>将python 2.x 和 python 3.x的相关命令区分开来</strong></p>
-<p>找到 python2 和 python3 的安装目录，修改 python2.x 和 python3.x 中 <strong>python.exe</strong> 的名称为 <strong>python2.exe</strong>和 <strong>python3.exe</strong>。</p>
-<p>然后运行cmd命令，输入python2 可以运行 python2.x 版本，输入 python3 即可运行 python3.x 版本。如下图。</p>
-<img src="/images/GitHack/image-20210926021728278.png" alt="image-20210926021728278" style="zoom:37%;" />
-
-<p><strong>解决两者pip共存问题</strong></p>
-<p>Python安装包需要用到包管理工具pip，但当同时安装python2和python3的时候，pip只是其中一个版本。为了保证共存，需要分别重新安装pip。</p>
-<p>1.安装pip2：在命令窗口中输入：python2 -m pip install –upgrade pip –force-reinstall，如下图显示重新安装成功。</p>
-<img src="/images/GitHack/image-20210926022035773.png" alt="image-20210926022035773" style="zoom:30%;" />
-
-<p>2.安装 pip3： 在命令窗口中输入：python3 -m pip install –upgrade pip –force-reinstall 。如果没有成功则可能在之前已经重新安装过pip.exe了，需要将它从文件夹中删除再输入命令。如下图显示重新安装成功。</p>
-<img src="/images/GitHack/image-20210926022756669.png" alt="image-20210926022756669" style="zoom:50%;" />
-
-<p>3.现在可以通过pip2 -V 和 pip3-V 查看两个版本的pip信息，以后只需运行 pip2 install XXX 和 pip3 install XXX 即可安装各自的python包。到这里 pip共存问题 也已经解决啦！</p>
-<p><strong>使用GitHack</strong></p>
-<p>在含有GitHack.py的文件夹的地址栏中输入cmd打开命令窗口</p>
-<p>输入命令：python2 GitHack.py URL.git来使用githack</p>
-<img src="/images/GitHack/image-20210926023209128.png" alt="image-20210926023209128" style="zoom:30%;" />
-
-<h4 id="方案二：修改文件，使之适应python3环境"><a href="#方案二：修改文件，使之适应python3环境" class="headerlink" title="方案二：修改文件，使之适应python3环境"></a>方案二：修改文件，使之适应python3环境</h4><p>将python2文件修改为python3文件：</p>
-<p>python2的print改为python3的print()；</p>
-<p>python3中合并了部分包，需要将import xxx改为from xxx import xxx。</p>
-<p>其余根据运行提示来修改。</p>
-<p>输入命令：python3 GitHack.py URL.git来使用githack</p>
-<img src="/images/GitHack/image-20210927005148911.png" alt="image-20210927005148911" style="zoom:30%;" />
-]]></content>
-      <categories>
-        <category>工具安装指南</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>VMware</title>
-    <url>/2021/07/10/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/VMware/</url>
-    <content><![CDATA[<h2 id="虚拟机issue"><a href="#虚拟机issue" class="headerlink" title="虚拟机issue"></a>虚拟机issue</h2><p>注：本文虚拟机为VMware Workstation 16 Player（非商业用途）且以ubuntu-16.04.7-desktop-amd64（Linux系统）为镜像。</p>
-<p>安装好后打开软件，点击创建新虚拟机。按照提示步骤完成即可。</p>
-<p>快捷键ctrl+alt+t可以召唤终端，利用命令sudo passwd root设置root模式密码。设置完成后，可用命令su root进入特权模式/管理员模式。用命令python -V（大写）和pip -V查询python和pip版本，ubuntu自带的python2的版本是2.7.12，python3的版本是3.5.2，pip版本是8.1.1。</p>
-<img src="/images/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210810234635531.png" alt="image-20210810234635531" style="zoom: 67%;" />
-
-<p>如果没有查询到则根据提示输入命令sudo apt install python-pip进行下载。</p>
-<img src="/images/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210810234119104.png" alt="image-20210810234119104" style="zoom: 67%;" />
-
-<p>安装过程中很多错误产生的都是因为这两个的版本太低。</p>
-<p>解决方法：用命令wget <a href="https://bootstrap.pypa.io/pip/3.5/get-pip.py%E5%9C%A8%E8%AF%A5%E7%BD%91%E5%9D%80%E4%B8%8B%E8%BD%BDpip%E3%80%82">https://bootstrap.pypa.io/pip/3.5/get-pip.py在该网址下载pip。</a></p>
-<img src="/images/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210810235410784.png" alt="image-20210810235410784" style="zoom:50%;" />
-
-<p>这个网址可以安装和python3兼容的pip 20.3.4版本。</p>
-<img src="/images/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210811000107849.png" alt="image-20210811000107849" style="zoom:50%;" />
-
-<p>按上述操作完成后，各版本如下。</p>
-<img src="/images/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210811000322681.png" alt="image-20210811000322681" style="zoom: 67%;" />
-
-<p>之后如果要用python运行文件，建议使用python3。</p>
-<p>格式：python3 文件名（包括扩展名）。例如：python3 flag.py</p>
-<p>如果要进入某个文件夹则用命令“cd 文件夹”</p>
-<img src="/images/VMware/image-20210814203832735.png" alt="image-20210814203832735" style="zoom: 67%;" />
-
-<p>小tip：小白不建议更新工具等，除非万不得已，不然系统提示的更新忽略即可，否则可能出现新的问题。</p>
-<p>在利用Linux系统（虚拟机）的vim命令修复文件时，如果出现下图情况，则输入命令“sudo apt-get install ctags”后再输入“sudo apt-get install vim”，执行完毕后就可以正常访问了。</p>
-<img src="/images/VMware/image-20210908174145951.png" alt="image-20210908174145951" style="zoom:50%;" />
-
-
-
-]]></content>
-      <categories>
-        <category>工具安装指南</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>burpsuite</title>
-    <url>/2021/09/18/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/burpsuite/</url>
-    <content><![CDATA[<h2 id="burpsuite安装与使用"><a href="#burpsuite安装与使用" class="headerlink" title="burpsuite安装与使用"></a>burpsuite安装与使用</h2><p>注：建议与火狐浏览器配合使用。</p>
-<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>Burp Suite 是用于攻击web 应用程序的集成平台，包含了许多工具。Burp Suite为这些工具设计了许多接口，以加快攻击应用程序的过程。所有工具都共享一个请求，并能处理对应的HTTP 消息、持久性、认证、代理、日志、警报。</p>
-<h4 id="安装与使用"><a href="#安装与使用" class="headerlink" title="安装与使用"></a>安装与使用</h4><p><strong>burpsuite安装：</strong></p>
-<p>我是直接在应用上安装的burpsuite社区版。也可进入官网下载。</p>
-<p>官网链接：<a href="https://portswigger.net/burp">https://portswigger.net/burp</a></p>
-<img src="/images/burpsuite/image-20210918003959781.png" alt="image-20210918003959781" style="zoom:33%;" />
-
-<p><strong>浏览器代理设置：</strong></p>
-<p>点击浏览器页面右上角进入设置拉到最低找到网络设置而后点击设置。</p>
-<img src="/images/burpsuite/image-20210918004410626.png" alt="image-20210918004410626" style="zoom:25%;" />
-
-<p>点手动配置代理将代理设置成与burpsuite上的相同。</p>
-<img src="/images/burpsuite/image-20210918004523344.png" alt="image-20210918004523344" style="zoom:25%;" />
-
-<img src="/images/burpsuite/image-20210918005522266.png" alt="image-20210918005522266" style="zoom:45%;" />
-
-<p><strong>！此处还需解开个限制</strong></p>
-<img src="/images/burpsuite/image-20210918005659174.png" alt="image-20210918005659174" style="zoom:50%;" />
-
-
-
-<p>方法：</p>
-<p>打开设置将<img src="/images/burpsuite/image-20210918005938252.png" alt="image-20210918005938252" style="zoom:50%;" />改为<img src="/images/burpsuite/image-20210918010015702.png" alt="image-20210918010015702" style="zoom:60%;" /></p>
-<p>在访问后的搜索框内输入network.proxy.allow_hijacking_localhost，将fasle改为true。</p>
-<img src="/images/burpsuite/image-20210918010107193.png" alt="image-20210918010107193" style="zoom:30%;" />
-
-<p>修改完成后回到设置会发现变化。</p>
-<img src="/images/burpsuite/image-20210918010254513.png" alt="image-20210918010254513" style="zoom:60%;" />
-
-<p><strong>使用：（以爆破为栗子）</strong></p>
-<p>先将浏览器的代理关闭即不使用代理方可访问题目网站。</p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210913005916028.png" alt="image-20210913005916028" style="zoom:50%;" />
-
-<p>此为ctfhub中的弱口令题目，猜测用户名为admin，只需要爆破密码即可。</p>
-<p>将浏览器的代理开启，打开burpsuite进行抓包，输入用户名admin以及任一密码（例如：123）</p>
-<p>右击下图命令选择send to intruder进行爆破</p>
-<img src="/images/burpsuite/image-20210918010923654.png" alt="image-20210918010923654" style="zoom:33%;" />
-
-<p>设置intruder——payload，导入字典后点击start attack</p>
-<img src="/images/burpsuite/image-20210918011229722.png" alt="image-20210918011229722" style="zoom:32.5%;" />
-
-<p>找到爆破长度不同的即为密码，查看response得到flag。</p>
-<img src="/images/burpsuite/image-20210918011351469.png" alt="image-20210918011351469" style="zoom:40%;" />
-]]></content>
-      <categories>
-        <category>工具安装指南</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>dirsearch</title>
-    <url>/2021/09/25/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dirsearch/</url>
-    <content><![CDATA[<h2 id="dirsearch安装与使用"><a href="#dirsearch安装与使用" class="headerlink" title="dirsearch安装与使用"></a>dirsearch安装与使用</h2><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>dirsearch是一个python开发的目录扫描工具，目的是扫描网站的敏感文件和目录从而找到突破口。</p>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>进入官网下载<a href="https://github.com/maurosoria/dirsearch%EF%BC%8C%E7%82%B9%E5%87%BB%E4%BB%A3%E7%A0%81code%E7%84%B6%E5%90%8E%E4%B8%8B%E8%BD%BD%E5%8E%8B%E7%BC%A9%E5%8C%85%E3%80%82">https://github.com/maurosoria/dirsearch，点击代码code然后下载压缩包。</a></p>
-<img src="/images/dirsearch/image-20210925153641733.png" alt="image-20210925153641733" style="zoom:50%;" />
-
-<p>下载完成后解压。打开进入到dirsearch目录，cmd进入到dirsearch.py目录。可直接在这个目录下输入cmd进入，这样就不需要cd一级一级的进入了。</p>
-<img src="/images/dirsearch/image-20210925154051408.png" alt="image-20210925154051408" style="zoom:33%;" />
-
-<p>输入命令python dirsearch.py -u <a href="https://www.baidu.com/">https://www.baidu.com</a> -e *进行测试。</p>
-<p>问题1：出现ModuleNotFoundError: No module named ‘chardet’</p>
-<img src="/images/dirsearch/image-20210925154920335.png" alt="image-20210925154920335" style="zoom:63%;" />
-
-<p>解决方法：手动进入网址<a href="https://github.com/chardet/chardet%E4%B8%8B%E8%BD%BDchardet%E6%A8%A1%E5%9D%97%E3%80%82%E8%A7%A3%E5%8E%8B%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8Ccmd%E8%BF%9B%E5%85%A5%E5%91%BD%E4%BB%A4%E7%AA%97%E5%8F%A3%E8%BE%93%E5%85%A5%E5%91%BD%E4%BB%A4python">https://github.com/chardet/chardet下载chardet模块。解压打开文件夹，cmd进入命令窗口输入命令python</a> setup.py install进行安装。</p>
-<img src="/images/dirsearch/image-20210925160047567.png" alt="image-20210925160047567" style="zoom:33%;" />
-
-<p>问题2：出现ModuleNotFoundError: No module named ‘markupsafe’</p>
-<img src="/images/dirsearch/image-20210925160213872.png" alt="image-20210925160213872" style="zoom:63%;" />
-
-<p>解决方法：直接win+R召唤出命令窗口，输入命令pip install markupsafe进行安装。</p>
-<p>没有问题之后再次进行测试就可以了。</p>
-<img src="/images/dirsearch/image-20210925160510879.png" alt="image-20210925160510879" style="zoom:70%;" />
-
-]]></content>
-      <categories>
-        <category>工具安装指南</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>dvcs-ripper</title>
-    <url>/2021/09/29/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dvcs-ripper/</url>
-    <content><![CDATA[<h2 id="dvcs-ripper安装与使用"><a href="#dvcs-ripper安装与使用" class="headerlink" title="dvcs-ripper安装与使用"></a>dvcs-ripper安装与使用</h2><p>注：适用于Linux系统，windows用户可以安装在虚拟机上。</p>
-<h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>一款perl的版本控制软件信息泄露利用工具，支持SVN, GIT, Mercurial/hg, bzr…</p>
-<h4 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h4><p>在网址<a href="https://github.com/kost/dvcs-ripper%E4%B8%8A%E8%BF%9B%E8%A1%8C%E4%B8%8B%E8%BD%BD%E5%8E%8B%E7%BC%A9%E5%8C%85%EF%BC%8C%E8%A7%A3%E5%8E%8B%E5%90%8E%E6%8B%96%E8%BF%9B%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%AD%E3%80%82">https://github.com/kost/dvcs-ripper上进行下载压缩包，解压后拖进虚拟机中。</a></p>
-<p>进行简单配置相关要求的组件：sudo apt-get install perl libio-socket-ssl-perl libdbd-sqlite3-perl libclass-dbi-perl libio-all-lwp-perl</p>
-<h4 id="栗子"><a href="#栗子" class="headerlink" title="栗子"></a>栗子</h4><p>以ctfhub的svn泄露为栗子。</p>
-<p>进入dvcs-ripper-master文件夹右键进入终端，输入命令perl rip-svn.pl -u <a href="http://challenge-277a34a7a99ae035.sandbox.ctfhub.com:10800/.svn/">http://challenge-277a34a7a99ae035.sandbox.ctfhub.com:10800/.svn/</a></p>
-<img src="/source/images/dvcs-ripper/image-20211001182915450.png" alt="image-20211001182915450" style="zoom:50%;" />
-
-<p>再tree看看：根据提示安装：sudo apt install tree。然后输入命令：tree .svn进行查看</p>
-<img src="/source/images/dvcs-ripper/image-20211001183200968.png" alt="image-20211001183200968" style="zoom:50%;" />
-
-<p>需要注意的是，.svn是隐藏文件，在linux下必须ls -al才能看到。<br>根据题目的提示，Flag 在服务端旧版本的源代码中。<br>注意tree中的pristine，里面一般存储的是代码的历史版本。直接进入目录，然后读取文件就可以得到flag了：</p>
-<img src="/source/images/dvcs-ripper/image-20211001183703701.png" alt="image-20211001183703701" style="zoom:50%;" />
-
-<p>由于我在文件夹中没有看到那些文件夹，所以是一路cd进到be文件夹，再用cat命令打开文件查看flag。</p>
-]]></content>
-      <categories>
-        <category>工具安装指南</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>sqli-labs</title>
-    <url>/2021/10/02/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/sqli-labs/</url>
-    <content><![CDATA[<h2 id="sqli-labs"><a href="#sqli-labs" class="headerlink" title="sqli-labs"></a>sqli-labs</h2><h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>SQLI-LABS 是一个学习 SQLI 的平台 GET 和 POST 场景涵盖了以下实验室：</p>
-<ol>
-<li>基于错误的注入（联合选择）<ol>
-<li>细绳</li>
-<li>虎牙</li>
-</ol>
-</li>
-<li>基于错误的注入（基于双重注入）</li>
-<li>盲注：1.Boolian based 2.Time Based</li>
-<li>更新查询注入。</li>
-<li>插入查询注入。</li>
-<li>标头注射。1.基于Referer。2.基于UserAgent。3.基于Cookie。</li>
-<li>二阶注射</li>
-<li>绕过WAF<ol>
-<li>绕过黑名单过滤器 剥离评论 剥离 OR &amp; AND 剥离空格和评论 剥离 UNION &amp; SELECT</li>
-<li>阻抗失配</li>
-</ol>
-</li>
-<li>绕过addslashes()</li>
-<li>绕过 mysql_real_escape_string。（特殊情况下）</li>
-<li>堆叠 SQL 注入。</li>
-<li>二级通道提取</li>
-</ol>
-<h4 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h4><p>需要安装以下环境 </p>
-<ol>
-<li><p>apache+mysql+php </p>
-</li>
-<li><p>Tomcat+mysql+java（部分关卡需要）</p>
-</li>
-</ol>
-<p>下载sqli-labs地址：<a href="https://github.com/Audi-1/sqli-labs">https://github.com/Audi-1/sqli-labs</a></p>
-<p>下载phpstudy地址：<a href="https://www.xp.cn/download.html">https://www.xp.cn/download.html</a></p>
-<p>将下载的 SQLi-Labs.zip 解压到phpstudy网站根目录下即WWW文件夹中。</p>
-<img src="../../source/images/sqli-labs/image-20211003014314499.png" alt="image-20211003014314499" style="zoom:50%;" />
-
-<p>修改 db-creds.inc 里（sqli-labs-master下的sql-connections文件夹中）的代码如下：因为phpstudy默认的mysql数据库地址是“127.0.0.1 或 localhost”，用户名和密码都是”root”。主要是修改’$dbpass‘为root。</p>
-<img src="../../source/images/sqli-labs/image-20211003014504175.png" alt="image-20211003014504175" style="zoom:50%;" />
-
-<p><strong>旧版</strong>：</p>
-<p>启动phpstudy.exe</p>
-<img src="../../source/images/sqli-labs/image-20211003015239021.png" alt="image-20211003015239021" style="zoom:50%;" />
-
-<p>在浏览器地址栏输入：<a href="http://127.0.0.1/sqli-labs/%EF%BC%88%E5%9B%A0%E5%85%B7%E4%BD%93%E6%96%87%E4%BB%B6%E5%92%8C%E8%AE%BE%E7%BD%AE%E8%80%8C%E5%B7%B2%EF%BC%89">http://127.0.0.1/sqli-labs/（因具体文件和设置而已）</a></p>
-<img src="../../source/images/sqli-labs/image-20211003015514897.png" alt="image-20211003015514897" style="zoom:50%;" />
-
-<p><strong>新版</strong>：</p>
-<p>启动框框中的三个套件：</p>
-<img src="../../source/images/sqli-labs/image-20211003020935371.png" alt="image-20211003020935371" style="zoom:30%;" />
-
-<p>注意网站的物理路径和Nginx设置的网站目录要正确。</p>
-<p>在浏览器地址栏输入：<a href="http://localhost/sqli-labs-master/">http://localhost/sqli-labs-master/</a></p>
-<img src="../../source/images/sqli-labs/image-20211003021439234.png" alt="image-20211003021439234" style="zoom:50%;" />
-
-
-
-<p>点击第一个，如下图所示即安装成功：</p>
-<img src="../../source/images/sqli-labs/image-20211003022438705.png" alt="image-20211003022438705" style="zoom:25%;" />
-
-<p>如果出现如下图错误，则进入软件管理选择php5版本安装，再进入网站——管理——php版本即可。</p>
-<img src="../../source/images/sqli-labs/image-20211003022738317.png" alt="image-20211003022738317" style="zoom:30%;" />
-
-<p>然后浏览器打开 “<a href="http://localhost/sqli-labs-master&quot;%E5%90%91%E4%B8%8B%E7%BF%BB%EF%BC%8C%E5%B0%B1%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%E6%9C%89%E5%BE%88%E5%A4%9A%E4%B8%8D%E5%90%8C%E7%9A%84%E6%B3%A8%E5%85%A5%E7%82%B9%E4%BA%86%EF%BC%8C%E5%88%86%E4%B8%BA%E5%9F%BA%E6%9C%ACSQL%E6%B3%A8%E5%85%A5%E3%80%81%E9%AB%98%E7%BA%A7SQL%E6%B3%A8%E5%85%A5%E3%80%81SQL%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%E3%80%81%E6%8C%91%E6%88%98%E5%9B%9B%E4%B8%AA%E9%83%A8%E4%BB%BD%EF%BC%8C%E6%80%BB%E5%85%B1%E7%BA%A675%E4%B8%AASQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E3%80%82">http://localhost/sqli-labs-master&quot;向下翻，就可以看到有很多不同的注入点了，分为基本SQL注入、高级SQL注入、SQL堆叠注入、挑战四个部份，总共约75个SQL注入漏洞。</a></p>
-<img src="../../source/images/sqli-labs/image-20211003023448081.png" alt="image-20211003023448081" style="zoom:30%;" />
-
-]]></content>
-      <categories>
-        <category>工具安装指南</category>
-      </categories>
-  </entry>
-  <entry>
     <title>CTFHUB(WEB)-SQL注入</title>
     <url>/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/</url>
     <content><![CDATA[<h3 id="WEB工具配置"><a href="#WEB工具配置" class="headerlink" title="WEB工具配置"></a>WEB工具配置</h3><h4 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h4><h5 id="整数型注入"><a href="#整数型注入" class="headerlink" title="整数型注入"></a>整数型注入</h5><p>题目：</p>
@@ -1746,6 +1720,32 @@ except Exception:
       </categories>
   </entry>
   <entry>
+    <title>第四篇博客</title>
+    <url>/2021/07/20/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%9B%9B%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2 id="MISC初步学习"><a href="#MISC初步学习" class="headerlink" title="MISC初步学习"></a>MISC初步学习</h2><h3 id="流量分析"><a href="#流量分析" class="headerlink" title="流量分析"></a>流量分析</h3><h4 id="小知识："><a href="#小知识：" class="headerlink" title="小知识："></a>小知识：</h4><p>注释：可练习题目进行掌握</p>
+<p>（1）在使用抓包软件进行流量分析时，抓到的包往往含有数据链路层、网络层、传输层、应用层四个部分，其中每一个部分在传递到不同的层面的时候会被利用并丢弃。</p>
+<p>（2）wreshark抓到的包工作在数据链路层（若网卡特殊则也可抓到物理层，启动慢是因为在寻找接口），而burpsuite抓到的http包则工作在应用层。</p>
+<p>（3）物理层传输方式：WIFI无线通信（电磁波）、千兆网线（八根导线，百兆为四根）</p>
+<p>（4）当同时连接网线和WIFI时，因为物理网口的跃点数比无线网口的跃点数低，跃点数越低则优先级越高，故选择以太网接口进行查看。</p>
+<p>（5）视频/直播的数据很多是走UDP通道的。</p>
+<p>（6）http与https：https协议是加密的</p>
+<p>（7）加密协议统称为tls</p>
+<p>（8）集线器会将信号转发给除了发送源的其他所有端口，因此不安全，容易被窃听。</p>
+<p>（9）当多台计算机通过交换机（对照交换表精准转发，隔离冲突域）相连时，它们采用的通信方式是数据链路层的协议。当某台计算机想给另一个计算机发送消息时，需要在以太帧头中指明发送方和接收方的地址，交换机在接收到信号之后会根据这个地址正确地将信号转发至某一个端口（即网线），从而避免了网络内所有计算机都能收到信号。以太帧中的数据是我们想要传输的信息，包括接下来的IP数据包。想要转发给其它所有计算机的时候，目的MAC地址改为全0（广播地址）。</p>
+<p>（10）当网卡地址变动时需刷新交换表，因此启用网络层配一个虚拟地址即IP地址，IP地址和MAC地址可以一对多也可以多对一。ARP协议将网络地址转换为物理地址。</p>
+<p>（11）路由器进行跨网段转发。家用路由器集成多种功能。</p>
+<p>（12）QQ聊天基于QICQ协议。</p>
+<p>（13）用软件ubuntu连接服务器后输入命令nc -l 8888对8888端口进行监听。在windows powershell中输入命令ncat git.nepwn com 8888回车后输入内容，便可在ubuntu窗口接收到。</p>
+<p>可在windows powershell中输入命令nslookup git.nepwn com进行服务器IP地址的查询。</p>
+<p>可在ubuntu中输入命令ncat -lk 8888 –chat来进行多人聊天服务器的安装。</p>
+<p>（14）http基于tcp，http端口为80。</p>
+<p>（15）要分析病毒或者恶意软件建议在虚拟机里进行，这样就不会干扰到我们的宿主机。</p>
+<p>（16）用wireshark/科来网络分析系统分析报文寻找flag。</p>
+<p>有时查找到的flag需要用在线工具进行解密，有时在用wireshark做流量分析时也要将软件进行解密设置（打开对应的密钥文件），否则flag藏在加密的数据包里面而无法查找。</p>
+<p>有些在请求包里面的题目可以用一般的流量导出的方法，然后在ubuntu中输入命令grep flag -rna .进行查找。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>CTFHUB(WEB)-XSS</title>
     <url>/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-XSS/</url>
     <content><![CDATA[<h3 id="WEB工具配置"><a href="#WEB工具配置" class="headerlink" title="WEB工具配置"></a>WEB工具配置</h3><h4 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h4><h5 id="反射型"><a href="#反射型" class="headerlink" title="反射型"></a>反射型</h5><p>题目：</p>
@@ -1802,26 +1802,256 @@ except Exception:
       </categories>
   </entry>
   <entry>
-    <title>CTFHUB(WEB)-前置技能</title>
-    <url>/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/</url>
-    <content><![CDATA[<h3 id="WEB前置技能"><a href="#WEB前置技能" class="headerlink" title="WEB前置技能"></a>WEB前置技能</h3><h4 id="HTTP协议——请求方式"><a href="#HTTP协议——请求方式" class="headerlink" title="HTTP协议——请求方式"></a>HTTP协议——请求方式</h4><p>题目：</p>
-<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905194147045.png" alt="image-20210905194147045" style="zoom:33%;" />
+    <title>CTFHUB(WEB)-信息泄露</title>
+    <url>/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/</url>
+    <content><![CDATA[<h3 id="WEB工具配置"><a href="#WEB工具配置" class="headerlink" title="WEB工具配置"></a>WEB工具配置</h3><h4 id="信息泄露"><a href="#信息泄露" class="headerlink" title="信息泄露"></a>信息泄露</h4><h5 id="目录遍历"><a href="#目录遍历" class="headerlink" title="目录遍历"></a>目录遍历</h5><p>题目：</p>
+<img src="/source/images/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/image-20211004013340391.png" alt="image-20211004013340391" style="zoom:35%;" />
 
 <p>解题：</p>
-<p>猜想CTF**B请求方式为ctfhub</p>
-<p>姿势1：burpsuite抓包</p>
-<p>使用burpsuite进行抓包，发送到repeatr把get方式改为CTFHUB的请求方式，点击send，就会返回含有flag的数据包。如下图。（图来自<a href="https://blog.csdn.net/hgjiayou/article/details/106212933%EF%BC%89">https://blog.csdn.net/hgjiayou/article/details/106212933）</a></p>
-<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905195259986.png" alt="image-20210905195259986" style="zoom:60%;" />
+<p>一路点击文件查看即可找到flag</p>
+<img src="/source/images/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/image-20211004013641358.png" alt="image-20211004013641358" style="zoom:35%;" />
 
-<p>姿势2：curl命令</p>
-<p>在cmd命令窗口中输入“curl -v -X CTFHUB <a href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E2%80%9D%E5%8D%B3%E5%8F%AF%E5%BE%97%E5%88%B0flag%E4%BF%A1%E6%81%AF">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php”即可得到flag信息</a></p>
-<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905195437094.png" alt="image-20210905195437094" style="zoom:45%;" />
+<h5 id="PHPINFO"><a href="#PHPINFO" class="headerlink" title="PHPINFO"></a>PHPINFO</h5><p>题目：</p>
+<p>点击题目所给链接后再点击查看phpinfo进行查看</p>
+<img src="/source/images/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/image-20211004013908030.png" alt="image-20211004013908030" style="zoom:33%;" />
+
+<p>解题：</p>
+<p>启动网页查找功能，输入ctfhub或ctf进行搜索即可找到flag，如下图所示。</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908000603599.png" alt="image-20210908000603599" style="zoom:30%;" />
+
+<h5 id="备份文件下载"><a href="#备份文件下载" class="headerlink" title="备份文件下载"></a>备份文件下载</h5><h6 id="网站源码"><a href="#网站源码" class="headerlink" title="网站源码"></a>网站源码</h6><p>（待完善如何找到<a href="http://www.zip)/">www.zip）</a></p>
+<p>题目：</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908002154159.png" alt="image-20210908002154159" style="zoom:30%;" />
+
+<p>解题：</p>
+<p>使用扫描工具（如：dirbuster）对网站目录进行扫描查找是否有备份文件，扫描的文件名和类型就是提示给出的，最终扫描得到<a href="https://blog.csdn.net/www.zip">www.zip文件，输入网址URL/www.zip</a>得到压缩文件，解压后打开如下图所示。</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908002334915.png" alt="image-20210908002334915" style="zoom:40%;" />
+
+<p>在原题目网页的url后面加上“/flag_3254114626.txt”进行访问即可获取到flag。</p>
+<h6 id="bak文件泄露"><a href="#bak文件泄露" class="headerlink" title="bak文件泄露"></a>bak文件泄露</h6><p>题目：</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908162052011.png" alt="image-20210908162052011" style="zoom:30%;" />
+
+<p>解题：</p>
+<p>当开发人员在线上环境中对源代码进行了备份操作，并且将备份文件放在了 web 目录下，就会引起网站源码泄露。有些时候网站管理员可能为了方便，会在修改某个文件的时候先复制一份，将其命名为xxx.bak。而大部分Web Server对bak文件并不做任何处理，导致可以直接下载，从而获取到网站某个文件的源代码。</p>
+<p>根据题目所给提示，可知flag应该在index.php的备份文件里面，于是访问/index.php.bak，下载文件得到flag。如果下载是安装包则将文件的打开方式改为记事本，即可查看文件内容。</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908162308629.png" alt="image-20210908162308629" style="zoom:25%;" />
+
+<h6 id="vim缓存"><a href="#vim缓存" class="headerlink" title="vim缓存"></a>vim缓存</h6><p>题目：</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908163037011.png" alt="image-20210908163037011" style="zoom:40%;" />
+
+<p>解题：</p>
+<p>访问/.index.php.swp（注意那个点.），得到交换文件.swp。可以利用vim命令进行复原，vim命令需要在linux环境下执行，因此将文件放进虚拟机中，在终端输入命令“vim -r index.php.swp”后根据提示点击enter等即可找到flag。</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908173754648.png" alt="image-20210908173754648" style="zoom:70%;" />
 
 <p>补充知识：</p>
-<p>curl</p>
-<p><strong>cURL</strong>是一个利用URL语法在<a href="https://baike.baidu.com/item/%E5%91%BD%E4%BB%A4%E8%A1%8C">命令行</a>下工作的文件传输工具。用来请求 Web 服务器。</p>
-<p>学习链接：<a href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html">https://www.ruanyifeng.com/blog/2019/09/curl-reference.html</a></p>
-<p>curl -v -X CTFHUB <a href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E8%A1%A8%E7%A4%BA%E4%BB%A5CTFHUB%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E8%AE%BF%E9%97%AEhttp://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E5%B9%B6%E6%9F%A5%E7%9C%8B%E9%80%9A%E4%BF%A1%E5%85%A8%E8%BF%87%E7%A8%8B%E3%80%82">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php表示以CTFHUB请求方式访问http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php并查看通信全过程。</a></p>
+<p>当开发人员在线上环境中使用 vim 编辑器，在使用过程中会留下 vim 编辑器缓存，当vim异常退出时，缓存会一直留在服务器上，引起网站源码泄露。</p>
+<p>非正常关闭vim编辑器时会生成一个.swp文件，如果编辑完成之后，正常退出，那么这个swp文件就会被自动删除。在使用vim时会创建临时缓存文件，关闭vim时缓存文件则会被删除，当vim异常退出后，因为未处理缓存文件，导致可以通过缓存文件恢复原始文件内容。</p>
+<p>以 index.php 为例：第一次产生的交换文件名为 .index.php.swp；再次意外退出后，将会产生名为 .index.php.swo 的交换文件；第三次产生的交换文件则为 .index.php.swn。</p>
+<h6 id="DS-Store"><a href="#DS-Store" class="headerlink" title=".DS_Store"></a>.DS_Store</h6><p>题目：</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908181300032.png" alt="image-20210908181300032" style="zoom:40%;" />
+
+<p>解题：</p>
+<p>.DS_Store 是 Mac OS 保存文件夹的自定义属性的隐藏文件。通过.DS_Store可以知道这个目录里面所有文件的清单。</p>
+<p>猜测直接访问/.DS_Store（注意有个点.）看有什么收获，发现下载了一个文件DS_Store，放进虚拟机，用命令”cat DS_Store”打开发现是一个特殊文件。</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908181628218.png" alt="image-20210908181628218" style="zoom:60%;" />
+
+<p>利用浏览器访问，将“0b7abce98d55b13ab29ec4fdebcb2239.txt”放在url后面进行访问即可得到flag。</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908181801977.png" alt="image-20210908181801977" style="zoom:53%;" />
+
+<h5 id="Git泄露"><a href="#Git泄露" class="headerlink" title="Git泄露"></a>Git泄露</h5><p>当前大量开发人员使用git进行版本控制，对站点自动部署。如果配置不当,可能会将.git文件夹直接部署到线上环境。这就引起了git泄露漏洞。请尝试使用BugScanTeam的GitHack完成以下题目。</p>
+<h6 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h6><p>题目：</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908182154099.png" alt="image-20210908182154099" style="zoom:40%;" />
+
+<p>解题：</p>
+<p>使用dirsearch扫描url，发现url低下存在敏感文件.git</p>
+<p>命令：python3 dirsearch.py -u <url> -e * </p>
+<p>使用GitHack进行文件恢复，然后在GitHack所在目录下的dist目录下得到恢复的文件。</p>
+<p>python2 GitHack.py <url>  (url格式：http(s)://xxx/.git)</p>
+<p>进入dist目录中的刚恢复的文件内打开git，读取git日志，发现：</p>
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210926023538190.png" alt="image-20210926023538190" style="zoom:50%;" />
+
+<p>回退到“add flag”的那个版本，即可查看flag</p>
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210926024140589.png" alt="image-20210926024140589" style="zoom:50%;" />
+
+<p>补充知识：</p>
+<p>Git 基本操作的学习地址：<a href="https://www.runoob.com/git/git-basic-operations.html">Git 基本操作 | 菜鸟教程 (runoob.com)</a></p>
+<p>创建仓库命令</p>
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">git init</td>
+<td align="left">初始化仓库</td>
+</tr>
+<tr>
+<td align="left">git clone</td>
+<td align="left">拷贝一份远程仓库，也就是下载一个项目。</td>
+</tr>
+</tbody></table>
+<p>提交与修改</p>
+<p>Git 的工作就是创建和保存你的项目的快照及与之后的快照进行对比。</p>
+<p>下表列出了有关创建与提交你的项目的快照的命令：</p>
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">git add</td>
+<td align="left">添加文件到仓库</td>
+</tr>
+<tr>
+<td align="left">git status</td>
+<td align="left">查看仓库当前的状态，显示有变更的文件。</td>
+</tr>
+<tr>
+<td align="left">git diff</td>
+<td align="left">比较文件的不同，即暂存区和工作区的差异。</td>
+</tr>
+<tr>
+<td align="left">git commit</td>
+<td align="left">提交暂存区到本地仓库。</td>
+</tr>
+<tr>
+<td align="left">git reset</td>
+<td align="left">回退版本。</td>
+</tr>
+<tr>
+<td align="left">git rm</td>
+<td align="left">删除工作区文件。</td>
+</tr>
+<tr>
+<td align="left">git mv</td>
+<td align="left">移动或重命名工作区文件。</td>
+</tr>
+</tbody></table>
+<p>提交日志</p>
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">git log</td>
+<td align="left">查看历史提交记录</td>
+</tr>
+<tr>
+<td align="left">git blame <file></td>
+<td align="left">以列表形式查看指定文件的历史修改记录</td>
+</tr>
+</tbody></table>
+<p>远程操作</p>
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">git remote</td>
+<td align="left">远程仓库操作</td>
+</tr>
+<tr>
+<td align="left">git fetch</td>
+<td align="left">从远程获取代码库</td>
+</tr>
+<tr>
+<td align="left">git pull</td>
+<td align="left">下载远程代码并合并</td>
+</tr>
+<tr>
+<td align="left">git push</td>
+<td align="left">上传远程代码并合并</td>
+</tr>
+</tbody></table>
+<h6 id="Stash"><a href="#Stash" class="headerlink" title="Stash"></a>Stash</h6><p>题目：</p>
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928115357915.png" alt="image-20210928115357915" style="zoom:40%;" />
+
+<p>解题：</p>
+<p>用dirsearch扫描发现.git文件，GitHack恢复到本地dist目录下，进入恢复的目录下打开git操作</p>
+<p>扫描命令：python3 dirsearch.py -u <URL> -e *</p>
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928120503060.png" alt="image-20210928120503060" style="zoom: 33%;" />
+
+<p>这里使用Stash栈pop出flag。</p>
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928121008083.png" alt="image-20210928121008083" style="zoom:50%;" />
+
+<p>补充知识：</p>
+<p>git stash的基本使用方法：</p>
+<p>​    git stash是git一个很有用的命令，它的作用是把当前未提交的修改暂存起来，让仓库还原到最后一次提交的状态。常用于更新、同步代码或者保存多个修改版本等情况下。git stash命令会将仓库中的修改保存，建立一条stash信息，默认的说明信息是最后一次提交的节点号和提交说明。</p>
+<ol>
+<li>git stash save ‘说明信息’：说明信息是指定的内容，更加利于了解stash的内容。</li>
+<li>git stash list：列出当前仓库下所有的stash条目，每一条stash用stash@{n}标识。</li>
+<li>git stash pop [stash]： 将stash的内容弹出，默认弹出最上面的那条，即stash@{0}。此外还可以在pop后加stash@{n}来指定要弹出的stash条目。</li>
+<li>git stash drop [stash]：丢弃stash条目，默认丢弃最上面的那条，即stash@{0}，此外还可以在drop后加stash@{n}来指定要丢弃的stash条目。</li>
+<li>git stash clear ：清除所有的stash条目。</li>
+<li>git show stash@{n}：当有多条记录并且过了一段时间忘记stash内容时通过该命令可以查看stash的具体内容</li>
+</ol>
+<ul>
+<li>git stash不针对特定的分支，切换分支后，stash内容不变，所以弹出时要小心；</li>
+<li>git stash pop或者drop后，stash的序号会自动改变，连续弹出时要注意。</li>
+</ul>
+<h6 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h6><p>题目：</p>
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928124401461.png" alt="image-20210928124401461" style="zoom:43%;" />
+
+<p>解题：</p>
+<p>老规矩dirsearch扫描一波发现git泄露。</p>
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928124330847.png" alt="image-20210928124330847" style="zoom:33%;" />
+
+<p>方法一：githack</p>
+<p>GitHack修复后进入文件夹可以发现藏有flag的txt文件点击查看即可。</p>
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928125953075.png" alt="image-20210928125953075" style="zoom:50%;" />
+
+<p>方法二：git log</p>
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928130101590.png" alt="image-20210928130101590" style="zoom:53%;" />
+
+<p>方法三：git diff（暂时不会）</p>
+<p>补充知识：</p>
+<p>Git 本地数据管理，大概可以分为三个区，工作区,暂存区和版本库。</p>
+<p>工作区（Working Directory）：是直接编辑的地方</p>
+<p>暂存区（Stage 或 Index）：数据暂时存放的区域，可在工作区和版本库之间进行数据的友好交流。</p>
+<p>版本库（commit History）：存放已经提交的数据，push 的时候，就是把这个区的数据 push 到远程仓库了。</p>
+<h5 id="SVN泄露"><a href="#SVN泄露" class="headerlink" title="SVN泄露"></a>SVN泄露</h5><p>题目：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001184333517.png" alt="image-20211001184333517" style="zoom:45%;" />
+
+<p>解题：</p>
+<p>当开发人员使用 SVN 进行版本控制，对站点自动部署。如果配置不当,可能会将.svn文件夹直接部署到线上环境。这就引起了 SVN 泄露漏洞。</p>
+<p>进入dvcs-ripper-master文件夹右键进入终端，输入命令./rip-svn.pl -v -u <a href="http://challenge-277a34a7a99ae035.sandbox.ctfhub.com:10800/.svn/">http://challenge-277a34a7a99ae035.sandbox.ctfhub.com:10800/.svn/</a></p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001213038426.png" alt="image-20211001213038426" style="zoom:50%;" />
+
+<p>再tree看看：根据提示安装：sudo apt install tree。然后输入命令：tree .svn进行查看</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001183200968.png" alt="image-20211001183200968" style="zoom:50%;" />
+
+<p>需要注意的是，.svn是隐藏文件，在linux下必须ls -al才能看到。<br>根据题目的提示，Flag 在服务端旧版本的源代码中。<br>注意tree中的pristine，里面一般存储的是代码的历史版本。直接进入目录，然后读取文件就可以得到flag了：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001183703701.png" alt="image-20211001183703701" style="zoom:50%;" />
+
+<p>由于我在文件夹中没有看到那些文件夹，所以是一路cd进到be文件夹，再用cat命令打开文件查看flag。</p>
+<p>如果想要查看.svn等文件夹，则需要打开隐藏文件夹，即dvcs-ripper-master——查看——显示隐藏文件。</p>
+<h5 id="HG泄露"><a href="#HG泄露" class="headerlink" title="HG泄露"></a>HG泄露</h5><p>题目：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001210824951.png" alt="image-20211001210824951" style="zoom:45%;" />
+
+<p>解题：</p>
+<p>当开发人员使用 Mercurial 进行版本控制，对站点自动部署。如果配置不当,可能会将.hg 文件夹直接部署到线上环境。这就引起了 hg 泄露漏洞。</p>
+<p>进入dvcs-ripper-master文件夹右键进入终端，输入命令../rip-hg.pl -v -u <a href="http://challenge-fe4e72352d16deb4.sandbox.ctfhub.com:10800/.hg/">http://challenge-fe4e72352d16deb4.sandbox.ctfhub.com:10800/.hg/</a></p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001214109400.png" alt="image-20211001214109400" style="zoom:50%;" />
+
+<p>输入命令tree .hg查看，并进入hg/store/fncache文件，发现flag文件名是flag_284118509.txt。</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001215438781.png" alt="image-20211001215438781" style="zoom:50%;" />
+
+<p>接下来有两种查看flag的方法。（flag文件名根据所在环境而不同）</p>
+<p>方法一：根据题目提示手工解决，浏览器地址栏输入URL/flag_284118509.txt即可得到flag。</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001215836673.png" alt="image-20211001215836673" style="zoom:50%;" />
+
+<p>方法二：输入命令 curl URL/flag_3010023750.txt即可得到flag。</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001220617369.png" alt="image-20211001220617369" style="zoom:50%;" />
 ]]></content>
       <categories>
         <category>ctf解题</category>
@@ -2319,284 +2549,6 @@ except Exception:
       </categories>
   </entry>
   <entry>
-    <title>CTFHUB(WEB)-信息泄露</title>
-    <url>/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/</url>
-    <content><![CDATA[<h3 id="WEB工具配置"><a href="#WEB工具配置" class="headerlink" title="WEB工具配置"></a>WEB工具配置</h3><h4 id="信息泄露"><a href="#信息泄露" class="headerlink" title="信息泄露"></a>信息泄露</h4><h5 id="目录遍历"><a href="#目录遍历" class="headerlink" title="目录遍历"></a>目录遍历</h5><p>题目：</p>
-<img src="/source/images/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/image-20211004013340391.png" alt="image-20211004013340391" style="zoom:35%;" />
-
-<p>解题：</p>
-<p>一路点击文件查看即可找到flag</p>
-<img src="/source/images/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/image-20211004013641358.png" alt="image-20211004013641358" style="zoom:35%;" />
-
-<h5 id="PHPINFO"><a href="#PHPINFO" class="headerlink" title="PHPINFO"></a>PHPINFO</h5><p>题目：</p>
-<p>点击题目所给链接后再点击查看phpinfo进行查看</p>
-<img src="/source/images/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/image-20211004013908030.png" alt="image-20211004013908030" style="zoom:33%;" />
-
-<p>解题：</p>
-<p>启动网页查找功能，输入ctfhub或ctf进行搜索即可找到flag，如下图所示。</p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908000603599.png" alt="image-20210908000603599" style="zoom:30%;" />
-
-<h5 id="备份文件下载"><a href="#备份文件下载" class="headerlink" title="备份文件下载"></a>备份文件下载</h5><h6 id="网站源码"><a href="#网站源码" class="headerlink" title="网站源码"></a>网站源码</h6><p>（待完善如何找到<a href="http://www.zip)/">www.zip）</a></p>
-<p>题目：</p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908002154159.png" alt="image-20210908002154159" style="zoom:30%;" />
-
-<p>解题：</p>
-<p>使用扫描工具（如：dirbuster）对网站目录进行扫描查找是否有备份文件，扫描的文件名和类型就是提示给出的，最终扫描得到<a href="https://blog.csdn.net/www.zip">www.zip文件，输入网址URL/www.zip</a>得到压缩文件，解压后打开如下图所示。</p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908002334915.png" alt="image-20210908002334915" style="zoom:40%;" />
-
-<p>在原题目网页的url后面加上“/flag_3254114626.txt”进行访问即可获取到flag。</p>
-<h6 id="bak文件泄露"><a href="#bak文件泄露" class="headerlink" title="bak文件泄露"></a>bak文件泄露</h6><p>题目：</p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908162052011.png" alt="image-20210908162052011" style="zoom:30%;" />
-
-<p>解题：</p>
-<p>当开发人员在线上环境中对源代码进行了备份操作，并且将备份文件放在了 web 目录下，就会引起网站源码泄露。有些时候网站管理员可能为了方便，会在修改某个文件的时候先复制一份，将其命名为xxx.bak。而大部分Web Server对bak文件并不做任何处理，导致可以直接下载，从而获取到网站某个文件的源代码。</p>
-<p>根据题目所给提示，可知flag应该在index.php的备份文件里面，于是访问/index.php.bak，下载文件得到flag。如果下载是安装包则将文件的打开方式改为记事本，即可查看文件内容。</p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908162308629.png" alt="image-20210908162308629" style="zoom:25%;" />
-
-<h6 id="vim缓存"><a href="#vim缓存" class="headerlink" title="vim缓存"></a>vim缓存</h6><p>题目：</p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908163037011.png" alt="image-20210908163037011" style="zoom:40%;" />
-
-<p>解题：</p>
-<p>访问/.index.php.swp（注意那个点.），得到交换文件.swp。可以利用vim命令进行复原，vim命令需要在linux环境下执行，因此将文件放进虚拟机中，在终端输入命令“vim -r index.php.swp”后根据提示点击enter等即可找到flag。</p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908173754648.png" alt="image-20210908173754648" style="zoom:70%;" />
-
-<p>补充知识：</p>
-<p>当开发人员在线上环境中使用 vim 编辑器，在使用过程中会留下 vim 编辑器缓存，当vim异常退出时，缓存会一直留在服务器上，引起网站源码泄露。</p>
-<p>非正常关闭vim编辑器时会生成一个.swp文件，如果编辑完成之后，正常退出，那么这个swp文件就会被自动删除。在使用vim时会创建临时缓存文件，关闭vim时缓存文件则会被删除，当vim异常退出后，因为未处理缓存文件，导致可以通过缓存文件恢复原始文件内容。</p>
-<p>以 index.php 为例：第一次产生的交换文件名为 .index.php.swp；再次意外退出后，将会产生名为 .index.php.swo 的交换文件；第三次产生的交换文件则为 .index.php.swn。</p>
-<h6 id="DS-Store"><a href="#DS-Store" class="headerlink" title=".DS_Store"></a>.DS_Store</h6><p>题目：</p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908181300032.png" alt="image-20210908181300032" style="zoom:40%;" />
-
-<p>解题：</p>
-<p>.DS_Store 是 Mac OS 保存文件夹的自定义属性的隐藏文件。通过.DS_Store可以知道这个目录里面所有文件的清单。</p>
-<p>猜测直接访问/.DS_Store（注意有个点.）看有什么收获，发现下载了一个文件DS_Store，放进虚拟机，用命令”cat DS_Store”打开发现是一个特殊文件。</p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908181628218.png" alt="image-20210908181628218" style="zoom:60%;" />
-
-<p>利用浏览器访问，将“0b7abce98d55b13ab29ec4fdebcb2239.txt”放在url后面进行访问即可得到flag。</p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908181801977.png" alt="image-20210908181801977" style="zoom:53%;" />
-
-<h5 id="Git泄露"><a href="#Git泄露" class="headerlink" title="Git泄露"></a>Git泄露</h5><p>当前大量开发人员使用git进行版本控制，对站点自动部署。如果配置不当,可能会将.git文件夹直接部署到线上环境。这就引起了git泄露漏洞。请尝试使用BugScanTeam的GitHack完成以下题目。</p>
-<h6 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h6><p>题目：</p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908182154099.png" alt="image-20210908182154099" style="zoom:40%;" />
-
-<p>解题：</p>
-<p>使用dirsearch扫描url，发现url低下存在敏感文件.git</p>
-<p>命令：python3 dirsearch.py -u <url> -e * </p>
-<p>使用GitHack进行文件恢复，然后在GitHack所在目录下的dist目录下得到恢复的文件。</p>
-<p>python2 GitHack.py <url>  (url格式：http(s)://xxx/.git)</p>
-<p>进入dist目录中的刚恢复的文件内打开git，读取git日志，发现：</p>
-<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210926023538190.png" alt="image-20210926023538190" style="zoom:50%;" />
-
-<p>回退到“add flag”的那个版本，即可查看flag</p>
-<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210926024140589.png" alt="image-20210926024140589" style="zoom:50%;" />
-
-<p>补充知识：</p>
-<p>Git 基本操作的学习地址：<a href="https://www.runoob.com/git/git-basic-operations.html">Git 基本操作 | 菜鸟教程 (runoob.com)</a></p>
-<p>创建仓库命令</p>
-<table>
-<thead>
-<tr>
-<th align="left">命令</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">git init</td>
-<td align="left">初始化仓库</td>
-</tr>
-<tr>
-<td align="left">git clone</td>
-<td align="left">拷贝一份远程仓库，也就是下载一个项目。</td>
-</tr>
-</tbody></table>
-<p>提交与修改</p>
-<p>Git 的工作就是创建和保存你的项目的快照及与之后的快照进行对比。</p>
-<p>下表列出了有关创建与提交你的项目的快照的命令：</p>
-<table>
-<thead>
-<tr>
-<th align="left">命令</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">git add</td>
-<td align="left">添加文件到仓库</td>
-</tr>
-<tr>
-<td align="left">git status</td>
-<td align="left">查看仓库当前的状态，显示有变更的文件。</td>
-</tr>
-<tr>
-<td align="left">git diff</td>
-<td align="left">比较文件的不同，即暂存区和工作区的差异。</td>
-</tr>
-<tr>
-<td align="left">git commit</td>
-<td align="left">提交暂存区到本地仓库。</td>
-</tr>
-<tr>
-<td align="left">git reset</td>
-<td align="left">回退版本。</td>
-</tr>
-<tr>
-<td align="left">git rm</td>
-<td align="left">删除工作区文件。</td>
-</tr>
-<tr>
-<td align="left">git mv</td>
-<td align="left">移动或重命名工作区文件。</td>
-</tr>
-</tbody></table>
-<p>提交日志</p>
-<table>
-<thead>
-<tr>
-<th align="left">命令</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">git log</td>
-<td align="left">查看历史提交记录</td>
-</tr>
-<tr>
-<td align="left">git blame <file></td>
-<td align="left">以列表形式查看指定文件的历史修改记录</td>
-</tr>
-</tbody></table>
-<p>远程操作</p>
-<table>
-<thead>
-<tr>
-<th align="left">命令</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">git remote</td>
-<td align="left">远程仓库操作</td>
-</tr>
-<tr>
-<td align="left">git fetch</td>
-<td align="left">从远程获取代码库</td>
-</tr>
-<tr>
-<td align="left">git pull</td>
-<td align="left">下载远程代码并合并</td>
-</tr>
-<tr>
-<td align="left">git push</td>
-<td align="left">上传远程代码并合并</td>
-</tr>
-</tbody></table>
-<h6 id="Stash"><a href="#Stash" class="headerlink" title="Stash"></a>Stash</h6><p>题目：</p>
-<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928115357915.png" alt="image-20210928115357915" style="zoom:40%;" />
-
-<p>解题：</p>
-<p>用dirsearch扫描发现.git文件，GitHack恢复到本地dist目录下，进入恢复的目录下打开git操作</p>
-<p>扫描命令：python3 dirsearch.py -u <URL> -e *</p>
-<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928120503060.png" alt="image-20210928120503060" style="zoom: 33%;" />
-
-<p>这里使用Stash栈pop出flag。</p>
-<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928121008083.png" alt="image-20210928121008083" style="zoom:50%;" />
-
-<p>补充知识：</p>
-<p>git stash的基本使用方法：</p>
-<p>​    git stash是git一个很有用的命令，它的作用是把当前未提交的修改暂存起来，让仓库还原到最后一次提交的状态。常用于更新、同步代码或者保存多个修改版本等情况下。git stash命令会将仓库中的修改保存，建立一条stash信息，默认的说明信息是最后一次提交的节点号和提交说明。</p>
-<ol>
-<li>git stash save ‘说明信息’：说明信息是指定的内容，更加利于了解stash的内容。</li>
-<li>git stash list：列出当前仓库下所有的stash条目，每一条stash用stash@{n}标识。</li>
-<li>git stash pop [stash]： 将stash的内容弹出，默认弹出最上面的那条，即stash@{0}。此外还可以在pop后加stash@{n}来指定要弹出的stash条目。</li>
-<li>git stash drop [stash]：丢弃stash条目，默认丢弃最上面的那条，即stash@{0}，此外还可以在drop后加stash@{n}来指定要丢弃的stash条目。</li>
-<li>git stash clear ：清除所有的stash条目。</li>
-<li>git show stash@{n}：当有多条记录并且过了一段时间忘记stash内容时通过该命令可以查看stash的具体内容</li>
-</ol>
-<ul>
-<li>git stash不针对特定的分支，切换分支后，stash内容不变，所以弹出时要小心；</li>
-<li>git stash pop或者drop后，stash的序号会自动改变，连续弹出时要注意。</li>
-</ul>
-<h6 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h6><p>题目：</p>
-<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928124401461.png" alt="image-20210928124401461" style="zoom:43%;" />
-
-<p>解题：</p>
-<p>老规矩dirsearch扫描一波发现git泄露。</p>
-<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928124330847.png" alt="image-20210928124330847" style="zoom:33%;" />
-
-<p>方法一：githack</p>
-<p>GitHack修复后进入文件夹可以发现藏有flag的txt文件点击查看即可。</p>
-<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928125953075.png" alt="image-20210928125953075" style="zoom:50%;" />
-
-<p>方法二：git log</p>
-<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928130101590.png" alt="image-20210928130101590" style="zoom:53%;" />
-
-<p>方法三：git diff（暂时不会）</p>
-<p>补充知识：</p>
-<p>Git 本地数据管理，大概可以分为三个区，工作区,暂存区和版本库。</p>
-<p>工作区（Working Directory）：是直接编辑的地方</p>
-<p>暂存区（Stage 或 Index）：数据暂时存放的区域，可在工作区和版本库之间进行数据的友好交流。</p>
-<p>版本库（commit History）：存放已经提交的数据，push 的时候，就是把这个区的数据 push 到远程仓库了。</p>
-<h5 id="SVN泄露"><a href="#SVN泄露" class="headerlink" title="SVN泄露"></a>SVN泄露</h5><p>题目：</p>
-<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001184333517.png" alt="image-20211001184333517" style="zoom:45%;" />
-
-<p>解题：</p>
-<p>当开发人员使用 SVN 进行版本控制，对站点自动部署。如果配置不当,可能会将.svn文件夹直接部署到线上环境。这就引起了 SVN 泄露漏洞。</p>
-<p>进入dvcs-ripper-master文件夹右键进入终端，输入命令./rip-svn.pl -v -u <a href="http://challenge-277a34a7a99ae035.sandbox.ctfhub.com:10800/.svn/">http://challenge-277a34a7a99ae035.sandbox.ctfhub.com:10800/.svn/</a></p>
-<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001213038426.png" alt="image-20211001213038426" style="zoom:50%;" />
-
-<p>再tree看看：根据提示安装：sudo apt install tree。然后输入命令：tree .svn进行查看</p>
-<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001183200968.png" alt="image-20211001183200968" style="zoom:50%;" />
-
-<p>需要注意的是，.svn是隐藏文件，在linux下必须ls -al才能看到。<br>根据题目的提示，Flag 在服务端旧版本的源代码中。<br>注意tree中的pristine，里面一般存储的是代码的历史版本。直接进入目录，然后读取文件就可以得到flag了：</p>
-<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001183703701.png" alt="image-20211001183703701" style="zoom:50%;" />
-
-<p>由于我在文件夹中没有看到那些文件夹，所以是一路cd进到be文件夹，再用cat命令打开文件查看flag。</p>
-<p>如果想要查看.svn等文件夹，则需要打开隐藏文件夹，即dvcs-ripper-master——查看——显示隐藏文件。</p>
-<h5 id="HG泄露"><a href="#HG泄露" class="headerlink" title="HG泄露"></a>HG泄露</h5><p>题目：</p>
-<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001210824951.png" alt="image-20211001210824951" style="zoom:45%;" />
-
-<p>解题：</p>
-<p>当开发人员使用 Mercurial 进行版本控制，对站点自动部署。如果配置不当,可能会将.hg 文件夹直接部署到线上环境。这就引起了 hg 泄露漏洞。</p>
-<p>进入dvcs-ripper-master文件夹右键进入终端，输入命令../rip-hg.pl -v -u <a href="http://challenge-fe4e72352d16deb4.sandbox.ctfhub.com:10800/.hg/">http://challenge-fe4e72352d16deb4.sandbox.ctfhub.com:10800/.hg/</a></p>
-<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001214109400.png" alt="image-20211001214109400" style="zoom:50%;" />
-
-<p>输入命令tree .hg查看，并进入hg/store/fncache文件，发现flag文件名是flag_284118509.txt。</p>
-<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001215438781.png" alt="image-20211001215438781" style="zoom:50%;" />
-
-<p>接下来有两种查看flag的方法。（flag文件名根据所在环境而不同）</p>
-<p>方法一：根据题目提示手工解决，浏览器地址栏输入URL/flag_284118509.txt即可得到flag。</p>
-<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001215836673.png" alt="image-20211001215836673" style="zoom:50%;" />
-
-<p>方法二：输入命令 curl URL/flag_3010023750.txt即可得到flag。</p>
-<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001220617369.png" alt="image-20211001220617369" style="zoom:50%;" />
-]]></content>
-      <categories>
-        <category>ctf解题</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>解题—攻防世界</title>
-    <url>/2021/07/13/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/</url>
-    <content><![CDATA[<h2 id="攻防世界"><a href="#攻防世界" class="headerlink" title="攻防世界"></a>攻防世界</h2><h3 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h3><p>（1）this is flag</p>
-<p><strong>题目：</strong></p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A22/QQ%E5%9B%BE%E7%89%8720210726003948.png" alt="QQ图片20210726003948" style="zoom: 50%;" />
-
-<p><strong>解题：</strong>flag即题目所给。</p>
-<p>（2）</p>
-]]></content>
-      <categories>
-        <category>ctf解题</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>解题-sqli-labs</title>
-    <url>/2021/10/03/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-sqli-labs/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>ctf解题</category>
-      </categories>
-  </entry>
-  <entry>
     <title>解题—BUUCTF</title>
     <url>/2021/07/12/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-BUUCTF/</url>
     <content><![CDATA[<h2 id="BUUCTF"><a href="#BUUCTF" class="headerlink" title="BUUCTF"></a>BUUCTF</h2><p>注释：建议在虚拟机中进行解题。</p>
@@ -2716,6 +2668,54 @@ if($_GET[&#39;pleaseget&#39;] === &#39;1&#39;) &#123;//判断
 
 
 
+]]></content>
+      <categories>
+        <category>ctf解题</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CTFHUB(WEB)-前置技能</title>
+    <url>/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/</url>
+    <content><![CDATA[<h3 id="WEB前置技能"><a href="#WEB前置技能" class="headerlink" title="WEB前置技能"></a>WEB前置技能</h3><h4 id="HTTP协议——请求方式"><a href="#HTTP协议——请求方式" class="headerlink" title="HTTP协议——请求方式"></a>HTTP协议——请求方式</h4><p>题目：</p>
+<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905194147045.png" alt="image-20210905194147045" style="zoom:33%;" />
+
+<p>解题：</p>
+<p>猜想CTF**B请求方式为ctfhub</p>
+<p>姿势1：burpsuite抓包</p>
+<p>使用burpsuite进行抓包，发送到repeatr把get方式改为CTFHUB的请求方式，点击send，就会返回含有flag的数据包。如下图。（图来自<a href="https://blog.csdn.net/hgjiayou/article/details/106212933%EF%BC%89">https://blog.csdn.net/hgjiayou/article/details/106212933）</a></p>
+<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905195259986.png" alt="image-20210905195259986" style="zoom:60%;" />
+
+<p>姿势2：curl命令</p>
+<p>在cmd命令窗口中输入“curl -v -X CTFHUB <a href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E2%80%9D%E5%8D%B3%E5%8F%AF%E5%BE%97%E5%88%B0flag%E4%BF%A1%E6%81%AF">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php”即可得到flag信息</a></p>
+<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905195437094.png" alt="image-20210905195437094" style="zoom:45%;" />
+
+<p>补充知识：</p>
+<p>curl</p>
+<p><strong>cURL</strong>是一个利用URL语法在<a href="https://baike.baidu.com/item/%E5%91%BD%E4%BB%A4%E8%A1%8C">命令行</a>下工作的文件传输工具。用来请求 Web 服务器。</p>
+<p>学习链接：<a href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html">https://www.ruanyifeng.com/blog/2019/09/curl-reference.html</a></p>
+<p>curl -v -X CTFHUB <a href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E8%A1%A8%E7%A4%BA%E4%BB%A5CTFHUB%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E8%AE%BF%E9%97%AEhttp://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E5%B9%B6%E6%9F%A5%E7%9C%8B%E9%80%9A%E4%BF%A1%E5%85%A8%E8%BF%87%E7%A8%8B%E3%80%82">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php表示以CTFHUB请求方式访问http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php并查看通信全过程。</a></p>
+]]></content>
+      <categories>
+        <category>ctf解题</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>解题-sqli-labs</title>
+    <url>/2021/10/03/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-sqli-labs/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>ctf解题</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>解题—攻防世界</title>
+    <url>/2021/07/13/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/</url>
+    <content><![CDATA[<h2 id="攻防世界"><a href="#攻防世界" class="headerlink" title="攻防世界"></a>攻防世界</h2><h3 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h3><p>（1）this is flag</p>
+<p><strong>题目：</strong></p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A22/QQ%E5%9B%BE%E7%89%8720210726003948.png" alt="QQ图片20210726003948" style="zoom: 50%;" />
+
+<p><strong>解题：</strong>flag即题目所给。</p>
+<p>（2）</p>
 ]]></content>
       <categories>
         <category>ctf解题</category>
