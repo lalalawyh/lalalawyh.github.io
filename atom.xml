@@ -156,14 +156,15 @@
     <link href="http://example.com/2021/10/02/ctf%E5%AD%A6%E4%B9%A0/sql%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-1/"/>
     <id>http://example.com/2021/10/02/ctf%E5%AD%A6%E4%B9%A0/sql%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-1/</id>
     <published>2021-10-02T08:38:32.000Z</published>
-    <updated>2021-10-03T09:59:26.958Z</updated>
+    <updated>2021-10-06T10:38:31.785Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;sql基础学习&quot;&gt;&lt;a href=&quot;#sql基础学习&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h2 id=&quot;sql基础学习&quot;&gt;&lt;a href=&quot;#sql基础学习&quot; class=&quot;headerlink&quot; title=&quot;sql基础学习&quot;&gt;&lt;/a&gt;sql基础学习&lt;/h2&gt;&lt;p&gt;注：为菜鸟教程学习笔记&lt;/p&gt;
+&lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot;</summary>
         
       
     
@@ -261,7 +262,7 @@
     <link href="http://example.com/2021/09/18/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/burpsuite/"/>
     <id>http://example.com/2021/09/18/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/burpsuite/</id>
     <published>2021-09-17T16:35:35.000Z</published>
-    <updated>2021-10-03T17:05:36.105Z</updated>
+    <updated>2021-10-06T10:52:02.617Z</updated>
     
     
       
@@ -273,6 +274,8 @@
       
     
     
+    
+    <category term="工具安装指南" scheme="http://example.com/categories/%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/"/>
     
     
   </entry>

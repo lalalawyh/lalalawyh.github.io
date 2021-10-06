@@ -66,177 +66,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>GitHack</title>
-    <url>/2021/09/26/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/GitHack/</url>
-    <content><![CDATA[<h2 id="GitHack安装与使用"><a href="#GitHack安装与使用" class="headerlink" title="GitHack安装与使用"></a>GitHack安装与使用</h2><p>注：python3之前已配置好，不再多讲。应该基本同于python2。</p>
-<h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>GitHack是一个.git泄露利用脚本，通过泄露的.git文件夹下的文件，重建还原工程源代码。渗透测试人员、攻击者，可以进一步审计代码，挖掘：文件上传，SQL注射等安全漏洞。</p>
-<h4 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h4><p>网上下载到的githack基本只适用于python2。而目前大部分使用的python版本都是python3。</p>
-<h4 id="方案一：安装python2来运行githack"><a href="#方案一：安装python2来运行githack" class="headerlink" title="方案一：安装python2来运行githack"></a>方案一：安装python2来运行githack</h4><p><strong>下载python2和python3</strong></p>
-<p>官网<a href="https://www.python.org/%E4%B8%8B%E8%BD%BDpython2%E5%92%8Cpython3%E6%88%96%E8%80%85%E5%BA%94%E7%94%A8%E5%95%86%E5%9F%8E%E4%B8%AD%E4%B8%8B%E8%BD%BD%E3%80%82%E5%AE%89%E8%A3%85%E5%BB%BA%E8%AE%AE%E4%B8%80%E8%B7%AF%E9%BB%98%E8%AE%A4next%E4%B8%8B%E5%8E%BB%E3%80%82">https://www.python.org/下载python2和python3或者应用商城中下载。安装建议一路默认next下去。</a></p>
-<p><strong>配置python2.x的环境变量</strong></p>
-<p>需要将两个目录添加到path环境变量中：</p>
-<ul>
-<li>python命令文件所在目录： python 2.x安装目录</li>
-<li>pip、easy_install等其他脚本文件所在目录： python 2.x安装目录下的Scripts目录</li>
-</ul>
-<p>找到此电脑选择属性或者右键我的电脑找到属性——&gt;高级系统设置——&gt;环境变量——&gt;用户变量下的PATH——&gt;编辑</p>
-<p>将下面这两行内容添加到Path变量的<strong>开始位置</strong>：（先新建后上移到第一行）<br>C:\Python27<br>C:\Python27\Scripts\</p>
-<p><strong>将python 2.x 和 python 3.x的相关命令区分开来</strong></p>
-<p>找到 python2 和 python3 的安装目录，修改 python2.x 和 python3.x 中 <strong>python.exe</strong> 的名称为 <strong>python2.exe</strong>和 <strong>python3.exe</strong>。</p>
-<p>然后运行cmd命令，输入python2 可以运行 python2.x 版本，输入 python3 即可运行 python3.x 版本。如下图。</p>
-<img src="/images/GitHack/image-20210926021728278.png" alt="image-20210926021728278" style="zoom:37%;" />
-
-<p><strong>解决两者pip共存问题</strong></p>
-<p>Python安装包需要用到包管理工具pip，但当同时安装python2和python3的时候，pip只是其中一个版本。为了保证共存，需要分别重新安装pip。</p>
-<p>1.安装pip2：在命令窗口中输入：python2 -m pip install –upgrade pip –force-reinstall，如下图显示重新安装成功。</p>
-<img src="/images/GitHack/image-20210926022035773.png" alt="image-20210926022035773" style="zoom:30%;" />
-
-<p>2.安装 pip3： 在命令窗口中输入：python3 -m pip install –upgrade pip –force-reinstall 。如果没有成功则可能在之前已经重新安装过pip.exe了，需要将它从文件夹中删除再输入命令。如下图显示重新安装成功。</p>
-<img src="/images/GitHack/image-20210926022756669.png" alt="image-20210926022756669" style="zoom:50%;" />
-
-<p>3.现在可以通过pip2 -V 和 pip3-V 查看两个版本的pip信息，以后只需运行 pip2 install XXX 和 pip3 install XXX 即可安装各自的python包。到这里 pip共存问题 也已经解决啦！</p>
-<p><strong>使用GitHack</strong></p>
-<p>在含有GitHack.py的文件夹的地址栏中输入cmd打开命令窗口</p>
-<p>输入命令：python2 GitHack.py URL.git来使用githack</p>
-<img src="/images/GitHack/image-20210926023209128.png" alt="image-20210926023209128" style="zoom:30%;" />
-
-<h4 id="方案二：修改文件，使之适应python3环境"><a href="#方案二：修改文件，使之适应python3环境" class="headerlink" title="方案二：修改文件，使之适应python3环境"></a>方案二：修改文件，使之适应python3环境</h4><p>将python2文件修改为python3文件：</p>
-<p>python2的print改为python3的print()；</p>
-<p>python3中合并了部分包，需要将import xxx改为from xxx import xxx。</p>
-<p>其余根据运行提示来修改。</p>
-<p>输入命令：python3 GitHack.py URL.git来使用githack</p>
-<img src="/images/GitHack/image-20210927005148911.png" alt="image-20210927005148911" style="zoom:30%;" />
-]]></content>
-  </entry>
-  <entry>
-    <title>VMware</title>
-    <url>/2021/07/10/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/VMware/</url>
-    <content><![CDATA[<h2 id="虚拟机issue"><a href="#虚拟机issue" class="headerlink" title="虚拟机issue"></a>虚拟机issue</h2><p>注：本文虚拟机为VMware Workstation 16 Player（非商业用途）且以ubuntu-16.04.7-desktop-amd64（Linux系统）为镜像。</p>
-<p>安装好后打开软件，点击创建新虚拟机。按照提示步骤完成即可。</p>
-<p>快捷键ctrl+alt+t可以召唤终端，利用命令sudo passwd root设置root模式密码。设置完成后，可用命令su root进入特权模式/管理员模式。用命令python -V（大写）和pip -V查询python和pip版本，ubuntu自带的python2的版本是2.7.12，python3的版本是3.5.2，pip版本是8.1.1。</p>
-<img src="/images/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210810234635531.png" alt="image-20210810234635531" style="zoom: 67%;" />
-
-<p>如果没有查询到则根据提示输入命令sudo apt install python-pip进行下载。</p>
-<img src="/images/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210810234119104.png" alt="image-20210810234119104" style="zoom: 67%;" />
-
-<p>安装过程中很多错误产生的都是因为这两个的版本太低。</p>
-<p>解决方法：用命令wget <a href="https://bootstrap.pypa.io/pip/3.5/get-pip.py%E5%9C%A8%E8%AF%A5%E7%BD%91%E5%9D%80%E4%B8%8B%E8%BD%BDpip%E3%80%82">https://bootstrap.pypa.io/pip/3.5/get-pip.py在该网址下载pip。</a></p>
-<img src="/images/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210810235410784.png" alt="image-20210810235410784" style="zoom:50%;" />
-
-<p>这个网址可以安装和python3兼容的pip 20.3.4版本。</p>
-<img src="/images/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210811000107849.png" alt="image-20210811000107849" style="zoom:50%;" />
-
-<p>按上述操作完成后，各版本如下。</p>
-<img src="/images/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210811000322681.png" alt="image-20210811000322681" style="zoom: 67%;" />
-
-<p>之后如果要用python运行文件，建议使用python3。</p>
-<p>格式：python3 文件名（包括扩展名）。例如：python3 flag.py</p>
-<p>如果要进入某个文件夹则用命令“cd 文件夹”</p>
-<img src="/images/VMware/image-20210814203832735.png" alt="image-20210814203832735" style="zoom: 67%;" />
-
-<p>小tip：小白不建议更新工具等，除非万不得已，不然系统提示的更新忽略即可，否则可能出现新的问题。</p>
-<p>在利用Linux系统（虚拟机）的vim命令修复文件时，如果出现下图情况，则输入命令“sudo apt-get install ctags”后再输入“sudo apt-get install vim”，执行完毕后就可以正常访问了。</p>
-<img src="/images/VMware/image-20210908174145951.png" alt="image-20210908174145951" style="zoom:50%;" />
-
-
-
-]]></content>
-  </entry>
-  <entry>
-    <title>dirsearch</title>
-    <url>/2021/09/25/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dirsearch/</url>
-    <content><![CDATA[<h2 id="dirsearch安装与使用"><a href="#dirsearch安装与使用" class="headerlink" title="dirsearch安装与使用"></a>dirsearch安装与使用</h2><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>dirsearch是一个python开发的目录扫描工具，目的是扫描网站的敏感文件和目录从而找到突破口。</p>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>进入官网下载<a href="https://github.com/maurosoria/dirsearch%EF%BC%8C%E7%82%B9%E5%87%BB%E4%BB%A3%E7%A0%81code%E7%84%B6%E5%90%8E%E4%B8%8B%E8%BD%BD%E5%8E%8B%E7%BC%A9%E5%8C%85%E3%80%82">https://github.com/maurosoria/dirsearch，点击代码code然后下载压缩包。</a></p>
-<img src="/images/dirsearch/image-20210925153641733.png" alt="image-20210925153641733" style="zoom:50%;" />
-
-<p>下载完成后解压。打开进入到dirsearch目录，cmd进入到dirsearch.py目录。可直接在这个目录下输入cmd进入，这样就不需要cd一级一级的进入了。</p>
-<img src="/images/dirsearch/image-20210925154051408.png" alt="image-20210925154051408" style="zoom:33%;" />
-
-<p>输入命令python dirsearch.py -u <a href="https://www.baidu.com/">https://www.baidu.com</a> -e *进行测试。</p>
-<p>问题1：出现ModuleNotFoundError: No module named ‘chardet’</p>
-<img src="/images/dirsearch/image-20210925154920335.png" alt="image-20210925154920335" style="zoom:63%;" />
-
-<p>解决方法：手动进入网址<a href="https://github.com/chardet/chardet%E4%B8%8B%E8%BD%BDchardet%E6%A8%A1%E5%9D%97%E3%80%82%E8%A7%A3%E5%8E%8B%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8Ccmd%E8%BF%9B%E5%85%A5%E5%91%BD%E4%BB%A4%E7%AA%97%E5%8F%A3%E8%BE%93%E5%85%A5%E5%91%BD%E4%BB%A4python">https://github.com/chardet/chardet下载chardet模块。解压打开文件夹，cmd进入命令窗口输入命令python</a> setup.py install进行安装。</p>
-<img src="/images/dirsearch/image-20210925160047567.png" alt="image-20210925160047567" style="zoom:33%;" />
-
-<p>问题2：出现ModuleNotFoundError: No module named ‘markupsafe’</p>
-<img src="/images/dirsearch/image-20210925160213872.png" alt="image-20210925160213872" style="zoom:63%;" />
-
-<p>解决方法：直接win+R召唤出命令窗口，输入命令pip install markupsafe进行安装。</p>
-<p>没有问题之后再次进行测试就可以了。</p>
-<img src="/images/dirsearch/image-20210925160510879.png" alt="image-20210925160510879" style="zoom:70%;" />
-
-]]></content>
-  </entry>
-  <entry>
-    <title>burpsuite</title>
-    <url>/2021/09/18/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/burpsuite/</url>
-    <content><![CDATA[<h2 id="burpsuite安装与使用"><a href="#burpsuite安装与使用" class="headerlink" title="burpsuite安装与使用"></a>burpsuite安装与使用</h2><p>注：建议与火狐浏览器配合使用。</p>
-<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>Burp Suite 是用于攻击web 应用程序的集成平台，包含了许多工具。Burp Suite为这些工具设计了许多接口，以加快攻击应用程序的过程。所有工具都共享一个请求，并能处理对应的HTTP 消息、持久性、认证、代理、日志、警报。</p>
-<h4 id="安装与使用"><a href="#安装与使用" class="headerlink" title="安装与使用"></a>安装与使用</h4><p><strong>burpsuite安装：</strong></p>
-<p>我是直接在应用上安装的burpsuite社区版。也可进入官网下载。</p>
-<p>官网链接：<a href="https://portswigger.net/burp">https://portswigger.net/burp</a></p>
-<img src="/images/burpsuite/image-20210918003959781.png" alt="image-20210918003959781" style="zoom:33%;" />
-
-<p><strong>浏览器代理设置：</strong></p>
-<p>点击浏览器页面右上角进入设置拉到最低找到网络设置而后点击设置。</p>
-<img src="/images/burpsuite/image-20210918004410626.png" alt="image-20210918004410626" style="zoom:25%;" />
-
-<p>点手动配置代理将代理设置成与burpsuite上的相同。</p>
-<img src="/images/burpsuite/image-20210918004523344.png" alt="image-20210918004523344" style="zoom:25%;" />
-
-<img src="/images/burpsuite/image-20210918005522266.png" alt="image-20210918005522266" style="zoom:45%;" />
-
-<p><strong>！此处还需解开个限制</strong></p>
-<img src="/images/burpsuite/image-20210918005659174.png" alt="image-20210918005659174" style="zoom:50%;" />
-
-
-
-<p>方法：</p>
-<p>打开设置将<img src="/images/burpsuite/image-20210918005938252.png" alt="image-20210918005938252" style="zoom:50%;" />改为<img src="/images/burpsuite/image-20210918010015702.png" alt="image-20210918010015702" style="zoom:60%;" /></p>
-<p>在访问后的搜索框内输入network.proxy.allow_hijacking_localhost，将fasle改为true。</p>
-<img src="/images/burpsuite/image-20210918010107193.png" alt="image-20210918010107193" style="zoom:30%;" />
-
-<p>修改完成后回到设置会发现变化。</p>
-<img src="/images/burpsuite/image-20210918010254513.png" alt="image-20210918010254513" style="zoom:60%;" />
-
-<p><strong>使用：（以爆破为栗子）</strong></p>
-<p>先将浏览器的代理关闭即不使用代理方可访问题目网站。</p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210913005916028.png" alt="image-20210913005916028" style="zoom:50%;" />
-
-<p>此为ctfhub中的弱口令题目，猜测用户名为admin，只需要爆破密码即可。</p>
-<p>将浏览器的代理开启，打开burpsuite进行抓包，输入用户名admin以及任一密码（例如：123）</p>
-<p>右击下图命令选择send to intruder进行爆破</p>
-<img src="/images/burpsuite/image-20210918010923654.png" alt="image-20210918010923654" style="zoom:33%;" />
-
-<p>设置intruder——payload，导入字典后点击start attack</p>
-<img src="/images/burpsuite/image-20210918011229722.png" alt="image-20210918011229722" style="zoom:32.5%;" />
-
-<p>找到爆破长度不同的即为密码，查看response得到flag。</p>
-<img src="/images/burpsuite/image-20210918011351469.png" alt="image-20210918011351469" style="zoom:40%;" />
-]]></content>
-  </entry>
-  <entry>
-    <title>dvcs-ripper</title>
-    <url>/2021/09/29/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dvcs-ripper/</url>
-    <content><![CDATA[<h2 id="dvcs-ripper安装与使用"><a href="#dvcs-ripper安装与使用" class="headerlink" title="dvcs-ripper安装与使用"></a>dvcs-ripper安装与使用</h2><p>注：适用于Linux系统，windows用户可以安装在虚拟机上。</p>
-<h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>一款perl的版本控制软件信息泄露利用工具，支持SVN, GIT, Mercurial/hg, bzr…</p>
-<h4 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h4><p>在网址<a href="https://github.com/kost/dvcs-ripper%E4%B8%8A%E8%BF%9B%E8%A1%8C%E4%B8%8B%E8%BD%BD%E5%8E%8B%E7%BC%A9%E5%8C%85%EF%BC%8C%E8%A7%A3%E5%8E%8B%E5%90%8E%E6%8B%96%E8%BF%9B%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%AD%E3%80%82">https://github.com/kost/dvcs-ripper上进行下载压缩包，解压后拖进虚拟机中。</a></p>
-<p>进行简单配置相关要求的组件：sudo apt-get install perl libio-socket-ssl-perl libdbd-sqlite3-perl libclass-dbi-perl libio-all-lwp-perl</p>
-<h4 id="栗子"><a href="#栗子" class="headerlink" title="栗子"></a>栗子</h4><p>以ctfhub的svn泄露为栗子。</p>
-<p>进入dvcs-ripper-master文件夹右键进入终端，输入命令perl rip-svn.pl -u <a href="http://challenge-277a34a7a99ae035.sandbox.ctfhub.com:10800/.svn/">http://challenge-277a34a7a99ae035.sandbox.ctfhub.com:10800/.svn/</a></p>
-<img src="/source/images/dvcs-ripper/image-20211001182915450.png" alt="image-20211001182915450" style="zoom:50%;" />
-
-<p>再tree看看：根据提示安装：sudo apt install tree。然后输入命令：tree .svn进行查看</p>
-<img src="/source/images/dvcs-ripper/image-20211001183200968.png" alt="image-20211001183200968" style="zoom:50%;" />
-
-<p>需要注意的是，.svn是隐藏文件，在linux下必须ls -al才能看到。<br>根据题目的提示，Flag 在服务端旧版本的源代码中。<br>注意tree中的pristine，里面一般存储的是代码的历史版本。直接进入目录，然后读取文件就可以得到flag了：</p>
-<img src="/source/images/dvcs-ripper/image-20211001183703701.png" alt="image-20211001183703701" style="zoom:50%;" />
-
-<p>由于我在文件夹中没有看到那些文件夹，所以是一路cd进到be文件夹，再用cat命令打开文件查看flag。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>ctf基础学习-1</title>
     <url>/2021/09/05/ctf%E5%AD%A6%E4%B9%A0/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-1/</url>
     <content><![CDATA[<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="CTF简介"><a href="#CTF简介" class="headerlink" title="CTF简介"></a>CTF简介</h3><p> CTF意译为“夺旗赛”。其大致流程是，参赛团队之间通过进行攻防对抗、程序分析等形式，率先从主办方给出的比赛环境中得到一串具有一定格式的字符串或其他内容（flag），并将其提交给主办方，从而夺得分数。 flag所表示的为目标服务器上存储的一些敏感机密的信息。</p>
@@ -260,78 +89,72 @@
     <content><![CDATA[<h2 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h2>]]></content>
   </entry>
   <entry>
-    <title>sqli-labs</title>
-    <url>/2021/10/02/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/sqli-labs/</url>
-    <content><![CDATA[<h2 id="sqli-labs"><a href="#sqli-labs" class="headerlink" title="sqli-labs"></a>sqli-labs</h2><h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>SQLI-LABS 是一个学习 SQLI 的平台 GET 和 POST 场景涵盖了以下实验室：</p>
-<ol>
-<li>基于错误的注入（联合选择）<ol>
-<li>细绳</li>
-<li>虎牙</li>
-</ol>
-</li>
-<li>基于错误的注入（基于双重注入）</li>
-<li>盲注：1.Boolian based 2.Time Based</li>
-<li>更新查询注入。</li>
-<li>插入查询注入。</li>
-<li>标头注射。1.基于Referer。2.基于UserAgent。3.基于Cookie。</li>
-<li>二阶注射</li>
-<li>绕过WAF<ol>
-<li>绕过黑名单过滤器 剥离评论 剥离 OR &amp; AND 剥离空格和评论 剥离 UNION &amp; SELECT</li>
-<li>阻抗失配</li>
-</ol>
-</li>
-<li>绕过addslashes()</li>
-<li>绕过 mysql_real_escape_string。（特殊情况下）</li>
-<li>堆叠 SQL 注入。</li>
-<li>二级通道提取</li>
-</ol>
-<h4 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h4><p>需要安装以下环境 </p>
-<ol>
-<li><p>apache+mysql+php </p>
-</li>
-<li><p>Tomcat+mysql+java（部分关卡需要）</p>
-</li>
-</ol>
-<p>下载sqli-labs地址：<a href="https://github.com/Audi-1/sqli-labs">https://github.com/Audi-1/sqli-labs</a></p>
-<p>下载phpstudy地址：<a href="https://www.xp.cn/download.html">https://www.xp.cn/download.html</a></p>
-<p>将下载的 SQLi-Labs.zip 解压到phpstudy网站根目录下即WWW文件夹中。</p>
-<img src="../../source/images/sqli-labs/image-20211003014314499.png" alt="image-20211003014314499" style="zoom:50%;" />
-
-<p>修改 db-creds.inc 里（sqli-labs-master下的sql-connections文件夹中）的代码如下：因为phpstudy默认的mysql数据库地址是“127.0.0.1 或 localhost”，用户名和密码都是”root”。主要是修改’$dbpass‘为root。</p>
-<img src="../../source/images/sqli-labs/image-20211003014504175.png" alt="image-20211003014504175" style="zoom:50%;" />
-
-<p><strong>旧版</strong>：</p>
-<p>启动phpstudy.exe</p>
-<img src="../../source/images/sqli-labs/image-20211003015239021.png" alt="image-20211003015239021" style="zoom:50%;" />
-
-<p>在浏览器地址栏输入：<a href="http://127.0.0.1/sqli-labs/%EF%BC%88%E5%9B%A0%E5%85%B7%E4%BD%93%E6%96%87%E4%BB%B6%E5%92%8C%E8%AE%BE%E7%BD%AE%E8%80%8C%E5%B7%B2%EF%BC%89">http://127.0.0.1/sqli-labs/（因具体文件和设置而已）</a></p>
-<img src="../../source/images/sqli-labs/image-20211003015514897.png" alt="image-20211003015514897" style="zoom:50%;" />
-
-<p><strong>新版</strong>：</p>
-<p>启动框框中的三个套件：</p>
-<img src="../../source/images/sqli-labs/image-20211003020935371.png" alt="image-20211003020935371" style="zoom:30%;" />
-
-<p>注意网站的物理路径和Nginx设置的网站目录要正确。</p>
-<p>在浏览器地址栏输入：<a href="http://localhost/sqli-labs-master/">http://localhost/sqli-labs-master/</a></p>
-<img src="../../source/images/sqli-labs/image-20211003021439234.png" alt="image-20211003021439234" style="zoom:50%;" />
-
-
-
-<p>点击第一个，如下图所示即安装成功：</p>
-<img src="../../source/images/sqli-labs/image-20211003022438705.png" alt="image-20211003022438705" style="zoom:25%;" />
-
-<p>如果出现如下图错误，则进入软件管理选择php5版本安装，再进入网站——管理——php版本即可。</p>
-<img src="../../source/images/sqli-labs/image-20211003022738317.png" alt="image-20211003022738317" style="zoom:30%;" />
-
-<p>然后浏览器打开 “<a href="http://localhost/sqli-labs-master&quot;%E5%90%91%E4%B8%8B%E7%BF%BB%EF%BC%8C%E5%B0%B1%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%E6%9C%89%E5%BE%88%E5%A4%9A%E4%B8%8D%E5%90%8C%E7%9A%84%E6%B3%A8%E5%85%A5%E7%82%B9%E4%BA%86%EF%BC%8C%E5%88%86%E4%B8%BA%E5%9F%BA%E6%9C%ACSQL%E6%B3%A8%E5%85%A5%E3%80%81%E9%AB%98%E7%BA%A7SQL%E6%B3%A8%E5%85%A5%E3%80%81SQL%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%E3%80%81%E6%8C%91%E6%88%98%E5%9B%9B%E4%B8%AA%E9%83%A8%E4%BB%BD%EF%BC%8C%E6%80%BB%E5%85%B1%E7%BA%A675%E4%B8%AASQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E3%80%82">http://localhost/sqli-labs-master&quot;向下翻，就可以看到有很多不同的注入点了，分为基本SQL注入、高级SQL注入、SQL堆叠注入、挑战四个部份，总共约75个SQL注入漏洞。</a></p>
-<img src="../../source/images/sqli-labs/image-20211003023448081.png" alt="image-20211003023448081" style="zoom:30%;" />
-
-]]></content>
-  </entry>
-  <entry>
     <title>sql基础学习-1</title>
     <url>/2021/10/02/ctf%E5%AD%A6%E4%B9%A0/sql%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-1/</url>
     <content><![CDATA[<h2 id="sql基础学习"><a href="#sql基础学习" class="headerlink" title="sql基础学习"></a>sql基础学习</h2><p>注：为菜鸟教程学习笔记</p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><strong>SQL</strong> (Structured Query Language：结构化查询语言) 是用于管理关系数据库管理系统（RDBMS）。 SQL 的范围包括数据插入、查询、更新和删除，数据库模式创建和修改，以及数据访问控制。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>sql基础学习-2</title>
+    <url>/2021/10/03/ctf%E5%AD%A6%E4%B9%A0/sql%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/</url>
+    <content><![CDATA[<h2 id="sql基础学习"><a href="#sql基础学习" class="headerlink" title="sql基础学习"></a>sql基础学习</h2><p>注：为MYSQL 注入天书 –Sqli-labs 使用手册的学习笔记</p>
+<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><ol>
+<li><p>注入的分类</p>
+<p><strong>基于从服务器接收到的响应</strong> </p>
+<p>▲基于错误的 SQL 注入 </p>
+<p>▲联合查询的类型 </p>
+<p>▲堆查询注射 </p>
+<p>▲SQL 盲注</p>
+<p>•基于布尔 SQL 盲注</p>
+<p>•基于时间的 SQL 盲注 </p>
+<p>•基于报错的 SQL 盲注 </p>
+<p><strong>基于如何处理输入的</strong> <strong>SQL</strong> <strong>查询（数据类型）</strong> </p>
+<p>•基于字符串 </p>
+<p>•数字或整数为基础的 </p>
+<p><strong>基于程度和顺序的注入(哪里发生了影响)</strong> </p>
+<p>★一阶注射 </p>
+<p>★二阶注射 </p>
+<p>一阶注射是指输入的注射语句对 WEB 直接产生了影响，出现了结果；二阶注入类似存 储型 XSS，是指输入提交的语句，无法直接对 WEB 应用程序产生影响，通过其它的辅助间 接的对 WEB 产生危害，这样的就被称为是二阶注入. </p>
+<p><strong>基于注入点的位置上的</strong> </p>
+<p>▲通过用户输入的表单域的注射。 </p>
+<p>▲通过 cookie 注射。 </p>
+<p>▲通过服务器变量注射。 （基于头部信息的注射） </p>
+</li>
+<li><p>介绍几个常用函数： </p>
+<p>•version()——MySQL 版本 </p>
+<p>•user()——数据库用户名 </p>
+<p>•database()——数据库名 </p>
+<p>•@@datadir——数据库路径 </p>
+<p>•@@version_compile_os——操作系统版本</p>
+</li>
+<li><p>字符串连接函数</p>
+<p>函数具体介绍 <a href="http://www.cnblogs.com/lcamry/p/5715634.html">http://www.cnblogs.com/lcamry/p/5715634.html</a> </p>
+<p>•concat(str1,str2,…)——没有分隔符地连接字符串 </p>
+<p>•concat_ws(separator,str1,str2,…)——含有分隔符地连接字符串 </p>
+<p>•group_concat(str1,str2,…)——连接一个组的所有字符串，并以逗号分隔每一条数据 </p>
+<p>上述三个函数能一次性查出所有信息。 </p>
+</li>
+<li><p>一般用于尝试的语句</p>
+<p>注：–+可以用#替换，url 提交过程中 Url 编码后的#为%23 </p>
+<p>or 1=1–+ </p>
+<p>‘or 1=1–+ </p>
+<p>“or 1=1–+ </p>
+<p>)or 1=1–+ </p>
+<p>‘)or 1=1–+ </p>
+<p>“) or 1=1–+ </p>
+<p>“))or 1=1–+ </p>
+<p>一般的代码为： </p>
+<p>$id=$_GET[‘id’]; </p>
+<p>$sql=”SELECT * FROM users WHERE id=’$id’ LIMIT 0,1”; </p>
+<p>此处考虑两个点，一个是闭合前面你的 </p>
+<p>‘ 另一个是处理后面的 </p>
+<p>‘ ，一般采用两种思 </p>
+<p>路，闭合后面的引号或者注释掉，注释掉采用–+ 或者 #（</p>
+<p>%23） </p>
+</li>
+<li></li>
+</ol>
 ]]></content>
   </entry>
   <entry>
@@ -659,68 +482,6 @@ pic.save(&quot;文件名（包括文件类型即扩展名）&quot;)
 ]]></content>
   </entry>
   <entry>
-    <title>sql基础学习-2</title>
-    <url>/2021/10/03/ctf%E5%AD%A6%E4%B9%A0/sql%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/</url>
-    <content><![CDATA[<h2 id="sql基础学习"><a href="#sql基础学习" class="headerlink" title="sql基础学习"></a>sql基础学习</h2><p>注：为MYSQL 注入天书 –Sqli-labs 使用手册的学习笔记</p>
-<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><ol>
-<li><p>注入的分类</p>
-<p><strong>基于从服务器接收到的响应</strong> </p>
-<p>▲基于错误的 SQL 注入 </p>
-<p>▲联合查询的类型 </p>
-<p>▲堆查询注射 </p>
-<p>▲SQL 盲注</p>
-<p>•基于布尔 SQL 盲注</p>
-<p>•基于时间的 SQL 盲注 </p>
-<p>•基于报错的 SQL 盲注 </p>
-<p><strong>基于如何处理输入的</strong> <strong>SQL</strong> <strong>查询（数据类型）</strong> </p>
-<p>•基于字符串 </p>
-<p>•数字或整数为基础的 </p>
-<p><strong>基于程度和顺序的注入(哪里发生了影响)</strong> </p>
-<p>★一阶注射 </p>
-<p>★二阶注射 </p>
-<p>一阶注射是指输入的注射语句对 WEB 直接产生了影响，出现了结果；二阶注入类似存 储型 XSS，是指输入提交的语句，无法直接对 WEB 应用程序产生影响，通过其它的辅助间 接的对 WEB 产生危害，这样的就被称为是二阶注入. </p>
-<p><strong>基于注入点的位置上的</strong> </p>
-<p>▲通过用户输入的表单域的注射。 </p>
-<p>▲通过 cookie 注射。 </p>
-<p>▲通过服务器变量注射。 （基于头部信息的注射） </p>
-</li>
-<li><p>介绍几个常用函数： </p>
-<p>•version()——MySQL 版本 </p>
-<p>•user()——数据库用户名 </p>
-<p>•database()——数据库名 </p>
-<p>•@@datadir——数据库路径 </p>
-<p>•@@version_compile_os——操作系统版本</p>
-</li>
-<li><p>字符串连接函数</p>
-<p>函数具体介绍 <a href="http://www.cnblogs.com/lcamry/p/5715634.html">http://www.cnblogs.com/lcamry/p/5715634.html</a> </p>
-<p>•concat(str1,str2,…)——没有分隔符地连接字符串 </p>
-<p>•concat_ws(separator,str1,str2,…)——含有分隔符地连接字符串 </p>
-<p>•group_concat(str1,str2,…)——连接一个组的所有字符串，并以逗号分隔每一条数据 </p>
-<p>上述三个函数能一次性查出所有信息。 </p>
-</li>
-<li><p>一般用于尝试的语句</p>
-<p>注：–+可以用#替换，url 提交过程中 Url 编码后的#为%23 </p>
-<p>or 1=1–+ </p>
-<p>‘or 1=1–+ </p>
-<p>“or 1=1–+ </p>
-<p>)or 1=1–+ </p>
-<p>‘)or 1=1–+ </p>
-<p>“) or 1=1–+ </p>
-<p>“))or 1=1–+ </p>
-<p>一般的代码为： </p>
-<p>$id=$_GET[‘id’]; </p>
-<p>$sql=”SELECT * FROM users WHERE id=’$id’ LIMIT 0,1”; </p>
-<p>此处考虑两个点，一个是闭合前面你的 </p>
-<p>‘ 另一个是处理后面的 </p>
-<p>‘ ，一般采用两种思 </p>
-<p>路，闭合后面的引号或者注释掉，注释掉采用–+ 或者 #（</p>
-<p>%23） </p>
-</li>
-<li></li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
     <title>第五篇博客</title>
     <url>/2021/07/24/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%BA%94%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h2 id="CRYPTO初步学习"><a href="#CRYPTO初步学习" class="headerlink" title="CRYPTO初步学习"></a>CRYPTO初步学习</h2><h3 id="古典密码学介绍"><a href="#古典密码学介绍" class="headerlink" title="古典密码学介绍"></a>古典密码学介绍</h3><p>注！还需进行理解学习</p>
@@ -850,143 +611,6 @@ s_bytes = long_to_bytes(s_int) #证书转为字节类型
 print(s_int, s_bytes)
 </code></pre>
 <p>不在范围内的字符（不可显示的）会以/-x……的形式显示出其的十六进制。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>第八篇博客</title>
-    <url>/2021/08/03/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%85%AB%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h2 id="WEB初步学习"><a href="#WEB初步学习" class="headerlink" title="WEB初步学习"></a>WEB初步学习</h2><h3 id="PHP-amp-amp-SSRF"><a href="#PHP-amp-amp-SSRF" class="headerlink" title="PHP &amp;&amp; SSRF"></a>PHP &amp;&amp; SSRF</h3><p>注：还需学习利用SSRF漏洞进行攻击</p>
-<h4 id="前言——渗透测试："><a href="#前言——渗透测试：" class="headerlink" title="前言——渗透测试："></a>前言——渗透测试：</h4><p><strong>定义：</strong></p>
-<p>渗透测试是一种通过模拟使用黑客的技术和方法，挖掘目标系统的安全漏洞，取得系统的控制权，访问系统的机密数据，并发现可能影响业务持续运作安全隐患的一种安全测试和评估方式。<br><u>渗透测试和黑客入侵最大区别在于渗透测试是经过客户授权</u>，采用可控制、非破坏性质的方法和手段发现目标和网络设备中存在弱点，帮助管理者知道自己网络所面临的问题，同时提供安全加固建议，帮助客户提升系统的安全性。</p>
-<p><strong>分类：</strong></p>
-<p><u>黑盒测试</u>：是指测试人员在不清楚被测单位内部技术架构的情况下，从外部对网络设施的安全性进行测试的过程。黑盒测试借助于真实世界的黑客方法，黑客工具，有组织有步骤的对目标系统进行逐步的渗透和入侵，揭示目标系统中一些已知的和未知的安全漏洞，并评估这些漏洞是否可以被不法分子利用，并造成业务和资产损失。<br><u>白盒测试</u>：测试人员可以获取被测单位的网络结构和各种底层技术。在此基础上，使用针对性的测试方法和工具，可以以较小的代价发现和验证系统最严重的安全漏洞。（代码审计必不可少，读懂代码找漏洞）<br>在实际渗透中，两者各有利弊，需要视情况选择和进行，有时还需将两个结合起来使用。</p>
-<h4 id="PHP入门"><a href="#PHP入门" class="headerlink" title="PHP入门"></a>PHP入门</h4><p><strong>定义：</strong></p>
-<p>PHP (全称: PHP: Hypertext Preprocessor，即”PHP：超文本预处理器”)是一种通用开源脚本语言。PHP脚本在服务器上执行。</p>
-<p><strong>PHP集成开发环境：</strong></p>
-<p>windows下可以下载<u>phpstudy</u>（方便切换版本，下载简单）/xampp等<br>mac可以下载mxsrvs, phpstudy for mac，docker yyds等</p>
-<p><strong>使用phpstudy：</strong></p>
-<p>phpstudy是个集成软件，应该根据所需服务一键启动</p>
-<img src="/images/%E7%AC%AC%E5%85%AB%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210805235017858.png" alt="image-20210805235017858" style="zoom: 33%;" />
-
-<p>phpstudy可能会在所在程序目录下新建一个www目录作为web根目录</p>
-<p>尝试代码：保存后可在本地尝试访问一下——&gt;本地IP/对应文件名</p>
-<pre><code class="php">&lt;?php
-    echo &quot;helloworld !&quot;;
-?&gt;
-</code></pre>
-<p><u>注：推荐学习php w3cschool</u></p>
-<p><strong>代码审计时需要关注的点：</strong></p>
-<p>事实上，代码审计也有多种思路：例如可以选择先通读代码，理解结构和功能后再从中发现问题——但这种方式的缺点显而易见：十分耗时且令人头疼，不太适用于代码量大的情况；也可以依据经验寻找易出现问题的关键功能——这往往也可以与黑盒测试相结合，定位<br>功能对应的代码后找到关键函数，正向或反向的追踪其中用到的变量（例如文件下载功能处<br>若未经过滤则可能存在任意文件下载漏洞，发现该功能后定位代码段，找到其使用的功能函<br>数——可能是file_get_contents或者别的什么，追踪它使用的变量是否有做安全过滤)；甚至你可以直接尝试定向的挖掘某一类漏洞——依旧是通过可能涉及的函数去寻找……<br>但无论你使用哪种方法进行漏洞挖掘，阅读代码的能力是必不可少的。也就是，你至少得知道开发者在做什么。</p>
-<h4 id="浅谈SSRF漏洞"><a href="#浅谈SSRF漏洞" class="headerlink" title="浅谈SSRF漏洞"></a>浅谈SSRF漏洞</h4><p><strong>SSRF的定义与成因：</strong></p>
-<p>SSRF(Server-Side Request Forgery：服务器端请求伪造)是一种由攻击者构造形成，由服务端发起请求的一个安全漏洞。一般情况下，SSRF攻击的目标是从外网无法访问的内部系统。(正是因为它是由服务端发起的，所以它能够请求到与它相连而与外网隔离的内部系统)<br>SSRF漏洞形成的原因大都是由于服务端提供了从其他服务器应用获取数据的功能且没有对目标地址做过滤与限制。比如从指定URL地址获取网页文本内容,加载指定地址的图片，下载等等。</p>
-<p><strong>SSRF代码层成因：</strong>（代码审计需观察有无以下类似写法，变量是否未经任何过滤就传到危险函数中）</p>
-<pre><code class="php">//file_get_contents
-&lt;?php
-  if(isset($_POST[&#39;url&#39;]))//isset()为判断是否有设置括号中的函数即检测变量是否已设置并且非null
-    &#123;
-        $content = file get_contents($_POST[&#39;url&#39;]);//为文件读取的关键函数
-        $filename = &#39;./images/&#39; .rand().&#39;.jpg&#39;;//字符串拼接
-        fi1e_put_contents($filename, $content);//将之前读到的数据写进文件中
-        echo $_POST[&#39;ur1&#39;];
-        $img = &quot;&lt;img src=\&quot;&quot;.$filename.&quot;\&quot;/&gt;&quot;;
-        echo $img;
-    &#125;
-    else
-    &#123;
-        echo &quot;no ur1&quot;;
-      &#125;
-?&gt;//总的来说是实现图片保存功能
-</code></pre>
-<p>简化代码：</p>
-<pre><code>&lt;?php
-  echo file_get_contents($_GET[&#39;url&#39;]);
-?&gt;
-</code></pre>
-<p>在浏览器中输入本地ip/文件名?url=<a href="http://www.baidu.com(需要给url赋值,否则会报错)则会打开百度的页面/">http://www.baidu.com（需要给url赋值，否则会报错）则会打开百度的页面</a></p>
-<pre><code class="php">//fsockopen
-&lt;?php
-   function GetFile($host,$port,$link) &#123;
-      $fp = fsockopen($host, intval($port), $errno, $errstr, 30);
-      if (!$fp)&#123;
-          echo &quot;serrstr (error number $errno) \n&quot;;
-      &#125;else &#123;
-          $out = &quot;GET $link HTTP/1.1irin&quot;;
-          $out .=&quot;Host: $hostirin&quot;;
-          $out .= &quot;Connection: closeirinirin&quot;;$out .=&quot;\rin&quot;;
-          fwrite($fp,$out);
-          $contents=&#39;&#39;;
-          while (!feof($fp)) &#123;
-              $contents.=fgets($fp,1024);
-           &#125;
-           fclose($fp);
-           return $contents;
-      &#125;
-   &#125;
-?&gt;
-</code></pre>
-<pre><code class="php">//curl
-&lt;?php
-    if (isset($_POST[&#39;url&#39;]))&#123;
-        $1ink = $_POST[&#39;ur1&#39;];
-        $curlobj = cur1_init();
-        curl_setopt($curlobj, CURLOPT_POST, 0);
-        curl_setopt($curlobj, CURLOPT_URL,$link);
-        curl_setopt($curlobj, CURLOPT_RETURNTRANSFER, 1);
-        $result=curl_exec($curlobj); 
-        curl_close($cur1obj);
-        $filename = &#39;./curled/&#39;.rand().&#39;.txt&#39;;
-        $file_put_contents($filename, $result);
-        echo $result ;
-    &#125;
-?&gt;
-</code></pre>
-<p><strong>SSRF的危害：</strong></p>
-<p>-内网探测<br>-利用file协议读取本地文件等等<br>-向内部（内网）任意主机的任意端口发送精心构造的Payload，从而攻击内网的应用，主要是使用GET参数就可以实现的攻击(比如struts2，sqli等)<br>-DOS攻击(请求大文件，始终保持连接Keep-Alive Always)</p>
-<p><strong>SSRF漏洞的验证：</strong></p>
-<ol>
-<li>排除法：浏览器f12（或右上角的三个点–更多工具–开发者工具）查看源代码看是否是在本地进行了请求<br>比如:该资源地址类型为 <a href="http://www.xxx.com/a.php?image=">http://www.xxx.com/a.php?image=</a> (地址)的（即对该地址进行请求操作）就可能存在SSRF漏洞（本例可能存在对任意网址请求的漏洞）</li>
-<li>dnslog/requestbin等工具/平台进行测试或监听，看是否被访问。</li>
-</ol>
-<p><u>曾经常考</u>：在网站的根目录下放一个flag.php文件。如下。</p>
-<pre><code class="php">&lt;?php
-    $flag = &quot;flag&#123;well,You get_ 1t&#125;&quot; ;
-    if ($_SERVER[&#39;REMOTE_ADDR&#39;] !== $_SERVER[&#39;HTTP_HOST&#39;])&#123;
-        echo &quot;You are not a local visitor, access is forbidden!&quot; ;
-    &#125;//该代码意味着只有从本地访问才有可能输出flag    
-    else&#123;
-        echo $flag;
-    &#125;
-?&gt;
-</code></pre>
-<p>如何访问：<a href="http://x.x.x.x/?url=flag.php%EF%BC%88%E9%80%9A%E8%BF%87%E8%AE%BF%E9%97%AE%E6%9C%AC%E5%9C%B0%E6%9D%A5%E6%89%93%E5%BC%80flag.php%E6%96%87%E4%BB%B6%EF%BC%89">http://x.x.x.x/?url=flag.php（通过访问本地来打开flag.php文件）</a></p>
-<p><strong>一些绕过：</strong>（仅提供思路，而非用下面方式一定能绕过。应该依据对方的具体代码以及具体过滤形式选择绕过方式）</p>
-<ol>
-<li><p>加端口.  127.0.0.1:80 </p>
-</li>
-<li><p>短网址</p>
-</li>
-<li><p>指向任意IP的域名xip.io 127.0.1.xip.io</p>
-</li>
-<li><p>IP限制绕过</p>
-<p>十进制转换 (转换成16进制再转换回来，把.换成0，<a href="http://0x7f000001,十进制就是http//2130706433">http://0x7f000001，十进制就是http://2130706433</a> )<br>八进制转换<a href="http://127.0.0.1/">http://0177.0.0.1</a></p>
-<p>十六进制转换<a href="http://127.0.0.1/">http://0x7f.0.0.1</a></p>
-<p>不同进制组合转换</p>
-</li>
-<li><p> @绕过</p>
-</li>
-</ol>
-<p>   <a href="http://www.bai.com@127.0.0.1(实际访问的还是127.0.0.1这个本地)/">http://www.bai.com@127.0.0.1（实际访问的还是127.0.0.1这个本地）</a></p>
-<ol start="6">
-<li><p>后面跟参数（寻找功能点以发现参数）</p>
-<p> <a href="http://127.0.0.1/?a=sdagwasdwfa">http://127.0.0.1?a=sdagwasdwfa</a></p>
-</li>
-</ol>
-<p><u>小知识</u>：</p>
-<p>完整url：“协议：//用户名：密码@网址/网站文件？参数名=参数值#锚点”</p>
-<p>当内网存在redis/mongodb/mysql等，也可以考虑同ssrf漏洞去进一步攻击</p>
-<p>内网攻击可以采用”gopher://“或”dict://“协议</p>
-<p>内网端口扫描可以用”dict://“或”http://“协议等，使用协议需要根据SSRF是如何造成的来具体分析。（内网扫端口并无特定端口）</p>
-<p>边界机器存在ssrf，通过dict或者http等协议扫本地端口或内网网段（如本地的5000端口上存在一个flaskweb，那么请求127.0.0.1：5000的时候能访问到，内网同理）找到内网web应用后通过http协议访问并尝试攻击，如果要发生post请求可以使用gopher，知道到内网脆弱应用后可以通过gopher协议进行攻击。</p>
 ]]></content>
   </entry>
   <entry>
@@ -1130,6 +754,143 @@ print(&quot;m =&quot;，m)
 <p>p+q = n-φ(n)+1</p>
 <p>p·q = n</p>
 <p><strong>已知明文高位攻击：</strong>……</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>第八篇博客</title>
+    <url>/2021/08/03/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%85%AB%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2 id="WEB初步学习"><a href="#WEB初步学习" class="headerlink" title="WEB初步学习"></a>WEB初步学习</h2><h3 id="PHP-amp-amp-SSRF"><a href="#PHP-amp-amp-SSRF" class="headerlink" title="PHP &amp;&amp; SSRF"></a>PHP &amp;&amp; SSRF</h3><p>注：还需学习利用SSRF漏洞进行攻击</p>
+<h4 id="前言——渗透测试："><a href="#前言——渗透测试：" class="headerlink" title="前言——渗透测试："></a>前言——渗透测试：</h4><p><strong>定义：</strong></p>
+<p>渗透测试是一种通过模拟使用黑客的技术和方法，挖掘目标系统的安全漏洞，取得系统的控制权，访问系统的机密数据，并发现可能影响业务持续运作安全隐患的一种安全测试和评估方式。<br><u>渗透测试和黑客入侵最大区别在于渗透测试是经过客户授权</u>，采用可控制、非破坏性质的方法和手段发现目标和网络设备中存在弱点，帮助管理者知道自己网络所面临的问题，同时提供安全加固建议，帮助客户提升系统的安全性。</p>
+<p><strong>分类：</strong></p>
+<p><u>黑盒测试</u>：是指测试人员在不清楚被测单位内部技术架构的情况下，从外部对网络设施的安全性进行测试的过程。黑盒测试借助于真实世界的黑客方法，黑客工具，有组织有步骤的对目标系统进行逐步的渗透和入侵，揭示目标系统中一些已知的和未知的安全漏洞，并评估这些漏洞是否可以被不法分子利用，并造成业务和资产损失。<br><u>白盒测试</u>：测试人员可以获取被测单位的网络结构和各种底层技术。在此基础上，使用针对性的测试方法和工具，可以以较小的代价发现和验证系统最严重的安全漏洞。（代码审计必不可少，读懂代码找漏洞）<br>在实际渗透中，两者各有利弊，需要视情况选择和进行，有时还需将两个结合起来使用。</p>
+<h4 id="PHP入门"><a href="#PHP入门" class="headerlink" title="PHP入门"></a>PHP入门</h4><p><strong>定义：</strong></p>
+<p>PHP (全称: PHP: Hypertext Preprocessor，即”PHP：超文本预处理器”)是一种通用开源脚本语言。PHP脚本在服务器上执行。</p>
+<p><strong>PHP集成开发环境：</strong></p>
+<p>windows下可以下载<u>phpstudy</u>（方便切换版本，下载简单）/xampp等<br>mac可以下载mxsrvs, phpstudy for mac，docker yyds等</p>
+<p><strong>使用phpstudy：</strong></p>
+<p>phpstudy是个集成软件，应该根据所需服务一键启动</p>
+<img src="/images/%E7%AC%AC%E5%85%AB%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210805235017858.png" alt="image-20210805235017858" style="zoom: 33%;" />
+
+<p>phpstudy可能会在所在程序目录下新建一个www目录作为web根目录</p>
+<p>尝试代码：保存后可在本地尝试访问一下——&gt;本地IP/对应文件名</p>
+<pre><code class="php">&lt;?php
+    echo &quot;helloworld !&quot;;
+?&gt;
+</code></pre>
+<p><u>注：推荐学习php w3cschool</u></p>
+<p><strong>代码审计时需要关注的点：</strong></p>
+<p>事实上，代码审计也有多种思路：例如可以选择先通读代码，理解结构和功能后再从中发现问题——但这种方式的缺点显而易见：十分耗时且令人头疼，不太适用于代码量大的情况；也可以依据经验寻找易出现问题的关键功能——这往往也可以与黑盒测试相结合，定位<br>功能对应的代码后找到关键函数，正向或反向的追踪其中用到的变量（例如文件下载功能处<br>若未经过滤则可能存在任意文件下载漏洞，发现该功能后定位代码段，找到其使用的功能函<br>数——可能是file_get_contents或者别的什么，追踪它使用的变量是否有做安全过滤)；甚至你可以直接尝试定向的挖掘某一类漏洞——依旧是通过可能涉及的函数去寻找……<br>但无论你使用哪种方法进行漏洞挖掘，阅读代码的能力是必不可少的。也就是，你至少得知道开发者在做什么。</p>
+<h4 id="浅谈SSRF漏洞"><a href="#浅谈SSRF漏洞" class="headerlink" title="浅谈SSRF漏洞"></a>浅谈SSRF漏洞</h4><p><strong>SSRF的定义与成因：</strong></p>
+<p>SSRF(Server-Side Request Forgery：服务器端请求伪造)是一种由攻击者构造形成，由服务端发起请求的一个安全漏洞。一般情况下，SSRF攻击的目标是从外网无法访问的内部系统。(正是因为它是由服务端发起的，所以它能够请求到与它相连而与外网隔离的内部系统)<br>SSRF漏洞形成的原因大都是由于服务端提供了从其他服务器应用获取数据的功能且没有对目标地址做过滤与限制。比如从指定URL地址获取网页文本内容,加载指定地址的图片，下载等等。</p>
+<p><strong>SSRF代码层成因：</strong>（代码审计需观察有无以下类似写法，变量是否未经任何过滤就传到危险函数中）</p>
+<pre><code class="php">//file_get_contents
+&lt;?php
+  if(isset($_POST[&#39;url&#39;]))//isset()为判断是否有设置括号中的函数即检测变量是否已设置并且非null
+    &#123;
+        $content = file get_contents($_POST[&#39;url&#39;]);//为文件读取的关键函数
+        $filename = &#39;./images/&#39; .rand().&#39;.jpg&#39;;//字符串拼接
+        fi1e_put_contents($filename, $content);//将之前读到的数据写进文件中
+        echo $_POST[&#39;ur1&#39;];
+        $img = &quot;&lt;img src=\&quot;&quot;.$filename.&quot;\&quot;/&gt;&quot;;
+        echo $img;
+    &#125;
+    else
+    &#123;
+        echo &quot;no ur1&quot;;
+      &#125;
+?&gt;//总的来说是实现图片保存功能
+</code></pre>
+<p>简化代码：</p>
+<pre><code>&lt;?php
+  echo file_get_contents($_GET[&#39;url&#39;]);
+?&gt;
+</code></pre>
+<p>在浏览器中输入本地ip/文件名?url=<a href="http://www.baidu.com(需要给url赋值,否则会报错)则会打开百度的页面/">http://www.baidu.com（需要给url赋值，否则会报错）则会打开百度的页面</a></p>
+<pre><code class="php">//fsockopen
+&lt;?php
+   function GetFile($host,$port,$link) &#123;
+      $fp = fsockopen($host, intval($port), $errno, $errstr, 30);
+      if (!$fp)&#123;
+          echo &quot;serrstr (error number $errno) \n&quot;;
+      &#125;else &#123;
+          $out = &quot;GET $link HTTP/1.1irin&quot;;
+          $out .=&quot;Host: $hostirin&quot;;
+          $out .= &quot;Connection: closeirinirin&quot;;$out .=&quot;\rin&quot;;
+          fwrite($fp,$out);
+          $contents=&#39;&#39;;
+          while (!feof($fp)) &#123;
+              $contents.=fgets($fp,1024);
+           &#125;
+           fclose($fp);
+           return $contents;
+      &#125;
+   &#125;
+?&gt;
+</code></pre>
+<pre><code class="php">//curl
+&lt;?php
+    if (isset($_POST[&#39;url&#39;]))&#123;
+        $1ink = $_POST[&#39;ur1&#39;];
+        $curlobj = cur1_init();
+        curl_setopt($curlobj, CURLOPT_POST, 0);
+        curl_setopt($curlobj, CURLOPT_URL,$link);
+        curl_setopt($curlobj, CURLOPT_RETURNTRANSFER, 1);
+        $result=curl_exec($curlobj); 
+        curl_close($cur1obj);
+        $filename = &#39;./curled/&#39;.rand().&#39;.txt&#39;;
+        $file_put_contents($filename, $result);
+        echo $result ;
+    &#125;
+?&gt;
+</code></pre>
+<p><strong>SSRF的危害：</strong></p>
+<p>-内网探测<br>-利用file协议读取本地文件等等<br>-向内部（内网）任意主机的任意端口发送精心构造的Payload，从而攻击内网的应用，主要是使用GET参数就可以实现的攻击(比如struts2，sqli等)<br>-DOS攻击(请求大文件，始终保持连接Keep-Alive Always)</p>
+<p><strong>SSRF漏洞的验证：</strong></p>
+<ol>
+<li>排除法：浏览器f12（或右上角的三个点–更多工具–开发者工具）查看源代码看是否是在本地进行了请求<br>比如:该资源地址类型为 <a href="http://www.xxx.com/a.php?image=">http://www.xxx.com/a.php?image=</a> (地址)的（即对该地址进行请求操作）就可能存在SSRF漏洞（本例可能存在对任意网址请求的漏洞）</li>
+<li>dnslog/requestbin等工具/平台进行测试或监听，看是否被访问。</li>
+</ol>
+<p><u>曾经常考</u>：在网站的根目录下放一个flag.php文件。如下。</p>
+<pre><code class="php">&lt;?php
+    $flag = &quot;flag&#123;well,You get_ 1t&#125;&quot; ;
+    if ($_SERVER[&#39;REMOTE_ADDR&#39;] !== $_SERVER[&#39;HTTP_HOST&#39;])&#123;
+        echo &quot;You are not a local visitor, access is forbidden!&quot; ;
+    &#125;//该代码意味着只有从本地访问才有可能输出flag    
+    else&#123;
+        echo $flag;
+    &#125;
+?&gt;
+</code></pre>
+<p>如何访问：<a href="http://x.x.x.x/?url=flag.php%EF%BC%88%E9%80%9A%E8%BF%87%E8%AE%BF%E9%97%AE%E6%9C%AC%E5%9C%B0%E6%9D%A5%E6%89%93%E5%BC%80flag.php%E6%96%87%E4%BB%B6%EF%BC%89">http://x.x.x.x/?url=flag.php（通过访问本地来打开flag.php文件）</a></p>
+<p><strong>一些绕过：</strong>（仅提供思路，而非用下面方式一定能绕过。应该依据对方的具体代码以及具体过滤形式选择绕过方式）</p>
+<ol>
+<li><p>加端口.  127.0.0.1:80 </p>
+</li>
+<li><p>短网址</p>
+</li>
+<li><p>指向任意IP的域名xip.io 127.0.1.xip.io</p>
+</li>
+<li><p>IP限制绕过</p>
+<p>十进制转换 (转换成16进制再转换回来，把.换成0，<a href="http://0x7f000001,十进制就是http//2130706433">http://0x7f000001，十进制就是http://2130706433</a> )<br>八进制转换<a href="http://127.0.0.1/">http://0177.0.0.1</a></p>
+<p>十六进制转换<a href="http://127.0.0.1/">http://0x7f.0.0.1</a></p>
+<p>不同进制组合转换</p>
+</li>
+<li><p> @绕过</p>
+</li>
+</ol>
+<p>   <a href="http://www.bai.com@127.0.0.1(实际访问的还是127.0.0.1这个本地)/">http://www.bai.com@127.0.0.1（实际访问的还是127.0.0.1这个本地）</a></p>
+<ol start="6">
+<li><p>后面跟参数（寻找功能点以发现参数）</p>
+<p> <a href="http://127.0.0.1/?a=sdagwasdwfa">http://127.0.0.1?a=sdagwasdwfa</a></p>
+</li>
+</ol>
+<p><u>小知识</u>：</p>
+<p>完整url：“协议：//用户名：密码@网址/网站文件？参数名=参数值#锚点”</p>
+<p>当内网存在redis/mongodb/mysql等，也可以考虑同ssrf漏洞去进一步攻击</p>
+<p>内网攻击可以采用”gopher://“或”dict://“协议</p>
+<p>内网端口扫描可以用”dict://“或”http://“协议等，使用协议需要根据SSRF是如何造成的来具体分析。（内网扫端口并无特定端口）</p>
+<p>边界机器存在ssrf，通过dict或者http等协议扫本地端口或内网网段（如本地的5000端口上存在一个flaskweb，那么请求127.0.0.1：5000的时候能访问到，内网同理）找到内网web应用后通过http协议访问并尝试攻击，如果要发生post请求可以使用gopher，知道到内网脆弱应用后可以通过gopher协议进行攻击。</p>
 ]]></content>
   </entry>
   <entry>
@@ -1585,6 +1346,275 @@ except Exception:
 ]]></content>
   </entry>
   <entry>
+    <title>第四篇博客</title>
+    <url>/2021/07/20/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%9B%9B%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2 id="MISC初步学习"><a href="#MISC初步学习" class="headerlink" title="MISC初步学习"></a>MISC初步学习</h2><h3 id="流量分析"><a href="#流量分析" class="headerlink" title="流量分析"></a>流量分析</h3><h4 id="小知识："><a href="#小知识：" class="headerlink" title="小知识："></a>小知识：</h4><p>注释：可练习题目进行掌握</p>
+<p>（1）在使用抓包软件进行流量分析时，抓到的包往往含有数据链路层、网络层、传输层、应用层四个部分，其中每一个部分在传递到不同的层面的时候会被利用并丢弃。</p>
+<p>（2）wreshark抓到的包工作在数据链路层（若网卡特殊则也可抓到物理层，启动慢是因为在寻找接口），而burpsuite抓到的http包则工作在应用层。</p>
+<p>（3）物理层传输方式：WIFI无线通信（电磁波）、千兆网线（八根导线，百兆为四根）</p>
+<p>（4）当同时连接网线和WIFI时，因为物理网口的跃点数比无线网口的跃点数低，跃点数越低则优先级越高，故选择以太网接口进行查看。</p>
+<p>（5）视频/直播的数据很多是走UDP通道的。</p>
+<p>（6）http与https：https协议是加密的</p>
+<p>（7）加密协议统称为tls</p>
+<p>（8）集线器会将信号转发给除了发送源的其他所有端口，因此不安全，容易被窃听。</p>
+<p>（9）当多台计算机通过交换机（对照交换表精准转发，隔离冲突域）相连时，它们采用的通信方式是数据链路层的协议。当某台计算机想给另一个计算机发送消息时，需要在以太帧头中指明发送方和接收方的地址，交换机在接收到信号之后会根据这个地址正确地将信号转发至某一个端口（即网线），从而避免了网络内所有计算机都能收到信号。以太帧中的数据是我们想要传输的信息，包括接下来的IP数据包。想要转发给其它所有计算机的时候，目的MAC地址改为全0（广播地址）。</p>
+<p>（10）当网卡地址变动时需刷新交换表，因此启用网络层配一个虚拟地址即IP地址，IP地址和MAC地址可以一对多也可以多对一。ARP协议将网络地址转换为物理地址。</p>
+<p>（11）路由器进行跨网段转发。家用路由器集成多种功能。</p>
+<p>（12）QQ聊天基于QICQ协议。</p>
+<p>（13）用软件ubuntu连接服务器后输入命令nc -l 8888对8888端口进行监听。在windows powershell中输入命令ncat git.nepwn com 8888回车后输入内容，便可在ubuntu窗口接收到。</p>
+<p>可在windows powershell中输入命令nslookup git.nepwn com进行服务器IP地址的查询。</p>
+<p>可在ubuntu中输入命令ncat -lk 8888 –chat来进行多人聊天服务器的安装。</p>
+<p>（14）http基于tcp，http端口为80。</p>
+<p>（15）要分析病毒或者恶意软件建议在虚拟机里进行，这样就不会干扰到我们的宿主机。</p>
+<p>（16）用wireshark/科来网络分析系统分析报文寻找flag。</p>
+<p>有时查找到的flag需要用在线工具进行解密，有时在用wireshark做流量分析时也要将软件进行解密设置（打开对应的密钥文件），否则flag藏在加密的数据包里面而无法查找。</p>
+<p>有些在请求包里面的题目可以用一般的流量导出的方法，然后在ubuntu中输入命令grep flag -rna .进行查找。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>GitHack</title>
+    <url>/2021/09/26/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/GitHack/</url>
+    <content><![CDATA[<h2 id="GitHack安装与使用"><a href="#GitHack安装与使用" class="headerlink" title="GitHack安装与使用"></a>GitHack安装与使用</h2><p>注：python3之前已配置好，不再多讲。应该基本同于python2。</p>
+<h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>GitHack是一个.git泄露利用脚本，通过泄露的.git文件夹下的文件，重建还原工程源代码。渗透测试人员、攻击者，可以进一步审计代码，挖掘：文件上传，SQL注射等安全漏洞。</p>
+<h4 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h4><p>网上下载到的githack基本只适用于python2。而目前大部分使用的python版本都是python3。</p>
+<h4 id="方案一：安装python2来运行githack"><a href="#方案一：安装python2来运行githack" class="headerlink" title="方案一：安装python2来运行githack"></a>方案一：安装python2来运行githack</h4><p><strong>下载python2和python3</strong></p>
+<p>官网<a href="https://www.python.org/%E4%B8%8B%E8%BD%BDpython2%E5%92%8Cpython3%E6%88%96%E8%80%85%E5%BA%94%E7%94%A8%E5%95%86%E5%9F%8E%E4%B8%AD%E4%B8%8B%E8%BD%BD%E3%80%82%E5%AE%89%E8%A3%85%E5%BB%BA%E8%AE%AE%E4%B8%80%E8%B7%AF%E9%BB%98%E8%AE%A4next%E4%B8%8B%E5%8E%BB%E3%80%82">https://www.python.org/下载python2和python3或者应用商城中下载。安装建议一路默认next下去。</a></p>
+<p><strong>配置python2.x的环境变量</strong></p>
+<p>需要将两个目录添加到path环境变量中：</p>
+<ul>
+<li>python命令文件所在目录： python 2.x安装目录</li>
+<li>pip、easy_install等其他脚本文件所在目录： python 2.x安装目录下的Scripts目录</li>
+</ul>
+<p>找到此电脑选择属性或者右键我的电脑找到属性——&gt;高级系统设置——&gt;环境变量——&gt;用户变量下的PATH——&gt;编辑</p>
+<p>将下面这两行内容添加到Path变量的<strong>开始位置</strong>：（先新建后上移到第一行）<br>C:\Python27<br>C:\Python27\Scripts\</p>
+<p><strong>将python 2.x 和 python 3.x的相关命令区分开来</strong></p>
+<p>找到 python2 和 python3 的安装目录，修改 python2.x 和 python3.x 中 <strong>python.exe</strong> 的名称为 <strong>python2.exe</strong>和 <strong>python3.exe</strong>。</p>
+<p>然后运行cmd命令，输入python2 可以运行 python2.x 版本，输入 python3 即可运行 python3.x 版本。如下图。</p>
+<img src="/images/GitHack/image-20210926021728278.png" alt="image-20210926021728278" style="zoom:37%;" />
+
+<p><strong>解决两者pip共存问题</strong></p>
+<p>Python安装包需要用到包管理工具pip，但当同时安装python2和python3的时候，pip只是其中一个版本。为了保证共存，需要分别重新安装pip。</p>
+<p>1.安装pip2：在命令窗口中输入：python2 -m pip install –upgrade pip –force-reinstall，如下图显示重新安装成功。</p>
+<img src="/images/GitHack/image-20210926022035773.png" alt="image-20210926022035773" style="zoom:30%;" />
+
+<p>2.安装 pip3： 在命令窗口中输入：python3 -m pip install –upgrade pip –force-reinstall 。如果没有成功则可能在之前已经重新安装过pip.exe了，需要将它从文件夹中删除再输入命令。如下图显示重新安装成功。</p>
+<img src="/images/GitHack/image-20210926022756669.png" alt="image-20210926022756669" style="zoom:50%;" />
+
+<p>3.现在可以通过pip2 -V 和 pip3-V 查看两个版本的pip信息，以后只需运行 pip2 install XXX 和 pip3 install XXX 即可安装各自的python包。到这里 pip共存问题 也已经解决啦！</p>
+<p><strong>使用GitHack</strong></p>
+<p>在含有GitHack.py的文件夹的地址栏中输入cmd打开命令窗口</p>
+<p>输入命令：python2 GitHack.py URL.git来使用githack</p>
+<img src="/images/GitHack/image-20210926023209128.png" alt="image-20210926023209128" style="zoom:30%;" />
+
+<h4 id="方案二：修改文件，使之适应python3环境"><a href="#方案二：修改文件，使之适应python3环境" class="headerlink" title="方案二：修改文件，使之适应python3环境"></a>方案二：修改文件，使之适应python3环境</h4><p>将python2文件修改为python3文件：</p>
+<p>python2的print改为python3的print()；</p>
+<p>python3中合并了部分包，需要将import xxx改为from xxx import xxx。</p>
+<p>其余根据运行提示来修改。</p>
+<p>输入命令：python3 GitHack.py URL.git来使用githack</p>
+<img src="/images/GitHack/image-20210927005148911.png" alt="image-20210927005148911" style="zoom:30%;" />
+]]></content>
+  </entry>
+  <entry>
+    <title>VMware</title>
+    <url>/2021/07/10/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/VMware/</url>
+    <content><![CDATA[<h2 id="虚拟机issue"><a href="#虚拟机issue" class="headerlink" title="虚拟机issue"></a>虚拟机issue</h2><p>注：本文虚拟机为VMware Workstation 16 Player（非商业用途）且以ubuntu-16.04.7-desktop-amd64（Linux系统）为镜像。</p>
+<p>安装好后打开软件，点击创建新虚拟机。按照提示步骤完成即可。</p>
+<p>快捷键ctrl+alt+t可以召唤终端，利用命令sudo passwd root设置root模式密码。设置完成后，可用命令su root进入特权模式/管理员模式。用命令python -V（大写）和pip -V查询python和pip版本，ubuntu自带的python2的版本是2.7.12，python3的版本是3.5.2，pip版本是8.1.1。</p>
+<img src="/images/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210810234635531.png" alt="image-20210810234635531" style="zoom: 67%;" />
+
+<p>如果没有查询到则根据提示输入命令sudo apt install python-pip进行下载。</p>
+<img src="/images/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210810234119104.png" alt="image-20210810234119104" style="zoom: 67%;" />
+
+<p>安装过程中很多错误产生的都是因为这两个的版本太低。</p>
+<p>解决方法：用命令wget <a href="https://bootstrap.pypa.io/pip/3.5/get-pip.py%E5%9C%A8%E8%AF%A5%E7%BD%91%E5%9D%80%E4%B8%8B%E8%BD%BDpip%E3%80%82">https://bootstrap.pypa.io/pip/3.5/get-pip.py在该网址下载pip。</a></p>
+<img src="/images/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210810235410784.png" alt="image-20210810235410784" style="zoom:50%;" />
+
+<p>这个网址可以安装和python3兼容的pip 20.3.4版本。</p>
+<img src="/images/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210811000107849.png" alt="image-20210811000107849" style="zoom:50%;" />
+
+<p>按上述操作完成后，各版本如下。</p>
+<img src="/images/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210811000322681.png" alt="image-20210811000322681" style="zoom: 67%;" />
+
+<p>之后如果要用python运行文件，建议使用python3。</p>
+<p>格式：python3 文件名（包括扩展名）。例如：python3 flag.py</p>
+<p>如果要进入某个文件夹则用命令“cd 文件夹”</p>
+<img src="/images/VMware/image-20210814203832735.png" alt="image-20210814203832735" style="zoom: 67%;" />
+
+<p>小tip：小白不建议更新工具等，除非万不得已，不然系统提示的更新忽略即可，否则可能出现新的问题。</p>
+<p>在利用Linux系统（虚拟机）的vim命令修复文件时，如果出现下图情况，则输入命令“sudo apt-get install ctags”后再输入“sudo apt-get install vim”，执行完毕后就可以正常访问了。</p>
+<img src="/images/VMware/image-20210908174145951.png" alt="image-20210908174145951" style="zoom:50%;" />
+
+
+
+]]></content>
+  </entry>
+  <entry>
+    <title>burpsuite</title>
+    <url>/2021/09/18/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/burpsuite/</url>
+    <content><![CDATA[<h2 id="burpsuite安装与使用"><a href="#burpsuite安装与使用" class="headerlink" title="burpsuite安装与使用"></a>burpsuite安装与使用</h2><p>注：建议与火狐浏览器配合使用。</p>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>Burp Suite 是用于攻击web 应用程序的集成平台，包含了许多工具。Burp Suite为这些工具设计了许多接口，以加快攻击应用程序的过程。所有工具都共享一个请求，并能处理对应的HTTP 消息、持久性、认证、代理、日志、警报。</p>
+<h4 id="安装与使用"><a href="#安装与使用" class="headerlink" title="安装与使用"></a>安装与使用</h4><p><strong>burpsuite安装：</strong></p>
+<p>我是直接在应用上安装的burpsuite社区版。也可进入官网下载。</p>
+<p>官网链接：<a href="https://portswigger.net/burp">https://portswigger.net/burp</a></p>
+<img src="/images/burpsuite/image-20210918003959781.png" alt="image-20210918003959781" style="zoom:33%;" />
+
+<p><strong>浏览器代理设置：</strong></p>
+<p>点击浏览器页面右上角进入设置拉到最低找到网络设置而后点击设置。</p>
+<img src="/images/burpsuite/image-20210918004410626.png" alt="image-20210918004410626" style="zoom:25%;" />
+
+<p>点手动配置代理将代理设置成与burpsuite上的相同。</p>
+<img src="/images/burpsuite/image-20210918004523344.png" alt="image-20210918004523344" style="zoom:25%;" />
+
+<img src="/images/burpsuite/image-20210918005522266.png" alt="image-20210918005522266" style="zoom:45%;" />
+
+<p><strong>！此处还需解开个限制</strong></p>
+<img src="/images/burpsuite/image-20210918005659174.png" alt="image-20210918005659174" style="zoom:50%;" />
+
+
+
+<p>方法：</p>
+<p>打开设置将<img src="/images/burpsuite/image-20210918005938252.png" alt="image-20210918005938252" style="zoom:50%;" />改为<img src="/images/burpsuite/image-20210918010015702.png" alt="image-20210918010015702" style="zoom:60%;" /></p>
+<p>在访问后的搜索框内输入network.proxy.allow_hijacking_localhost，将fasle改为true。</p>
+<img src="/images/burpsuite/image-20210918010107193.png" alt="image-20210918010107193" style="zoom:30%;" />
+
+<p>修改完成后回到设置会发现变化。</p>
+<img src="/images/burpsuite/image-20210918010254513.png" alt="image-20210918010254513" style="zoom:60%;" />
+
+<p><strong>使用：（以爆破为栗子）</strong></p>
+<p>先将浏览器的代理关闭即不使用代理方可访问题目网站。</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210913005916028.png" alt="image-20210913005916028" style="zoom:50%;" />
+
+<p>此为ctfhub中的弱口令题目，猜测用户名为admin，只需要爆破密码即可。</p>
+<p>将浏览器的代理开启，打开burpsuite进行抓包，输入用户名admin以及任一密码（例如：123）</p>
+<p>右击下图命令选择send to intruder进行爆破</p>
+<img src="/images/burpsuite/image-20210918010923654.png" alt="image-20210918010923654" style="zoom:33%;" />
+
+<p>设置intruder——payload，导入字典后点击start attack</p>
+<img src="/images/burpsuite/image-20210918011229722.png" alt="image-20210918011229722" style="zoom:32.5%;" />
+
+<p>找到爆破长度不同的即为密码，查看response得到flag。</p>
+<img src="/images/burpsuite/image-20210918011351469.png" alt="image-20210918011351469" style="zoom:40%;" />
+]]></content>
+      <categories>
+        <category>工具安装指南</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>dirsearch</title>
+    <url>/2021/09/25/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dirsearch/</url>
+    <content><![CDATA[<h2 id="dirsearch安装与使用"><a href="#dirsearch安装与使用" class="headerlink" title="dirsearch安装与使用"></a>dirsearch安装与使用</h2><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>dirsearch是一个python开发的目录扫描工具，目的是扫描网站的敏感文件和目录从而找到突破口。</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>进入官网下载<a href="https://github.com/maurosoria/dirsearch%EF%BC%8C%E7%82%B9%E5%87%BB%E4%BB%A3%E7%A0%81code%E7%84%B6%E5%90%8E%E4%B8%8B%E8%BD%BD%E5%8E%8B%E7%BC%A9%E5%8C%85%E3%80%82">https://github.com/maurosoria/dirsearch，点击代码code然后下载压缩包。</a></p>
+<img src="/images/dirsearch/image-20210925153641733.png" alt="image-20210925153641733" style="zoom:50%;" />
+
+<p>下载完成后解压。打开进入到dirsearch目录，cmd进入到dirsearch.py目录。可直接在这个目录下输入cmd进入，这样就不需要cd一级一级的进入了。</p>
+<img src="/images/dirsearch/image-20210925154051408.png" alt="image-20210925154051408" style="zoom:33%;" />
+
+<p>输入命令python dirsearch.py -u <a href="https://www.baidu.com/">https://www.baidu.com</a> -e *进行测试。</p>
+<p>问题1：出现ModuleNotFoundError: No module named ‘chardet’</p>
+<img src="/images/dirsearch/image-20210925154920335.png" alt="image-20210925154920335" style="zoom:63%;" />
+
+<p>解决方法：手动进入网址<a href="https://github.com/chardet/chardet%E4%B8%8B%E8%BD%BDchardet%E6%A8%A1%E5%9D%97%E3%80%82%E8%A7%A3%E5%8E%8B%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8Ccmd%E8%BF%9B%E5%85%A5%E5%91%BD%E4%BB%A4%E7%AA%97%E5%8F%A3%E8%BE%93%E5%85%A5%E5%91%BD%E4%BB%A4python">https://github.com/chardet/chardet下载chardet模块。解压打开文件夹，cmd进入命令窗口输入命令python</a> setup.py install进行安装。</p>
+<img src="/images/dirsearch/image-20210925160047567.png" alt="image-20210925160047567" style="zoom:33%;" />
+
+<p>问题2：出现ModuleNotFoundError: No module named ‘markupsafe’</p>
+<img src="/images/dirsearch/image-20210925160213872.png" alt="image-20210925160213872" style="zoom:63%;" />
+
+<p>解决方法：直接win+R召唤出命令窗口，输入命令pip install markupsafe进行安装。</p>
+<p>没有问题之后再次进行测试就可以了。</p>
+<img src="/images/dirsearch/image-20210925160510879.png" alt="image-20210925160510879" style="zoom:70%;" />
+
+]]></content>
+  </entry>
+  <entry>
+    <title>dvcs-ripper</title>
+    <url>/2021/09/29/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dvcs-ripper/</url>
+    <content><![CDATA[<h2 id="dvcs-ripper安装与使用"><a href="#dvcs-ripper安装与使用" class="headerlink" title="dvcs-ripper安装与使用"></a>dvcs-ripper安装与使用</h2><p>注：适用于Linux系统，windows用户可以安装在虚拟机上。</p>
+<h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>一款perl的版本控制软件信息泄露利用工具，支持SVN, GIT, Mercurial/hg, bzr…</p>
+<h4 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h4><p>在网址<a href="https://github.com/kost/dvcs-ripper%E4%B8%8A%E8%BF%9B%E8%A1%8C%E4%B8%8B%E8%BD%BD%E5%8E%8B%E7%BC%A9%E5%8C%85%EF%BC%8C%E8%A7%A3%E5%8E%8B%E5%90%8E%E6%8B%96%E8%BF%9B%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%B8%AD%E3%80%82">https://github.com/kost/dvcs-ripper上进行下载压缩包，解压后拖进虚拟机中。</a></p>
+<p>进行简单配置相关要求的组件：sudo apt-get install perl libio-socket-ssl-perl libdbd-sqlite3-perl libclass-dbi-perl libio-all-lwp-perl</p>
+<h4 id="栗子"><a href="#栗子" class="headerlink" title="栗子"></a>栗子</h4><p>以ctfhub的svn泄露为栗子。</p>
+<p>进入dvcs-ripper-master文件夹右键进入终端，输入命令perl rip-svn.pl -u <a href="http://challenge-277a34a7a99ae035.sandbox.ctfhub.com:10800/.svn/">http://challenge-277a34a7a99ae035.sandbox.ctfhub.com:10800/.svn/</a></p>
+<img src="/source/images/dvcs-ripper/image-20211001182915450.png" alt="image-20211001182915450" style="zoom:50%;" />
+
+<p>再tree看看：根据提示安装：sudo apt install tree。然后输入命令：tree .svn进行查看</p>
+<img src="/source/images/dvcs-ripper/image-20211001183200968.png" alt="image-20211001183200968" style="zoom:50%;" />
+
+<p>需要注意的是，.svn是隐藏文件，在linux下必须ls -al才能看到。<br>根据题目的提示，Flag 在服务端旧版本的源代码中。<br>注意tree中的pristine，里面一般存储的是代码的历史版本。直接进入目录，然后读取文件就可以得到flag了：</p>
+<img src="/source/images/dvcs-ripper/image-20211001183703701.png" alt="image-20211001183703701" style="zoom:50%;" />
+
+<p>由于我在文件夹中没有看到那些文件夹，所以是一路cd进到be文件夹，再用cat命令打开文件查看flag。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>sqli-labs</title>
+    <url>/2021/10/02/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/sqli-labs/</url>
+    <content><![CDATA[<h2 id="sqli-labs"><a href="#sqli-labs" class="headerlink" title="sqli-labs"></a>sqli-labs</h2><h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>SQLI-LABS 是一个学习 SQLI 的平台 GET 和 POST 场景涵盖了以下实验室：</p>
+<ol>
+<li>基于错误的注入（联合选择）<ol>
+<li>细绳</li>
+<li>虎牙</li>
+</ol>
+</li>
+<li>基于错误的注入（基于双重注入）</li>
+<li>盲注：1.Boolian based 2.Time Based</li>
+<li>更新查询注入。</li>
+<li>插入查询注入。</li>
+<li>标头注射。1.基于Referer。2.基于UserAgent。3.基于Cookie。</li>
+<li>二阶注射</li>
+<li>绕过WAF<ol>
+<li>绕过黑名单过滤器 剥离评论 剥离 OR &amp; AND 剥离空格和评论 剥离 UNION &amp; SELECT</li>
+<li>阻抗失配</li>
+</ol>
+</li>
+<li>绕过addslashes()</li>
+<li>绕过 mysql_real_escape_string。（特殊情况下）</li>
+<li>堆叠 SQL 注入。</li>
+<li>二级通道提取</li>
+</ol>
+<h4 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h4><p>需要安装以下环境 </p>
+<ol>
+<li><p>apache+mysql+php </p>
+</li>
+<li><p>Tomcat+mysql+java（部分关卡需要）</p>
+</li>
+</ol>
+<p>下载sqli-labs地址：<a href="https://github.com/Audi-1/sqli-labs">https://github.com/Audi-1/sqli-labs</a></p>
+<p>下载phpstudy地址：<a href="https://www.xp.cn/download.html">https://www.xp.cn/download.html</a></p>
+<p>将下载的 SQLi-Labs.zip 解压到phpstudy网站根目录下即WWW文件夹中。</p>
+<img src="../../source/images/sqli-labs/image-20211003014314499.png" alt="image-20211003014314499" style="zoom:50%;" />
+
+<p>修改 db-creds.inc 里（sqli-labs-master下的sql-connections文件夹中）的代码如下：因为phpstudy默认的mysql数据库地址是“127.0.0.1 或 localhost”，用户名和密码都是”root”。主要是修改’$dbpass‘为root。</p>
+<img src="../../source/images/sqli-labs/image-20211003014504175.png" alt="image-20211003014504175" style="zoom:50%;" />
+
+<p><strong>旧版</strong>：</p>
+<p>启动phpstudy.exe</p>
+<img src="../../source/images/sqli-labs/image-20211003015239021.png" alt="image-20211003015239021" style="zoom:50%;" />
+
+<p>在浏览器地址栏输入：<a href="http://127.0.0.1/sqli-labs/%EF%BC%88%E5%9B%A0%E5%85%B7%E4%BD%93%E6%96%87%E4%BB%B6%E5%92%8C%E8%AE%BE%E7%BD%AE%E8%80%8C%E5%B7%B2%EF%BC%89">http://127.0.0.1/sqli-labs/（因具体文件和设置而已）</a></p>
+<img src="../../source/images/sqli-labs/image-20211003015514897.png" alt="image-20211003015514897" style="zoom:50%;" />
+
+<p><strong>新版</strong>：</p>
+<p>启动框框中的三个套件：</p>
+<img src="../../source/images/sqli-labs/image-20211003020935371.png" alt="image-20211003020935371" style="zoom:30%;" />
+
+<p>注意网站的物理路径和Nginx设置的网站目录要正确。</p>
+<p>在浏览器地址栏输入：<a href="http://localhost/sqli-labs-master/">http://localhost/sqli-labs-master/</a></p>
+<img src="../../source/images/sqli-labs/image-20211003021439234.png" alt="image-20211003021439234" style="zoom:50%;" />
+
+
+
+<p>点击第一个，如下图所示即安装成功：</p>
+<img src="../../source/images/sqli-labs/image-20211003022438705.png" alt="image-20211003022438705" style="zoom:25%;" />
+
+<p>如果出现如下图错误，则进入软件管理选择php5版本安装，再进入网站——管理——php版本即可。</p>
+<img src="../../source/images/sqli-labs/image-20211003022738317.png" alt="image-20211003022738317" style="zoom:30%;" />
+
+<p>然后浏览器打开 “<a href="http://localhost/sqli-labs-master&quot;%E5%90%91%E4%B8%8B%E7%BF%BB%EF%BC%8C%E5%B0%B1%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%E6%9C%89%E5%BE%88%E5%A4%9A%E4%B8%8D%E5%90%8C%E7%9A%84%E6%B3%A8%E5%85%A5%E7%82%B9%E4%BA%86%EF%BC%8C%E5%88%86%E4%B8%BA%E5%9F%BA%E6%9C%ACSQL%E6%B3%A8%E5%85%A5%E3%80%81%E9%AB%98%E7%BA%A7SQL%E6%B3%A8%E5%85%A5%E3%80%81SQL%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%E3%80%81%E6%8C%91%E6%88%98%E5%9B%9B%E4%B8%AA%E9%83%A8%E4%BB%BD%EF%BC%8C%E6%80%BB%E5%85%B1%E7%BA%A675%E4%B8%AASQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E3%80%82">http://localhost/sqli-labs-master&quot;向下翻，就可以看到有很多不同的注入点了，分为基本SQL注入、高级SQL注入、SQL堆叠注入、挑战四个部份，总共约75个SQL注入漏洞。</a></p>
+<img src="../../source/images/sqli-labs/image-20211003023448081.png" alt="image-20211003023448081" style="zoom:30%;" />
+
+]]></content>
+  </entry>
+  <entry>
     <title>CTFHUB(WEB)-SQL注入</title>
     <url>/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/</url>
     <content><![CDATA[<h3 id="WEB工具配置"><a href="#WEB工具配置" class="headerlink" title="WEB工具配置"></a>WEB工具配置</h3><h4 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h4><h5 id="整数型注入"><a href="#整数型注入" class="headerlink" title="整数型注入"></a>整数型注入</h5><p>题目：</p>
@@ -1748,32 +1778,6 @@ except Exception:
 <p>3、利用<a href="https://baike.baidu.com/item/iframe/4446518">iframe</a>、frame、<a href="https://baike.baidu.com/item/XMLHttpRequest/6788735">XMLHttpRequest</a>或上述Flash等方式，以（被攻击）用户的身份执行一些管理动作，或执行一些一般的如发微博、加好友、发私信等操作。</p>
 <p>4、利用可被攻击的域受到其他域信任的特点，以受信任来源的身份请求一些平时不允许的操作，如进行不当的投票活动。</p>
 <p>5、在访问量极大的一些页面上的XSS可以攻击一些小型网站，实现DDoS攻击的效果。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>第四篇博客</title>
-    <url>/2021/07/20/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%9B%9B%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h2 id="MISC初步学习"><a href="#MISC初步学习" class="headerlink" title="MISC初步学习"></a>MISC初步学习</h2><h3 id="流量分析"><a href="#流量分析" class="headerlink" title="流量分析"></a>流量分析</h3><h4 id="小知识："><a href="#小知识：" class="headerlink" title="小知识："></a>小知识：</h4><p>注释：可练习题目进行掌握</p>
-<p>（1）在使用抓包软件进行流量分析时，抓到的包往往含有数据链路层、网络层、传输层、应用层四个部分，其中每一个部分在传递到不同的层面的时候会被利用并丢弃。</p>
-<p>（2）wreshark抓到的包工作在数据链路层（若网卡特殊则也可抓到物理层，启动慢是因为在寻找接口），而burpsuite抓到的http包则工作在应用层。</p>
-<p>（3）物理层传输方式：WIFI无线通信（电磁波）、千兆网线（八根导线，百兆为四根）</p>
-<p>（4）当同时连接网线和WIFI时，因为物理网口的跃点数比无线网口的跃点数低，跃点数越低则优先级越高，故选择以太网接口进行查看。</p>
-<p>（5）视频/直播的数据很多是走UDP通道的。</p>
-<p>（6）http与https：https协议是加密的</p>
-<p>（7）加密协议统称为tls</p>
-<p>（8）集线器会将信号转发给除了发送源的其他所有端口，因此不安全，容易被窃听。</p>
-<p>（9）当多台计算机通过交换机（对照交换表精准转发，隔离冲突域）相连时，它们采用的通信方式是数据链路层的协议。当某台计算机想给另一个计算机发送消息时，需要在以太帧头中指明发送方和接收方的地址，交换机在接收到信号之后会根据这个地址正确地将信号转发至某一个端口（即网线），从而避免了网络内所有计算机都能收到信号。以太帧中的数据是我们想要传输的信息，包括接下来的IP数据包。想要转发给其它所有计算机的时候，目的MAC地址改为全0（广播地址）。</p>
-<p>（10）当网卡地址变动时需刷新交换表，因此启用网络层配一个虚拟地址即IP地址，IP地址和MAC地址可以一对多也可以多对一。ARP协议将网络地址转换为物理地址。</p>
-<p>（11）路由器进行跨网段转发。家用路由器集成多种功能。</p>
-<p>（12）QQ聊天基于QICQ协议。</p>
-<p>（13）用软件ubuntu连接服务器后输入命令nc -l 8888对8888端口进行监听。在windows powershell中输入命令ncat git.nepwn com 8888回车后输入内容，便可在ubuntu窗口接收到。</p>
-<p>可在windows powershell中输入命令nslookup git.nepwn com进行服务器IP地址的查询。</p>
-<p>可在ubuntu中输入命令ncat -lk 8888 –chat来进行多人聊天服务器的安装。</p>
-<p>（14）http基于tcp，http端口为80。</p>
-<p>（15）要分析病毒或者恶意软件建议在虚拟机里进行，这样就不会干扰到我们的宿主机。</p>
-<p>（16）用wireshark/科来网络分析系统分析报文寻找flag。</p>
-<p>有时查找到的flag需要用在线工具进行解密，有时在用wireshark做流量分析时也要将软件进行解密设置（打开对应的密钥文件），否则flag藏在加密的数据包里面而无法查找。</p>
-<p>有些在请求包里面的题目可以用一般的流量导出的方法，然后在ubuntu中输入命令grep flag -rna .进行查找。</p>
 ]]></content>
   </entry>
   <entry>
