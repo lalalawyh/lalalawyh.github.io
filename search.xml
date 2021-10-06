@@ -66,11 +66,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>ctf基础学习-2</title>
-    <url>/2021/09/05/ctf%E5%AD%A6%E4%B9%A0/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/</url>
-    <content><![CDATA[<h2 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h2>]]></content>
-  </entry>
-  <entry>
     <title>ctf基础学习-1</title>
     <url>/2021/09/05/ctf%E5%AD%A6%E4%B9%A0/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-1/</url>
     <content><![CDATA[<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="CTF简介"><a href="#CTF简介" class="headerlink" title="CTF简介"></a>CTF简介</h3><p> CTF意译为“夺旗赛”。其大致流程是，参赛团队之间通过进行攻防对抗、程序分析等形式，率先从主办方给出的比赛环境中得到一串具有一定格式的字符串或其他内容（flag），并将其提交给主办方，从而夺得分数。 flag所表示的为目标服务器上存储的一些敏感机密的信息。</p>
@@ -87,6 +82,11 @@
 <h4 id="KoH-抢占山头"><a href="#KoH-抢占山头" class="headerlink" title="KoH-抢占山头"></a>KoH-抢占山头</h4><p>选手面对的是一个黑盒的目标，需要先挖掘漏洞并利用漏洞控制目标。将自己的队伍标识(队伍名称或是Token之类)写入到指定文件。随后在该主机上进行加固等操作防止其他队伍攻击。</p>
 <h4 id="Mix【混合】"><a href="#Mix【混合】" class="headerlink" title="Mix【混合】"></a>Mix【混合】</h4><p>混合模式结合了以上多种模式。例如参赛队伍通过解题(Jeopardy)可以获取一些初始分数，然后通过攻防对抗(AwD)进行得分增减的零和游戏，最终以得分高低分出胜负。</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>ctf基础学习-2</title>
+    <url>/2021/09/05/ctf%E5%AD%A6%E4%B9%A0/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/</url>
+    <content><![CDATA[<h2 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h2>]]></content>
   </entry>
   <entry>
     <title>sql基础学习-2</title>
@@ -151,6 +151,13 @@
 ]]></content>
   </entry>
   <entry>
+    <title>sql基础学习-1</title>
+    <url>/2021/10/02/ctf%E5%AD%A6%E4%B9%A0/sql%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-1/</url>
+    <content><![CDATA[<h2 id="sql基础学习"><a href="#sql基础学习" class="headerlink" title="sql基础学习"></a>sql基础学习</h2><p>注：为菜鸟教程学习笔记</p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><strong>SQL</strong> (Structured Query Language：结构化查询语言) 是用于管理关系数据库管理系统（RDBMS）。 SQL 的范围包括数据插入、查询、更新和删除，数据库模式创建和修改，以及数据访问控制。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>第一篇博客</title>
     <url>/2021/07/15/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h2 id="网络安全入门学习"><a href="#网络安全入门学习" class="headerlink" title="网络安全入门学习"></a>网络安全入门学习</h2><h3 id="几个网络安全方向的缩写科普"><a href="#几个网络安全方向的缩写科普" class="headerlink" title="几个网络安全方向的缩写科普"></a>几个网络安全方向的缩写科普</h3><h4 id="1-web安全"><a href="#1-web安全" class="headerlink" title="1. web安全"></a>1. web安全</h4><p>Web类题目大部分情况下和网、Web、HTTP等相关技能有关。主要考察选手对于Web攻防的一些知识技巧。诸如<code>SQL注入</code>、<code>XSS</code>、<code>代码执行</code>、<code>代码审计</code>等等都是很常见的考点。一般情况下Web题目只会给出一个能够访问的URL。部分题目会给出附件。</p>
@@ -190,193 +197,6 @@
 <p>​        2.利用hook注入。</p>
 <h4 id="6-misc杂项"><a href="#6-misc杂项" class="headerlink" title="6.misc杂项"></a>6.misc杂项</h4><p>Misc意为杂项，即不包含在以上分类的题目都会放到这个分类。题目会给出一个附件。选手下载该附件进行分析，最终得出flag<br>常见的题型有图片隐写、视频隐写、文档隐写、流量分析、协议分析、游戏、IoT相关等等。五花八门，种类繁多。</p>
 <p>​        主要就是指“取证、隐写”等 一 些其它的方向。例如：GIF图片隐写、PDF隐写、流量隐写、二维码复原。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>sql基础学习-1</title>
-    <url>/2021/10/02/ctf%E5%AD%A6%E4%B9%A0/sql%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-1/</url>
-    <content><![CDATA[<h2 id="sql基础学习"><a href="#sql基础学习" class="headerlink" title="sql基础学习"></a>sql基础学习</h2><p>注：为菜鸟教程学习笔记</p>
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><strong>SQL</strong> (Structured Query Language：结构化查询语言) 是用于管理关系数据库管理系统（RDBMS）。 SQL 的范围包括数据插入、查询、更新和删除，数据库模式创建和修改，以及数据访问控制。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>第二篇博客</title>
-    <url>/2021/07/17/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h2 id="MISC初步学习"><a href="#MISC初步学习" class="headerlink" title="MISC初步学习"></a>MISC初步学习</h2><h3 id="misc图片隐写"><a href="#misc图片隐写" class="headerlink" title="misc图片隐写"></a>misc图片隐写</h3><p>注释：本文所说的文件名均包括扩展名</p>
-<h4 id="1-Misc简介"><a href="#1-Misc简介" class="headerlink" title="1.Misc简介"></a>1.Misc简介</h4><p>概念：Misc为英文miscellaneous的前四个字母，杂项、混合体、大杂烩的意思。</p>
-<p>主要类型：（1）数据编码/图片密码；（2）图片隐写；（3）音频&amp;视频隐写；（4）流量分析（主要分析这段流量里用户做了什么）；（5）内存取证（磁盘）；（6）游戏隐写。</p>
-<h4 id="2-基础知识："><a href="#2-基础知识：" class="headerlink" title="2.基础知识："></a>2.基础知识：</h4><p>（1）010editor介绍（winhex）：工具，什么文件都可用它打开。以十六进制的方式呈现。</p>
-<p>（2）图片十六进制文件头+文件模板：</p>
-<p><strong>模板</strong>常用于告知宽、高和属性等信息。</p>
-<p><strong>常见十六进制文件头：</strong></p>
-<table>
-<thead>
-<tr>
-<th>文件类型</th>
-<th>文件头</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>JPEG（jpg）</td>
-<td>文件头：FFD8FF  结尾：FFD9，超过FFD9部分不会再读取</td>
-</tr>
-<tr>
-<td>PNG</td>
-<td>89504E47</td>
-</tr>
-<tr>
-<td>GIF</td>
-<td>474946383961</td>
-</tr>
-<tr>
-<td>TIFF</td>
-<td>49492A00</td>
-</tr>
-<tr>
-<td>Windows Bitmap（bmp）</td>
-<td>424D</td>
-</tr>
-<tr>
-<td>CAD（dwg）</td>
-<td>41433130</td>
-</tr>
-<tr>
-<td>Adobe Pshotoshop（psd）</td>
-<td>38425053</td>
-</tr>
-<tr>
-<td>Rich TextFormat（rtf）</td>
-<td>7B5C727466</td>
-</tr>
-<tr>
-<td>XML（xml）</td>
-<td>3C3F786D6C</td>
-</tr>
-<tr>
-<td>HTML</td>
-<td>68746D6C3E</td>
-</tr>
-<tr>
-<td>Email[thorough only]（eml）</td>
-<td>44656C69766572792D646174653A</td>
-</tr>
-<tr>
-<td>Outlook Express（dbx）</td>
-<td>CFAD12FEC5FD746F</td>
-</tr>
-<tr>
-<td>Outlook（pst）</td>
-<td>2142444E</td>
-</tr>
-<tr>
-<td>Ms Word/Excel (xls.or.doc)</td>
-<td>d0cf11e0a1b11ae10000</td>
-</tr>
-<tr>
-<td>MS Access (mdb)</td>
-<td>5374616E64617264204A</td>
-</tr>
-<tr>
-<td>WordPerfect (wpd)</td>
-<td>FF575043</td>
-</tr>
-<tr>
-<td>Adobe Acrobat (pdf)</td>
-<td>255044462D312E</td>
-</tr>
-<tr>
-<td>Quicken (qdf)</td>
-<td>AC9EBD8F</td>
-</tr>
-<tr>
-<td>Windows Password (pwl)</td>
-<td>E3828596</td>
-</tr>
-<tr>
-<td>ZIP Archive (zip)</td>
-<td>504B0304</td>
-</tr>
-<tr>
-<td>RAR Archive (rar)</td>
-<td>52617221</td>
-</tr>
-<tr>
-<td>Wave (wav)</td>
-<td>57415645</td>
-</tr>
-<tr>
-<td>AVI(avi)</td>
-<td>41564920</td>
-</tr>
-<tr>
-<td>Real Audio (ram)</td>
-<td>2E7261FD</td>
-</tr>
-<tr>
-<td>Real Media (rm)</td>
-<td>2E524D46</td>
-</tr>
-<tr>
-<td>MPEG (mpg)</td>
-<td>000001BA</td>
-</tr>
-<tr>
-<td>MPEG(mpg)</td>
-<td>000001B3</td>
-</tr>
-<tr>
-<td>Quicktime (mov)</td>
-<td>6D6F6F76</td>
-</tr>
-<tr>
-<td>Windows Media (asf)</td>
-<td>3026B2758E66CF11</td>
-</tr>
-<tr>
-<td>MIDl(mid)</td>
-<td>4D546864</td>
-</tr>
-</tbody></table>
-<p>（3）文件属性（exiftools）：右键——&gt;属性——&gt;详细信息</p>
-<p>（4）Kail虚拟机</p>
-<h4 id="3-图片隐写分类"><a href="#3-图片隐写分类" class="headerlink" title="3.图片隐写分类"></a>3.图片隐写分类</h4><p><strong>图片隐写：</strong>把信息隐藏到图片中</p>
-<p><strong>分类：</strong></p>
-<p>（1）右击属性</p>
-<p>（2）文件末尾藏有字符串：可利用到达结尾后停止读取的特性来隐藏信息</p>
-<p><strong>文件十六进制藏有字符串：</strong></p>
-<p>一、strings查找可打印的字符：图片右击打开控制台输入string+文件名.扩展名</p>
-<p>二、grep使用正则表达式搜索，并输出匹配的行：grep flag</p>
-<p>三、file识别文件类型：</p>
-<p>当文件无后缀名时可通过010打开文件观察文件头以此来确定文件类型。如果用010无法判断文件类型，则可复制进Kail中查看，可直接看到也可打开终端输入命令file+文件名进行查看。</p>
-<p>（四五六的例子）例如，一张png图片中隐藏着一张jpg图片的信息</p>
-<p>四、binwalk分离文件：虚拟机中右击文件打开终端输入命令：binwalk+文件名/binwalk -e +文件名查看。</p>
-<p>五、foremost提取文件：虚拟机中右击文件打开终端输入命令：foremost+文件名进行文件分离和查看。</p>
-<p>六、虚拟机中右击文件打开终端输入命令：dd if=binwalk,foremost,源文件of所要分离的隐藏文件名 bs=1（每次读取一个块）skip=开始处（先利用命令进行分析查看） ——&gt;进行文件分离。</p>
-<p><strong>foremost和dd区别：</strong>foremost可分离所有文件，但不一定能分离出所需要的所有的文件；dd适用于在多个文件中单独分离出所需要的那一个</p>
-<p>（3）文件包含：进行百度自学</p>
-<p>（4）修改文件头：（文件需要正确文件名才能显示。）破坏文件头一定不能读取，破坏文件尾还有可能读取。若文件头被破坏可找该文件类型的固定字段分析。</p>
-<p>（5）GIF：特殊帧（ps/stegsolve）+帧的时间间隔</p>
-<p>方法一：用PS分解图层来分析图片</p>
-<p>方法二：利用stegsolve（安装stegsolve需要java环境）的分析中的帧浏览器</p>
-<p>ABAB式的时间间隔则需想到二进制码源和摩斯</p>
-<p>（6）png（bmp）：</p>
-<p><strong>IHDR、IDAT</strong>：</p>
-<p>IHDR表示图片的宽和高，可利用010进行修改，修改后需要进行保存。一般来说只修改高，修改宽会导致图片不能正确显示，修改高往大的改。</p>
-<p>如果用010打开一张图片它下面显示报错，则说明它的高可能被修改了。可利用校验和计算来判断高是否被修改，也可用脚本爆破一下得知原来的高度。</p>
-<p>IDAT数据块不能变，变了就不能显示了。（小知识：写满上一个块后才会进入下一个块的填写。如果发现上一个块没写满就填写下一个块则可能存在隐写。）</p>
-<p>010复制快捷键：ctrl+shift+c</p>
-<p>python多行输入固定写法，三个单引号</p>
-<p><strong>zlib（010/pngcheck）</strong>：</p>
-<p>用pngcheck查看或者复制进虚拟机打卡终端输入命令“binwalk -e  文件名”生成文件夹进行查看</p>
-<p><strong>lsb隐写/lsb加密（zsteg/stegsolve）</strong>：</p>
-<p>lsb又称最低有效位隐写，即通过最低两位的修改进行隐写。可利用stegsolve选择通道进行分析（学习地址：<a href="https://www.cnblogs.com/cat47/p/11483478.html">stegsolve使用方法 - cat47 - 博客园 (cnblogs.com)</a>）；也可以在虚拟机中打开终端输入“zsteg 文件名”命令进行查看（需安装zsteg），如果还是没有所需信息，则可输入命令“zsteg -a 文件名”进行更多信息的获取。（如果需要保存文件则在终端输入命令“zsteg -e 文件所在通道通道 源文件名 &gt;所要保存的文件名”）</p>
-<p>save text与save bin的区别：save text在复制时会将十六进制与文本一齐复制下来；而save bin想复制十六进制则可单独复制十六进制，复制文本也一样。</p>
-<p><strong>wbs43open（bmp）</strong>：</p>
-<p>利用wbs43open输入密钥进行文件分离，查看隐写内容。</p>
-<p>（7）JPG</p>
-<p>（8）双图隐写</p>
-<p>（9）stegpy</p>
-<p>（10）silenteye</p>
 ]]></content>
   </entry>
   <entry>
@@ -614,252 +434,183 @@ print(s_int, s_bytes)
 ]]></content>
   </entry>
   <entry>
-    <title>第十一篇博客</title>
-    <url>/2021/08/16/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h2 id="RE初步学习"><a href="#RE初步学习" class="headerlink" title="RE初步学习"></a>RE初步学习</h2><h3 id="X86汇编"><a href="#X86汇编" class="headerlink" title="X86汇编"></a>X86汇编</h3><h4 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h4><p><strong>小分类：</strong></p>
-<p><u>架构小分类</u>：</p>
-<p>intel：x86（32位）、IA64（64位）          AMD：AMD64（64位）</p>
-<p><u>指令集小分类</u>：</p>
-<p>精简指令集（risv）：cpu内部简单，写命令时编程相对复杂一些</p>
-<p>复杂指令集（cisv）：cpu内部复杂，可用简短编程实现功能</p>
-<p>注：Arm（功耗小，一般用于手机）和Mips（一般用于服务器）为以精简指令集为代表的架构</p>
-<h4 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h4><p><u>字节</u>：</p>
-<p>1TB=1024GB=1024^2^MB=1024^3^KB=1024^4^B</p>
-<p><u>总线</u>：</p>
-<p>没有总线，cpu、内存、输入输出设备之间就无法沟通，总线是用来通信的，总线分为地址总线、数据总线和控制总线</p>
-<p><u>串行和并行</u>：</p>
-<p>串行传输：按顺序依次进行传输（一位一位的）</p>
-<p>并行传输：所有一起传输</p>
-<p><u>文本文件编译成可执行程序的过程</u>：</p>
-<p>预编译（头文件和相关宏展开）–编译（将预处理后的文件转换为汇编语言）–汇编（转换为机器语言）–链接（分为动态链接和静态链接，动态链接运行时需去动态库进行调用，程序较大；静态链接则会将所写代码直接编译进去，程序较小）</p>
-<p>注：readlf -s compile.o用于读取s compile.o这个目标文件的发表</p>
-<h4 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h4><p><u>通用寄存器</u>：</p>
+    <title>第二篇博客</title>
+    <url>/2021/07/17/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2 id="MISC初步学习"><a href="#MISC初步学习" class="headerlink" title="MISC初步学习"></a>MISC初步学习</h2><h3 id="misc图片隐写"><a href="#misc图片隐写" class="headerlink" title="misc图片隐写"></a>misc图片隐写</h3><p>注释：本文所说的文件名均包括扩展名</p>
+<h4 id="1-Misc简介"><a href="#1-Misc简介" class="headerlink" title="1.Misc简介"></a>1.Misc简介</h4><p>概念：Misc为英文miscellaneous的前四个字母，杂项、混合体、大杂烩的意思。</p>
+<p>主要类型：（1）数据编码/图片密码；（2）图片隐写；（3）音频&amp;视频隐写；（4）流量分析（主要分析这段流量里用户做了什么）；（5）内存取证（磁盘）；（6）游戏隐写。</p>
+<h4 id="2-基础知识："><a href="#2-基础知识：" class="headerlink" title="2.基础知识："></a>2.基础知识：</h4><p>（1）010editor介绍（winhex）：工具，什么文件都可用它打开。以十六进制的方式呈现。</p>
+<p>（2）图片十六进制文件头+文件模板：</p>
+<p><strong>模板</strong>常用于告知宽、高和属性等信息。</p>
+<p><strong>常见十六进制文件头：</strong></p>
 <table>
 <thead>
 <tr>
-<th>寄存器</th>
-<th>用处</th>
+<th>文件类型</th>
+<th>文件头</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>al ah ax eax rax</td>
-<td>用处很多，比如存储返回值</td>
+<td>JPEG（jpg）</td>
+<td>文件头：FFD8FF  结尾：FFD9，超过FFD9部分不会再读取</td>
 </tr>
 <tr>
-<td>bx</td>
-<td>常在寻址时存储基地址</td>
+<td>PNG</td>
+<td>89504E47</td>
 </tr>
 <tr>
-<td>dx</td>
-<td>被用来存放整数除法产生的余数</td>
+<td>GIF</td>
+<td>474946383961</td>
 </tr>
 <tr>
-<td>cx</td>
-<td>常用于控制循环次数</td>
+<td>TIFF</td>
+<td>49492A00</td>
 </tr>
 <tr>
-<td>di</td>
-<td>在变址寻址的时候会使用</td>
+<td>Windows Bitmap（bmp）</td>
+<td>424D</td>
 </tr>
 <tr>
-<td>si</td>
-<td>在变址寻址的时候会使用</td>
+<td>CAD（dwg）</td>
+<td>41433130</td>
 </tr>
 <tr>
-<td>bp</td>
-<td>指向当前栈的底部</td>
+<td>Adobe Pshotoshop（psd）</td>
+<td>38425053</td>
 </tr>
 <tr>
-<td>sp</td>
-<td>指向当前栈的顶部</td>
+<td>Rich TextFormat（rtf）</td>
+<td>7B5C727466</td>
+</tr>
+<tr>
+<td>XML（xml）</td>
+<td>3C3F786D6C</td>
+</tr>
+<tr>
+<td>HTML</td>
+<td>68746D6C3E</td>
+</tr>
+<tr>
+<td>Email[thorough only]（eml）</td>
+<td>44656C69766572792D646174653A</td>
+</tr>
+<tr>
+<td>Outlook Express（dbx）</td>
+<td>CFAD12FEC5FD746F</td>
+</tr>
+<tr>
+<td>Outlook（pst）</td>
+<td>2142444E</td>
+</tr>
+<tr>
+<td>Ms Word/Excel (xls.or.doc)</td>
+<td>d0cf11e0a1b11ae10000</td>
+</tr>
+<tr>
+<td>MS Access (mdb)</td>
+<td>5374616E64617264204A</td>
+</tr>
+<tr>
+<td>WordPerfect (wpd)</td>
+<td>FF575043</td>
+</tr>
+<tr>
+<td>Adobe Acrobat (pdf)</td>
+<td>255044462D312E</td>
+</tr>
+<tr>
+<td>Quicken (qdf)</td>
+<td>AC9EBD8F</td>
+</tr>
+<tr>
+<td>Windows Password (pwl)</td>
+<td>E3828596</td>
+</tr>
+<tr>
+<td>ZIP Archive (zip)</td>
+<td>504B0304</td>
+</tr>
+<tr>
+<td>RAR Archive (rar)</td>
+<td>52617221</td>
+</tr>
+<tr>
+<td>Wave (wav)</td>
+<td>57415645</td>
+</tr>
+<tr>
+<td>AVI(avi)</td>
+<td>41564920</td>
+</tr>
+<tr>
+<td>Real Audio (ram)</td>
+<td>2E7261FD</td>
+</tr>
+<tr>
+<td>Real Media (rm)</td>
+<td>2E524D46</td>
+</tr>
+<tr>
+<td>MPEG (mpg)</td>
+<td>000001BA</td>
+</tr>
+<tr>
+<td>MPEG(mpg)</td>
+<td>000001B3</td>
+</tr>
+<tr>
+<td>Quicktime (mov)</td>
+<td>6D6F6F76</td>
+</tr>
+<tr>
+<td>Windows Media (asf)</td>
+<td>3026B2758E66CF11</td>
+</tr>
+<tr>
+<td>MIDl(mid)</td>
+<td>4D546864</td>
 </tr>
 </tbody></table>
-<p>注：寄存器可用于快速存储临时的数据</p>
-<p>al–低八位 ；ah–高八位；ax–十六位；eax–三十二位；rax–六十四位</p>
-<p><u>段寄存器</u>：</p>
-<p>代码段  cs:ip ：存储可运行的代码</p>
-<p>数据段  ds ：存储会用到的数据</p>
-<p>栈段  ss ：存栈的起始基地址</p>
-<p>额外段  es ：备用</p>
-<p>64位下的：FS、GS——不同系统中用处不同，在windows中，GS用于管理线程特定的内存‘Linux中，GS用于访问cpu特定的内存。FS和GS的另一个用处canary保护。</p>
-<p><u>标志寄存器</u>：</p>
-<table>
-<thead>
-<tr>
-<th>eflags</th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>OF</td>
-<td>overflos flag</td>
-<td>溢出标志</td>
-<td>溢出标志OF用于反映有符号数加减运算所得结果是否溢出</td>
-</tr>
-<tr>
-<td>DF</td>
-<td>direction flag</td>
-<td>方向标志</td>
-<td>控制串指令（MOVS,CMPS）DF=1，ESI,EDI自动递减（从高地址向低地址放向处理字符串），DF=0,ESI,EDI自动递增</td>
-</tr>
-<tr>
-<td>IF</td>
-<td>interrupt flag</td>
-<td>屏蔽中断标志</td>
-<td></td>
-</tr>
-<tr>
-<td>TF</td>
-<td>trap flag</td>
-<td>单步调试标志</td>
-<td>设置后执行一条指令就会被中断</td>
-</tr>
-<tr>
-<td>SF</td>
-<td>signal flag</td>
-<td>符号标志</td>
-<td>正负标志位，记录相关指令执行后，结果是否为负</td>
-</tr>
-<tr>
-<td>ZF</td>
-<td>zero flag</td>
-<td>零标志</td>
-<td>记录相关指令执行后，结果是否为0；如果结果是0，zf=1，如果结果不为0，zf=0</td>
-</tr>
-<tr>
-<td>AF</td>
-<td>auxiliary carry flag</td>
-<td>辅助进位标志</td>
-<td>运算过程中看最后四位，不论长度为多少。最后四位向前有进位或者借位，AF=1,否则AF=0</td>
-</tr>
-<tr>
-<td>PF</td>
-<td>parity flag</td>
-<td>奇偶标志</td>
-<td>运算结果中“1”的个数的奇偶性，偶数个1，PF=1</td>
-</tr>
-<tr>
-<td>CF</td>
-<td>carry flag</td>
-<td>进位标志</td>
-<td>如果运算结果的最高位产生了一个进位或结尾，其值为1，否则为0</td>
-</tr>
-</tbody></table>
-<h4 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h4><p><u>运算指令</u>：</p>
-<p>加   add   add ax,bx<br>减   sub   sub ax,bx<br>乘   mul   mul ax,bx<br>除   div   div ax.bx   商存在ax，余存在dx<br>与   and   and ax,ax<br>或   or   or ax,ax<br>非   not   not ecx<br>异或   xor    xor eax,eax</p>
-<p>左移   shl   逻辑左移 (注意这里是逻辑左移)<br>右移   shr   逻辑右移(注意这里是逻辑右移)</p>
-<p>逻辑移动和算术移动差别在于在不在意符号位，逻辑移动不在意。例子：现在是一个八位数字，最高位是符号位，假设为1，逻辑右移将最高位补充为0，算术右移将最高位补充为1.</p>
-<p><u>赋值指令</u>：</p>
-<p>寄存器寻址：</p>
-<p>mov ax, 0x10（0x10代表16，意味着ax=16）</p>
-<p>mov dx, 0x9   </p>
-<p>mul dx（dx相乘）</p>
-<p>立即数寻址：（可直接在指令中取出所用数，而不用在寄存器中寻找）</p>
-<p>mov ax, 0x18</p>
-<p>基址变址寻址：</p>
-<p>mov[bx+di], ax</p>
-<p>add[bx+si], ax</p>
-<p><u>栈相关指令</u>：（栈与寄存器类似，都为了快速访问，但与堆不同，栈是一块连续的内存，堆中间可能会有空格）</p>
-<p>push   压栈</p>
-<p>pop   弹栈</p>
-<p>Pushfd   把eflags寄存器的内容压入栈</p>
-<p>Popfd   把栈上的内容弹出赋值给eflags寄存器</p>
-<p>Pusha   按照AX、CX、DX、BX、SP（执行PUSHA之前的值）、BP、SI和DI的顺序，将所有16位通用寄存器压入堆栈</p>
-<p>Popa   按照相反顺序将同样的寄存器弹出栈</p>
-<p><u>跳转指令</u>：</p>
-<p>cmp指令   cmp目的操作数，源操作数   目的操作数-源操作数</p>
-<img src="../images/%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210829093006384.png" alt="image-20210829093006384" style="zoom: 67%;" />
-
-<p>ja和jg都是大于，但ja是无符号进行比较，jg是有符号进行比较</p>
-<p><u>调用函数</u>：</p>
-<p>call   （调用）</p>
-<p>ret    （返回）</p>
-<p>ip = ss*16 + sp</p>
-<p>sp = sp + 2</p>
-<p>retf   （返回，可让32位程序执行64位代码）</p>
-<p>ip = ss * 16 +sp</p>
-<p>sp = sp + 2</p>
-<p>cs = ss * 16 + sp</p>
-<p>sp = sp + 2</p>
-<p><u>内中断、外中断：</u></p>
-<p><u>外部中断</u>：</p>
-<p>外部中断是指来自CPU外部的中断，而外部的中断源必须是某个硬件，所以外部中断又称为硬件中断<br>CPU提供统一的接口作为中断信号的公共线路，所有来自外设的中断信号都共享公共线路连接到CPU，外部硬件的中断通过两根信号线通知CPU的<br>两根信号线分别是INTR(INTeRrupt)和NMI(Non Maskable Interrupt)，示意图如下<br>在CPU上运行的程序都是串行的，串行的意思就是所有任务都是一个接一个在CPU上运行的从INTR引|脚收到的中断都是不影响系统运行的，可以随时处理</p>
-<img src="../images/%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210829093928067.png" alt="image-20210829093928067" style="zoom:%;" />
-
-<p>从NMI引脚收到的中断。那基本上全是硬伤，CPU都没有运行下去的必要了<br>可屏蔽中断是通过INTR引脚进入CPU的，外部设备如硬盘、网卡等发出的中断都是可屏蔽中断，可屏蔽的意思是此外部设备发出的中断，CPU可以不必理会，因为它不会让系统宕机，所以可以通过eflags寄存器的IF位将所有这些外部设备的中断屏蔽<br>中断处理程序分为上半部和下半部两部分，把中断处理程序中需要立即执行的部分(分分钟不能耽误的部分）划分到上半部，这部分是要限时执行的，所以通常情况下只完成中断应答或硬件复位等重要紧迫的工作。而中断处理程序中那些不紧急的部分则被推迟到下半部中去完成。由于中断处理程序的上半部是刻不容缓要执行的，所以上半部是在关中断不被打扰的情况下执行的。当上半部执行完成后就把中断打开了，下半部也属于中断处理程序，所以中断处理程序下半部则是在开中断的情况下执行的，如果有新的中断发生，原来这个旧中断的下半部就会被换下CPU,先执行新的中断处理程序的上半部，等待线程调度机制为旧中断处理程序择—日期（就是指调度算法认为的某个恰当时机)后，再调度其上CPU 完成其下半部的执行</p>
-<p>不可屏蔽中断是通过NMI引脚进入CPU的，它表示系统中发生了致命的错误，它等同于宜布:计算机的运行到此结束了<br>CPU收到中断后通过中断向量表或中断描述符表(中断向量表是实模式下的中断处理程序数组，在保护模式下已经被中断描述符表代替)来寻找解决方法<br>中断发起时，相应的中断向量号通过NMI或INTR弓|脚被传入CPU,中断向量号是中断向量表或中断描述符表里中断项的下标CPU 根据此中断向量号在中断向量表或中断描述符表中检索对应的中断处理程序并去执行</p>
-<p><u>内中断：</u></p>
-<p>除0错误（0不能作为除数）<br>单步中断–执行一条指令之后就会引起一次中断<br>执行into指令–into这是中断溢出指令，它所触发的中断向量号是4.不过，能否引发4号中断是要看eflags标志寄存器中的OF位是否为1,如果是1才会引发中断，否则什么都不做<br>执行int指令–int 8位立即数通过它进行系统调用，8位立即数可表示256种中断，这与处理器所支持的中断数是相吻合的.<br>异常<br>fault – 可挽救，例如缺页<br>trap (int3)  – 陷阱<br>abort – 遇到不可挽救的错误时终止指令</p>
-<p><u>端口</u>：（可由cpu进行读写的寄存器）</p>
-<p>in指令一般用来从端口读数据，dx存端口号，读的数据存到al或者ax里面，具体是选择al还<br>是ax是根据对应端口指代的寄存器位数来决定的<br>in al, dx<br>in ax, dx<br>out指令一般用来往端口写数据， 同样dx存端口号，与in指令不同的是out指令也可以使用<br>立即数来指明端口号，然后要写入的数据使用al或者ax来存，同样具体是选择al还是ax是根<br>据对应端口指代的寄存器位数来决定的<br>out dx, al<br>out dx,ax<br>out立即数, al<br>out立即数, ax</p>
-<p><u>Intel汇编与AT&amp;T汇编的区别：</u></p>
-<p>x86/amd64汇编指令的两大风格分别是Intel汇编与AT&amp;T汇编，分别被Microsoft Windows/Visual C++与GNU/Gas采用（Gas也可使用Intel汇编风格）：</p>
-<img src="/images/%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210831190724948.png" alt="image-20210831190724948" style="zoom:67%;" />
-
-<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><p><u>内联汇编</u>：</p>
-<p><u>基本内联汇编</u><br>基本内联汇编的格式如下:<br>asm [volatile] (“assembly code”)<br>asm和_ asm_ 是一样的，volatile和_ volatile_ 是一样的，volatile的功能是告诉gcc（编译器）不要修改我写的汇编代码，assembly code表示汇编代码</p>
-<p>assembly code的规则</p>
-<ol>
-<li><p>指令必须用双引号引起来，无论双引号中是一条指令还是多条指令</p>
-</li>
-<li><p>一对双引号不能跨行，如果跨行需要在结尾用反斜杠’\\‘转移</p>
-</li>
-<li><p>指令之间用分号”;”、换行符”\n”或换行符加制表符”\n\t”分隔</p>
-</li>
-</ol>
-<p><u>扩展内联汇编</u><br>格式如下<br>asm  [volatile] (“assembly code” :output : iuput : clobber/modify)<br>output：用来指定汇编代码的数据如何输出给C代码使用<br>input：用来指定C语言中数据如何输入给汇编使用<br>clobber/modify：汇编代码执行后会破坏一些内存或寄存器资源， 通过此项通知编译器，可能造成寄存器或内存数据的破坏，这样gcc就知道哪些寄存器或内存需要提前保护起来</p>
-<p><u>寄存器约束</u><br>寄存器约束就是要求gcc使用哪个寄存器，将input或output中变量约束在某个寄存器<br>中。</p>
-<p>常见的寄存器约束有:</p>
-<p>-a：表示寄存器eax/ax/al<br>-r：表示任意这6个通用寄存器之一: eax/ebx/ecx/edx/esi/edi</p>
-<p>-b：表示寄存器ebx/bx/bl</p>
-<p>-g：表示可以存放到任意地点(寄存器和内存)。相当于除了同q一样外，还可以让gcc安排在内存中<br>-c：表示寄存器ecx/cx/cI<br>-A：把eax和edx组合成64位整数</p>
-<p>-d：表示寄存器edx/dx/dl<br>-f：表示浮点寄存器<br>-D：表示寄存器edi/di</p>
-<p>-t：表示第1个浮点寄存器</p>
-<p>-S：表示寄存器esi/si<br>-u：表示第2个浮点寄存器</p>
-<p>-q：表示任意这4个通用寄存器之一： eax/ebx/ecx/edx</p>
-<p><u>内存约束</u><br>内存约束是要求gcc直接将位于input和output中的C变量的内存地址作为内联汇编代码的操作数，不需要寄存器做中转，直接进行内存读写，也就是汇编代码的操作数是C变量的指针。</p>
-<p>-m：表示操作数可以使用任意一种内存形式。</p>
-<p>-o：操作数为内存变量， 但访问它是通过偏移量的形式访问，即包含offset_address的格<br>式。</p>
-<p><u>立即数约束</u><br>此约束要求gcc在传值的时候不通过内存和寄存器，直接作为立即数传给汇编代码。由于立即数不是变量，只能作为右值，所以只能放在input中。</p>
-<p>-i：表示操作数为整数立即数</p>
-<p>-F：表示操作数为浮点数立即数</p>
-<p>-I： 表示操作数为0<del>31之间的立即数<br>-J：表示操作数为0</del> 63之间的立即数</p>
-<p>-N：表示操作数为0~ 255之间的立即數<br>-O：表示操作数为0~32之间的立即数</p>
-<p>-X：表示操作数为任何类型立即数</p>
-<p><u>通用约束</u><br>0<del>9:此约束只用在input部分，但表示可与output和input中第n个操作数用相同的寄存器或内存。<br><u>序号占位符</u><br>序号占位符是对在output和input中的操作数，按照它们从左到右出现的次序从0开始编号，一直到9，也就是说最多支持10个序号占位符。操作数用在assembly code中，引用它的格式是%0</del>9。</p>
-<p><u>名称占位符</u><br>名称占位符与序号占位符不同，序号占位符靠本身出现在output和input中的位置就能被编译器辨识出来。而名称占位序需要在output 和input中把操作数显式地起个名字，它用这样的格式来标识操作数: [名称]”约束名” (C 变量)这样， 该约束对应的汇编操作数便有了名字，在assembly code中引用操作数时，采用%[名称]的形式就可以了。这次我们用8位除法举例，例如下面这段程序</p>
-<pre><code class="c">#include&lt;stdio.h&gt;
-void main()&#123;
-        int in_a=18,in_b=3,out=0;
-        asm(&quot;divb%[divisor];movb % %al,%[resul]&quot; \
-           :result]&quot;(out)\
-           :&quot;a&quot;(in_a),[divisor]&quot;m&quot;(in_b)\
-             );
-          pritf(&quot;result is %dn&quot;,out);
-&#125;
-</code></pre>
-<p><u>操作数类型修饰符</u><br>在output中有以下3种。<br>=：表示操作数是只写，相当于为output括号中的C变量赋值，如=a(C, _var),此修饰符相当于c_yar= eax.<br>+：表示操作数是可读写的，告诉gcc所约束的寄存器或内存先被读入，再被写入。<br>&amp;：表示此output中的操作数要独占所约束(分配)的寄存器，只供output使用，任何input中所分配的寄存器不能与此相同。注意，当表达式中有多个修饰符时，&amp;要与约束名挨着，不能分隔。<br>在input中:<br>%：该操作数可以和下一个输入操作数互换。</p>
-<p>一般情况下，input 中的C变量是只读的，output 中的C变量是只写的。</p>
-<p>函数原型</p>
-<pre><code>void *memcpy(void*dest,const void *src,size_t n);
-static void *___memcpy(void *dest, const void *src, size_t n)
-&#123;
-        long d0,d1,d2;
-        asm volatile(
-                *rep ; movsq\n\t&quot;
-                *movq%4,%%rcx\n\t&quot;
-&#39;rep ; movsb\n\t&quot;
-                :*&quot;=&amp;c&quot;(d0),&quot;= &amp;D&quot;(d1),&quot;=&amp;S&quot;(d2)
-                :&quot;0&quot;(n&gt;&gt;3),&quot;g&quot;(n&amp;7),&quot;1&quot;(dest),&quot;2&quot;(src)
-                : &quot;memory&quot;);
-         return dest;
-&#125;
-</code></pre>
-<p>小作业：用汇编语言实现memset函数</p>
-<p>以上引用书籍：</p>
-<p>[1]操作系统真象还原<br>[2]王爽汇编语言<br>[3]维基百科</p>
+<p>（3）文件属性（exiftools）：右键——&gt;属性——&gt;详细信息</p>
+<p>（4）Kail虚拟机</p>
+<h4 id="3-图片隐写分类"><a href="#3-图片隐写分类" class="headerlink" title="3.图片隐写分类"></a>3.图片隐写分类</h4><p><strong>图片隐写：</strong>把信息隐藏到图片中</p>
+<p><strong>分类：</strong></p>
+<p>（1）右击属性</p>
+<p>（2）文件末尾藏有字符串：可利用到达结尾后停止读取的特性来隐藏信息</p>
+<p><strong>文件十六进制藏有字符串：</strong></p>
+<p>一、strings查找可打印的字符：图片右击打开控制台输入string+文件名.扩展名</p>
+<p>二、grep使用正则表达式搜索，并输出匹配的行：grep flag</p>
+<p>三、file识别文件类型：</p>
+<p>当文件无后缀名时可通过010打开文件观察文件头以此来确定文件类型。如果用010无法判断文件类型，则可复制进Kail中查看，可直接看到也可打开终端输入命令file+文件名进行查看。</p>
+<p>（四五六的例子）例如，一张png图片中隐藏着一张jpg图片的信息</p>
+<p>四、binwalk分离文件：虚拟机中右击文件打开终端输入命令：binwalk+文件名/binwalk -e +文件名查看。</p>
+<p>五、foremost提取文件：虚拟机中右击文件打开终端输入命令：foremost+文件名进行文件分离和查看。</p>
+<p>六、虚拟机中右击文件打开终端输入命令：dd if=binwalk,foremost,源文件of所要分离的隐藏文件名 bs=1（每次读取一个块）skip=开始处（先利用命令进行分析查看） ——&gt;进行文件分离。</p>
+<p><strong>foremost和dd区别：</strong>foremost可分离所有文件，但不一定能分离出所需要的所有的文件；dd适用于在多个文件中单独分离出所需要的那一个</p>
+<p>（3）文件包含：进行百度自学</p>
+<p>（4）修改文件头：（文件需要正确文件名才能显示。）破坏文件头一定不能读取，破坏文件尾还有可能读取。若文件头被破坏可找该文件类型的固定字段分析。</p>
+<p>（5）GIF：特殊帧（ps/stegsolve）+帧的时间间隔</p>
+<p>方法一：用PS分解图层来分析图片</p>
+<p>方法二：利用stegsolve（安装stegsolve需要java环境）的分析中的帧浏览器</p>
+<p>ABAB式的时间间隔则需想到二进制码源和摩斯</p>
+<p>（6）png（bmp）：</p>
+<p><strong>IHDR、IDAT</strong>：</p>
+<p>IHDR表示图片的宽和高，可利用010进行修改，修改后需要进行保存。一般来说只修改高，修改宽会导致图片不能正确显示，修改高往大的改。</p>
+<p>如果用010打开一张图片它下面显示报错，则说明它的高可能被修改了。可利用校验和计算来判断高是否被修改，也可用脚本爆破一下得知原来的高度。</p>
+<p>IDAT数据块不能变，变了就不能显示了。（小知识：写满上一个块后才会进入下一个块的填写。如果发现上一个块没写满就填写下一个块则可能存在隐写。）</p>
+<p>010复制快捷键：ctrl+shift+c</p>
+<p>python多行输入固定写法，三个单引号</p>
+<p><strong>zlib（010/pngcheck）</strong>：</p>
+<p>用pngcheck查看或者复制进虚拟机打卡终端输入命令“binwalk -e  文件名”生成文件夹进行查看</p>
+<p><strong>lsb隐写/lsb加密（zsteg/stegsolve）</strong>：</p>
+<p>lsb又称最低有效位隐写，即通过最低两位的修改进行隐写。可利用stegsolve选择通道进行分析（学习地址：<a href="https://www.cnblogs.com/cat47/p/11483478.html">stegsolve使用方法 - cat47 - 博客园 (cnblogs.com)</a>）；也可以在虚拟机中打开终端输入“zsteg 文件名”命令进行查看（需安装zsteg），如果还是没有所需信息，则可输入命令“zsteg -a 文件名”进行更多信息的获取。（如果需要保存文件则在终端输入命令“zsteg -e 文件所在通道通道 源文件名 &gt;所要保存的文件名”）</p>
+<p>save text与save bin的区别：save text在复制时会将十六进制与文本一齐复制下来；而save bin想复制十六进制则可单独复制十六进制，复制文本也一样。</p>
+<p><strong>wbs43open（bmp）</strong>：</p>
+<p>利用wbs43open输入密钥进行文件分离，查看隐写内容。</p>
+<p>（7）JPG</p>
+<p>（8）双图隐写</p>
+<p>（9）stegpy</p>
+<p>（10）silenteye</p>
 ]]></content>
   </entry>
   <entry>
@@ -1143,6 +894,255 @@ print(&quot;m =&quot;，m)
 ]]></content>
   </entry>
   <entry>
+    <title>第十一篇博客</title>
+    <url>/2021/08/16/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2 id="RE初步学习"><a href="#RE初步学习" class="headerlink" title="RE初步学习"></a>RE初步学习</h2><h3 id="X86汇编"><a href="#X86汇编" class="headerlink" title="X86汇编"></a>X86汇编</h3><h4 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h4><p><strong>小分类：</strong></p>
+<p><u>架构小分类</u>：</p>
+<p>intel：x86（32位）、IA64（64位）          AMD：AMD64（64位）</p>
+<p><u>指令集小分类</u>：</p>
+<p>精简指令集（risv）：cpu内部简单，写命令时编程相对复杂一些</p>
+<p>复杂指令集（cisv）：cpu内部复杂，可用简短编程实现功能</p>
+<p>注：Arm（功耗小，一般用于手机）和Mips（一般用于服务器）为以精简指令集为代表的架构</p>
+<h4 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h4><p><u>字节</u>：</p>
+<p>1TB=1024GB=1024^2^MB=1024^3^KB=1024^4^B</p>
+<p><u>总线</u>：</p>
+<p>没有总线，cpu、内存、输入输出设备之间就无法沟通，总线是用来通信的，总线分为地址总线、数据总线和控制总线</p>
+<p><u>串行和并行</u>：</p>
+<p>串行传输：按顺序依次进行传输（一位一位的）</p>
+<p>并行传输：所有一起传输</p>
+<p><u>文本文件编译成可执行程序的过程</u>：</p>
+<p>预编译（头文件和相关宏展开）–编译（将预处理后的文件转换为汇编语言）–汇编（转换为机器语言）–链接（分为动态链接和静态链接，动态链接运行时需去动态库进行调用，程序较大；静态链接则会将所写代码直接编译进去，程序较小）</p>
+<p>注：readlf -s compile.o用于读取s compile.o这个目标文件的发表</p>
+<h4 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h4><p><u>通用寄存器</u>：</p>
+<table>
+<thead>
+<tr>
+<th>寄存器</th>
+<th>用处</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>al ah ax eax rax</td>
+<td>用处很多，比如存储返回值</td>
+</tr>
+<tr>
+<td>bx</td>
+<td>常在寻址时存储基地址</td>
+</tr>
+<tr>
+<td>dx</td>
+<td>被用来存放整数除法产生的余数</td>
+</tr>
+<tr>
+<td>cx</td>
+<td>常用于控制循环次数</td>
+</tr>
+<tr>
+<td>di</td>
+<td>在变址寻址的时候会使用</td>
+</tr>
+<tr>
+<td>si</td>
+<td>在变址寻址的时候会使用</td>
+</tr>
+<tr>
+<td>bp</td>
+<td>指向当前栈的底部</td>
+</tr>
+<tr>
+<td>sp</td>
+<td>指向当前栈的顶部</td>
+</tr>
+</tbody></table>
+<p>注：寄存器可用于快速存储临时的数据</p>
+<p>al–低八位 ；ah–高八位；ax–十六位；eax–三十二位；rax–六十四位</p>
+<p><u>段寄存器</u>：</p>
+<p>代码段  cs:ip ：存储可运行的代码</p>
+<p>数据段  ds ：存储会用到的数据</p>
+<p>栈段  ss ：存栈的起始基地址</p>
+<p>额外段  es ：备用</p>
+<p>64位下的：FS、GS——不同系统中用处不同，在windows中，GS用于管理线程特定的内存‘Linux中，GS用于访问cpu特定的内存。FS和GS的另一个用处canary保护。</p>
+<p><u>标志寄存器</u>：</p>
+<table>
+<thead>
+<tr>
+<th>eflags</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OF</td>
+<td>overflos flag</td>
+<td>溢出标志</td>
+<td>溢出标志OF用于反映有符号数加减运算所得结果是否溢出</td>
+</tr>
+<tr>
+<td>DF</td>
+<td>direction flag</td>
+<td>方向标志</td>
+<td>控制串指令（MOVS,CMPS）DF=1，ESI,EDI自动递减（从高地址向低地址放向处理字符串），DF=0,ESI,EDI自动递增</td>
+</tr>
+<tr>
+<td>IF</td>
+<td>interrupt flag</td>
+<td>屏蔽中断标志</td>
+<td></td>
+</tr>
+<tr>
+<td>TF</td>
+<td>trap flag</td>
+<td>单步调试标志</td>
+<td>设置后执行一条指令就会被中断</td>
+</tr>
+<tr>
+<td>SF</td>
+<td>signal flag</td>
+<td>符号标志</td>
+<td>正负标志位，记录相关指令执行后，结果是否为负</td>
+</tr>
+<tr>
+<td>ZF</td>
+<td>zero flag</td>
+<td>零标志</td>
+<td>记录相关指令执行后，结果是否为0；如果结果是0，zf=1，如果结果不为0，zf=0</td>
+</tr>
+<tr>
+<td>AF</td>
+<td>auxiliary carry flag</td>
+<td>辅助进位标志</td>
+<td>运算过程中看最后四位，不论长度为多少。最后四位向前有进位或者借位，AF=1,否则AF=0</td>
+</tr>
+<tr>
+<td>PF</td>
+<td>parity flag</td>
+<td>奇偶标志</td>
+<td>运算结果中“1”的个数的奇偶性，偶数个1，PF=1</td>
+</tr>
+<tr>
+<td>CF</td>
+<td>carry flag</td>
+<td>进位标志</td>
+<td>如果运算结果的最高位产生了一个进位或结尾，其值为1，否则为0</td>
+</tr>
+</tbody></table>
+<h4 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h4><p><u>运算指令</u>：</p>
+<p>加   add   add ax,bx<br>减   sub   sub ax,bx<br>乘   mul   mul ax,bx<br>除   div   div ax.bx   商存在ax，余存在dx<br>与   and   and ax,ax<br>或   or   or ax,ax<br>非   not   not ecx<br>异或   xor    xor eax,eax</p>
+<p>左移   shl   逻辑左移 (注意这里是逻辑左移)<br>右移   shr   逻辑右移(注意这里是逻辑右移)</p>
+<p>逻辑移动和算术移动差别在于在不在意符号位，逻辑移动不在意。例子：现在是一个八位数字，最高位是符号位，假设为1，逻辑右移将最高位补充为0，算术右移将最高位补充为1.</p>
+<p><u>赋值指令</u>：</p>
+<p>寄存器寻址：</p>
+<p>mov ax, 0x10（0x10代表16，意味着ax=16）</p>
+<p>mov dx, 0x9   </p>
+<p>mul dx（dx相乘）</p>
+<p>立即数寻址：（可直接在指令中取出所用数，而不用在寄存器中寻找）</p>
+<p>mov ax, 0x18</p>
+<p>基址变址寻址：</p>
+<p>mov[bx+di], ax</p>
+<p>add[bx+si], ax</p>
+<p><u>栈相关指令</u>：（栈与寄存器类似，都为了快速访问，但与堆不同，栈是一块连续的内存，堆中间可能会有空格）</p>
+<p>push   压栈</p>
+<p>pop   弹栈</p>
+<p>Pushfd   把eflags寄存器的内容压入栈</p>
+<p>Popfd   把栈上的内容弹出赋值给eflags寄存器</p>
+<p>Pusha   按照AX、CX、DX、BX、SP（执行PUSHA之前的值）、BP、SI和DI的顺序，将所有16位通用寄存器压入堆栈</p>
+<p>Popa   按照相反顺序将同样的寄存器弹出栈</p>
+<p><u>跳转指令</u>：</p>
+<p>cmp指令   cmp目的操作数，源操作数   目的操作数-源操作数</p>
+<img src="../images/%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210829093006384.png" alt="image-20210829093006384" style="zoom: 67%;" />
+
+<p>ja和jg都是大于，但ja是无符号进行比较，jg是有符号进行比较</p>
+<p><u>调用函数</u>：</p>
+<p>call   （调用）</p>
+<p>ret    （返回）</p>
+<p>ip = ss*16 + sp</p>
+<p>sp = sp + 2</p>
+<p>retf   （返回，可让32位程序执行64位代码）</p>
+<p>ip = ss * 16 +sp</p>
+<p>sp = sp + 2</p>
+<p>cs = ss * 16 + sp</p>
+<p>sp = sp + 2</p>
+<p><u>内中断、外中断：</u></p>
+<p><u>外部中断</u>：</p>
+<p>外部中断是指来自CPU外部的中断，而外部的中断源必须是某个硬件，所以外部中断又称为硬件中断<br>CPU提供统一的接口作为中断信号的公共线路，所有来自外设的中断信号都共享公共线路连接到CPU，外部硬件的中断通过两根信号线通知CPU的<br>两根信号线分别是INTR(INTeRrupt)和NMI(Non Maskable Interrupt)，示意图如下<br>在CPU上运行的程序都是串行的，串行的意思就是所有任务都是一个接一个在CPU上运行的从INTR引|脚收到的中断都是不影响系统运行的，可以随时处理</p>
+<img src="../images/%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210829093928067.png" alt="image-20210829093928067" style="zoom:%;" />
+
+<p>从NMI引脚收到的中断。那基本上全是硬伤，CPU都没有运行下去的必要了<br>可屏蔽中断是通过INTR引脚进入CPU的，外部设备如硬盘、网卡等发出的中断都是可屏蔽中断，可屏蔽的意思是此外部设备发出的中断，CPU可以不必理会，因为它不会让系统宕机，所以可以通过eflags寄存器的IF位将所有这些外部设备的中断屏蔽<br>中断处理程序分为上半部和下半部两部分，把中断处理程序中需要立即执行的部分(分分钟不能耽误的部分）划分到上半部，这部分是要限时执行的，所以通常情况下只完成中断应答或硬件复位等重要紧迫的工作。而中断处理程序中那些不紧急的部分则被推迟到下半部中去完成。由于中断处理程序的上半部是刻不容缓要执行的，所以上半部是在关中断不被打扰的情况下执行的。当上半部执行完成后就把中断打开了，下半部也属于中断处理程序，所以中断处理程序下半部则是在开中断的情况下执行的，如果有新的中断发生，原来这个旧中断的下半部就会被换下CPU,先执行新的中断处理程序的上半部，等待线程调度机制为旧中断处理程序择—日期（就是指调度算法认为的某个恰当时机)后，再调度其上CPU 完成其下半部的执行</p>
+<p>不可屏蔽中断是通过NMI引脚进入CPU的，它表示系统中发生了致命的错误，它等同于宜布:计算机的运行到此结束了<br>CPU收到中断后通过中断向量表或中断描述符表(中断向量表是实模式下的中断处理程序数组，在保护模式下已经被中断描述符表代替)来寻找解决方法<br>中断发起时，相应的中断向量号通过NMI或INTR弓|脚被传入CPU,中断向量号是中断向量表或中断描述符表里中断项的下标CPU 根据此中断向量号在中断向量表或中断描述符表中检索对应的中断处理程序并去执行</p>
+<p><u>内中断：</u></p>
+<p>除0错误（0不能作为除数）<br>单步中断–执行一条指令之后就会引起一次中断<br>执行into指令–into这是中断溢出指令，它所触发的中断向量号是4.不过，能否引发4号中断是要看eflags标志寄存器中的OF位是否为1,如果是1才会引发中断，否则什么都不做<br>执行int指令–int 8位立即数通过它进行系统调用，8位立即数可表示256种中断，这与处理器所支持的中断数是相吻合的.<br>异常<br>fault – 可挽救，例如缺页<br>trap (int3)  – 陷阱<br>abort – 遇到不可挽救的错误时终止指令</p>
+<p><u>端口</u>：（可由cpu进行读写的寄存器）</p>
+<p>in指令一般用来从端口读数据，dx存端口号，读的数据存到al或者ax里面，具体是选择al还<br>是ax是根据对应端口指代的寄存器位数来决定的<br>in al, dx<br>in ax, dx<br>out指令一般用来往端口写数据， 同样dx存端口号，与in指令不同的是out指令也可以使用<br>立即数来指明端口号，然后要写入的数据使用al或者ax来存，同样具体是选择al还是ax是根<br>据对应端口指代的寄存器位数来决定的<br>out dx, al<br>out dx,ax<br>out立即数, al<br>out立即数, ax</p>
+<p><u>Intel汇编与AT&amp;T汇编的区别：</u></p>
+<p>x86/amd64汇编指令的两大风格分别是Intel汇编与AT&amp;T汇编，分别被Microsoft Windows/Visual C++与GNU/Gas采用（Gas也可使用Intel汇编风格）：</p>
+<img src="/images/%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210831190724948.png" alt="image-20210831190724948" style="zoom:67%;" />
+
+<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><p><u>内联汇编</u>：</p>
+<p><u>基本内联汇编</u><br>基本内联汇编的格式如下:<br>asm [volatile] (“assembly code”)<br>asm和_ asm_ 是一样的，volatile和_ volatile_ 是一样的，volatile的功能是告诉gcc（编译器）不要修改我写的汇编代码，assembly code表示汇编代码</p>
+<p>assembly code的规则</p>
+<ol>
+<li><p>指令必须用双引号引起来，无论双引号中是一条指令还是多条指令</p>
+</li>
+<li><p>一对双引号不能跨行，如果跨行需要在结尾用反斜杠’\\‘转移</p>
+</li>
+<li><p>指令之间用分号”;”、换行符”\n”或换行符加制表符”\n\t”分隔</p>
+</li>
+</ol>
+<p><u>扩展内联汇编</u><br>格式如下<br>asm  [volatile] (“assembly code” :output : iuput : clobber/modify)<br>output：用来指定汇编代码的数据如何输出给C代码使用<br>input：用来指定C语言中数据如何输入给汇编使用<br>clobber/modify：汇编代码执行后会破坏一些内存或寄存器资源， 通过此项通知编译器，可能造成寄存器或内存数据的破坏，这样gcc就知道哪些寄存器或内存需要提前保护起来</p>
+<p><u>寄存器约束</u><br>寄存器约束就是要求gcc使用哪个寄存器，将input或output中变量约束在某个寄存器<br>中。</p>
+<p>常见的寄存器约束有:</p>
+<p>-a：表示寄存器eax/ax/al<br>-r：表示任意这6个通用寄存器之一: eax/ebx/ecx/edx/esi/edi</p>
+<p>-b：表示寄存器ebx/bx/bl</p>
+<p>-g：表示可以存放到任意地点(寄存器和内存)。相当于除了同q一样外，还可以让gcc安排在内存中<br>-c：表示寄存器ecx/cx/cI<br>-A：把eax和edx组合成64位整数</p>
+<p>-d：表示寄存器edx/dx/dl<br>-f：表示浮点寄存器<br>-D：表示寄存器edi/di</p>
+<p>-t：表示第1个浮点寄存器</p>
+<p>-S：表示寄存器esi/si<br>-u：表示第2个浮点寄存器</p>
+<p>-q：表示任意这4个通用寄存器之一： eax/ebx/ecx/edx</p>
+<p><u>内存约束</u><br>内存约束是要求gcc直接将位于input和output中的C变量的内存地址作为内联汇编代码的操作数，不需要寄存器做中转，直接进行内存读写，也就是汇编代码的操作数是C变量的指针。</p>
+<p>-m：表示操作数可以使用任意一种内存形式。</p>
+<p>-o：操作数为内存变量， 但访问它是通过偏移量的形式访问，即包含offset_address的格<br>式。</p>
+<p><u>立即数约束</u><br>此约束要求gcc在传值的时候不通过内存和寄存器，直接作为立即数传给汇编代码。由于立即数不是变量，只能作为右值，所以只能放在input中。</p>
+<p>-i：表示操作数为整数立即数</p>
+<p>-F：表示操作数为浮点数立即数</p>
+<p>-I： 表示操作数为0<del>31之间的立即数<br>-J：表示操作数为0</del> 63之间的立即数</p>
+<p>-N：表示操作数为0~ 255之间的立即數<br>-O：表示操作数为0~32之间的立即数</p>
+<p>-X：表示操作数为任何类型立即数</p>
+<p><u>通用约束</u><br>0<del>9:此约束只用在input部分，但表示可与output和input中第n个操作数用相同的寄存器或内存。<br><u>序号占位符</u><br>序号占位符是对在output和input中的操作数，按照它们从左到右出现的次序从0开始编号，一直到9，也就是说最多支持10个序号占位符。操作数用在assembly code中，引用它的格式是%0</del>9。</p>
+<p><u>名称占位符</u><br>名称占位符与序号占位符不同，序号占位符靠本身出现在output和input中的位置就能被编译器辨识出来。而名称占位序需要在output 和input中把操作数显式地起个名字，它用这样的格式来标识操作数: [名称]”约束名” (C 变量)这样， 该约束对应的汇编操作数便有了名字，在assembly code中引用操作数时，采用%[名称]的形式就可以了。这次我们用8位除法举例，例如下面这段程序</p>
+<pre><code class="c">#include&lt;stdio.h&gt;
+void main()&#123;
+        int in_a=18,in_b=3,out=0;
+        asm(&quot;divb%[divisor];movb % %al,%[resul]&quot; \
+           :result]&quot;(out)\
+           :&quot;a&quot;(in_a),[divisor]&quot;m&quot;(in_b)\
+             );
+          pritf(&quot;result is %dn&quot;,out);
+&#125;
+</code></pre>
+<p><u>操作数类型修饰符</u><br>在output中有以下3种。<br>=：表示操作数是只写，相当于为output括号中的C变量赋值，如=a(C, _var),此修饰符相当于c_yar= eax.<br>+：表示操作数是可读写的，告诉gcc所约束的寄存器或内存先被读入，再被写入。<br>&amp;：表示此output中的操作数要独占所约束(分配)的寄存器，只供output使用，任何input中所分配的寄存器不能与此相同。注意，当表达式中有多个修饰符时，&amp;要与约束名挨着，不能分隔。<br>在input中:<br>%：该操作数可以和下一个输入操作数互换。</p>
+<p>一般情况下，input 中的C变量是只读的，output 中的C变量是只写的。</p>
+<p>函数原型</p>
+<pre><code>void *memcpy(void*dest,const void *src,size_t n);
+static void *___memcpy(void *dest, const void *src, size_t n)
+&#123;
+        long d0,d1,d2;
+        asm volatile(
+                *rep ; movsq\n\t&quot;
+                *movq%4,%%rcx\n\t&quot;
+&#39;rep ; movsb\n\t&quot;
+                :*&quot;=&amp;c&quot;(d0),&quot;= &amp;D&quot;(d1),&quot;=&amp;S&quot;(d2)
+                :&quot;0&quot;(n&gt;&gt;3),&quot;g&quot;(n&amp;7),&quot;1&quot;(dest),&quot;2&quot;(src)
+                : &quot;memory&quot;);
+         return dest;
+&#125;
+</code></pre>
+<p>小作业：用汇编语言实现memset函数</p>
+<p>以上引用书籍：</p>
+<p>[1]操作系统真象还原<br>[2]王爽汇编语言<br>[3]维基百科</p>
+]]></content>
+  </entry>
+  <entry>
     <title>第十二篇博客</title>
     <url>/2021/08/31/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h2 id="PWN初步学习"><a href="#PWN初步学习" class="headerlink" title="PWN初步学习"></a>PWN初步学习</h2><h3 id="pwn工具使用"><a href="#pwn工具使用" class="headerlink" title="pwn工具使用"></a>pwn工具使用</h3><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>简介：pwn（拿到计算机的权限）转换为CTF的形式就是拿到题目所给的服务器的权限，然后拿到存储在服务器上的flag。</p>
@@ -1211,52 +1211,6 @@ ebp -&gt; ebp
 <p>有时查找到的flag需要用在线工具进行解密，有时在用wireshark做流量分析时也要将软件进行解密设置（打开对应的密钥文件），否则flag藏在加密的数据包里面而无法查找。</p>
 <p>有些在请求包里面的题目可以用一般的流量导出的方法，然后在ubuntu中输入命令grep flag -rna .进行查找。</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>GitHack</title>
-    <url>/2021/09/26/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/GitHack/</url>
-    <content><![CDATA[<h2 id="GitHack安装与使用"><a href="#GitHack安装与使用" class="headerlink" title="GitHack安装与使用"></a>GitHack安装与使用</h2><p>注：python3之前已配置好，不再多讲。应该基本同于python2。</p>
-<h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>GitHack是一个.git泄露利用脚本，通过泄露的.git文件夹下的文件，重建还原工程源代码。渗透测试人员、攻击者，可以进一步审计代码，挖掘：文件上传，SQL注射等安全漏洞。</p>
-<h4 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h4><p>网上下载到的githack基本只适用于python2。而目前大部分使用的python版本都是python3。</p>
-<h4 id="方案一：安装python2来运行githack"><a href="#方案一：安装python2来运行githack" class="headerlink" title="方案一：安装python2来运行githack"></a>方案一：安装python2来运行githack</h4><p><strong>下载python2和python3</strong></p>
-<p>官网<a href="https://www.python.org/%E4%B8%8B%E8%BD%BDpython2%E5%92%8Cpython3%E6%88%96%E8%80%85%E5%BA%94%E7%94%A8%E5%95%86%E5%9F%8E%E4%B8%AD%E4%B8%8B%E8%BD%BD%E3%80%82%E5%AE%89%E8%A3%85%E5%BB%BA%E8%AE%AE%E4%B8%80%E8%B7%AF%E9%BB%98%E8%AE%A4next%E4%B8%8B%E5%8E%BB%E3%80%82">https://www.python.org/下载python2和python3或者应用商城中下载。安装建议一路默认next下去。</a></p>
-<p><strong>配置python2.x的环境变量</strong></p>
-<p>需要将两个目录添加到path环境变量中：</p>
-<ul>
-<li>python命令文件所在目录： python 2.x安装目录</li>
-<li>pip、easy_install等其他脚本文件所在目录： python 2.x安装目录下的Scripts目录</li>
-</ul>
-<p>找到此电脑选择属性或者右键我的电脑找到属性——&gt;高级系统设置——&gt;环境变量——&gt;用户变量下的PATH——&gt;编辑</p>
-<p>将下面这两行内容添加到Path变量的<strong>开始位置</strong>：（先新建后上移到第一行）<br>C:\Python27<br>C:\Python27\Scripts\</p>
-<p><strong>将python 2.x 和 python 3.x的相关命令区分开来</strong></p>
-<p>找到 python2 和 python3 的安装目录，修改 python2.x 和 python3.x 中 <strong>python.exe</strong> 的名称为 <strong>python2.exe</strong>和 <strong>python3.exe</strong>。</p>
-<p>然后运行cmd命令，输入python2 可以运行 python2.x 版本，输入 python3 即可运行 python3.x 版本。如下图。</p>
-<img src="/images/GitHack/image-20210926021728278.png" alt="image-20210926021728278" style="zoom:37%;" />
-
-<p><strong>解决两者pip共存问题</strong></p>
-<p>Python安装包需要用到包管理工具pip，但当同时安装python2和python3的时候，pip只是其中一个版本。为了保证共存，需要分别重新安装pip。</p>
-<p>1.安装pip2：在命令窗口中输入：python2 -m pip install –upgrade pip –force-reinstall，如下图显示重新安装成功。</p>
-<img src="/images/GitHack/image-20210926022035773.png" alt="image-20210926022035773" style="zoom:30%;" />
-
-<p>2.安装 pip3： 在命令窗口中输入：python3 -m pip install –upgrade pip –force-reinstall 。如果没有成功则可能在之前已经重新安装过pip.exe了，需要将它从文件夹中删除再输入命令。如下图显示重新安装成功。</p>
-<img src="/images/GitHack/image-20210926022756669.png" alt="image-20210926022756669" style="zoom:50%;" />
-
-<p>3.现在可以通过pip2 -V 和 pip3-V 查看两个版本的pip信息，以后只需运行 pip2 install XXX 和 pip3 install XXX 即可安装各自的python包。到这里 pip共存问题 也已经解决啦！</p>
-<p><strong>使用GitHack</strong></p>
-<p>在含有GitHack.py的文件夹的地址栏中输入cmd打开命令窗口</p>
-<p>输入命令：python2 GitHack.py URL.git来使用githack</p>
-<img src="/images/GitHack/image-20210926023209128.png" alt="image-20210926023209128" style="zoom:30%;" />
-
-<h4 id="方案二：修改文件，使之适应python3环境"><a href="#方案二：修改文件，使之适应python3环境" class="headerlink" title="方案二：修改文件，使之适应python3环境"></a>方案二：修改文件，使之适应python3环境</h4><p>将python2文件修改为python3文件：</p>
-<p>python2的print改为python3的print()；</p>
-<p>python3中合并了部分包，需要将import xxx改为from xxx import xxx。</p>
-<p>其余根据运行提示来修改。</p>
-<p>输入命令：python3 GitHack.py URL.git来使用githack</p>
-<img src="/images/GitHack/image-20210927005148911.png" alt="image-20210927005148911" style="zoom:30%;" />
-]]></content>
-      <categories>
-        <category>工具安装指南</category>
-      </categories>
   </entry>
   <entry>
     <title>第十篇博客</title>
@@ -1416,6 +1370,52 @@ except Exception:
 <p><strong>sql防御方法：</strong></p>
 <p>可利用addcslashes()函数将输出进行过滤，将单引号转义使之无法闭合等</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>GitHack</title>
+    <url>/2021/09/26/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/GitHack/</url>
+    <content><![CDATA[<h2 id="GitHack安装与使用"><a href="#GitHack安装与使用" class="headerlink" title="GitHack安装与使用"></a>GitHack安装与使用</h2><p>注：python3之前已配置好，不再多讲。应该基本同于python2。</p>
+<h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>GitHack是一个.git泄露利用脚本，通过泄露的.git文件夹下的文件，重建还原工程源代码。渗透测试人员、攻击者，可以进一步审计代码，挖掘：文件上传，SQL注射等安全漏洞。</p>
+<h4 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h4><p>网上下载到的githack基本只适用于python2。而目前大部分使用的python版本都是python3。</p>
+<h4 id="方案一：安装python2来运行githack"><a href="#方案一：安装python2来运行githack" class="headerlink" title="方案一：安装python2来运行githack"></a>方案一：安装python2来运行githack</h4><p><strong>下载python2和python3</strong></p>
+<p>官网<a href="https://www.python.org/%E4%B8%8B%E8%BD%BDpython2%E5%92%8Cpython3%E6%88%96%E8%80%85%E5%BA%94%E7%94%A8%E5%95%86%E5%9F%8E%E4%B8%AD%E4%B8%8B%E8%BD%BD%E3%80%82%E5%AE%89%E8%A3%85%E5%BB%BA%E8%AE%AE%E4%B8%80%E8%B7%AF%E9%BB%98%E8%AE%A4next%E4%B8%8B%E5%8E%BB%E3%80%82">https://www.python.org/下载python2和python3或者应用商城中下载。安装建议一路默认next下去。</a></p>
+<p><strong>配置python2.x的环境变量</strong></p>
+<p>需要将两个目录添加到path环境变量中：</p>
+<ul>
+<li>python命令文件所在目录： python 2.x安装目录</li>
+<li>pip、easy_install等其他脚本文件所在目录： python 2.x安装目录下的Scripts目录</li>
+</ul>
+<p>找到此电脑选择属性或者右键我的电脑找到属性——&gt;高级系统设置——&gt;环境变量——&gt;用户变量下的PATH——&gt;编辑</p>
+<p>将下面这两行内容添加到Path变量的<strong>开始位置</strong>：（先新建后上移到第一行）<br>C:\Python27<br>C:\Python27\Scripts\</p>
+<p><strong>将python 2.x 和 python 3.x的相关命令区分开来</strong></p>
+<p>找到 python2 和 python3 的安装目录，修改 python2.x 和 python3.x 中 <strong>python.exe</strong> 的名称为 <strong>python2.exe</strong>和 <strong>python3.exe</strong>。</p>
+<p>然后运行cmd命令，输入python2 可以运行 python2.x 版本，输入 python3 即可运行 python3.x 版本。如下图。</p>
+<img src="/images/GitHack/image-20210926021728278.png" alt="image-20210926021728278" style="zoom:37%;" />
+
+<p><strong>解决两者pip共存问题</strong></p>
+<p>Python安装包需要用到包管理工具pip，但当同时安装python2和python3的时候，pip只是其中一个版本。为了保证共存，需要分别重新安装pip。</p>
+<p>1.安装pip2：在命令窗口中输入：python2 -m pip install –upgrade pip –force-reinstall，如下图显示重新安装成功。</p>
+<img src="/images/GitHack/image-20210926022035773.png" alt="image-20210926022035773" style="zoom:30%;" />
+
+<p>2.安装 pip3： 在命令窗口中输入：python3 -m pip install –upgrade pip –force-reinstall 。如果没有成功则可能在之前已经重新安装过pip.exe了，需要将它从文件夹中删除再输入命令。如下图显示重新安装成功。</p>
+<img src="/images/GitHack/image-20210926022756669.png" alt="image-20210926022756669" style="zoom:50%;" />
+
+<p>3.现在可以通过pip2 -V 和 pip3-V 查看两个版本的pip信息，以后只需运行 pip2 install XXX 和 pip3 install XXX 即可安装各自的python包。到这里 pip共存问题 也已经解决啦！</p>
+<p><strong>使用GitHack</strong></p>
+<p>在含有GitHack.py的文件夹的地址栏中输入cmd打开命令窗口</p>
+<p>输入命令：python2 GitHack.py URL.git来使用githack</p>
+<img src="/images/GitHack/image-20210926023209128.png" alt="image-20210926023209128" style="zoom:30%;" />
+
+<h4 id="方案二：修改文件，使之适应python3环境"><a href="#方案二：修改文件，使之适应python3环境" class="headerlink" title="方案二：修改文件，使之适应python3环境"></a>方案二：修改文件，使之适应python3环境</h4><p>将python2文件修改为python3文件：</p>
+<p>python2的print改为python3的print()；</p>
+<p>python3中合并了部分包，需要将import xxx改为from xxx import xxx。</p>
+<p>其余根据运行提示来修改。</p>
+<p>输入命令：python3 GitHack.py URL.git来使用githack</p>
+<img src="/images/GitHack/image-20210927005148911.png" alt="image-20210927005148911" style="zoom:30%;" />
+]]></content>
+      <categories>
+        <category>工具安装指南</category>
+      </categories>
   </entry>
   <entry>
     <title>VMware</title>
@@ -1796,262 +1796,6 @@ except Exception:
 <p>3、利用<a href="https://baike.baidu.com/item/iframe/4446518">iframe</a>、frame、<a href="https://baike.baidu.com/item/XMLHttpRequest/6788735">XMLHttpRequest</a>或上述Flash等方式，以（被攻击）用户的身份执行一些管理动作，或执行一些一般的如发微博、加好友、发私信等操作。</p>
 <p>4、利用可被攻击的域受到其他域信任的特点，以受信任来源的身份请求一些平时不允许的操作，如进行不当的投票活动。</p>
 <p>5、在访问量极大的一些页面上的XSS可以攻击一些小型网站，实现DDoS攻击的效果。</p>
-]]></content>
-      <categories>
-        <category>ctf解题</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>CTFHUB(WEB)-信息泄露</title>
-    <url>/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/</url>
-    <content><![CDATA[<h3 id="WEB工具配置"><a href="#WEB工具配置" class="headerlink" title="WEB工具配置"></a>WEB工具配置</h3><h4 id="信息泄露"><a href="#信息泄露" class="headerlink" title="信息泄露"></a>信息泄露</h4><h5 id="目录遍历"><a href="#目录遍历" class="headerlink" title="目录遍历"></a>目录遍历</h5><p>题目：</p>
-<img src="/source/images/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/image-20211004013340391.png" alt="image-20211004013340391" style="zoom:35%;" />
-
-<p>解题：</p>
-<p>一路点击文件查看即可找到flag</p>
-<img src="/source/images/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/image-20211004013641358.png" alt="image-20211004013641358" style="zoom:35%;" />
-
-<h5 id="PHPINFO"><a href="#PHPINFO" class="headerlink" title="PHPINFO"></a>PHPINFO</h5><p>题目：</p>
-<p>点击题目所给链接后再点击查看phpinfo进行查看</p>
-<img src="/source/images/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/image-20211004013908030.png" alt="image-20211004013908030" style="zoom:33%;" />
-
-<p>解题：</p>
-<p>启动网页查找功能，输入ctfhub或ctf进行搜索即可找到flag，如下图所示。</p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908000603599.png" alt="image-20210908000603599" style="zoom:30%;" />
-
-<h5 id="备份文件下载"><a href="#备份文件下载" class="headerlink" title="备份文件下载"></a>备份文件下载</h5><h6 id="网站源码"><a href="#网站源码" class="headerlink" title="网站源码"></a>网站源码</h6><p>（待完善如何找到<a href="http://www.zip)/">www.zip）</a></p>
-<p>题目：</p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908002154159.png" alt="image-20210908002154159" style="zoom:30%;" />
-
-<p>解题：</p>
-<p>使用扫描工具（如：dirbuster）对网站目录进行扫描查找是否有备份文件，扫描的文件名和类型就是提示给出的，最终扫描得到<a href="https://blog.csdn.net/www.zip">www.zip文件，输入网址URL/www.zip</a>得到压缩文件，解压后打开如下图所示。</p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908002334915.png" alt="image-20210908002334915" style="zoom:40%;" />
-
-<p>在原题目网页的url后面加上“/flag_3254114626.txt”进行访问即可获取到flag。</p>
-<h6 id="bak文件泄露"><a href="#bak文件泄露" class="headerlink" title="bak文件泄露"></a>bak文件泄露</h6><p>题目：</p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908162052011.png" alt="image-20210908162052011" style="zoom:30%;" />
-
-<p>解题：</p>
-<p>当开发人员在线上环境中对源代码进行了备份操作，并且将备份文件放在了 web 目录下，就会引起网站源码泄露。有些时候网站管理员可能为了方便，会在修改某个文件的时候先复制一份，将其命名为xxx.bak。而大部分Web Server对bak文件并不做任何处理，导致可以直接下载，从而获取到网站某个文件的源代码。</p>
-<p>根据题目所给提示，可知flag应该在index.php的备份文件里面，于是访问/index.php.bak，下载文件得到flag。如果下载是安装包则将文件的打开方式改为记事本，即可查看文件内容。</p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908162308629.png" alt="image-20210908162308629" style="zoom:25%;" />
-
-<h6 id="vim缓存"><a href="#vim缓存" class="headerlink" title="vim缓存"></a>vim缓存</h6><p>题目：</p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908163037011.png" alt="image-20210908163037011" style="zoom:40%;" />
-
-<p>解题：</p>
-<p>访问/.index.php.swp（注意那个点.），得到交换文件.swp。可以利用vim命令进行复原，vim命令需要在linux环境下执行，因此将文件放进虚拟机中，在终端输入命令“vim -r index.php.swp”后根据提示点击enter等即可找到flag。</p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908173754648.png" alt="image-20210908173754648" style="zoom:70%;" />
-
-<p>补充知识：</p>
-<p>当开发人员在线上环境中使用 vim 编辑器，在使用过程中会留下 vim 编辑器缓存，当vim异常退出时，缓存会一直留在服务器上，引起网站源码泄露。</p>
-<p>非正常关闭vim编辑器时会生成一个.swp文件，如果编辑完成之后，正常退出，那么这个swp文件就会被自动删除。在使用vim时会创建临时缓存文件，关闭vim时缓存文件则会被删除，当vim异常退出后，因为未处理缓存文件，导致可以通过缓存文件恢复原始文件内容。</p>
-<p>以 index.php 为例：第一次产生的交换文件名为 .index.php.swp；再次意外退出后，将会产生名为 .index.php.swo 的交换文件；第三次产生的交换文件则为 .index.php.swn。</p>
-<h6 id="DS-Store"><a href="#DS-Store" class="headerlink" title=".DS_Store"></a>.DS_Store</h6><p>题目：</p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908181300032.png" alt="image-20210908181300032" style="zoom:40%;" />
-
-<p>解题：</p>
-<p>.DS_Store 是 Mac OS 保存文件夹的自定义属性的隐藏文件。通过.DS_Store可以知道这个目录里面所有文件的清单。</p>
-<p>猜测直接访问/.DS_Store（注意有个点.）看有什么收获，发现下载了一个文件DS_Store，放进虚拟机，用命令”cat DS_Store”打开发现是一个特殊文件。</p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908181628218.png" alt="image-20210908181628218" style="zoom:60%;" />
-
-<p>利用浏览器访问，将“0b7abce98d55b13ab29ec4fdebcb2239.txt”放在url后面进行访问即可得到flag。</p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908181801977.png" alt="image-20210908181801977" style="zoom:53%;" />
-
-<h5 id="Git泄露"><a href="#Git泄露" class="headerlink" title="Git泄露"></a>Git泄露</h5><p>当前大量开发人员使用git进行版本控制，对站点自动部署。如果配置不当,可能会将.git文件夹直接部署到线上环境。这就引起了git泄露漏洞。请尝试使用BugScanTeam的GitHack完成以下题目。</p>
-<h6 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h6><p>题目：</p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908182154099.png" alt="image-20210908182154099" style="zoom:40%;" />
-
-<p>解题：</p>
-<p>使用dirsearch扫描url，发现url低下存在敏感文件.git</p>
-<p>命令：python3 dirsearch.py -u <url> -e * </p>
-<p>使用GitHack进行文件恢复，然后在GitHack所在目录下的dist目录下得到恢复的文件。</p>
-<p>python2 GitHack.py <url>  (url格式：http(s)://xxx/.git)</p>
-<p>进入dist目录中的刚恢复的文件内打开git，读取git日志，发现：</p>
-<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210926023538190.png" alt="image-20210926023538190" style="zoom:50%;" />
-
-<p>回退到“add flag”的那个版本，即可查看flag</p>
-<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210926024140589.png" alt="image-20210926024140589" style="zoom:50%;" />
-
-<p>补充知识：</p>
-<p>Git 基本操作的学习地址：<a href="https://www.runoob.com/git/git-basic-operations.html">Git 基本操作 | 菜鸟教程 (runoob.com)</a></p>
-<p>创建仓库命令</p>
-<table>
-<thead>
-<tr>
-<th align="left">命令</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">git init</td>
-<td align="left">初始化仓库</td>
-</tr>
-<tr>
-<td align="left">git clone</td>
-<td align="left">拷贝一份远程仓库，也就是下载一个项目。</td>
-</tr>
-</tbody></table>
-<p>提交与修改</p>
-<p>Git 的工作就是创建和保存你的项目的快照及与之后的快照进行对比。</p>
-<p>下表列出了有关创建与提交你的项目的快照的命令：</p>
-<table>
-<thead>
-<tr>
-<th align="left">命令</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">git add</td>
-<td align="left">添加文件到仓库</td>
-</tr>
-<tr>
-<td align="left">git status</td>
-<td align="left">查看仓库当前的状态，显示有变更的文件。</td>
-</tr>
-<tr>
-<td align="left">git diff</td>
-<td align="left">比较文件的不同，即暂存区和工作区的差异。</td>
-</tr>
-<tr>
-<td align="left">git commit</td>
-<td align="left">提交暂存区到本地仓库。</td>
-</tr>
-<tr>
-<td align="left">git reset</td>
-<td align="left">回退版本。</td>
-</tr>
-<tr>
-<td align="left">git rm</td>
-<td align="left">删除工作区文件。</td>
-</tr>
-<tr>
-<td align="left">git mv</td>
-<td align="left">移动或重命名工作区文件。</td>
-</tr>
-</tbody></table>
-<p>提交日志</p>
-<table>
-<thead>
-<tr>
-<th align="left">命令</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">git log</td>
-<td align="left">查看历史提交记录</td>
-</tr>
-<tr>
-<td align="left">git blame <file></td>
-<td align="left">以列表形式查看指定文件的历史修改记录</td>
-</tr>
-</tbody></table>
-<p>远程操作</p>
-<table>
-<thead>
-<tr>
-<th align="left">命令</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">git remote</td>
-<td align="left">远程仓库操作</td>
-</tr>
-<tr>
-<td align="left">git fetch</td>
-<td align="left">从远程获取代码库</td>
-</tr>
-<tr>
-<td align="left">git pull</td>
-<td align="left">下载远程代码并合并</td>
-</tr>
-<tr>
-<td align="left">git push</td>
-<td align="left">上传远程代码并合并</td>
-</tr>
-</tbody></table>
-<h6 id="Stash"><a href="#Stash" class="headerlink" title="Stash"></a>Stash</h6><p>题目：</p>
-<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928115357915.png" alt="image-20210928115357915" style="zoom:40%;" />
-
-<p>解题：</p>
-<p>用dirsearch扫描发现.git文件，GitHack恢复到本地dist目录下，进入恢复的目录下打开git操作</p>
-<p>扫描命令：python3 dirsearch.py -u <URL> -e *</p>
-<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928120503060.png" alt="image-20210928120503060" style="zoom: 33%;" />
-
-<p>这里使用Stash栈pop出flag。</p>
-<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928121008083.png" alt="image-20210928121008083" style="zoom:50%;" />
-
-<p>补充知识：</p>
-<p>git stash的基本使用方法：</p>
-<p>​    git stash是git一个很有用的命令，它的作用是把当前未提交的修改暂存起来，让仓库还原到最后一次提交的状态。常用于更新、同步代码或者保存多个修改版本等情况下。git stash命令会将仓库中的修改保存，建立一条stash信息，默认的说明信息是最后一次提交的节点号和提交说明。</p>
-<ol>
-<li>git stash save ‘说明信息’：说明信息是指定的内容，更加利于了解stash的内容。</li>
-<li>git stash list：列出当前仓库下所有的stash条目，每一条stash用stash@{n}标识。</li>
-<li>git stash pop [stash]： 将stash的内容弹出，默认弹出最上面的那条，即stash@{0}。此外还可以在pop后加stash@{n}来指定要弹出的stash条目。</li>
-<li>git stash drop [stash]：丢弃stash条目，默认丢弃最上面的那条，即stash@{0}，此外还可以在drop后加stash@{n}来指定要丢弃的stash条目。</li>
-<li>git stash clear ：清除所有的stash条目。</li>
-<li>git show stash@{n}：当有多条记录并且过了一段时间忘记stash内容时通过该命令可以查看stash的具体内容</li>
-</ol>
-<ul>
-<li>git stash不针对特定的分支，切换分支后，stash内容不变，所以弹出时要小心；</li>
-<li>git stash pop或者drop后，stash的序号会自动改变，连续弹出时要注意。</li>
-</ul>
-<h6 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h6><p>题目：</p>
-<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928124401461.png" alt="image-20210928124401461" style="zoom:43%;" />
-
-<p>解题：</p>
-<p>老规矩dirsearch扫描一波发现git泄露。</p>
-<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928124330847.png" alt="image-20210928124330847" style="zoom:33%;" />
-
-<p>方法一：githack</p>
-<p>GitHack修复后进入文件夹可以发现藏有flag的txt文件点击查看即可。</p>
-<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928125953075.png" alt="image-20210928125953075" style="zoom:50%;" />
-
-<p>方法二：git log</p>
-<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928130101590.png" alt="image-20210928130101590" style="zoom:53%;" />
-
-<p>方法三：git diff（暂时不会）</p>
-<p>补充知识：</p>
-<p>Git 本地数据管理，大概可以分为三个区，工作区,暂存区和版本库。</p>
-<p>工作区（Working Directory）：是直接编辑的地方</p>
-<p>暂存区（Stage 或 Index）：数据暂时存放的区域，可在工作区和版本库之间进行数据的友好交流。</p>
-<p>版本库（commit History）：存放已经提交的数据，push 的时候，就是把这个区的数据 push 到远程仓库了。</p>
-<h5 id="SVN泄露"><a href="#SVN泄露" class="headerlink" title="SVN泄露"></a>SVN泄露</h5><p>题目：</p>
-<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001184333517.png" alt="image-20211001184333517" style="zoom:45%;" />
-
-<p>解题：</p>
-<p>当开发人员使用 SVN 进行版本控制，对站点自动部署。如果配置不当,可能会将.svn文件夹直接部署到线上环境。这就引起了 SVN 泄露漏洞。</p>
-<p>进入dvcs-ripper-master文件夹右键进入终端，输入命令./rip-svn.pl -v -u <a href="http://challenge-277a34a7a99ae035.sandbox.ctfhub.com:10800/.svn/">http://challenge-277a34a7a99ae035.sandbox.ctfhub.com:10800/.svn/</a></p>
-<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001213038426.png" alt="image-20211001213038426" style="zoom:50%;" />
-
-<p>再tree看看：根据提示安装：sudo apt install tree。然后输入命令：tree .svn进行查看</p>
-<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001183200968.png" alt="image-20211001183200968" style="zoom:50%;" />
-
-<p>需要注意的是，.svn是隐藏文件，在linux下必须ls -al才能看到。<br>根据题目的提示，Flag 在服务端旧版本的源代码中。<br>注意tree中的pristine，里面一般存储的是代码的历史版本。直接进入目录，然后读取文件就可以得到flag了：</p>
-<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001183703701.png" alt="image-20211001183703701" style="zoom:50%;" />
-
-<p>由于我在文件夹中没有看到那些文件夹，所以是一路cd进到be文件夹，再用cat命令打开文件查看flag。</p>
-<p>如果想要查看.svn等文件夹，则需要打开隐藏文件夹，即dvcs-ripper-master——查看——显示隐藏文件。</p>
-<h5 id="HG泄露"><a href="#HG泄露" class="headerlink" title="HG泄露"></a>HG泄露</h5><p>题目：</p>
-<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001210824951.png" alt="image-20211001210824951" style="zoom:45%;" />
-
-<p>解题：</p>
-<p>当开发人员使用 Mercurial 进行版本控制，对站点自动部署。如果配置不当,可能会将.hg 文件夹直接部署到线上环境。这就引起了 hg 泄露漏洞。</p>
-<p>进入dvcs-ripper-master文件夹右键进入终端，输入命令../rip-hg.pl -v -u <a href="http://challenge-fe4e72352d16deb4.sandbox.ctfhub.com:10800/.hg/">http://challenge-fe4e72352d16deb4.sandbox.ctfhub.com:10800/.hg/</a></p>
-<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001214109400.png" alt="image-20211001214109400" style="zoom:50%;" />
-
-<p>输入命令tree .hg查看，并进入hg/store/fncache文件，发现flag文件名是flag_284118509.txt。</p>
-<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001215438781.png" alt="image-20211001215438781" style="zoom:50%;" />
-
-<p>接下来有两种查看flag的方法。（flag文件名根据所在环境而不同）</p>
-<p>方法一：根据题目提示手工解决，浏览器地址栏输入URL/flag_284118509.txt即可得到flag。</p>
-<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001215836673.png" alt="image-20211001215836673" style="zoom:50%;" />
-
-<p>方法二：输入命令 curl URL/flag_3010023750.txt即可得到flag。</p>
-<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001220617369.png" alt="image-20211001220617369" style="zoom:50%;" />
 ]]></content>
       <categories>
         <category>ctf解题</category>
@@ -2575,6 +2319,284 @@ except Exception:
       </categories>
   </entry>
   <entry>
+    <title>CTFHUB(WEB)-信息泄露</title>
+    <url>/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/</url>
+    <content><![CDATA[<h3 id="WEB工具配置"><a href="#WEB工具配置" class="headerlink" title="WEB工具配置"></a>WEB工具配置</h3><h4 id="信息泄露"><a href="#信息泄露" class="headerlink" title="信息泄露"></a>信息泄露</h4><h5 id="目录遍历"><a href="#目录遍历" class="headerlink" title="目录遍历"></a>目录遍历</h5><p>题目：</p>
+<img src="/source/images/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/image-20211004013340391.png" alt="image-20211004013340391" style="zoom:35%;" />
+
+<p>解题：</p>
+<p>一路点击文件查看即可找到flag</p>
+<img src="/source/images/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/image-20211004013641358.png" alt="image-20211004013641358" style="zoom:35%;" />
+
+<h5 id="PHPINFO"><a href="#PHPINFO" class="headerlink" title="PHPINFO"></a>PHPINFO</h5><p>题目：</p>
+<p>点击题目所给链接后再点击查看phpinfo进行查看</p>
+<img src="/source/images/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/image-20211004013908030.png" alt="image-20211004013908030" style="zoom:33%;" />
+
+<p>解题：</p>
+<p>启动网页查找功能，输入ctfhub或ctf进行搜索即可找到flag，如下图所示。</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908000603599.png" alt="image-20210908000603599" style="zoom:30%;" />
+
+<h5 id="备份文件下载"><a href="#备份文件下载" class="headerlink" title="备份文件下载"></a>备份文件下载</h5><h6 id="网站源码"><a href="#网站源码" class="headerlink" title="网站源码"></a>网站源码</h6><p>（待完善如何找到<a href="http://www.zip)/">www.zip）</a></p>
+<p>题目：</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908002154159.png" alt="image-20210908002154159" style="zoom:30%;" />
+
+<p>解题：</p>
+<p>使用扫描工具（如：dirbuster）对网站目录进行扫描查找是否有备份文件，扫描的文件名和类型就是提示给出的，最终扫描得到<a href="https://blog.csdn.net/www.zip">www.zip文件，输入网址URL/www.zip</a>得到压缩文件，解压后打开如下图所示。</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908002334915.png" alt="image-20210908002334915" style="zoom:40%;" />
+
+<p>在原题目网页的url后面加上“/flag_3254114626.txt”进行访问即可获取到flag。</p>
+<h6 id="bak文件泄露"><a href="#bak文件泄露" class="headerlink" title="bak文件泄露"></a>bak文件泄露</h6><p>题目：</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908162052011.png" alt="image-20210908162052011" style="zoom:30%;" />
+
+<p>解题：</p>
+<p>当开发人员在线上环境中对源代码进行了备份操作，并且将备份文件放在了 web 目录下，就会引起网站源码泄露。有些时候网站管理员可能为了方便，会在修改某个文件的时候先复制一份，将其命名为xxx.bak。而大部分Web Server对bak文件并不做任何处理，导致可以直接下载，从而获取到网站某个文件的源代码。</p>
+<p>根据题目所给提示，可知flag应该在index.php的备份文件里面，于是访问/index.php.bak，下载文件得到flag。如果下载是安装包则将文件的打开方式改为记事本，即可查看文件内容。</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908162308629.png" alt="image-20210908162308629" style="zoom:25%;" />
+
+<h6 id="vim缓存"><a href="#vim缓存" class="headerlink" title="vim缓存"></a>vim缓存</h6><p>题目：</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908163037011.png" alt="image-20210908163037011" style="zoom:40%;" />
+
+<p>解题：</p>
+<p>访问/.index.php.swp（注意那个点.），得到交换文件.swp。可以利用vim命令进行复原，vim命令需要在linux环境下执行，因此将文件放进虚拟机中，在终端输入命令“vim -r index.php.swp”后根据提示点击enter等即可找到flag。</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908173754648.png" alt="image-20210908173754648" style="zoom:70%;" />
+
+<p>补充知识：</p>
+<p>当开发人员在线上环境中使用 vim 编辑器，在使用过程中会留下 vim 编辑器缓存，当vim异常退出时，缓存会一直留在服务器上，引起网站源码泄露。</p>
+<p>非正常关闭vim编辑器时会生成一个.swp文件，如果编辑完成之后，正常退出，那么这个swp文件就会被自动删除。在使用vim时会创建临时缓存文件，关闭vim时缓存文件则会被删除，当vim异常退出后，因为未处理缓存文件，导致可以通过缓存文件恢复原始文件内容。</p>
+<p>以 index.php 为例：第一次产生的交换文件名为 .index.php.swp；再次意外退出后，将会产生名为 .index.php.swo 的交换文件；第三次产生的交换文件则为 .index.php.swn。</p>
+<h6 id="DS-Store"><a href="#DS-Store" class="headerlink" title=".DS_Store"></a>.DS_Store</h6><p>题目：</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908181300032.png" alt="image-20210908181300032" style="zoom:40%;" />
+
+<p>解题：</p>
+<p>.DS_Store 是 Mac OS 保存文件夹的自定义属性的隐藏文件。通过.DS_Store可以知道这个目录里面所有文件的清单。</p>
+<p>猜测直接访问/.DS_Store（注意有个点.）看有什么收获，发现下载了一个文件DS_Store，放进虚拟机，用命令”cat DS_Store”打开发现是一个特殊文件。</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908181628218.png" alt="image-20210908181628218" style="zoom:60%;" />
+
+<p>利用浏览器访问，将“0b7abce98d55b13ab29ec4fdebcb2239.txt”放在url后面进行访问即可得到flag。</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908181801977.png" alt="image-20210908181801977" style="zoom:53%;" />
+
+<h5 id="Git泄露"><a href="#Git泄露" class="headerlink" title="Git泄露"></a>Git泄露</h5><p>当前大量开发人员使用git进行版本控制，对站点自动部署。如果配置不当,可能会将.git文件夹直接部署到线上环境。这就引起了git泄露漏洞。请尝试使用BugScanTeam的GitHack完成以下题目。</p>
+<h6 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h6><p>题目：</p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A23/image-20210908182154099.png" alt="image-20210908182154099" style="zoom:40%;" />
+
+<p>解题：</p>
+<p>使用dirsearch扫描url，发现url低下存在敏感文件.git</p>
+<p>命令：python3 dirsearch.py -u <url> -e * </p>
+<p>使用GitHack进行文件恢复，然后在GitHack所在目录下的dist目录下得到恢复的文件。</p>
+<p>python2 GitHack.py <url>  (url格式：http(s)://xxx/.git)</p>
+<p>进入dist目录中的刚恢复的文件内打开git，读取git日志，发现：</p>
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210926023538190.png" alt="image-20210926023538190" style="zoom:50%;" />
+
+<p>回退到“add flag”的那个版本，即可查看flag</p>
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210926024140589.png" alt="image-20210926024140589" style="zoom:50%;" />
+
+<p>补充知识：</p>
+<p>Git 基本操作的学习地址：<a href="https://www.runoob.com/git/git-basic-operations.html">Git 基本操作 | 菜鸟教程 (runoob.com)</a></p>
+<p>创建仓库命令</p>
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">git init</td>
+<td align="left">初始化仓库</td>
+</tr>
+<tr>
+<td align="left">git clone</td>
+<td align="left">拷贝一份远程仓库，也就是下载一个项目。</td>
+</tr>
+</tbody></table>
+<p>提交与修改</p>
+<p>Git 的工作就是创建和保存你的项目的快照及与之后的快照进行对比。</p>
+<p>下表列出了有关创建与提交你的项目的快照的命令：</p>
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">git add</td>
+<td align="left">添加文件到仓库</td>
+</tr>
+<tr>
+<td align="left">git status</td>
+<td align="left">查看仓库当前的状态，显示有变更的文件。</td>
+</tr>
+<tr>
+<td align="left">git diff</td>
+<td align="left">比较文件的不同，即暂存区和工作区的差异。</td>
+</tr>
+<tr>
+<td align="left">git commit</td>
+<td align="left">提交暂存区到本地仓库。</td>
+</tr>
+<tr>
+<td align="left">git reset</td>
+<td align="left">回退版本。</td>
+</tr>
+<tr>
+<td align="left">git rm</td>
+<td align="left">删除工作区文件。</td>
+</tr>
+<tr>
+<td align="left">git mv</td>
+<td align="left">移动或重命名工作区文件。</td>
+</tr>
+</tbody></table>
+<p>提交日志</p>
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">git log</td>
+<td align="left">查看历史提交记录</td>
+</tr>
+<tr>
+<td align="left">git blame <file></td>
+<td align="left">以列表形式查看指定文件的历史修改记录</td>
+</tr>
+</tbody></table>
+<p>远程操作</p>
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">git remote</td>
+<td align="left">远程仓库操作</td>
+</tr>
+<tr>
+<td align="left">git fetch</td>
+<td align="left">从远程获取代码库</td>
+</tr>
+<tr>
+<td align="left">git pull</td>
+<td align="left">下载远程代码并合并</td>
+</tr>
+<tr>
+<td align="left">git push</td>
+<td align="left">上传远程代码并合并</td>
+</tr>
+</tbody></table>
+<h6 id="Stash"><a href="#Stash" class="headerlink" title="Stash"></a>Stash</h6><p>题目：</p>
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928115357915.png" alt="image-20210928115357915" style="zoom:40%;" />
+
+<p>解题：</p>
+<p>用dirsearch扫描发现.git文件，GitHack恢复到本地dist目录下，进入恢复的目录下打开git操作</p>
+<p>扫描命令：python3 dirsearch.py -u <URL> -e *</p>
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928120503060.png" alt="image-20210928120503060" style="zoom: 33%;" />
+
+<p>这里使用Stash栈pop出flag。</p>
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928121008083.png" alt="image-20210928121008083" style="zoom:50%;" />
+
+<p>补充知识：</p>
+<p>git stash的基本使用方法：</p>
+<p>​    git stash是git一个很有用的命令，它的作用是把当前未提交的修改暂存起来，让仓库还原到最后一次提交的状态。常用于更新、同步代码或者保存多个修改版本等情况下。git stash命令会将仓库中的修改保存，建立一条stash信息，默认的说明信息是最后一次提交的节点号和提交说明。</p>
+<ol>
+<li>git stash save ‘说明信息’：说明信息是指定的内容，更加利于了解stash的内容。</li>
+<li>git stash list：列出当前仓库下所有的stash条目，每一条stash用stash@{n}标识。</li>
+<li>git stash pop [stash]： 将stash的内容弹出，默认弹出最上面的那条，即stash@{0}。此外还可以在pop后加stash@{n}来指定要弹出的stash条目。</li>
+<li>git stash drop [stash]：丢弃stash条目，默认丢弃最上面的那条，即stash@{0}，此外还可以在drop后加stash@{n}来指定要丢弃的stash条目。</li>
+<li>git stash clear ：清除所有的stash条目。</li>
+<li>git show stash@{n}：当有多条记录并且过了一段时间忘记stash内容时通过该命令可以查看stash的具体内容</li>
+</ol>
+<ul>
+<li>git stash不针对特定的分支，切换分支后，stash内容不变，所以弹出时要小心；</li>
+<li>git stash pop或者drop后，stash的序号会自动改变，连续弹出时要注意。</li>
+</ul>
+<h6 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h6><p>题目：</p>
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928124401461.png" alt="image-20210928124401461" style="zoom:43%;" />
+
+<p>解题：</p>
+<p>老规矩dirsearch扫描一波发现git泄露。</p>
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928124330847.png" alt="image-20210928124330847" style="zoom:33%;" />
+
+<p>方法一：githack</p>
+<p>GitHack修复后进入文件夹可以发现藏有flag的txt文件点击查看即可。</p>
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928125953075.png" alt="image-20210928125953075" style="zoom:50%;" />
+
+<p>方法二：git log</p>
+<img src="/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20210928130101590.png" alt="image-20210928130101590" style="zoom:53%;" />
+
+<p>方法三：git diff（暂时不会）</p>
+<p>补充知识：</p>
+<p>Git 本地数据管理，大概可以分为三个区，工作区,暂存区和版本库。</p>
+<p>工作区（Working Directory）：是直接编辑的地方</p>
+<p>暂存区（Stage 或 Index）：数据暂时存放的区域，可在工作区和版本库之间进行数据的友好交流。</p>
+<p>版本库（commit History）：存放已经提交的数据，push 的时候，就是把这个区的数据 push 到远程仓库了。</p>
+<h5 id="SVN泄露"><a href="#SVN泄露" class="headerlink" title="SVN泄露"></a>SVN泄露</h5><p>题目：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001184333517.png" alt="image-20211001184333517" style="zoom:45%;" />
+
+<p>解题：</p>
+<p>当开发人员使用 SVN 进行版本控制，对站点自动部署。如果配置不当,可能会将.svn文件夹直接部署到线上环境。这就引起了 SVN 泄露漏洞。</p>
+<p>进入dvcs-ripper-master文件夹右键进入终端，输入命令./rip-svn.pl -v -u <a href="http://challenge-277a34a7a99ae035.sandbox.ctfhub.com:10800/.svn/">http://challenge-277a34a7a99ae035.sandbox.ctfhub.com:10800/.svn/</a></p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001213038426.png" alt="image-20211001213038426" style="zoom:50%;" />
+
+<p>再tree看看：根据提示安装：sudo apt install tree。然后输入命令：tree .svn进行查看</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001183200968.png" alt="image-20211001183200968" style="zoom:50%;" />
+
+<p>需要注意的是，.svn是隐藏文件，在linux下必须ls -al才能看到。<br>根据题目的提示，Flag 在服务端旧版本的源代码中。<br>注意tree中的pristine，里面一般存储的是代码的历史版本。直接进入目录，然后读取文件就可以得到flag了：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001183703701.png" alt="image-20211001183703701" style="zoom:50%;" />
+
+<p>由于我在文件夹中没有看到那些文件夹，所以是一路cd进到be文件夹，再用cat命令打开文件查看flag。</p>
+<p>如果想要查看.svn等文件夹，则需要打开隐藏文件夹，即dvcs-ripper-master——查看——显示隐藏文件。</p>
+<h5 id="HG泄露"><a href="#HG泄露" class="headerlink" title="HG泄露"></a>HG泄露</h5><p>题目：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001210824951.png" alt="image-20211001210824951" style="zoom:45%;" />
+
+<p>解题：</p>
+<p>当开发人员使用 Mercurial 进行版本控制，对站点自动部署。如果配置不当,可能会将.hg 文件夹直接部署到线上环境。这就引起了 hg 泄露漏洞。</p>
+<p>进入dvcs-ripper-master文件夹右键进入终端，输入命令../rip-hg.pl -v -u <a href="http://challenge-fe4e72352d16deb4.sandbox.ctfhub.com:10800/.hg/">http://challenge-fe4e72352d16deb4.sandbox.ctfhub.com:10800/.hg/</a></p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001214109400.png" alt="image-20211001214109400" style="zoom:50%;" />
+
+<p>输入命令tree .hg查看，并进入hg/store/fncache文件，发现flag文件名是flag_284118509.txt。</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001215438781.png" alt="image-20211001215438781" style="zoom:50%;" />
+
+<p>接下来有两种查看flag的方法。（flag文件名根据所在环境而不同）</p>
+<p>方法一：根据题目提示手工解决，浏览器地址栏输入URL/flag_284118509.txt即可得到flag。</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001215836673.png" alt="image-20211001215836673" style="zoom:50%;" />
+
+<p>方法二：输入命令 curl URL/flag_3010023750.txt即可得到flag。</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001220617369.png" alt="image-20211001220617369" style="zoom:50%;" />
+]]></content>
+      <categories>
+        <category>ctf解题</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>解题—攻防世界</title>
+    <url>/2021/07/13/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/</url>
+    <content><![CDATA[<h2 id="攻防世界"><a href="#攻防世界" class="headerlink" title="攻防世界"></a>攻防世界</h2><h3 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h3><p>（1）this is flag</p>
+<p><strong>题目：</strong></p>
+<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A22/QQ%E5%9B%BE%E7%89%8720210726003948.png" alt="QQ图片20210726003948" style="zoom: 50%;" />
+
+<p><strong>解题：</strong>flag即题目所给。</p>
+<p>（2）</p>
+]]></content>
+      <categories>
+        <category>ctf解题</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>解题-sqli-labs</title>
+    <url>/2021/10/03/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-sqli-labs/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>ctf解题</category>
+      </categories>
+  </entry>
+  <entry>
     <title>解题—BUUCTF</title>
     <url>/2021/07/12/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-BUUCTF/</url>
     <content><![CDATA[<h2 id="BUUCTF"><a href="#BUUCTF" class="headerlink" title="BUUCTF"></a>BUUCTF</h2><p>注释：建议在虚拟机中进行解题。</p>
@@ -2694,28 +2716,6 @@ if($_GET[&#39;pleaseget&#39;] === &#39;1&#39;) &#123;//判断
 
 
 
-]]></content>
-      <categories>
-        <category>ctf解题</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>解题-sqli-labs</title>
-    <url>/2021/10/03/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-sqli-labs/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>ctf解题</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>解题—攻防世界</title>
-    <url>/2021/07/13/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/</url>
-    <content><![CDATA[<h2 id="攻防世界"><a href="#攻防世界" class="headerlink" title="攻防世界"></a>攻防世界</h2><h3 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h3><p>（1）this is flag</p>
-<p><strong>题目：</strong></p>
-<img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A22/QQ%E5%9B%BE%E7%89%8720210726003948.png" alt="QQ图片20210726003948" style="zoom: 50%;" />
-
-<p><strong>解题：</strong>flag即题目所给。</p>
-<p>（2）</p>
 ]]></content>
       <categories>
         <category>ctf解题</category>
