@@ -95,6 +95,68 @@
 ]]></content>
   </entry>
   <entry>
+    <title>sql基础学习-2</title>
+    <url>/2021/10/03/ctf%E5%AD%A6%E4%B9%A0/sql%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/</url>
+    <content><![CDATA[<h2 id="sql基础学习"><a href="#sql基础学习" class="headerlink" title="sql基础学习"></a>sql基础学习</h2><p>注：为MYSQL 注入天书 –Sqli-labs 使用手册的学习笔记</p>
+<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><ol>
+<li><p>注入的分类</p>
+<p><strong>基于从服务器接收到的响应</strong> </p>
+<p>▲基于错误的 SQL 注入 </p>
+<p>▲联合查询的类型 </p>
+<p>▲堆查询注射 </p>
+<p>▲SQL 盲注</p>
+<p>•基于布尔 SQL 盲注</p>
+<p>•基于时间的 SQL 盲注 </p>
+<p>•基于报错的 SQL 盲注 </p>
+<p><strong>基于如何处理输入的</strong> <strong>SQL</strong> <strong>查询（数据类型）</strong> </p>
+<p>•基于字符串 </p>
+<p>•数字或整数为基础的 </p>
+<p><strong>基于程度和顺序的注入(哪里发生了影响)</strong> </p>
+<p>★一阶注射 </p>
+<p>★二阶注射 </p>
+<p>一阶注射是指输入的注射语句对 WEB 直接产生了影响，出现了结果；二阶注入类似存 储型 XSS，是指输入提交的语句，无法直接对 WEB 应用程序产生影响，通过其它的辅助间 接的对 WEB 产生危害，这样的就被称为是二阶注入. </p>
+<p><strong>基于注入点的位置上的</strong> </p>
+<p>▲通过用户输入的表单域的注射。 </p>
+<p>▲通过 cookie 注射。 </p>
+<p>▲通过服务器变量注射。 （基于头部信息的注射） </p>
+</li>
+<li><p>介绍几个常用函数： </p>
+<p>•version()——MySQL 版本 </p>
+<p>•user()——数据库用户名 </p>
+<p>•database()——数据库名 </p>
+<p>•@@datadir——数据库路径 </p>
+<p>•@@version_compile_os——操作系统版本</p>
+</li>
+<li><p>字符串连接函数</p>
+<p>函数具体介绍 <a href="http://www.cnblogs.com/lcamry/p/5715634.html">http://www.cnblogs.com/lcamry/p/5715634.html</a> </p>
+<p>•concat(str1,str2,…)——没有分隔符地连接字符串 </p>
+<p>•concat_ws(separator,str1,str2,…)——含有分隔符地连接字符串 </p>
+<p>•group_concat(str1,str2,…)——连接一个组的所有字符串，并以逗号分隔每一条数据 </p>
+<p>上述三个函数能一次性查出所有信息。 </p>
+</li>
+<li><p>一般用于尝试的语句</p>
+<p>注：–+可以用#替换，url 提交过程中 Url 编码后的#为%23 </p>
+<p>or 1=1–+ </p>
+<p>‘or 1=1–+ </p>
+<p>“or 1=1–+ </p>
+<p>)or 1=1–+ </p>
+<p>‘)or 1=1–+ </p>
+<p>“) or 1=1–+ </p>
+<p>“))or 1=1–+ </p>
+<p>一般的代码为： </p>
+<p>$id=$_GET[‘id’]; </p>
+<p>$sql=”SELECT * FROM users WHERE id=’$id’ LIMIT 0,1”; </p>
+<p>此处考虑两个点，一个是闭合前面你的 </p>
+<p>‘ 另一个是处理后面的 </p>
+<p>‘ ，一般采用两种思 </p>
+<p>路，闭合后面的引号或者注释掉，注释掉采用–+ 或者 #（</p>
+<p>%23） </p>
+</li>
+<li></li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
     <title>第一篇博客</title>
     <url>/2021/07/15/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h2 id="网络安全入门学习"><a href="#网络安全入门学习" class="headerlink" title="网络安全入门学习"></a>网络安全入门学习</h2><h3 id="几个网络安全方向的缩写科普"><a href="#几个网络安全方向的缩写科普" class="headerlink" title="几个网络安全方向的缩写科普"></a>几个网络安全方向的缩写科普</h3><h4 id="1-web安全"><a href="#1-web安全" class="headerlink" title="1. web安全"></a>1. web安全</h4><p>Web类题目大部分情况下和网、Web、HTTP等相关技能有关。主要考察选手对于Web攻防的一些知识技巧。诸如<code>SQL注入</code>、<code>XSS</code>、<code>代码执行</code>、<code>代码审计</code>等等都是很常见的考点。一般情况下Web题目只会给出一个能够访问的URL。部分题目会给出附件。</p>
@@ -236,68 +298,6 @@ pic.save(&quot;文件名（包括文件类型即扩展名）&quot;)
 <h4 id="3-稀奇古怪的编码（社会主义核心价值观、与佛论禅、熊曰-与熊问道等）"><a href="#3-稀奇古怪的编码（社会主义核心价值观、与佛论禅、熊曰-与熊问道等）" class="headerlink" title="3.稀奇古怪的编码（社会主义核心价值观、与佛论禅、熊曰/与熊问道等）"></a>3.稀奇古怪的编码（社会主义核心价值观、与佛论禅、熊曰/与熊问道等）</h4><p>（1）社会主义核心价值观编码：由二十四个字的社会主义核心价值观组成。</p>
 <p>（2）与佛论禅：格式：“佛曰：+佛语”</p>
 <p>（3）与熊问道：类似与佛论禅，开头为“熊曰”。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>sql基础学习-2</title>
-    <url>/2021/10/03/ctf%E5%AD%A6%E4%B9%A0/sql%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/</url>
-    <content><![CDATA[<h2 id="sql基础学习"><a href="#sql基础学习" class="headerlink" title="sql基础学习"></a>sql基础学习</h2><p>注：为MYSQL 注入天书 –Sqli-labs 使用手册的学习笔记</p>
-<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><ol>
-<li><p>注入的分类</p>
-<p><strong>基于从服务器接收到的响应</strong> </p>
-<p>▲基于错误的 SQL 注入 </p>
-<p>▲联合查询的类型 </p>
-<p>▲堆查询注射 </p>
-<p>▲SQL 盲注</p>
-<p>•基于布尔 SQL 盲注</p>
-<p>•基于时间的 SQL 盲注 </p>
-<p>•基于报错的 SQL 盲注 </p>
-<p><strong>基于如何处理输入的</strong> <strong>SQL</strong> <strong>查询（数据类型）</strong> </p>
-<p>•基于字符串 </p>
-<p>•数字或整数为基础的 </p>
-<p><strong>基于程度和顺序的注入(哪里发生了影响)</strong> </p>
-<p>★一阶注射 </p>
-<p>★二阶注射 </p>
-<p>一阶注射是指输入的注射语句对 WEB 直接产生了影响，出现了结果；二阶注入类似存 储型 XSS，是指输入提交的语句，无法直接对 WEB 应用程序产生影响，通过其它的辅助间 接的对 WEB 产生危害，这样的就被称为是二阶注入. </p>
-<p><strong>基于注入点的位置上的</strong> </p>
-<p>▲通过用户输入的表单域的注射。 </p>
-<p>▲通过 cookie 注射。 </p>
-<p>▲通过服务器变量注射。 （基于头部信息的注射） </p>
-</li>
-<li><p>介绍几个常用函数： </p>
-<p>•version()——MySQL 版本 </p>
-<p>•user()——数据库用户名 </p>
-<p>•database()——数据库名 </p>
-<p>•@@datadir——数据库路径 </p>
-<p>•@@version_compile_os——操作系统版本</p>
-</li>
-<li><p>字符串连接函数</p>
-<p>函数具体介绍 <a href="http://www.cnblogs.com/lcamry/p/5715634.html">http://www.cnblogs.com/lcamry/p/5715634.html</a> </p>
-<p>•concat(str1,str2,…)——没有分隔符地连接字符串 </p>
-<p>•concat_ws(separator,str1,str2,…)——含有分隔符地连接字符串 </p>
-<p>•group_concat(str1,str2,…)——连接一个组的所有字符串，并以逗号分隔每一条数据 </p>
-<p>上述三个函数能一次性查出所有信息。 </p>
-</li>
-<li><p>一般用于尝试的语句</p>
-<p>注：–+可以用#替换，url 提交过程中 Url 编码后的#为%23 </p>
-<p>or 1=1–+ </p>
-<p>‘or 1=1–+ </p>
-<p>“or 1=1–+ </p>
-<p>)or 1=1–+ </p>
-<p>‘)or 1=1–+ </p>
-<p>“) or 1=1–+ </p>
-<p>“))or 1=1–+ </p>
-<p>一般的代码为： </p>
-<p>$id=$_GET[‘id’]; </p>
-<p>$sql=”SELECT * FROM users WHERE id=’$id’ LIMIT 0,1”; </p>
-<p>此处考虑两个点，一个是闭合前面你的 </p>
-<p>‘ 另一个是处理后面的 </p>
-<p>‘ ，一般采用两种思 </p>
-<p>路，闭合后面的引号或者注释掉，注释掉采用–+ 或者 #（</p>
-<p>%23） </p>
-</li>
-<li></li>
-</ol>
 ]]></content>
   </entry>
   <entry>
@@ -2028,29 +2028,6 @@ except Exception:
 ]]></content>
   </entry>
   <entry>
-    <title>CTFHUB(WEB)-前置技能</title>
-    <url>/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/</url>
-    <content><![CDATA[<h3 id="WEB前置技能"><a href="#WEB前置技能" class="headerlink" title="WEB前置技能"></a>WEB前置技能</h3><h4 id="HTTP协议——请求方式"><a href="#HTTP协议——请求方式" class="headerlink" title="HTTP协议——请求方式"></a>HTTP协议——请求方式</h4><p>题目：</p>
-<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905194147045.png" alt="image-20210905194147045" style="zoom:33%;" />
-
-<p>解题：</p>
-<p>猜想CTF**B请求方式为ctfhub</p>
-<p>姿势1：burpsuite抓包</p>
-<p>使用burpsuite进行抓包，发送到repeatr把get方式改为CTFHUB的请求方式，点击send，就会返回含有flag的数据包。如下图。（图来自<a href="https://blog.csdn.net/hgjiayou/article/details/106212933%EF%BC%89">https://blog.csdn.net/hgjiayou/article/details/106212933）</a></p>
-<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905195259986.png" alt="image-20210905195259986" style="zoom:60%;" />
-
-<p>姿势2：curl命令</p>
-<p>在cmd命令窗口中输入“curl -v -X CTFHUB <a href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E2%80%9D%E5%8D%B3%E5%8F%AF%E5%BE%97%E5%88%B0flag%E4%BF%A1%E6%81%AF">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php”即可得到flag信息</a></p>
-<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905195437094.png" alt="image-20210905195437094" style="zoom:45%;" />
-
-<p>补充知识：</p>
-<p>curl</p>
-<p><strong>cURL</strong>是一个利用URL语法在<a href="https://baike.baidu.com/item/%E5%91%BD%E4%BB%A4%E8%A1%8C">命令行</a>下工作的文件传输工具。用来请求 Web 服务器。</p>
-<p>学习链接：<a href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html">https://www.ruanyifeng.com/blog/2019/09/curl-reference.html</a></p>
-<p>curl -v -X CTFHUB <a href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E8%A1%A8%E7%A4%BA%E4%BB%A5CTFHUB%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E8%AE%BF%E9%97%AEhttp://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E5%B9%B6%E6%9F%A5%E7%9C%8B%E9%80%9A%E4%BF%A1%E5%85%A8%E8%BF%87%E7%A8%8B%E3%80%82">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php表示以CTFHUB请求方式访问http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php并查看通信全过程。</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>CTFHUB(WEB)-密码口令</title>
     <url>/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E5%AF%86%E7%A0%81%E5%8F%A3%E4%BB%A4/</url>
     <content><![CDATA[<h3 id="WEB工具配置"><a href="#WEB工具配置" class="headerlink" title="WEB工具配置"></a>WEB工具配置</h3><h4 id="密码口令"><a href="#密码口令" class="headerlink" title="密码口令"></a>密码口令</h4><h5 id="弱口令"><a href="#弱口令" class="headerlink" title="弱口令"></a><strong>弱口令</strong></h5><p>题目：</p>
@@ -2539,6 +2516,34 @@ except Exception:
 <h4 id=""><a href="#" class="headerlink" title=""></a></h4>]]></content>
   </entry>
   <entry>
+    <title>CTFHUB(WEB)-前置技能</title>
+    <url>/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/</url>
+    <content><![CDATA[<h3 id="WEB前置技能"><a href="#WEB前置技能" class="headerlink" title="WEB前置技能"></a>WEB前置技能</h3><h4 id="HTTP协议——请求方式"><a href="#HTTP协议——请求方式" class="headerlink" title="HTTP协议——请求方式"></a>HTTP协议——请求方式</h4><p>题目：</p>
+<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905194147045.png" alt="image-20210905194147045" style="zoom:33%;" />
+
+<p>解题：</p>
+<p>猜想CTF**B请求方式为ctfhub</p>
+<p>姿势1：burpsuite抓包</p>
+<p>使用burpsuite进行抓包，发送到repeatr把get方式改为CTFHUB的请求方式，点击send，就会返回含有flag的数据包。如下图。（图来自<a href="https://blog.csdn.net/hgjiayou/article/details/106212933%EF%BC%89">https://blog.csdn.net/hgjiayou/article/details/106212933）</a></p>
+<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905195259986.png" alt="image-20210905195259986" style="zoom:60%;" />
+
+<p>姿势2：curl命令</p>
+<p>在cmd命令窗口中输入“curl -v -X CTFHUB <a href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E2%80%9D%E5%8D%B3%E5%8F%AF%E5%BE%97%E5%88%B0flag%E4%BF%A1%E6%81%AF">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php”即可得到flag信息</a></p>
+<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905195437094.png" alt="image-20210905195437094" style="zoom:45%;" />
+
+<p>补充知识：</p>
+<p>curl</p>
+<p><strong>cURL</strong>是一个利用URL语法在<a href="https://baike.baidu.com/item/%E5%91%BD%E4%BB%A4%E8%A1%8C">命令行</a>下工作的文件传输工具。用来请求 Web 服务器。</p>
+<p>学习链接：<a href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html">https://www.ruanyifeng.com/blog/2019/09/curl-reference.html</a></p>
+<p>curl -v -X CTFHUB <a href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E8%A1%A8%E7%A4%BA%E4%BB%A5CTFHUB%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E8%AE%BF%E9%97%AEhttp://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E5%B9%B6%E6%9F%A5%E7%9C%8B%E9%80%9A%E4%BF%A1%E5%85%A8%E8%BF%87%E7%A8%8B%E3%80%82">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php表示以CTFHUB请求方式访问http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php并查看通信全过程。</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>解题-sqli-labs</title>
+    <url>/2021/10/03/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-sqli-labs/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>解题—BUUCTF</title>
     <url>/2021/07/12/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-BUUCTF/</url>
     <content><![CDATA[<h2 id="BUUCTF"><a href="#BUUCTF" class="headerlink" title="BUUCTF"></a>BUUCTF</h2><p>注释：建议在虚拟机中进行解题。</p>
@@ -2659,11 +2664,6 @@ if($_GET[&#39;pleaseget&#39;] === &#39;1&#39;) &#123;//判断
 
 
 ]]></content>
-  </entry>
-  <entry>
-    <title>解题-sqli-labs</title>
-    <url>/2021/10/03/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-sqli-labs/</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>解题—攻防世界</title>
