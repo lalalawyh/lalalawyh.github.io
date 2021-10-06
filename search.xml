@@ -2702,7 +2702,7 @@ if($_GET[&#39;pleaseget&#39;] === &#39;1&#39;) &#123;//判断
   </entry>
   <entry>
     <title>解题-sqli-labs</title>
-    <url>/2021/10/03/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-sqli-labs/</url>
+    <url>/2021/10/06/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-sqli-labs/</url>
     <content><![CDATA[<h2 id="sqli-labs"><a href="#sqli-labs" class="headerlink" title="sqli-labs"></a>sqli-labs</h2><h3 id="Less-1"><a href="#Less-1" class="headerlink" title="Less-1"></a>Less-1</h3><p>题目：</p>
 <img src="../../source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211006194458485.png" alt="image-20211006194458485" style="zoom:33%;" />
 
