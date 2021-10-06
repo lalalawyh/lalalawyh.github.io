@@ -301,6 +301,143 @@ pic.save(&quot;文件名（包括文件类型即扩展名）&quot;)
 ]]></content>
   </entry>
   <entry>
+    <title>第八篇博客</title>
+    <url>/2021/08/03/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%85%AB%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2 id="WEB初步学习"><a href="#WEB初步学习" class="headerlink" title="WEB初步学习"></a>WEB初步学习</h2><h3 id="PHP-amp-amp-SSRF"><a href="#PHP-amp-amp-SSRF" class="headerlink" title="PHP &amp;&amp; SSRF"></a>PHP &amp;&amp; SSRF</h3><p>注：还需学习利用SSRF漏洞进行攻击</p>
+<h4 id="前言——渗透测试："><a href="#前言——渗透测试：" class="headerlink" title="前言——渗透测试："></a>前言——渗透测试：</h4><p><strong>定义：</strong></p>
+<p>渗透测试是一种通过模拟使用黑客的技术和方法，挖掘目标系统的安全漏洞，取得系统的控制权，访问系统的机密数据，并发现可能影响业务持续运作安全隐患的一种安全测试和评估方式。<br><u>渗透测试和黑客入侵最大区别在于渗透测试是经过客户授权</u>，采用可控制、非破坏性质的方法和手段发现目标和网络设备中存在弱点，帮助管理者知道自己网络所面临的问题，同时提供安全加固建议，帮助客户提升系统的安全性。</p>
+<p><strong>分类：</strong></p>
+<p><u>黑盒测试</u>：是指测试人员在不清楚被测单位内部技术架构的情况下，从外部对网络设施的安全性进行测试的过程。黑盒测试借助于真实世界的黑客方法，黑客工具，有组织有步骤的对目标系统进行逐步的渗透和入侵，揭示目标系统中一些已知的和未知的安全漏洞，并评估这些漏洞是否可以被不法分子利用，并造成业务和资产损失。<br><u>白盒测试</u>：测试人员可以获取被测单位的网络结构和各种底层技术。在此基础上，使用针对性的测试方法和工具，可以以较小的代价发现和验证系统最严重的安全漏洞。（代码审计必不可少，读懂代码找漏洞）<br>在实际渗透中，两者各有利弊，需要视情况选择和进行，有时还需将两个结合起来使用。</p>
+<h4 id="PHP入门"><a href="#PHP入门" class="headerlink" title="PHP入门"></a>PHP入门</h4><p><strong>定义：</strong></p>
+<p>PHP (全称: PHP: Hypertext Preprocessor，即”PHP：超文本预处理器”)是一种通用开源脚本语言。PHP脚本在服务器上执行。</p>
+<p><strong>PHP集成开发环境：</strong></p>
+<p>windows下可以下载<u>phpstudy</u>（方便切换版本，下载简单）/xampp等<br>mac可以下载mxsrvs, phpstudy for mac，docker yyds等</p>
+<p><strong>使用phpstudy：</strong></p>
+<p>phpstudy是个集成软件，应该根据所需服务一键启动</p>
+<img src="/images/%E7%AC%AC%E5%85%AB%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210805235017858.png" alt="image-20210805235017858" style="zoom: 33%;" />
+
+<p>phpstudy可能会在所在程序目录下新建一个www目录作为web根目录</p>
+<p>尝试代码：保存后可在本地尝试访问一下——&gt;本地IP/对应文件名</p>
+<pre><code class="php">&lt;?php
+    echo &quot;helloworld !&quot;;
+?&gt;
+</code></pre>
+<p><u>注：推荐学习php w3cschool</u></p>
+<p><strong>代码审计时需要关注的点：</strong></p>
+<p>事实上，代码审计也有多种思路：例如可以选择先通读代码，理解结构和功能后再从中发现问题——但这种方式的缺点显而易见：十分耗时且令人头疼，不太适用于代码量大的情况；也可以依据经验寻找易出现问题的关键功能——这往往也可以与黑盒测试相结合，定位<br>功能对应的代码后找到关键函数，正向或反向的追踪其中用到的变量（例如文件下载功能处<br>若未经过滤则可能存在任意文件下载漏洞，发现该功能后定位代码段，找到其使用的功能函<br>数——可能是file_get_contents或者别的什么，追踪它使用的变量是否有做安全过滤)；甚至你可以直接尝试定向的挖掘某一类漏洞——依旧是通过可能涉及的函数去寻找……<br>但无论你使用哪种方法进行漏洞挖掘，阅读代码的能力是必不可少的。也就是，你至少得知道开发者在做什么。</p>
+<h4 id="浅谈SSRF漏洞"><a href="#浅谈SSRF漏洞" class="headerlink" title="浅谈SSRF漏洞"></a>浅谈SSRF漏洞</h4><p><strong>SSRF的定义与成因：</strong></p>
+<p>SSRF(Server-Side Request Forgery：服务器端请求伪造)是一种由攻击者构造形成，由服务端发起请求的一个安全漏洞。一般情况下，SSRF攻击的目标是从外网无法访问的内部系统。(正是因为它是由服务端发起的，所以它能够请求到与它相连而与外网隔离的内部系统)<br>SSRF漏洞形成的原因大都是由于服务端提供了从其他服务器应用获取数据的功能且没有对目标地址做过滤与限制。比如从指定URL地址获取网页文本内容,加载指定地址的图片，下载等等。</p>
+<p><strong>SSRF代码层成因：</strong>（代码审计需观察有无以下类似写法，变量是否未经任何过滤就传到危险函数中）</p>
+<pre><code class="php">//file_get_contents
+&lt;?php
+  if(isset($_POST[&#39;url&#39;]))//isset()为判断是否有设置括号中的函数即检测变量是否已设置并且非null
+    &#123;
+        $content = file get_contents($_POST[&#39;url&#39;]);//为文件读取的关键函数
+        $filename = &#39;./images/&#39; .rand().&#39;.jpg&#39;;//字符串拼接
+        fi1e_put_contents($filename, $content);//将之前读到的数据写进文件中
+        echo $_POST[&#39;ur1&#39;];
+        $img = &quot;&lt;img src=\&quot;&quot;.$filename.&quot;\&quot;/&gt;&quot;;
+        echo $img;
+    &#125;
+    else
+    &#123;
+        echo &quot;no ur1&quot;;
+      &#125;
+?&gt;//总的来说是实现图片保存功能
+</code></pre>
+<p>简化代码：</p>
+<pre><code>&lt;?php
+  echo file_get_contents($_GET[&#39;url&#39;]);
+?&gt;
+</code></pre>
+<p>在浏览器中输入本地ip/文件名?url=<a href="http://www.baidu.com(需要给url赋值,否则会报错)则会打开百度的页面/">http://www.baidu.com（需要给url赋值，否则会报错）则会打开百度的页面</a></p>
+<pre><code class="php">//fsockopen
+&lt;?php
+   function GetFile($host,$port,$link) &#123;
+      $fp = fsockopen($host, intval($port), $errno, $errstr, 30);
+      if (!$fp)&#123;
+          echo &quot;serrstr (error number $errno) \n&quot;;
+      &#125;else &#123;
+          $out = &quot;GET $link HTTP/1.1irin&quot;;
+          $out .=&quot;Host: $hostirin&quot;;
+          $out .= &quot;Connection: closeirinirin&quot;;$out .=&quot;\rin&quot;;
+          fwrite($fp,$out);
+          $contents=&#39;&#39;;
+          while (!feof($fp)) &#123;
+              $contents.=fgets($fp,1024);
+           &#125;
+           fclose($fp);
+           return $contents;
+      &#125;
+   &#125;
+?&gt;
+</code></pre>
+<pre><code class="php">//curl
+&lt;?php
+    if (isset($_POST[&#39;url&#39;]))&#123;
+        $1ink = $_POST[&#39;ur1&#39;];
+        $curlobj = cur1_init();
+        curl_setopt($curlobj, CURLOPT_POST, 0);
+        curl_setopt($curlobj, CURLOPT_URL,$link);
+        curl_setopt($curlobj, CURLOPT_RETURNTRANSFER, 1);
+        $result=curl_exec($curlobj); 
+        curl_close($cur1obj);
+        $filename = &#39;./curled/&#39;.rand().&#39;.txt&#39;;
+        $file_put_contents($filename, $result);
+        echo $result ;
+    &#125;
+?&gt;
+</code></pre>
+<p><strong>SSRF的危害：</strong></p>
+<p>-内网探测<br>-利用file协议读取本地文件等等<br>-向内部（内网）任意主机的任意端口发送精心构造的Payload，从而攻击内网的应用，主要是使用GET参数就可以实现的攻击(比如struts2，sqli等)<br>-DOS攻击(请求大文件，始终保持连接Keep-Alive Always)</p>
+<p><strong>SSRF漏洞的验证：</strong></p>
+<ol>
+<li>排除法：浏览器f12（或右上角的三个点–更多工具–开发者工具）查看源代码看是否是在本地进行了请求<br>比如:该资源地址类型为 <a href="http://www.xxx.com/a.php?image=">http://www.xxx.com/a.php?image=</a> (地址)的（即对该地址进行请求操作）就可能存在SSRF漏洞（本例可能存在对任意网址请求的漏洞）</li>
+<li>dnslog/requestbin等工具/平台进行测试或监听，看是否被访问。</li>
+</ol>
+<p><u>曾经常考</u>：在网站的根目录下放一个flag.php文件。如下。</p>
+<pre><code class="php">&lt;?php
+    $flag = &quot;flag&#123;well,You get_ 1t&#125;&quot; ;
+    if ($_SERVER[&#39;REMOTE_ADDR&#39;] !== $_SERVER[&#39;HTTP_HOST&#39;])&#123;
+        echo &quot;You are not a local visitor, access is forbidden!&quot; ;
+    &#125;//该代码意味着只有从本地访问才有可能输出flag    
+    else&#123;
+        echo $flag;
+    &#125;
+?&gt;
+</code></pre>
+<p>如何访问：<a href="http://x.x.x.x/?url=flag.php%EF%BC%88%E9%80%9A%E8%BF%87%E8%AE%BF%E9%97%AE%E6%9C%AC%E5%9C%B0%E6%9D%A5%E6%89%93%E5%BC%80flag.php%E6%96%87%E4%BB%B6%EF%BC%89">http://x.x.x.x/?url=flag.php（通过访问本地来打开flag.php文件）</a></p>
+<p><strong>一些绕过：</strong>（仅提供思路，而非用下面方式一定能绕过。应该依据对方的具体代码以及具体过滤形式选择绕过方式）</p>
+<ol>
+<li><p>加端口.  127.0.0.1:80 </p>
+</li>
+<li><p>短网址</p>
+</li>
+<li><p>指向任意IP的域名xip.io 127.0.1.xip.io</p>
+</li>
+<li><p>IP限制绕过</p>
+<p>十进制转换 (转换成16进制再转换回来，把.换成0，<a href="http://0x7f000001,十进制就是http//2130706433">http://0x7f000001，十进制就是http://2130706433</a> )<br>八进制转换<a href="http://127.0.0.1/">http://0177.0.0.1</a></p>
+<p>十六进制转换<a href="http://127.0.0.1/">http://0x7f.0.0.1</a></p>
+<p>不同进制组合转换</p>
+</li>
+<li><p> @绕过</p>
+</li>
+</ol>
+<p>   <a href="http://www.bai.com@127.0.0.1(实际访问的还是127.0.0.1这个本地)/">http://www.bai.com@127.0.0.1（实际访问的还是127.0.0.1这个本地）</a></p>
+<ol start="6">
+<li><p>后面跟参数（寻找功能点以发现参数）</p>
+<p> <a href="http://127.0.0.1/?a=sdagwasdwfa">http://127.0.0.1?a=sdagwasdwfa</a></p>
+</li>
+</ol>
+<p><u>小知识</u>：</p>
+<p>完整url：“协议：//用户名：密码@网址/网站文件？参数名=参数值#锚点”</p>
+<p>当内网存在redis/mongodb/mysql等，也可以考虑同ssrf漏洞去进一步攻击</p>
+<p>内网攻击可以采用”gopher://“或”dict://“协议</p>
+<p>内网端口扫描可以用”dict://“或”http://“协议等，使用协议需要根据SSRF是如何造成的来具体分析。（内网扫端口并无特定端口）</p>
+<p>边界机器存在ssrf，通过dict或者http等协议扫本地端口或内网网段（如本地的5000端口上存在一个flaskweb，那么请求127.0.0.1：5000的时候能访问到，内网同理）找到内网web应用后通过http协议访问并尝试攻击，如果要发生post请求可以使用gopher，知道到内网脆弱应用后可以通过gopher协议进行攻击。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>第二篇博客</title>
     <url>/2021/07/17/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h2 id="MISC初步学习"><a href="#MISC初步学习" class="headerlink" title="MISC初步学习"></a>MISC初步学习</h2><h3 id="misc图片隐写"><a href="#misc图片隐写" class="headerlink" title="misc图片隐写"></a>misc图片隐写</h3><p>注释：本文所说的文件名均包括扩展名</p>
@@ -613,286 +750,6 @@ print(s_int, s_bytes)
 ]]></content>
   </entry>
   <entry>
-    <title>第八篇博客</title>
-    <url>/2021/08/03/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%85%AB%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h2 id="WEB初步学习"><a href="#WEB初步学习" class="headerlink" title="WEB初步学习"></a>WEB初步学习</h2><h3 id="PHP-amp-amp-SSRF"><a href="#PHP-amp-amp-SSRF" class="headerlink" title="PHP &amp;&amp; SSRF"></a>PHP &amp;&amp; SSRF</h3><p>注：还需学习利用SSRF漏洞进行攻击</p>
-<h4 id="前言——渗透测试："><a href="#前言——渗透测试：" class="headerlink" title="前言——渗透测试："></a>前言——渗透测试：</h4><p><strong>定义：</strong></p>
-<p>渗透测试是一种通过模拟使用黑客的技术和方法，挖掘目标系统的安全漏洞，取得系统的控制权，访问系统的机密数据，并发现可能影响业务持续运作安全隐患的一种安全测试和评估方式。<br><u>渗透测试和黑客入侵最大区别在于渗透测试是经过客户授权</u>，采用可控制、非破坏性质的方法和手段发现目标和网络设备中存在弱点，帮助管理者知道自己网络所面临的问题，同时提供安全加固建议，帮助客户提升系统的安全性。</p>
-<p><strong>分类：</strong></p>
-<p><u>黑盒测试</u>：是指测试人员在不清楚被测单位内部技术架构的情况下，从外部对网络设施的安全性进行测试的过程。黑盒测试借助于真实世界的黑客方法，黑客工具，有组织有步骤的对目标系统进行逐步的渗透和入侵，揭示目标系统中一些已知的和未知的安全漏洞，并评估这些漏洞是否可以被不法分子利用，并造成业务和资产损失。<br><u>白盒测试</u>：测试人员可以获取被测单位的网络结构和各种底层技术。在此基础上，使用针对性的测试方法和工具，可以以较小的代价发现和验证系统最严重的安全漏洞。（代码审计必不可少，读懂代码找漏洞）<br>在实际渗透中，两者各有利弊，需要视情况选择和进行，有时还需将两个结合起来使用。</p>
-<h4 id="PHP入门"><a href="#PHP入门" class="headerlink" title="PHP入门"></a>PHP入门</h4><p><strong>定义：</strong></p>
-<p>PHP (全称: PHP: Hypertext Preprocessor，即”PHP：超文本预处理器”)是一种通用开源脚本语言。PHP脚本在服务器上执行。</p>
-<p><strong>PHP集成开发环境：</strong></p>
-<p>windows下可以下载<u>phpstudy</u>（方便切换版本，下载简单）/xampp等<br>mac可以下载mxsrvs, phpstudy for mac，docker yyds等</p>
-<p><strong>使用phpstudy：</strong></p>
-<p>phpstudy是个集成软件，应该根据所需服务一键启动</p>
-<img src="/images/%E7%AC%AC%E5%85%AB%E7%AF%87%E5%8D%9A%E5%AE%A2/image-20210805235017858.png" alt="image-20210805235017858" style="zoom: 33%;" />
-
-<p>phpstudy可能会在所在程序目录下新建一个www目录作为web根目录</p>
-<p>尝试代码：保存后可在本地尝试访问一下——&gt;本地IP/对应文件名</p>
-<pre><code class="php">&lt;?php
-    echo &quot;helloworld !&quot;;
-?&gt;
-</code></pre>
-<p><u>注：推荐学习php w3cschool</u></p>
-<p><strong>代码审计时需要关注的点：</strong></p>
-<p>事实上，代码审计也有多种思路：例如可以选择先通读代码，理解结构和功能后再从中发现问题——但这种方式的缺点显而易见：十分耗时且令人头疼，不太适用于代码量大的情况；也可以依据经验寻找易出现问题的关键功能——这往往也可以与黑盒测试相结合，定位<br>功能对应的代码后找到关键函数，正向或反向的追踪其中用到的变量（例如文件下载功能处<br>若未经过滤则可能存在任意文件下载漏洞，发现该功能后定位代码段，找到其使用的功能函<br>数——可能是file_get_contents或者别的什么，追踪它使用的变量是否有做安全过滤)；甚至你可以直接尝试定向的挖掘某一类漏洞——依旧是通过可能涉及的函数去寻找……<br>但无论你使用哪种方法进行漏洞挖掘，阅读代码的能力是必不可少的。也就是，你至少得知道开发者在做什么。</p>
-<h4 id="浅谈SSRF漏洞"><a href="#浅谈SSRF漏洞" class="headerlink" title="浅谈SSRF漏洞"></a>浅谈SSRF漏洞</h4><p><strong>SSRF的定义与成因：</strong></p>
-<p>SSRF(Server-Side Request Forgery：服务器端请求伪造)是一种由攻击者构造形成，由服务端发起请求的一个安全漏洞。一般情况下，SSRF攻击的目标是从外网无法访问的内部系统。(正是因为它是由服务端发起的，所以它能够请求到与它相连而与外网隔离的内部系统)<br>SSRF漏洞形成的原因大都是由于服务端提供了从其他服务器应用获取数据的功能且没有对目标地址做过滤与限制。比如从指定URL地址获取网页文本内容,加载指定地址的图片，下载等等。</p>
-<p><strong>SSRF代码层成因：</strong>（代码审计需观察有无以下类似写法，变量是否未经任何过滤就传到危险函数中）</p>
-<pre><code class="php">//file_get_contents
-&lt;?php
-  if(isset($_POST[&#39;url&#39;]))//isset()为判断是否有设置括号中的函数即检测变量是否已设置并且非null
-    &#123;
-        $content = file get_contents($_POST[&#39;url&#39;]);//为文件读取的关键函数
-        $filename = &#39;./images/&#39; .rand().&#39;.jpg&#39;;//字符串拼接
-        fi1e_put_contents($filename, $content);//将之前读到的数据写进文件中
-        echo $_POST[&#39;ur1&#39;];
-        $img = &quot;&lt;img src=\&quot;&quot;.$filename.&quot;\&quot;/&gt;&quot;;
-        echo $img;
-    &#125;
-    else
-    &#123;
-        echo &quot;no ur1&quot;;
-      &#125;
-?&gt;//总的来说是实现图片保存功能
-</code></pre>
-<p>简化代码：</p>
-<pre><code>&lt;?php
-  echo file_get_contents($_GET[&#39;url&#39;]);
-?&gt;
-</code></pre>
-<p>在浏览器中输入本地ip/文件名?url=<a href="http://www.baidu.com(需要给url赋值,否则会报错)则会打开百度的页面/">http://www.baidu.com（需要给url赋值，否则会报错）则会打开百度的页面</a></p>
-<pre><code class="php">//fsockopen
-&lt;?php
-   function GetFile($host,$port,$link) &#123;
-      $fp = fsockopen($host, intval($port), $errno, $errstr, 30);
-      if (!$fp)&#123;
-          echo &quot;serrstr (error number $errno) \n&quot;;
-      &#125;else &#123;
-          $out = &quot;GET $link HTTP/1.1irin&quot;;
-          $out .=&quot;Host: $hostirin&quot;;
-          $out .= &quot;Connection: closeirinirin&quot;;$out .=&quot;\rin&quot;;
-          fwrite($fp,$out);
-          $contents=&#39;&#39;;
-          while (!feof($fp)) &#123;
-              $contents.=fgets($fp,1024);
-           &#125;
-           fclose($fp);
-           return $contents;
-      &#125;
-   &#125;
-?&gt;
-</code></pre>
-<pre><code class="php">//curl
-&lt;?php
-    if (isset($_POST[&#39;url&#39;]))&#123;
-        $1ink = $_POST[&#39;ur1&#39;];
-        $curlobj = cur1_init();
-        curl_setopt($curlobj, CURLOPT_POST, 0);
-        curl_setopt($curlobj, CURLOPT_URL,$link);
-        curl_setopt($curlobj, CURLOPT_RETURNTRANSFER, 1);
-        $result=curl_exec($curlobj); 
-        curl_close($cur1obj);
-        $filename = &#39;./curled/&#39;.rand().&#39;.txt&#39;;
-        $file_put_contents($filename, $result);
-        echo $result ;
-    &#125;
-?&gt;
-</code></pre>
-<p><strong>SSRF的危害：</strong></p>
-<p>-内网探测<br>-利用file协议读取本地文件等等<br>-向内部（内网）任意主机的任意端口发送精心构造的Payload，从而攻击内网的应用，主要是使用GET参数就可以实现的攻击(比如struts2，sqli等)<br>-DOS攻击(请求大文件，始终保持连接Keep-Alive Always)</p>
-<p><strong>SSRF漏洞的验证：</strong></p>
-<ol>
-<li>排除法：浏览器f12（或右上角的三个点–更多工具–开发者工具）查看源代码看是否是在本地进行了请求<br>比如:该资源地址类型为 <a href="http://www.xxx.com/a.php?image=">http://www.xxx.com/a.php?image=</a> (地址)的（即对该地址进行请求操作）就可能存在SSRF漏洞（本例可能存在对任意网址请求的漏洞）</li>
-<li>dnslog/requestbin等工具/平台进行测试或监听，看是否被访问。</li>
-</ol>
-<p><u>曾经常考</u>：在网站的根目录下放一个flag.php文件。如下。</p>
-<pre><code class="php">&lt;?php
-    $flag = &quot;flag&#123;well,You get_ 1t&#125;&quot; ;
-    if ($_SERVER[&#39;REMOTE_ADDR&#39;] !== $_SERVER[&#39;HTTP_HOST&#39;])&#123;
-        echo &quot;You are not a local visitor, access is forbidden!&quot; ;
-    &#125;//该代码意味着只有从本地访问才有可能输出flag    
-    else&#123;
-        echo $flag;
-    &#125;
-?&gt;
-</code></pre>
-<p>如何访问：<a href="http://x.x.x.x/?url=flag.php%EF%BC%88%E9%80%9A%E8%BF%87%E8%AE%BF%E9%97%AE%E6%9C%AC%E5%9C%B0%E6%9D%A5%E6%89%93%E5%BC%80flag.php%E6%96%87%E4%BB%B6%EF%BC%89">http://x.x.x.x/?url=flag.php（通过访问本地来打开flag.php文件）</a></p>
-<p><strong>一些绕过：</strong>（仅提供思路，而非用下面方式一定能绕过。应该依据对方的具体代码以及具体过滤形式选择绕过方式）</p>
-<ol>
-<li><p>加端口.  127.0.0.1:80 </p>
-</li>
-<li><p>短网址</p>
-</li>
-<li><p>指向任意IP的域名xip.io 127.0.1.xip.io</p>
-</li>
-<li><p>IP限制绕过</p>
-<p>十进制转换 (转换成16进制再转换回来，把.换成0，<a href="http://0x7f000001,十进制就是http//2130706433">http://0x7f000001，十进制就是http://2130706433</a> )<br>八进制转换<a href="http://127.0.0.1/">http://0177.0.0.1</a></p>
-<p>十六进制转换<a href="http://127.0.0.1/">http://0x7f.0.0.1</a></p>
-<p>不同进制组合转换</p>
-</li>
-<li><p> @绕过</p>
-</li>
-</ol>
-<p>   <a href="http://www.bai.com@127.0.0.1(实际访问的还是127.0.0.1这个本地)/">http://www.bai.com@127.0.0.1（实际访问的还是127.0.0.1这个本地）</a></p>
-<ol start="6">
-<li><p>后面跟参数（寻找功能点以发现参数）</p>
-<p> <a href="http://127.0.0.1/?a=sdagwasdwfa">http://127.0.0.1?a=sdagwasdwfa</a></p>
-</li>
-</ol>
-<p><u>小知识</u>：</p>
-<p>完整url：“协议：//用户名：密码@网址/网站文件？参数名=参数值#锚点”</p>
-<p>当内网存在redis/mongodb/mysql等，也可以考虑同ssrf漏洞去进一步攻击</p>
-<p>内网攻击可以采用”gopher://“或”dict://“协议</p>
-<p>内网端口扫描可以用”dict://“或”http://“协议等，使用协议需要根据SSRF是如何造成的来具体分析。（内网扫端口并无特定端口）</p>
-<p>边界机器存在ssrf，通过dict或者http等协议扫本地端口或内网网段（如本地的5000端口上存在一个flaskweb，那么请求127.0.0.1：5000的时候能访问到，内网同理）找到内网web应用后通过http协议访问并尝试攻击，如果要发生post请求可以使用gopher，知道到内网脆弱应用后可以通过gopher协议进行攻击。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>第六篇博客</title>
-    <url>/2021/07/24/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%85%AD%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h2 id="CRYPTO初步学习"><a href="#CRYPTO初步学习" class="headerlink" title="CRYPTO初步学习"></a>CRYPTO初步学习</h2><h3 id="cry-rsa加密与攻击"><a href="#cry-rsa加密与攻击" class="headerlink" title="cry-rsa加密与攻击"></a>cry-rsa加密与攻击</h3><p>注！还需进行理解学习并继续</p>
-<p>学习链接：nep.am473ur.com</p>
-<h4 id="什么是RSA"><a href="#什么是RSA" class="headerlink" title="什么是RSA"></a>什么是RSA</h4><p><strong>小知识：</strong></p>
-<p>RSA是一种非对称加密</p>
-<p>对称密码和非对称密码的区别：如果加密和解密用的是相同的密钥则为对称密码；如果加密和解密用的是不同的密钥，且加密密钥只能加密，解密密钥只能解密则为非对称密码。</p>
-<p>对称密码加解密密钥一样因此均为私钥；而非对称密码加密密钥可以公开则为公钥，揭秘密码为私钥。</p>
-<p>单向函数（简记：单向通行）：对每一个输入x，函数值f（x）都很容易计算；对随机给出的函数值f（x），算出原始输入x却比较困难；使用陷门信息则可以反逆。</p>
-<p>哈希算法只能用于加密，不能用于解密，因为没有陷门信息可以反逆，正常的加密是需要解密的。</p>
-<h4 id="一点点数论基础"><a href="#一点点数论基础" class="headerlink" title="一点点数论基础"></a>一点点数论基础</h4><p><strong>同余：</strong>（简记：余数相同）</p>
-<p>定义：若a，b为两个整数，且它们的差a-b能被某个自然数m所整除，则称a就模m来说同余于b，或者说a和b关于模m同余，记为：a≡b(mod m)。它意味着：a-b=m*k（k为某一个整数）。</p>
-<p>性质：没有同除性</p>
-<p>1.反身性：a≡a (mod m)；</p>
-<p>2.对称性：若a≡b(mod m)，则b≡a (mod m)；</p>
-<p>3.传递性：若a≡b(mod m)，b≡c(mod m)，则a≡c(mod m)；</p>
-<p>4.（1）同余式相加：若a≡b(mod m)，c≡d(mod m)，则a+c≡b+d(mod m)；</p>
-<p>（2）同加性：若a≡b(mod m)，则a+c≡b+c(mod m)</p>
-<p>5.（1）同余式相乘：若a≡b(mod m)，c≡d(mod m)，则a$<em>c≡b</em>$d(mod m)。</p>
-<p>（2）同乘性：若a≡b(mod m)，则a$<em>c≡b</em>$c(mod m)</p>
-<p>6.同幂性：若a≡b(mod m)，则a^n^≡b^n^(mod m)</p>
-<p>7.推论1：a$<em>$b mod k=(a mod k)$</em>$(b mod k)mod k</p>
-<p>8.推论2：若a mod p=x，a mod q=x，p，q互质，则a mod p$*$q=x</p>
-<p><strong>模逆元：</strong>（简记：参考倒数xy=1的定义）</p>
-<p>定义：模逆元也称为模倒数。一整数a对同余n之模逆元是指满足以下公示的整数b：a^-1^≡b(mod n)也可以写成以下的式子：ab≡1(mod n)。整数a对模数n之逆元存在的充分必要条件是a和n互素，若此模逆元存在，在模数n下的除法可以用和对应模逆元的乘法来达成，此概念和实数除法的概念相同。</p>
-<p>代码：</p>
-<p>1.可以使用Python第三方包Crypto的inverse()函数求模逆元。</p>
-<p>from Crypto.util.number import inverse print(inverse(3,7))#3是要求逆元的数，7是模数<br>2.可以使用Python第三方包gmpy2的 invert()函数求模逆元。</p>
-<p>from gmpy2 import invert<br>print(invert(3,7)#3是要求逆元的数，7是模数<br>3.可以在SageMath中直接用inverse_mod()函数求模逆元。</p>
-<p>inverse_mod(3,7)#3是要求逆元的数，7是模数</p>
-<p><strong>欧拉函数：</strong></p>
-<p>Z<del>m</del>内与m互素的整数的个数记为φ（m）</p>
-<p>幸运的是,如果m的因式分解是已知的,则存在一个更简单的计算方法,如下图所示。</p>
-<img src="/images/%E7%AC%AC%E5%85%AD%E7%AF%87%E5%8D%9A%E5%AE%A2/QQ%E5%9B%BE%E7%89%8720210728200205.png" alt="QQ图片20210728200205" style="zoom:50%;" />
-
-<p>假设m = 240 , 240因式分解对应的素因数相乘形式为:<br>m= 240= 16·15= 2^4^·3·5<br>φ(m)=2^3^·(2-1)·(3-1)·(5- 1)=8·1·2·4= 64<br>所以想要计算出一个合数的欧拉函数，需要先知道这个数的因式分解，一些大整数的乘积难以被分解的特点也保证了RSA公钥加密的安全性。</p>
-<p><strong>费马小定理：</strong>假如a为一个整数，p为一个素数，则a^p-1^=1 (mod p)</p>
-<p><strong>欧拉定理：</strong>假设a和m都是整数,且gcd(a，m)=1(a与m的最大公约数为1即a与m互素）则有a^φ(m)^ = 1 (mod m)——&gt;比如a=2，m=3，则Z<del>m</del>=0,1,2，其中1，2为Z<del>m</del>内与m互素的整数即φ（m）=2。原式=2^2^≡1(mod 3)</p>
-<p>注：费马小定理是欧拉定理的特殊情况</p>
-<h4 id="RSA是如何加密和解密的"><a href="#RSA是如何加密和解密的" class="headerlink" title="RSA是如何加密和解密的"></a>RSA是如何加密和解密的</h4><p>RSA加密中会出现以下几个参数:</p>
-<p>●两个大的素数p和q，以及它们的积n , n是加解密过程中的模数</p>
-<p>●欧拉函数p(n)=(p-1)*(q-1)</p>
-<p>●加密指数e ,和解密指数d = invert(e, φ(n))</p>
-<p>●密文c,明文m</p>
-<p>●d是e对 φ(n)的逆元即e和d在模 φ(n)的运算下互为倒数</p>
-<p><strong>加密：c=m^e^mod n<br>解密：m=c^d^mod n</strong></p>
-<h4 id="python简单实现RSA算法"><a href="#python简单实现RSA算法" class="headerlink" title="python简单实现RSA算法"></a>python简单实现RSA算法</h4><p><strong>生成随机素数：</strong></p>
-<p>getPrime()函数，括号里的参数意义为位长度，下面示例表示生成一个512bits的随机素数。</p>
-<pre><code class="python">from Crypto.Util.number import *
-p = getPrime(512)
-</code></pre>
-<p>getStrongPrime()函数，括号里的参数意义为位长度，生成一个更安全的素数。</p>
-<pre><code class="python">from Crypto.Util.number import *
-p = getStrongPrime(512)
-</code></pre>
-<p><strong>计算模逆元的两个函数的区别：</strong></p>
-<p>使用Crypto包里的inverse() 函数,两个参数不互素的时候返回的是除以最大公因数之后的逆元。互素的情况下和gmpy2的invert返回值相同。</p>
-<pre><code class="python">from Crypto. 4til. number import *
-d = inverse(e, (p-1)*(q-1))
-</code></pre>
-<p>使用gmpy2包里的invert()函数，两个参数不满足互素时会报错，只有满足互素时正常求逆元。</p>
-<pre><code class="python">from gmpy2 import invert
-d = invert(e, (p-1)*(q-1))
-</code></pre>
-<p><strong>判断素数：</strong></p>
-<p>isPrime(可以用来判断素数）</p>
-<pre><code class="python">from Crypto. Util, number import *
-print(isPrime(7))
-</code></pre>
-<p>求最大公因数</p>
-<pre><code class="python">from Crypto.Util. number import *
-print (GQD(12, 18)) # 6
-</code></pre>
-<p><strong>开n次方根：</strong></p>
-<p>使用gmpy2的iroot函数，可以开n次方根，返回一个数字，一个布尔值。数字表示开根的结果，布尔值表示结果的n次方是否刚好等于原来的数。</p>
-<pre><code class="python">from gmpy2 import iroot
-print (iroot(4,2)) #表示对4开平方根
-</code></pre>
-<p><strong>RSA加密：</strong></p>
-<pre><code class="python">from Crypto.Util.number import *
-m = 123456
-e = 65537
-p, q = getPrime(128), getPrime(128) 
-n = p*q
-C = pow(m, e, n)
-print(c)
-#46446567530734328956895050621451855413068614241783489657583370527982913123577
-</code></pre>
-<p>例子：（理解！）</p>
-<p>现在Alice想要接收Bob的一-串数字123456 ，他们的通信线路是不安全的，可以被攻击者Eve窃听到，所以他们可以使用RSA公钥加密算法，使信息安全的传输。<br>Alice首先需要生成公钥(e, n) ，和不发送的私钥d。Alice 会将(e, n)发送给Bob ：</p>
-<pre><code class="python">from Crypto.Util.number import *
-e = 65537
-p, q = getPrime(128), getPrime (128)
-n = p*q
-d = inverse(e, (p-1)*(q-1))
-print(&quot;n =&quot;,n)
-print(&quot;d =&quot;,d)
-#n=6411909786146702584131486972338640117238044567019786914226150985552161578
-#d=34488339696882282190704342167311503848344429551595618555980250777974774475
-</code></pre>
-<p>现在Bob接收到了Alice 发送的公钥(e, n) ，他使用这组公钥加密自己的明文，并把密文c发送给Alice :</p>
-<pre><code class="python">from Crypto.Util.number import *
-e = 65537
-n = 64119097861467025841314869723386401172380445670197869142261509855521615781313
-m = 123456
-c = pow(m, e, n)
-print(&quot;c =&quot; ,c)
-#C = 35175039627001706475239565374293351303180888840171603334474497768320397005778
-</code></pre>
-<p>Alice接收到了c，她还有之前生成的解密指数d ，她可以用私钥(d, n)解开密文：</p>
-<pre><code class="python">from Crypto.Util.number import *
-d = 34488339696882282190704342167311503848344429551595618555980250777974774475073
-n = 64119097861467025841314869723386401172380445670197869142261509855521615781313
-C = 351750396270017064752395653742935130318888840171603334474497768320397005778
-m = pow(c, d, n)
-print(&quot;m =&quot;，m)
-#m = 123456
-</code></pre>
-<p>所以Alice最终得到了Bob的明文，并且他们在这条不安全的通信线路中传递了两次信息，这两次都被Eve成功窃听到。</p>
-<p>那么Eve现在掌握的信息是:<br>●Alice 和Bob在使用RSA公钥加密算法传递信息。<br>●窃听到了Alice发送的e和n。<br>●窃听到了Bob发送的c。<br>Eve想要窃取到明文m ，需要从这三个参数入手。<br>在很多CTF密码学题目中，我们解题就相当于Eve做的事情一攻击加密算法。</p>
-<h4 id="RSA相关的攻击算法"><a href="#RSA相关的攻击算法" class="headerlink" title="RSA相关的攻击算法"></a>RSA相关的攻击算法</h4><p><strong>分解素因数攻击：</strong></p>
-<p>以上面的Alice和Bob泄露的信息为例，开始第一种攻击，我们现在已知的参数：<br>e = 65537<br>n = 64119097861467025841314869723386401172380445670197869142261509855521615781313<br>c = 35175039627001706475239565374293351303180888840171603334474497768320397005778<br>解密需要计算pow(c, d, n) ，所以我们需要知道d ，然而d = invert(e，φ(n)) ，这个式子中我们已知了e和n， invert很好计算,就需要算q(n) ，现在问题是如何计算n的欧拉函数，我们需要知道n的素因数分解。</p>
-<p>n的数值很大，RSA中常用的数量级往往不能通过枚举的方法（试除法）分解因数。但是如果生成的素数是不安全的，有可能导致n很容易被分解。<br>在这一个例子中，我们可以知道n是256位的，这种长度完全是不安全的（通常生成的素数约2048位），所以我们尝试使用一些算法或工具来尝试分解n。<br>整数分解算法：<a href="https://www.alpertran.cam.ar/ECM.HTM">https://www.alpertran.cam.ar/ECM.HTM</a><br>整数因数/数据库查询：<a href="http://www.factordb.com/index.php">http://www.factordb.com/index.php</a></p>
-<p>平滑数：因式分解中最大的素因数比它小（？）</p>
-<p><strong>共模攻击：</strong></p>
-<p>如果在 RSA 的使用中使用了相同的模n对相同的明文m进行了加密，那么就可以在不分解n的情况下还原出明文m的值。<br><img src="/images/%E7%AC%AC%E5%85%AD%E7%AF%87%E5%8D%9A%E5%AE%A2/wps1.png" alt="img"> =c<del>1</del>(mod n)，<img src="/images/%E7%AC%AC%E5%85%AD%E7%AF%87%E5%8D%9A%E5%AE%A2/wps2.png" alt="img"> = c<del>2</del>(mod n)<br>通过扩展欧几里德算法，可以计算出:<br>这样就有:<img src="/images/%E7%AC%AC%E5%85%AD%E7%AF%87%E5%8D%9A%E5%AE%A2/wps3.png" alt="img">= m^re1+se2^=m^1^(mod n).<br>但是r和s 中必有一个是负数，所以需要用逆元来处理一下(假设s&lt;0)：<br>m^1^=m^re1+se2^= <img src="/images/%E7%AC%AC%E5%85%AD%E7%AF%87%E5%8D%9A%E5%AE%A2/wps4.png" alt="img">，其中s+即|s|= -s</p>
-<p><strong>已知p+q或p-q：</strong></p>
-<p>或者是题目给了其他的pq之间的关系，通过解方程组或推导来求出p和q。<br>$p<em>q = n<br>p+q = a<br>使用SageMath解方程组：<br>var(‘p q’)<br>solve([p</em>q = = n,p+q = = a],[p, q])$</p>
-<p>也可以用python进行求解，SageMath比较方便简洁。</p>
-<p><strong>小公钥指数攻击：</strong></p>
-<p>当加密指数e很小，比如e = 3时，c可能不比n大很多(在可枚举的范围之内)。<br>这样就存在一个较小的可枚举的 k满足：<br>m^3^=c+k·n<br>尝试枚举k并开根，能刚好开根的就是解。</p>
-<p><strong>已知e，d分解n：</strong></p>
-<p>ed ≡ 1(mod φ(n))</p>
-<p>ed = 1+k·φ(n),k&lt;e</p>
-<p>穷举k，计算出φ(n)</p>
-<p>φ(n) = (p-1)(q-1) = n-(p+q)+1</p>
-<p>解一个二元二次方程组</p>
-<p>p+q = n-φ(n)+1</p>
-<p>p·q = n</p>
-<p><strong>已知明文高位攻击：</strong>……</p>
-]]></content>
-  </entry>
-  <entry>
     <title>第十一篇博客</title>
     <url>/2021/08/16/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h2 id="RE初步学习"><a href="#RE初步学习" class="headerlink" title="RE初步学习"></a>RE初步学习</h2><h3 id="X86汇编"><a href="#X86汇编" class="headerlink" title="X86汇编"></a>X86汇编</h3><h4 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h4><p><strong>小分类：</strong></p>
@@ -1139,6 +996,149 @@ static void *___memcpy(void *dest, const void *src, size_t n)
 <p>小作业：用汇编语言实现memset函数</p>
 <p>以上引用书籍：</p>
 <p>[1]操作系统真象还原<br>[2]王爽汇编语言<br>[3]维基百科</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>第六篇博客</title>
+    <url>/2021/07/24/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%85%AD%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2 id="CRYPTO初步学习"><a href="#CRYPTO初步学习" class="headerlink" title="CRYPTO初步学习"></a>CRYPTO初步学习</h2><h3 id="cry-rsa加密与攻击"><a href="#cry-rsa加密与攻击" class="headerlink" title="cry-rsa加密与攻击"></a>cry-rsa加密与攻击</h3><p>注！还需进行理解学习并继续</p>
+<p>学习链接：nep.am473ur.com</p>
+<h4 id="什么是RSA"><a href="#什么是RSA" class="headerlink" title="什么是RSA"></a>什么是RSA</h4><p><strong>小知识：</strong></p>
+<p>RSA是一种非对称加密</p>
+<p>对称密码和非对称密码的区别：如果加密和解密用的是相同的密钥则为对称密码；如果加密和解密用的是不同的密钥，且加密密钥只能加密，解密密钥只能解密则为非对称密码。</p>
+<p>对称密码加解密密钥一样因此均为私钥；而非对称密码加密密钥可以公开则为公钥，揭秘密码为私钥。</p>
+<p>单向函数（简记：单向通行）：对每一个输入x，函数值f（x）都很容易计算；对随机给出的函数值f（x），算出原始输入x却比较困难；使用陷门信息则可以反逆。</p>
+<p>哈希算法只能用于加密，不能用于解密，因为没有陷门信息可以反逆，正常的加密是需要解密的。</p>
+<h4 id="一点点数论基础"><a href="#一点点数论基础" class="headerlink" title="一点点数论基础"></a>一点点数论基础</h4><p><strong>同余：</strong>（简记：余数相同）</p>
+<p>定义：若a，b为两个整数，且它们的差a-b能被某个自然数m所整除，则称a就模m来说同余于b，或者说a和b关于模m同余，记为：a≡b(mod m)。它意味着：a-b=m*k（k为某一个整数）。</p>
+<p>性质：没有同除性</p>
+<p>1.反身性：a≡a (mod m)；</p>
+<p>2.对称性：若a≡b(mod m)，则b≡a (mod m)；</p>
+<p>3.传递性：若a≡b(mod m)，b≡c(mod m)，则a≡c(mod m)；</p>
+<p>4.（1）同余式相加：若a≡b(mod m)，c≡d(mod m)，则a+c≡b+d(mod m)；</p>
+<p>（2）同加性：若a≡b(mod m)，则a+c≡b+c(mod m)</p>
+<p>5.（1）同余式相乘：若a≡b(mod m)，c≡d(mod m)，则a$<em>c≡b</em>$d(mod m)。</p>
+<p>（2）同乘性：若a≡b(mod m)，则a$<em>c≡b</em>$c(mod m)</p>
+<p>6.同幂性：若a≡b(mod m)，则a^n^≡b^n^(mod m)</p>
+<p>7.推论1：a$<em>$b mod k=(a mod k)$</em>$(b mod k)mod k</p>
+<p>8.推论2：若a mod p=x，a mod q=x，p，q互质，则a mod p$*$q=x</p>
+<p><strong>模逆元：</strong>（简记：参考倒数xy=1的定义）</p>
+<p>定义：模逆元也称为模倒数。一整数a对同余n之模逆元是指满足以下公示的整数b：a^-1^≡b(mod n)也可以写成以下的式子：ab≡1(mod n)。整数a对模数n之逆元存在的充分必要条件是a和n互素，若此模逆元存在，在模数n下的除法可以用和对应模逆元的乘法来达成，此概念和实数除法的概念相同。</p>
+<p>代码：</p>
+<p>1.可以使用Python第三方包Crypto的inverse()函数求模逆元。</p>
+<p>from Crypto.util.number import inverse print(inverse(3,7))#3是要求逆元的数，7是模数<br>2.可以使用Python第三方包gmpy2的 invert()函数求模逆元。</p>
+<p>from gmpy2 import invert<br>print(invert(3,7)#3是要求逆元的数，7是模数<br>3.可以在SageMath中直接用inverse_mod()函数求模逆元。</p>
+<p>inverse_mod(3,7)#3是要求逆元的数，7是模数</p>
+<p><strong>欧拉函数：</strong></p>
+<p>Z<del>m</del>内与m互素的整数的个数记为φ（m）</p>
+<p>幸运的是,如果m的因式分解是已知的,则存在一个更简单的计算方法,如下图所示。</p>
+<img src="/images/%E7%AC%AC%E5%85%AD%E7%AF%87%E5%8D%9A%E5%AE%A2/QQ%E5%9B%BE%E7%89%8720210728200205.png" alt="QQ图片20210728200205" style="zoom:50%;" />
+
+<p>假设m = 240 , 240因式分解对应的素因数相乘形式为:<br>m= 240= 16·15= 2^4^·3·5<br>φ(m)=2^3^·(2-1)·(3-1)·(5- 1)=8·1·2·4= 64<br>所以想要计算出一个合数的欧拉函数，需要先知道这个数的因式分解，一些大整数的乘积难以被分解的特点也保证了RSA公钥加密的安全性。</p>
+<p><strong>费马小定理：</strong>假如a为一个整数，p为一个素数，则a^p-1^=1 (mod p)</p>
+<p><strong>欧拉定理：</strong>假设a和m都是整数,且gcd(a，m)=1(a与m的最大公约数为1即a与m互素）则有a^φ(m)^ = 1 (mod m)——&gt;比如a=2，m=3，则Z<del>m</del>=0,1,2，其中1，2为Z<del>m</del>内与m互素的整数即φ（m）=2。原式=2^2^≡1(mod 3)</p>
+<p>注：费马小定理是欧拉定理的特殊情况</p>
+<h4 id="RSA是如何加密和解密的"><a href="#RSA是如何加密和解密的" class="headerlink" title="RSA是如何加密和解密的"></a>RSA是如何加密和解密的</h4><p>RSA加密中会出现以下几个参数:</p>
+<p>●两个大的素数p和q，以及它们的积n , n是加解密过程中的模数</p>
+<p>●欧拉函数p(n)=(p-1)*(q-1)</p>
+<p>●加密指数e ,和解密指数d = invert(e, φ(n))</p>
+<p>●密文c,明文m</p>
+<p>●d是e对 φ(n)的逆元即e和d在模 φ(n)的运算下互为倒数</p>
+<p><strong>加密：c=m^e^mod n<br>解密：m=c^d^mod n</strong></p>
+<h4 id="python简单实现RSA算法"><a href="#python简单实现RSA算法" class="headerlink" title="python简单实现RSA算法"></a>python简单实现RSA算法</h4><p><strong>生成随机素数：</strong></p>
+<p>getPrime()函数，括号里的参数意义为位长度，下面示例表示生成一个512bits的随机素数。</p>
+<pre><code class="python">from Crypto.Util.number import *
+p = getPrime(512)
+</code></pre>
+<p>getStrongPrime()函数，括号里的参数意义为位长度，生成一个更安全的素数。</p>
+<pre><code class="python">from Crypto.Util.number import *
+p = getStrongPrime(512)
+</code></pre>
+<p><strong>计算模逆元的两个函数的区别：</strong></p>
+<p>使用Crypto包里的inverse() 函数,两个参数不互素的时候返回的是除以最大公因数之后的逆元。互素的情况下和gmpy2的invert返回值相同。</p>
+<pre><code class="python">from Crypto. 4til. number import *
+d = inverse(e, (p-1)*(q-1))
+</code></pre>
+<p>使用gmpy2包里的invert()函数，两个参数不满足互素时会报错，只有满足互素时正常求逆元。</p>
+<pre><code class="python">from gmpy2 import invert
+d = invert(e, (p-1)*(q-1))
+</code></pre>
+<p><strong>判断素数：</strong></p>
+<p>isPrime(可以用来判断素数）</p>
+<pre><code class="python">from Crypto. Util, number import *
+print(isPrime(7))
+</code></pre>
+<p>求最大公因数</p>
+<pre><code class="python">from Crypto.Util. number import *
+print (GQD(12, 18)) # 6
+</code></pre>
+<p><strong>开n次方根：</strong></p>
+<p>使用gmpy2的iroot函数，可以开n次方根，返回一个数字，一个布尔值。数字表示开根的结果，布尔值表示结果的n次方是否刚好等于原来的数。</p>
+<pre><code class="python">from gmpy2 import iroot
+print (iroot(4,2)) #表示对4开平方根
+</code></pre>
+<p><strong>RSA加密：</strong></p>
+<pre><code class="python">from Crypto.Util.number import *
+m = 123456
+e = 65537
+p, q = getPrime(128), getPrime(128) 
+n = p*q
+C = pow(m, e, n)
+print(c)
+#46446567530734328956895050621451855413068614241783489657583370527982913123577
+</code></pre>
+<p>例子：（理解！）</p>
+<p>现在Alice想要接收Bob的一-串数字123456 ，他们的通信线路是不安全的，可以被攻击者Eve窃听到，所以他们可以使用RSA公钥加密算法，使信息安全的传输。<br>Alice首先需要生成公钥(e, n) ，和不发送的私钥d。Alice 会将(e, n)发送给Bob ：</p>
+<pre><code class="python">from Crypto.Util.number import *
+e = 65537
+p, q = getPrime(128), getPrime (128)
+n = p*q
+d = inverse(e, (p-1)*(q-1))
+print(&quot;n =&quot;,n)
+print(&quot;d =&quot;,d)
+#n=6411909786146702584131486972338640117238044567019786914226150985552161578
+#d=34488339696882282190704342167311503848344429551595618555980250777974774475
+</code></pre>
+<p>现在Bob接收到了Alice 发送的公钥(e, n) ，他使用这组公钥加密自己的明文，并把密文c发送给Alice :</p>
+<pre><code class="python">from Crypto.Util.number import *
+e = 65537
+n = 64119097861467025841314869723386401172380445670197869142261509855521615781313
+m = 123456
+c = pow(m, e, n)
+print(&quot;c =&quot; ,c)
+#C = 35175039627001706475239565374293351303180888840171603334474497768320397005778
+</code></pre>
+<p>Alice接收到了c，她还有之前生成的解密指数d ，她可以用私钥(d, n)解开密文：</p>
+<pre><code class="python">from Crypto.Util.number import *
+d = 34488339696882282190704342167311503848344429551595618555980250777974774475073
+n = 64119097861467025841314869723386401172380445670197869142261509855521615781313
+C = 351750396270017064752395653742935130318888840171603334474497768320397005778
+m = pow(c, d, n)
+print(&quot;m =&quot;，m)
+#m = 123456
+</code></pre>
+<p>所以Alice最终得到了Bob的明文，并且他们在这条不安全的通信线路中传递了两次信息，这两次都被Eve成功窃听到。</p>
+<p>那么Eve现在掌握的信息是:<br>●Alice 和Bob在使用RSA公钥加密算法传递信息。<br>●窃听到了Alice发送的e和n。<br>●窃听到了Bob发送的c。<br>Eve想要窃取到明文m ，需要从这三个参数入手。<br>在很多CTF密码学题目中，我们解题就相当于Eve做的事情一攻击加密算法。</p>
+<h4 id="RSA相关的攻击算法"><a href="#RSA相关的攻击算法" class="headerlink" title="RSA相关的攻击算法"></a>RSA相关的攻击算法</h4><p><strong>分解素因数攻击：</strong></p>
+<p>以上面的Alice和Bob泄露的信息为例，开始第一种攻击，我们现在已知的参数：<br>e = 65537<br>n = 64119097861467025841314869723386401172380445670197869142261509855521615781313<br>c = 35175039627001706475239565374293351303180888840171603334474497768320397005778<br>解密需要计算pow(c, d, n) ，所以我们需要知道d ，然而d = invert(e，φ(n)) ，这个式子中我们已知了e和n， invert很好计算,就需要算q(n) ，现在问题是如何计算n的欧拉函数，我们需要知道n的素因数分解。</p>
+<p>n的数值很大，RSA中常用的数量级往往不能通过枚举的方法（试除法）分解因数。但是如果生成的素数是不安全的，有可能导致n很容易被分解。<br>在这一个例子中，我们可以知道n是256位的，这种长度完全是不安全的（通常生成的素数约2048位），所以我们尝试使用一些算法或工具来尝试分解n。<br>整数分解算法：<a href="https://www.alpertran.cam.ar/ECM.HTM">https://www.alpertran.cam.ar/ECM.HTM</a><br>整数因数/数据库查询：<a href="http://www.factordb.com/index.php">http://www.factordb.com/index.php</a></p>
+<p>平滑数：因式分解中最大的素因数比它小（？）</p>
+<p><strong>共模攻击：</strong></p>
+<p>如果在 RSA 的使用中使用了相同的模n对相同的明文m进行了加密，那么就可以在不分解n的情况下还原出明文m的值。<br><img src="/images/%E7%AC%AC%E5%85%AD%E7%AF%87%E5%8D%9A%E5%AE%A2/wps1.png" alt="img"> =c<del>1</del>(mod n)，<img src="/images/%E7%AC%AC%E5%85%AD%E7%AF%87%E5%8D%9A%E5%AE%A2/wps2.png" alt="img"> = c<del>2</del>(mod n)<br>通过扩展欧几里德算法，可以计算出:<br>这样就有:<img src="/images/%E7%AC%AC%E5%85%AD%E7%AF%87%E5%8D%9A%E5%AE%A2/wps3.png" alt="img">= m^re1+se2^=m^1^(mod n).<br>但是r和s 中必有一个是负数，所以需要用逆元来处理一下(假设s&lt;0)：<br>m^1^=m^re1+se2^= <img src="/images/%E7%AC%AC%E5%85%AD%E7%AF%87%E5%8D%9A%E5%AE%A2/wps4.png" alt="img">，其中s+即|s|= -s</p>
+<p><strong>已知p+q或p-q：</strong></p>
+<p>或者是题目给了其他的pq之间的关系，通过解方程组或推导来求出p和q。<br>$p<em>q = n<br>p+q = a<br>使用SageMath解方程组：<br>var(‘p q’)<br>solve([p</em>q = = n,p+q = = a],[p, q])$</p>
+<p>也可以用python进行求解，SageMath比较方便简洁。</p>
+<p><strong>小公钥指数攻击：</strong></p>
+<p>当加密指数e很小，比如e = 3时，c可能不比n大很多(在可枚举的范围之内)。<br>这样就存在一个较小的可枚举的 k满足：<br>m^3^=c+k·n<br>尝试枚举k并开根，能刚好开根的就是解。</p>
+<p><strong>已知e，d分解n：</strong></p>
+<p>ed ≡ 1(mod φ(n))</p>
+<p>ed = 1+k·φ(n),k&lt;e</p>
+<p>穷举k，计算出φ(n)</p>
+<p>φ(n) = (p-1)(q-1) = n-(p+q)+1</p>
+<p>解一个二元二次方程组</p>
+<p>p+q = n-φ(n)+1</p>
+<p>p·q = n</p>
+<p><strong>已知明文高位攻击：</strong>……</p>
 ]]></content>
   </entry>
   <entry>
@@ -1542,6 +1542,59 @@ except Exception:
 ]]></content>
   </entry>
   <entry>
+    <title>CTFHUB(WEB)-XSS</title>
+    <url>/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-XSS/</url>
+    <content><![CDATA[<h3 id="WEB工具配置"><a href="#WEB工具配置" class="headerlink" title="WEB工具配置"></a>WEB工具配置</h3><h4 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h4><h5 id="反射型"><a href="#反射型" class="headerlink" title="反射型"></a>反射型</h5><p>题目：</p>
+<img src="/source/images/CTFHUB-WEB-XSS/image-20211006003106095.png" alt="image-20211006003106095" style="zoom:30%;" />
+
+<span id="more"></span>
+
+<p>解题：</p>
+<p>发现第一个输入框与下面Hello后的内容相同，猜测可以通过该输入，改变页面内容。</p>
+<img src="/source/images/CTFHUB-WEB-XSS/image-20211006003153225.png" alt="image-20211006003153225" style="zoom:30%;" />
+
+<p>利用输入<code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code>进行测试：</p>
+<img src="/images/CTFHUB-WEB-XSS/image-20211004004910837.png" alt="image-20211004004910837" style="zoom:30%;" />
+
+<p>默认使用get方式发送Payload，成功弹窗:</p>
+<img src="/images/CTFHUB-WEB-XSS/image-20211004004810311.png" alt="image-20211004004810311" style="zoom:50%;" />
+
+<p>经过测试，第二个输入框输入URL时，返回successfully，猜测在后台进行访问。</p>
+<img src="/source/images/CTFHUB-WEB-XSS/image-20211006003641544.png" alt="image-20211006003641544" style="zoom:30%;" />
+
+<p>在xss测试平台上注册账号根据提示创建项目：<a href="https://xss8.cc/login/%E6%88%96http://xsscom.com//index.php?do=login">https://xss8.cc/login/或http://xsscom.com//index.php?do=login</a></p>
+<img src="/source/images/CTFHUB-WEB-XSS/image-20211006004444569.png" alt="image-20211006004444569" style="zoom:30%;" />
+
+<p>把XSS测试平台给出的代码复制到第一个输入框中进行注入</p>
+<img src="/images/CTFHUB-WEB-XSS/image-20211004004113722.png" alt="image-20211004004113722" style="zoom:33%;" />
+
+<p>submit后在第二个框中访问第一个框注入XSS脚本后的网址</p>
+<img src="/images/CTFHUB-WEB-XSS/image-20211004004418547.png" alt="image-20211004004418547" style="zoom:33%;" />
+
+<p>点击send1后在XSS测试平台查看注入结果，即可得到flag。</p>
+<img src="/source/images/CTFHUB-WEB-XSS/image-20211006004336944.png" alt="image-20211006004336944" style="zoom:30%;" />
+
+<p><strong>总结</strong>：<br>xss一般的用途是获取他人的cookie。cookie相当于每个人的登录凭证，如果得到了别人的cookie就可以不用输账号密码，直接登录。所以flag一定不可能藏在自己的cookie里，自己的cookie能直接在浏览器的控制台里知道。题目应该是让我们获得别人的cookie，但这是ctf的题目，不是公共的服务，没有其他用户，所以ctf模拟了一个机器人。我们的目标就是获得这个机器人的cookie，然后”盗它的号”，所以flag也就藏在cookie里了。第二个文本框就是模拟别人点击这个包含xss的链接的情形。（简记：注入xss脚本在他人访问时获取cookie）</p>
+<p><strong>补充知识</strong>：</p>
+<p>XSS攻击（跨站脚本攻击）：</p>
+<p>通常指的是通过利用<a href="https://baike.baidu.com/item/%E7%BD%91%E9%A1%B5/99347">网页</a>开发时留下的漏洞，通过巧妙的方法注入恶意指令代码到网页，使用户加载并执行攻击者</p>
+<p>恶意制造的网页程序。这些恶意网页程序通常是JavaScript，但实际上也可以包括Java、 VBScript、ActiveX、 </p>
+<p>Flash 或者甚至是普通的HTML。攻击成功后，攻击者可能得到包括但不限于更高的权限（如执行一些操作）、私</p>
+<p>密网页内容、会话和cookie等各种内容。</p>
+<p>从攻击代码的工作方式可以分为三个类型：</p>
+<p>（1）持久型跨站：最直接的危害类型，跨站代码存储在服务器（数据库）。</p>
+<p>（2）非持久型跨站：反射型跨站脚本漏洞，最普遍的类型。用户访问服务器-跨站链接-返回跨站代码。</p>
+<p>（3）DOM跨站（DOM XSS）：DOM（document object model文档对象模型），客户端脚本处理逻辑导致的安全问题。</p>
+<p>基于DOM的XSS漏洞是指受害者端的网页脚本在修改本地页面DOM环境时未进行合理的处置，而使得攻击脚本被执行。在整个攻击过程中，服务器响应的页面并没有发生变化，引起客户端脚本执行结果差异的原因是对本地DOM的恶意篡改利用。</p>
+<p>常用的XSS攻击手段和目的有：</p>
+<p>1、盗用<a href="https://baike.baidu.com/item/cookie/1119">cookie</a>，获取敏感信息。</p>
+<p>2、利用植入Flash，通过crossdomain权限设置进一步获取更高权限；或者利用<a href="https://baike.baidu.com/item/Java/85979">Java</a>等得到类似的操作。</p>
+<p>3、利用<a href="https://baike.baidu.com/item/iframe/4446518">iframe</a>、frame、<a href="https://baike.baidu.com/item/XMLHttpRequest/6788735">XMLHttpRequest</a>或上述Flash等方式，以（被攻击）用户的身份执行一些管理动作，或执行一些一般的如发微博、加好友、发私信等操作。</p>
+<p>4、利用可被攻击的域受到其他域信任的特点，以受信任来源的身份请求一些平时不允许的操作，如进行不当的投票活动。</p>
+<p>5、在访问量极大的一些页面上的XSS可以攻击一些小型网站，实现DDoS攻击的效果。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>sqli-labs</title>
     <url>/2021/10/02/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/sqli-labs/</url>
     <content><![CDATA[<h2 id="sqli-labs"><a href="#sqli-labs" class="headerlink" title="sqli-labs"></a>sqli-labs</h2><h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>SQLI-LABS 是一个学习 SQLI 的平台 GET 和 POST 场景涵盖了以下实验室：</p>
@@ -1724,54 +1777,26 @@ except Exception:
 ]]></content>
   </entry>
   <entry>
-    <title>CTFHUB(WEB)-XSS</title>
-    <url>/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-XSS/</url>
-    <content><![CDATA[<h3 id="WEB工具配置"><a href="#WEB工具配置" class="headerlink" title="WEB工具配置"></a>WEB工具配置</h3><h4 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h4><h5 id="反射型"><a href="#反射型" class="headerlink" title="反射型"></a>反射型</h5><p>题目：</p>
-<img src="/source/images/CTFHUB-WEB-XSS/image-20211006003106095.png" alt="image-20211006003106095" style="zoom:30%;" />
+    <title>CTFHUB(WEB)-前置技能</title>
+    <url>/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/</url>
+    <content><![CDATA[<h3 id="WEB前置技能"><a href="#WEB前置技能" class="headerlink" title="WEB前置技能"></a>WEB前置技能</h3><h4 id="HTTP协议——请求方式"><a href="#HTTP协议——请求方式" class="headerlink" title="HTTP协议——请求方式"></a>HTTP协议——请求方式</h4><p>题目：</p>
+<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905194147045.png" alt="image-20210905194147045" style="zoom:33%;" />
 
 <p>解题：</p>
-<p>发现第一个输入框与下面Hello后的内容相同，猜测可以通过该输入，改变页面内容。</p>
-<img src="/source/images/CTFHUB-WEB-XSS/image-20211006003153225.png" alt="image-20211006003153225" style="zoom:30%;" />
+<p>猜想CTF**B请求方式为ctfhub</p>
+<p>姿势1：burpsuite抓包</p>
+<p>使用burpsuite进行抓包，发送到repeatr把get方式改为CTFHUB的请求方式，点击send，就会返回含有flag的数据包。如下图。（图来自<a href="https://blog.csdn.net/hgjiayou/article/details/106212933%EF%BC%89">https://blog.csdn.net/hgjiayou/article/details/106212933）</a></p>
+<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905195259986.png" alt="image-20210905195259986" style="zoom:60%;" />
 
-<p>利用输入<script>alert('xss')</script>进行测试：</p>
-<img src="/images/CTFHUB-WEB-XSS/image-20211004004910837.png" alt="image-20211004004910837" style="zoom:30%;" />
+<p>姿势2：curl命令</p>
+<p>在cmd命令窗口中输入“curl -v -X CTFHUB <a href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E2%80%9D%E5%8D%B3%E5%8F%AF%E5%BE%97%E5%88%B0flag%E4%BF%A1%E6%81%AF">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php”即可得到flag信息</a></p>
+<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905195437094.png" alt="image-20210905195437094" style="zoom:45%;" />
 
-<p>默认使用get方式发送Payload，成功弹窗:</p>
-<img src="/images/CTFHUB-WEB-XSS/image-20211004004810311.png" alt="image-20211004004810311" style="zoom:50%;" />
-
-<p>经过测试，第二个输入框输入URL时，返回successfully，猜测在后台进行访问。</p>
-<img src="/source/images/CTFHUB-WEB-XSS/image-20211006003641544.png" alt="image-20211006003641544" style="zoom:30%;" />
-
-<p>在xss测试平台上注册账号根据提示创建项目：<a href="https://xss8.cc/login/%E6%88%96http://xsscom.com//index.php?do=login">https://xss8.cc/login/或http://xsscom.com//index.php?do=login</a></p>
-<img src="/source/images/CTFHUB-WEB-XSS/image-20211006004444569.png" alt="image-20211006004444569" style="zoom:30%;" />
-
-<p>把XSS测试平台给出的代码复制到第一个输入框中进行注入</p>
-<img src="/images/CTFHUB-WEB-XSS/image-20211004004113722.png" alt="image-20211004004113722" style="zoom:33%;" />
-
-<p>submit后在第二个框中访问第一个框注入XSS脚本后的网址</p>
-<img src="/images/CTFHUB-WEB-XSS/image-20211004004418547.png" alt="image-20211004004418547" style="zoom:33%;" />
-
-<p>点击send1后在XSS测试平台查看注入结果，即可得到flag。</p>
-<img src="/source/images/CTFHUB-WEB-XSS/image-20211006004336944.png" alt="image-20211006004336944" style="zoom:30%;" />
-
-<p><strong>总结</strong>：<br>xss一般的用途是获取他人的cookie。cookie相当于每个人的登录凭证，如果得到了别人的cookie就可以不用输账号密码，直接登录。所以flag一定不可能藏在自己的cookie里，自己的cookie能直接在浏览器的控制台里知道。题目应该是让我们获得别人的cookie，但这是ctf的题目，不是公共的服务，没有其他用户，所以ctf模拟了一个机器人。我们的目标就是获得这个机器人的cookie，然后”盗它的号”，所以flag也就藏在cookie里了。第二个文本框就是模拟别人点击这个包含xss的链接的情形。（简记：注入xss脚本在他人访问时获取cookie）</p>
-<p><strong>补充知识</strong>：</p>
-<p>XSS攻击（跨站脚本攻击）：</p>
-<p>通常指的是通过利用<a href="https://baike.baidu.com/item/%E7%BD%91%E9%A1%B5/99347">网页</a>开发时留下的漏洞，通过巧妙的方法注入恶意指令代码到网页，使用户加载并执行攻击者</p>
-<p>恶意制造的网页程序。这些恶意网页程序通常是JavaScript，但实际上也可以包括Java、 VBScript、ActiveX、 </p>
-<p>Flash 或者甚至是普通的HTML。攻击成功后，攻击者可能得到包括但不限于更高的权限（如执行一些操作）、私</p>
-<p>密网页内容、会话和cookie等各种内容。</p>
-<p>从攻击代码的工作方式可以分为三个类型：</p>
-<p>（1）持久型跨站：最直接的危害类型，跨站代码存储在服务器（数据库）。</p>
-<p>（2）非持久型跨站：反射型跨站脚本漏洞，最普遍的类型。用户访问服务器-跨站链接-返回跨站代码。</p>
-<p>（3）DOM跨站（DOM XSS）：DOM（document object model文档对象模型），客户端脚本处理逻辑导致的安全问题。</p>
-<p>基于DOM的XSS漏洞是指受害者端的网页脚本在修改本地页面DOM环境时未进行合理的处置，而使得攻击脚本被执行。在整个攻击过程中，服务器响应的页面并没有发生变化，引起客户端脚本执行结果差异的原因是对本地DOM的恶意篡改利用。</p>
-<p>常用的XSS攻击手段和目的有：</p>
-<p>1、盗用<a href="https://baike.baidu.com/item/cookie/1119">cookie</a>，获取敏感信息。</p>
-<p>2、利用植入Flash，通过crossdomain权限设置进一步获取更高权限；或者利用<a href="https://baike.baidu.com/item/Java/85979">Java</a>等得到类似的操作。</p>
-<p>3、利用<a href="https://baike.baidu.com/item/iframe/4446518">iframe</a>、frame、<a href="https://baike.baidu.com/item/XMLHttpRequest/6788735">XMLHttpRequest</a>或上述Flash等方式，以（被攻击）用户的身份执行一些管理动作，或执行一些一般的如发微博、加好友、发私信等操作。</p>
-<p>4、利用可被攻击的域受到其他域信任的特点，以受信任来源的身份请求一些平时不允许的操作，如进行不当的投票活动。</p>
-<p>5、在访问量极大的一些页面上的XSS可以攻击一些小型网站，实现DDoS攻击的效果。</p>
+<p>补充知识：</p>
+<p>curl</p>
+<p><strong>cURL</strong>是一个利用URL语法在<a href="https://baike.baidu.com/item/%E5%91%BD%E4%BB%A4%E8%A1%8C">命令行</a>下工作的文件传输工具。用来请求 Web 服务器。</p>
+<p>学习链接：<a href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html">https://www.ruanyifeng.com/blog/2019/09/curl-reference.html</a></p>
+<p>curl -v -X CTFHUB <a href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E8%A1%A8%E7%A4%BA%E4%BB%A5CTFHUB%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E8%AE%BF%E9%97%AEhttp://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E5%B9%B6%E6%9F%A5%E7%9C%8B%E9%80%9A%E4%BF%A1%E5%85%A8%E8%BF%87%E7%A8%8B%E3%80%82">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php表示以CTFHUB请求方式访问http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php并查看通信全过程。</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -2025,29 +2050,6 @@ except Exception:
 
 <p>方法二：输入命令 curl URL/flag_3010023750.txt即可得到flag。</p>
 <img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001220617369.png" alt="image-20211001220617369" style="zoom:50%;" />
-]]></content>
-  </entry>
-  <entry>
-    <title>CTFHUB(WEB)-前置技能</title>
-    <url>/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/</url>
-    <content><![CDATA[<h3 id="WEB前置技能"><a href="#WEB前置技能" class="headerlink" title="WEB前置技能"></a>WEB前置技能</h3><h4 id="HTTP协议——请求方式"><a href="#HTTP协议——请求方式" class="headerlink" title="HTTP协议——请求方式"></a>HTTP协议——请求方式</h4><p>题目：</p>
-<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905194147045.png" alt="image-20210905194147045" style="zoom:33%;" />
-
-<p>解题：</p>
-<p>猜想CTF**B请求方式为ctfhub</p>
-<p>姿势1：burpsuite抓包</p>
-<p>使用burpsuite进行抓包，发送到repeatr把get方式改为CTFHUB的请求方式，点击send，就会返回含有flag的数据包。如下图。（图来自<a href="https://blog.csdn.net/hgjiayou/article/details/106212933%EF%BC%89">https://blog.csdn.net/hgjiayou/article/details/106212933）</a></p>
-<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905195259986.png" alt="image-20210905195259986" style="zoom:60%;" />
-
-<p>姿势2：curl命令</p>
-<p>在cmd命令窗口中输入“curl -v -X CTFHUB <a href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E2%80%9D%E5%8D%B3%E5%8F%AF%E5%BE%97%E5%88%B0flag%E4%BF%A1%E6%81%AF">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php”即可得到flag信息</a></p>
-<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905195437094.png" alt="image-20210905195437094" style="zoom:45%;" />
-
-<p>补充知识：</p>
-<p>curl</p>
-<p><strong>cURL</strong>是一个利用URL语法在<a href="https://baike.baidu.com/item/%E5%91%BD%E4%BB%A4%E8%A1%8C">命令行</a>下工作的文件传输工具。用来请求 Web 服务器。</p>
-<p>学习链接：<a href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html">https://www.ruanyifeng.com/blog/2019/09/curl-reference.html</a></p>
-<p>curl -v -X CTFHUB <a href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E8%A1%A8%E7%A4%BA%E4%BB%A5CTFHUB%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E8%AE%BF%E9%97%AEhttp://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E5%B9%B6%E6%9F%A5%E7%9C%8B%E9%80%9A%E4%BF%A1%E5%85%A8%E8%BF%87%E7%A8%8B%E3%80%82">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php表示以CTFHUB请求方式访问http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php并查看通信全过程。</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -2661,11 +2663,6 @@ if($_GET[&#39;pleaseget&#39;] === &#39;1&#39;) &#123;//判断
 <h4 id=""><a href="#" class="headerlink" title=""></a></h4>]]></content>
   </entry>
   <entry>
-    <title>解题-sqli-labs</title>
-    <url>/2021/10/03/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-sqli-labs/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>解题—攻防世界</title>
     <url>/2021/07/13/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/</url>
     <content><![CDATA[<h2 id="攻防世界"><a href="#攻防世界" class="headerlink" title="攻防世界"></a>攻防世界</h2><h3 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h3><p>（1）this is flag</p>
@@ -2675,5 +2672,10 @@ if($_GET[&#39;pleaseget&#39;] === &#39;1&#39;) &#123;//判断
 <p><strong>解题：</strong>flag即题目所给。</p>
 <p>（2）</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>解题-sqli-labs</title>
+    <url>/2021/10/03/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-sqli-labs/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>

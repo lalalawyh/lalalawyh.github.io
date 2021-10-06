@@ -93,7 +93,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">940</span>
+            <span class="post-count">948</span>
         </span>
     </span>
 
@@ -120,11 +120,13 @@
   <h3 id="WEB工具配置"><a href="#WEB工具配置" class="headerlink" title="WEB工具配置"></a>WEB工具配置</h3><h4 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h4><h5 id="反射型"><a href="#反射型" class="headerlink" title="反射型"></a>反射型</h5><p>题目：</p>
 <img src="/source/images/CTFHUB-WEB-XSS/image-20211006003106095.png" alt="image-20211006003106095" style="zoom:30%;" />
 
+<span id="more"></span>
+
 <p>解题：</p>
 <p>发现第一个输入框与下面Hello后的内容相同，猜测可以通过该输入，改变页面内容。</p>
 <img src="/source/images/CTFHUB-WEB-XSS/image-20211006003153225.png" alt="image-20211006003153225" style="zoom:30%;" />
 
-<p>利用输入<script>alert('xss')</script>进行测试：</p>
+<p>利用输入<code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code>进行测试：</p>
 <img src="/images/CTFHUB-WEB-XSS/image-20211004004910837.png" alt="image-20211004004910837" style="zoom:30%;" />
 
 <p>默认使用get方式发送Payload，成功弹窗:</p>
