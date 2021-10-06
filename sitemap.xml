@@ -2,6 +2,97 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-XSS/</loc>
+    
+    <lastmod>2021-10-06</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/</loc>
+    
+    <lastmod>2021-10-06</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/</loc>
+    
+    <lastmod>2021-10-06</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/</loc>
+    
+    <lastmod>2021-10-06</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E5%AF%86%E7%A0%81%E5%8F%A3%E4%BB%A4/</loc>
+    
+    <lastmod>2021-10-06</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/10/03/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-sqli-labs/</loc>
+    
+    <lastmod>2021-10-06</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/07/12/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-BUUCTF/</loc>
+    
+    <lastmod>2021-10-06</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/07/13/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/</loc>
+    
+    <lastmod>2021-10-06</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/07/10/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/VMware/</loc>
+    
+    <lastmod>2021-10-06</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/10/02/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/sqli-labs/</loc>
+    
+    <lastmod>2021-10-06</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/09/26/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/GitHack/</loc>
+    
+    <lastmod>2021-10-06</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/09/29/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dvcs-ripper/</loc>
+    
+    <lastmod>2021-10-06</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://example.com/2021/09/25/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dirsearch/</loc>
+    
+    <lastmod>2021-10-06</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://example.com/2021/09/18/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/burpsuite/</loc>
     
     <lastmod>2021-10-06</lastmod>
@@ -23,77 +114,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-XSS/</loc>
-    
-    <lastmod>2021-10-06</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/</loc>
-    
-    <lastmod>2021-10-03</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E5%AF%86%E7%A0%81%E5%8F%A3%E4%BB%A4/</loc>
-    
-    <lastmod>2021-10-03</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://example.com/2021/07/24/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%BA%94%E7%AF%87%E5%8D%9A%E5%AE%A2/</loc>
-    
-    <lastmod>2021-10-03</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/07/10/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/VMware/</loc>
-    
-    <lastmod>2021-10-03</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/</loc>
-    
-    <lastmod>2021-10-03</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/</loc>
-    
-    <lastmod>2021-10-03</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/07/12/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-BUUCTF/</loc>
-    
-    <lastmod>2021-10-03</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/07/13/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C/</loc>
-    
-    <lastmod>2021-10-03</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/09/26/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/GitHack/</loc>
-    
-    <lastmod>2021-10-03</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/09/25/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dirsearch/</loc>
     
     <lastmod>2021-10-03</lastmod>
     
@@ -103,27 +124,6 @@
     <loc>http://example.com/2021/10/03/ctf%E5%AD%A6%E4%B9%A0/sql%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/</loc>
     
     <lastmod>2021-10-03</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/10/03/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-sqli-labs/</loc>
-    
-    <lastmod>2021-10-03</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/10/02/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/sqli-labs/</loc>
-    
-    <lastmod>2021-10-03</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2021/09/29/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dvcs-ripper/</loc>
-    
-    <lastmod>2021-10-01</lastmod>
     
   </url>
   
@@ -259,6 +259,13 @@
   
   <url>
     <loc>http://example.com/categories/%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</loc>
+    <lastmod>2021-10-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/categories/ctf%E8%A7%A3%E9%A2%98/</loc>
     <lastmod>2021-10-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

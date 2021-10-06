@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-10-06T10:25:00.925Z</updated>
+  <updated>2021-10-06T10:57:00.359Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,13 +21,15 @@
     <link href="http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-XSS/"/>
     <id>http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-XSS/</id>
     <published>2021-10-03T16:53:45.000Z</published>
-    <updated>2021-10-06T10:25:00.925Z</updated>
+    <updated>2021-10-06T10:57:00.359Z</updated>
     
     
     <summary type="html">&lt;h3 id=&quot;WEB工具配置&quot;&gt;&lt;a href=&quot;#WEB工具配置&quot; class=&quot;headerlink&quot; title=&quot;WEB工具配置&quot;&gt;&lt;/a&gt;WEB工具配置&lt;/h3&gt;&lt;h4 id=&quot;XSS&quot;&gt;&lt;a href=&quot;#XSS&quot; class=&quot;headerlink&quot; title=&quot;XSS&quot;&gt;&lt;/a&gt;XSS&lt;/h4&gt;&lt;h5 id=&quot;反射型&quot;&gt;&lt;a href=&quot;#反射型&quot; class=&quot;headerlink&quot; title=&quot;反射型&quot;&gt;&lt;/a&gt;反射型&lt;/h5&gt;&lt;p&gt;题目：&lt;/p&gt;
 &lt;img src=&quot;/source/images/CTFHUB-WEB-XSS/image-20211006003106095.png&quot; alt=&quot;image-20211006003106095&quot; style=&quot;zoom:30%;&quot; /&gt;</summary>
     
     
+    
+    <category term="ctf解题" scheme="http://example.com/categories/ctf%E8%A7%A3%E9%A2%98/"/>
     
     
   </entry>
@@ -37,7 +39,7 @@
     <link href="http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/"/>
     <id>http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/</id>
     <published>2021-10-03T16:53:28.000Z</published>
-    <updated>2021-10-03T17:09:00.663Z</updated>
+    <updated>2021-10-06T10:56:55.849Z</updated>
     
     
       
@@ -50,6 +52,8 @@
     
     
     
+    <category term="ctf解题" scheme="http://example.com/categories/ctf%E8%A7%A3%E9%A2%98/"/>
+    
     
   </entry>
   
@@ -58,7 +62,7 @@
     <link href="http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E5%AF%86%E7%A0%81%E5%8F%A3%E4%BB%A4/"/>
     <id>http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E5%AF%86%E7%A0%81%E5%8F%A3%E4%BB%A4/</id>
     <published>2021-10-03T16:53:15.000Z</published>
-    <updated>2021-10-03T17:27:14.894Z</updated>
+    <updated>2021-10-06T10:56:45.206Z</updated>
     
     
       
@@ -71,6 +75,8 @@
     
     
     
+    <category term="ctf解题" scheme="http://example.com/categories/ctf%E8%A7%A3%E9%A2%98/"/>
+    
     
   </entry>
   
@@ -79,7 +85,7 @@
     <link href="http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/"/>
     <id>http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/</id>
     <published>2021-10-03T16:52:47.000Z</published>
-    <updated>2021-10-03T17:53:07.197Z</updated>
+    <updated>2021-10-06T10:56:52.516Z</updated>
     
     
       
@@ -92,6 +98,8 @@
     
     
     
+    <category term="ctf解题" scheme="http://example.com/categories/ctf%E8%A7%A3%E9%A2%98/"/>
+    
     
   </entry>
   
@@ -100,7 +108,7 @@
     <link href="http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/"/>
     <id>http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/</id>
     <published>2021-10-03T16:52:29.000Z</published>
-    <updated>2021-10-03T17:09:45.723Z</updated>
+    <updated>2021-10-06T10:56:48.588Z</updated>
     
     
       
@@ -112,6 +120,8 @@
       
     
     
+    
+    <category term="ctf解题" scheme="http://example.com/categories/ctf%E8%A7%A3%E9%A2%98/"/>
     
     
   </entry>
@@ -143,10 +153,12 @@
     <link href="http://example.com/2021/10/03/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-sqli-labs/"/>
     <id>http://example.com/2021/10/03/ctf%E8%A7%A3%E9%A2%98/%E8%A7%A3%E9%A2%98-sqli-labs/</id>
     <published>2021-10-03T06:02:39.000Z</published>
-    <updated>2021-10-03T06:03:09.190Z</updated>
+    <updated>2021-10-06T10:56:41.749Z</updated>
     
     
     
+    
+    <category term="ctf解题" scheme="http://example.com/categories/ctf%E8%A7%A3%E9%A2%98/"/>
     
     
   </entry>
@@ -178,7 +190,7 @@
     <link href="http://example.com/2021/10/02/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/sqli-labs/"/>
     <id>http://example.com/2021/10/02/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/sqli-labs/</id>
     <published>2021-10-02T07:35:57.000Z</published>
-    <updated>2021-10-03T06:01:08.187Z</updated>
+    <updated>2021-10-06T10:55:46.280Z</updated>
     
     
       
@@ -191,6 +203,8 @@
     
     
     
+    <category term="工具安装指南" scheme="http://example.com/categories/%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/"/>
+    
     
   </entry>
   
@@ -199,7 +213,7 @@
     <link href="http://example.com/2021/09/29/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dvcs-ripper/"/>
     <id>http://example.com/2021/09/29/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dvcs-ripper/</id>
     <published>2021-09-28T17:19:05.000Z</published>
-    <updated>2021-10-01T10:45:26.973Z</updated>
+    <updated>2021-10-06T10:55:39.498Z</updated>
     
     
       
@@ -212,6 +226,8 @@
     
     
     
+    <category term="工具安装指南" scheme="http://example.com/categories/%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/"/>
+    
     
   </entry>
   
@@ -220,7 +236,7 @@
     <link href="http://example.com/2021/09/26/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/GitHack/"/>
     <id>http://example.com/2021/09/26/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/GitHack/</id>
     <published>2021-09-25T16:52:27.000Z</published>
-    <updated>2021-10-03T17:06:12.587Z</updated>
+    <updated>2021-10-06T10:55:42.665Z</updated>
     
     
       
@@ -233,6 +249,8 @@
     
     
     
+    <category term="工具安装指南" scheme="http://example.com/categories/%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/"/>
+    
     
   </entry>
   
@@ -241,7 +259,7 @@
     <link href="http://example.com/2021/09/25/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dirsearch/"/>
     <id>http://example.com/2021/09/25/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dirsearch/</id>
     <published>2021-09-24T17:54:01.000Z</published>
-    <updated>2021-10-03T17:06:06.244Z</updated>
+    <updated>2021-10-06T10:55:36.098Z</updated>
     
     
       
@@ -253,6 +271,8 @@
       
     
     
+    
+    <category term="工具安装指南" scheme="http://example.com/categories/%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/"/>
     
     
   </entry>
