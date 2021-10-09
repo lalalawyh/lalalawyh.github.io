@@ -2707,8 +2707,11 @@ if($_GET[&#39;pleaseget&#39;] === &#39;1&#39;) &#123;//判断
 <img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211006194458485.png" alt="image-20211006194458485" style="zoom:33%;" />
 
 <p>解题：</p>
+<p><strong>单引号闭合</strong></p>
+<p>Sql 语句为SELECT * FROM users WHERE id=’$id’ LIMIT 0,1;</p>
 <p><strong>找到注入点，发现报错回显</strong></p>
 <p>提示传入id的参数，后面跟个单引号<a href="http://localhost/sqli-labs-master/Less-1/?id=1%E2%80%99%EF%BC%8C%E5%8F%91%E7%8E%B0%E6%8A%A5%E9%94%99%EF%BC%8C%E8%BF%99%E9%87%8C%E7%9C%8B%E5%88%B0%E6%98%AF%E5%B7%B2%E7%BB%8F%E9%97%AD%E5%90%88%E4%BA%86%E3%80%82%E4%BB%8E%E6%8A%A5%E9%94%99%E5%86%85%E5%AE%B9%E4%B8%AD%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%87%BAid%E4%BC%A0%E5%85%A5%E7%9A%84%E6%98%AFstr%E7%B1%BB%E5%9E%8B%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%88%86%E8%A7%A3%E6%88%90%E8%BF%99%E6%A0%B7%E6%9D%A5%E7%9C%8B%E4%BC%A0%E9%80%92%E4%BA%86%E4%B8%80%E4%B8%AA1%E2%80%99%E7%9A%84%E5%8F%82%E6%95%B0%EF%BC%8C%E5%B9%B6%E4%B8%941%E2%80%99%E7%9A%84%E5%8F%82%E6%95%B0%E7%94%A8%E5%8D%95%E5%BC%95%E5%8F%B7%E5%8C%85%E8%A3%B9%EF%BC%8C%E6%9C%80%E5%90%8E%E5%86%8D%E6%9C%80%E5%A4%96%E5%B1%82%E4%B8%80%E5%B1%82%E5%8D%95%E5%BC%95%E5%8F%B7&#39;">http://localhost/sqli-labs-master/Less-1/?id=1’，发现报错，这里看到是已经闭合了。从报错内容中可以看出id传入的是str类型，可以分解成这样来看传递了一个1’的参数，并且1’的参数用单引号包裹，最后再最外层一层单引号&#39;</a> ‘ 1’  ‘ LIMIT 0,1 ‘。然后再进行order by 来排序确定字段数。</p>
+<p>此时sql语句为SELECT * FROM users WHERE id=’1’–+’ LIMIT 0,1（简记–+注释掉了多余的‘）</p>
 <img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211006194723632.png" alt="image-20211006194723632" style="zoom:33%;" />
 
 <p><strong>判断字段数</strong></p>
@@ -2764,6 +2767,44 @@ if($_GET[&#39;pleaseget&#39;] === &#39;1&#39;) &#123;//判断
 <ul>
 <li>union select 1,2, group_concat(column_name) from information_schema.columns where table_schema=database()</li>
 </ul>
+<h3 id="Less-2"><a href="#Less-2" class="headerlink" title="Less-2"></a>Less-2</h3><p>题目：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211008113512372.png" alt="image-20211008113512372" style="zoom:33%;" />
+
+<p>解题：</p>
+<p><strong>无符号闭合</strong></p>
+<p>Sql 语句为SELECT * FROM users WHERE id=$id LIMIT 0,1;</p>
+<p>输入?id=1’测试注入点，发现原来已经闭合去掉多余的单引号即可拿到数据，然后根据less-1解题即可。</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211008113338523.png" alt="image-20211008113338523" style="zoom:33%;" />
+
+<h3 id="Less-3"><a href="#Less-3" class="headerlink" title="Less-3"></a>Less-3</h3><p>题目：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211009141550137.png" alt="image-20211009141550137" style="zoom:33%;" />
+
+<p>解题：</p>
+<p>Sql 语句为SELECT * FROM users WHERE id=(‘$id’) LIMIT 0,1;</p>
+<p>测试注入点，发现回显后面多一个）导致无法闭合：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211009142325543.png" alt="image-20211009142325543" style="zoom:33%;" />
+
+<p>重构payload，发现可以闭合：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211009142556677.png" alt="image-20211009142556677" style="zoom:33%;" />
+
+<h3 id="Less-4"><a href="#Less-4" class="headerlink" title="Less-4"></a>Less-4</h3><p>题目：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211009143136083.png" alt="image-20211009143136083" style="zoom:33%;" />
+
+<p>解题：</p>
+<p>Sql 语句为SELECT * FROM users WHERE id=(“$id”) LIMIT 0,1;</p>
+<p>测试id=1‘发现没有报错：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211009143259703.png" alt="image-20211009143259703" style="zoom:33%;" />
+
+<p>测试双引号（不是两个单引号）：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211009143359479.png" alt="image-20211009143359479" style="zoom:33%;" />
+
+<p>重构payload闭合：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211009143920776.png" alt="image-20211009143920776" style="zoom:33%;" />
+
+<h3 id="Less-5"><a href="#Less-5" class="headerlink" title="Less-5"></a>Less-5</h3><p>题目：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211009151746244.png" alt="image-20211009151746244" style="zoom:33%;" />
+
+<p>解题：</p>
 ]]></content>
       <categories>
         <category>ctf解题</category>
