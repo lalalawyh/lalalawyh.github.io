@@ -97,7 +97,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">609</span>
+            <span class="post-count">776</span>
         </span>
     </span>
 
@@ -106,7 +106,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">2 min</span>
+            <span class="post-count">3 min</span>
         </span>
     </span>
 </div>
@@ -227,8 +227,56 @@
 </tr>
 </tbody></table>
 <h5 id="字符型注入"><a href="#字符型注入" class="headerlink" title="字符型注入"></a>字符型注入</h5><p>题目：</p>
+<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211013235431605.png" alt="image-20211013235431605" style="zoom:33%;" />
+
 <p>解题：</p>
 <p>SQL注入 字符型注入, 尝试获取数据库中的 flag。</p>
+<p>输入1得到回显：</p>
+<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211013235522840.png" alt="image-20211013235522840" style="zoom:33%;" />
+
+<p>输入1’判断闭合方式，发现有三个单引号，无法正常回显，则需将后面一个单引号注释掉：</p>
+<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211013235642999.png" alt="image-20211013235642999" style="zoom:33%;" />
+
+<p>注：常见的注释符：%23（#）、-–+（使用该注释符记得前面空格）、；%00、`、……</p>
+<p>使用-–+将多余的单引号注释掉，在输入框内输入1’–+会显示不正确，建议在地址栏直接改：</p>
+<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014000213654.png" alt="image-20211014000213654" style="zoom:33%;" />
+
+<p>判断字段数，输入order by 3 无法正常回显，降为2则回显正常：</p>
+<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014001217435.png" alt="image-20211014001217435" style="zoom:33%;" />
+
+<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014001050878.png" alt="image-20211014001050878" style="zoom:33%;" />
+
+<p>根据字段数进行测试和基本信息爆破（数据库和版本号）：</p>
+<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014001404291.png" alt="image-20211014001404291" style="zoom:33%;" />
+
+<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014001436309.png" alt="image-20211014001436309" style="zoom:33%;" />
+
+<p>输入命令查看该数据库的集合schema：</p>
+<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014001946611.png" alt="image-20211014001946611" style="zoom:33%;" />
+
+<p>爆表：</p>
+<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014002326052.png" alt="image-20211014002326052" style="zoom:33%;" />
+
+<p>爆列：</p>
+<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014002920228.png" alt="image-20211014002920228" style="zoom:33%;" />
+
+<p>爆数据：</p>
+<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014003105483.png" alt="image-20211014003105483" style="zoom:33%;" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
       <!-- reward -->
       
