@@ -97,7 +97,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.3k</span>
+            <span class="post-count">1.7k</span>
         </span>
     </span>
 
@@ -106,7 +106,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">5 min</span>
+            <span class="post-count">7 min</span>
         </span>
     </span>
 </div>
@@ -265,6 +265,55 @@ SELECT * FROM `users` WHERE id=(&quot;1&quot;);#双引号加括号
 <img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211009151746244.png" alt="image-20211009151746244" style="zoom:33%;" />
 
 <p>解题：</p>
+<p><strong>报错注入</strong></p>
+<p>用?id=1’测试以下闭合情况，发现已经闭合：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211013132937733.png" alt="image-20211013132937733" style="zoom:33%;" />
+
+<p>用order by测试发现正确是回显：You are in …而不会返回数据，错误时返回报错信息，此为一道<strong>盲注题</strong>：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211013133159986.png" alt="image-20211013133159986" style="zoom:33%;" />
+
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211013133250117.png" alt="image-20211013133250117" style="zoom:33%;" />
+
+<p>使用left()爆基本信息：</p>
+<p>根据前几道题，我们猜测数据库为security：（也可以利用bp爆破）</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211013133823635.png" alt="image-20211013133823635" style="zoom:33%;" />
+
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211013133738477.png" alt="image-20211013133738477" style="zoom:33%;" />
+
+<p>补充知识：</p>
+<p>sql注入截取字符串常用函数有三大法宝：mid(),substr(),left()</p>
+<ol>
+<li>mid()函数：MID(column_name,start[,length])</li>
+</ol>
+<p>如： str=”123456″   mid(str,2,1) 结果为2——从第二位开始截取一位，即截取第二位</p>
+<p>Sql用例：</p>
+<blockquote>
+<p>（1）MID(DATABASE(),1,1)&gt;’a’,查看数据库名第一位，MID(DATABASE(),2,1)查看数据库名第二位，依次查看各位字符。</p>
+<p>（2）MID((SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE T  table_schema=0xxxxxxx LIMIT  0,1),1,1)&gt;’a’此处column_name参数可以为sql语句，可自行构造sql语句进行注入。</p>
+</blockquote>
+<ol start="2">
+<li>substr()函数</li>
+</ol>
+<p>substr()和substring()函数实现的功能是一样的，均为截取字符串。</p>
+<p>string substring(string, start, length)</p>
+<p>string substr(string, start, length)</p>
+<p>参数描述同mid()函数，第一个参数为要处理的字符串，start为开始位置，length为截取的长度。</p>
+<p>Sql用例：</p>
+<blockquote>
+<p>(1) substr(DATABASE(),1,1)&gt;’a’,查看数据库名第一位，substr(DATABASE(),2,1)查看数据库名第二位，依次查看各位字符。</p>
+<p>(2) substr((SELECT table_name FROM INFORMATION_SCHEMA.TABLES  WHERE T table_schema=0xxxxxxx LIMIT  0,1),1,1)&gt;’a’此处string参数可以为sql语句，可自行构造sql语句进行注入。</p>
+</blockquote>
+<ol start="3">
+<li>Left()函数</li>
+</ol>
+<p>Left()得到字符串左边指定个数的字符</p>
+<p>Left ( string, n ) string为要截取的字符串，n为长度。</p>
+<p>Sql用例：</p>
+<blockquote>
+<p>(1) left(database(),1)&gt;’a’,查看数据库名第一位，left(database(),2)&gt;’ab’,查看数据库名前二位。</p>
+<p>(2) 同样的string可以为自行构造的sql语句。</p>
+</blockquote>
+<p><strong>参考链接：<a target="_blank" rel="noopener" href="http://www.cnblogs.com/lcamry/p/5504374.htm">http://www.cnblogs.com/lcamry/p/5504374.htm</a></strong></p>
  
       <!-- reward -->
       
