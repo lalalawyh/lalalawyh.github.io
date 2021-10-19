@@ -226,7 +226,7 @@
 <p>重构payload闭合：</p>
 <img src="/source/images/%E8%A7%A3%E9%A2%98-sqli-labs/image-20211009143920776.png" alt="image-20211009143920776" style="zoom:33%;" />
 
-<h3 id="1-4总结"><a href="#1-4总结" class="headerlink" title="1-4总结"></a>1-4总结</h3><h4 id="判断出闭合形式及字段数"><a href="#判断出闭合形式及字段数" class="headerlink" title="判断出闭合形式及字段数"></a>判断出闭合形式及字段数</h4><p>SQL语句的闭合形式大概有以下几种：</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="判断出闭合形式及字段数"><a href="#判断出闭合形式及字段数" class="headerlink" title="判断出闭合形式及字段数"></a>判断出闭合形式及字段数</h4><p>SQL语句的闭合形式大概有以下几种：</p>
 <pre><code>SELECT * FROM `users` WHERE id= 1;#整形闭合
 SELECT * FROM `users` WHERE id=&#39;1&#39;;#单引号闭合
 SELECT * FROM `users` WHERE id=&quot;1&quot;;#双引号闭合

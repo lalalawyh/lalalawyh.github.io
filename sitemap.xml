@@ -4,14 +4,14 @@
   <url>
     <loc>http://example.com/2021/10/19/sqli-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Less-5/</loc>
     
-    <lastmod>2021-10-18</lastmod>
+    <lastmod>2021-10-19</lastmod>
     
   </url>
   
   <url>
     <loc>http://example.com/2021/10/06/sqli-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Less-1~Less-4/</loc>
     
-    <lastmod>2021-10-18</lastmod>
+    <lastmod>2021-10-19</lastmod>
     
   </url>
   
@@ -263,7 +263,7 @@
 
   <url>
     <loc>http://example.com/</loc>
-    <lastmod>2021-10-18</lastmod>
+    <lastmod>2021-10-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -273,21 +273,21 @@
   
   <url>
     <loc>http://example.com/categories/%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</loc>
-    <lastmod>2021-10-18</lastmod>
+    <lastmod>2021-10-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/categories/ctf%E8%A7%A3%E9%A2%98/</loc>
-    <lastmod>2021-10-18</lastmod>
+    <lastmod>2021-10-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/categories/sqli-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/</loc>
-    <lastmod>2021-10-18</lastmod>
+    <lastmod>2021-10-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

