@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-10-19T07:39:15.515Z</updated>
+  <updated>2021-10-21T17:03:04.904Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>MySQL</title>
+    <link href="http://example.com/2021/10/21/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/MySQL/"/>
+    <id>http://example.com/2021/10/21/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/MySQL/</id>
+    <published>2021-10-20T17:04:52.000Z</published>
+    <updated>2021-10-21T17:03:04.904Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;MySQL安装与使用&quot;&gt;&lt;a href=&quot;#MySQL安装与使用&quot; class=&quot;headerlink&quot; title=&quot;MySQL安装与使用&quot;&gt;&lt;/a&gt;MySQL安装与使用&lt;/h2&gt;&lt;p&gt;注：适用于Windows系统。&lt;/p&gt;
+&lt;h4 id=&quot;简介：&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="工具安装指南" scheme="http://example.com/categories/%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Less-5</title>
     <link href="http://example.com/2021/10/19/sqli-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Less-5/"/>
     <id>http://example.com/2021/10/19/sqli-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Less-5/</id>
     <published>2021-10-18T16:59:33.000Z</published>
-    <updated>2021-10-19T07:39:15.515Z</updated>
+    <updated>2021-10-20T16:36:50.205Z</updated>
     
     
       
@@ -156,7 +180,7 @@
     <link href="http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/"/>
     <id>http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/</id>
     <published>2021-10-03T16:52:29.000Z</published>
-    <updated>2021-10-06T10:56:48.588Z</updated>
+    <updated>2021-10-06T14:22:01.802Z</updated>
     
     
       
@@ -430,27 +454,6 @@
         
         
     <summary type="html">&lt;h2 id=&quot;sql注入&quot;&gt;&lt;a href=&quot;#sql注入&quot; class=&quot;headerlink&quot; title=&quot;sql注入&quot;&gt;&lt;/a&gt;sql注入&lt;/h2&gt;&lt;h3 id=&quot;常见注入姿势：&quot;&gt;&lt;a href=&quot;#常见注入姿势：&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>第八篇博客</title>
-    <link href="http://example.com/2021/08/03/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%85%AB%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://example.com/2021/08/03/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%85%AB%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
-    <published>2021-08-03T14:52:37.000Z</published>
-    <updated>2021-08-07T16:59:02.153Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;WEB初步学习&quot;&gt;&lt;a href=&quot;#WEB初步学习&quot; class=&quot;headerlink&quot; title=&quot;WEB初步学习&quot;&gt;&lt;/a&gt;WEB初步学习&lt;/h2&gt;&lt;h3 id=&quot;PHP-amp-amp-SSRF&quot;&gt;&lt;a</summary>
         
       
     
