@@ -97,7 +97,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">314</span>
+            <span class="post-count">659</span>
         </span>
     </span>
 
@@ -106,7 +106,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">2 min</span>
         </span>
     </span>
 </div>
@@ -121,7 +121,7 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="MySQL安装与使用"><a href="#MySQL安装与使用" class="headerlink" title="MySQL安装与使用"></a>MySQL安装与使用</h2><p>注：适用于Windows系统。</p>
+  <h2 id="MySQL安装与使用"><a href="#MySQL安装与使用" class="headerlink" title="MySQL安装与使用"></a>MySQL安装与使用</h2><p>注：适用于Windows系统。本文数据库版本为MySQL5.7.26。</p>
 <h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>MySQL是一个关系型数据库管理系统，关系数据库将数据保存在不同的表中，而不是将所有数据放在一个大仓库内，这样就增加了速度并提高了灵活性。在 WEB应用方面，MySQL是最好的 RDBMS(Relational Database Management System，关系数据库管理系统) 应用软件之一。</p>
 <p>MySQL所使用的 SQL 语言是用于访问<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%BA%93/103728">数据库</a>的最常用标准化语言。MySQL 软件采用了双授权政策，分为社区版和商业版，由于其体积小、速度快、总体拥有成本低，尤其是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%BC%80%E6%94%BE%E6%BA%90%E7%A0%81/7176422">开放源码</a>这一特点，一般中小型网站的开发都选择 MySQL 作为网站数据库。</p>
 <h4 id="安装与使用："><a href="#安装与使用：" class="headerlink" title="安装与使用："></a>安装与使用：</h4><p>安装phpstudy。下图为phpstudy pro界面，可以在软件管理处下载想要的MySQL版本。</p>
@@ -131,7 +131,32 @@
 <p>输入命令：mysql -u用户名 -p密码  进行登录数据库。</p>
 <img src="../../source/images/MySQL/image-20211022010113447.png" alt="image-20211022010113447" style="zoom:33%;" />
 
-<h4 id="语句：（后续用到补充）"><a href="#语句：（后续用到补充）" class="headerlink" title="语句：（后续用到补充）"></a>语句：（后续用到补充）</h4> 
+<h4 id="语句：（后续继续补充）"><a href="#语句：（后续继续补充）" class="headerlink" title="语句：（后续继续补充）"></a>语句：（后续继续补充）</h4><p>注：参考学习菜鸟教程。</p>
+<ol>
+<li><p><strong>show databases：</strong></p>
+<p>列出 MySQL 数据库管理系统的数据库列表</p>
+<img src="../../source/images/MySQL/image-20211023000820920.png" alt="image-20211023000820920" style="zoom:50%;" />
+
+<ul>
+<li>information_schema：主要存储了系统中的一些数据库对象信息，比如用户表信息、列信息、权限信息、字符集信息和分区信息等。</li>
+<li>mysql：MySQL 的核心数据库，类似于 SQL Server 中的 master 表，主要负责存储数据库用户、用户访问权限等MySQL 自己需要使用的控制和管理信息。常用的比如在 mysql 数据库的 user 表中修改 root 用户密码。</li>
+<li>performance_schema：主要用于收集数据库服务器性能参数。</li>
+<li>sys：MySQL 5.7 安装完成后会多一个 sys 数据库。sys 数据库主要提供了一些视图，数据都来自于 performation_schema，主要是让开发者和使用者更方便地查看性能问题。</li>
+</ul>
+</li>
+<li><p><strong>show tables:</strong><br>显示指定数据库的所有表，使用该命令前需要使用 use 命令来选择要操作的数据库。</p>
+<p>显示database changed即调用成功。</p>
+<img src="../../source/images/MySQL/image-20211023004354414.png" alt="image-20211023004354414" style="zoom:50%;" /></li>
+<li><p><strong>select * from 表名</strong>：</p>
+<p>显示指定表的所有信息</p>
+<img src="../../source/images/MySQL/image-20211023005121220.png" alt="image-20211023005121220" style="zoom:50%;" /></li>
+<li><p><strong>show columns from 数据表:</strong><br>显示数据表的属性，属性类型，主键信息 ，是否为 NULL，默认值等其他信息。</p>
+<img src="../../source/images/MySQL/image-20211023005353974.png" alt="image-20211023005353974" style="zoom:50%;" /></li>
+<li><p><strong>show index from 数据表:</strong><br>显示数据表的详细索引信息，包括PRIMARY KEY（主键）。</p>
+<img src="../../source/images/MySQL/image-20211023010131661.png" alt="image-20211023010131661" style="zoom:50%;" /></li>
+<li></li>
+</ol>
+ 
       <!-- reward -->
       
       <div id="reword-out">
