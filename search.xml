@@ -3031,17 +3031,17 @@ SELECT * FROM `users` WHERE id=(&quot;1&quot;);#双引号加括号
 <h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>MySQL是一个关系型数据库管理系统，关系数据库将数据保存在不同的表中，而不是将所有数据放在一个大仓库内，这样就增加了速度并提高了灵活性。在 WEB应用方面，MySQL是最好的 RDBMS(Relational Database Management System，关系数据库管理系统) 应用软件之一。</p>
 <p>MySQL所使用的 SQL 语言是用于访问<a href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%BA%93/103728">数据库</a>的最常用标准化语言。MySQL 软件采用了双授权政策，分为社区版和商业版，由于其体积小、速度快、总体拥有成本低，尤其是<a href="https://baike.baidu.com/item/%E5%BC%80%E6%94%BE%E6%BA%90%E7%A0%81/7176422">开放源码</a>这一特点，一般中小型网站的开发都选择 MySQL 作为网站数据库。</p>
 <h4 id="安装与使用："><a href="#安装与使用：" class="headerlink" title="安装与使用："></a>安装与使用：</h4><p>安装phpstudy。下图为phpstudy pro界面，可以在软件管理处下载想要的MySQL版本。</p>
-<img src="../../source/images/MySQL/image-20211022005139181.png" alt="image-20211022005139181" style="zoom:33%;" />
+<img src="/source/images/MySQL/image-20211022005139181.png" alt="image-20211022005139181" style="zoom:33%;" />
 
 <p>打开phpstudy所在文件夹，找到MySQL下的bin文件夹（我的路径为：phpstudy_pro—Extensions—mysql5.7.26-bin，在任务栏输入cmd进入命令窗口即可开始使用。（记得启动phpstudy里面的MySQL套件）</p>
 <p>输入命令：mysql -u用户名 -p密码  进行登录数据库。</p>
-<img src="../../source/images/MySQL/image-20211022010113447.png" alt="image-20211022010113447" style="zoom:33%;" />
+<img src="/source/images/MySQL/image-20211022010113447.png" alt="image-20211022010113447" style="zoom:33%;" />
 
 <h4 id="语句：（后续继续补充）"><a href="#语句：（后续继续补充）" class="headerlink" title="语句：（后续继续补充）"></a>语句：（后续继续补充）</h4><p>注：参考学习菜鸟教程。</p>
 <ol>
 <li><p><strong>show databases：</strong></p>
 <p>列出 MySQL 数据库管理系统的数据库列表</p>
-<img src="../../source/images/MySQL/image-20211023000820920.png" alt="image-20211023000820920" style="zoom:50%;" />
+<img src="/source/images/MySQL/image-20211023000820920.png" alt="image-20211023000820920" style="zoom:50%;" />
 
 <ul>
 <li>information_schema：主要存储了系统中的一些数据库对象信息，比如用户表信息、列信息、权限信息、字符集信息和分区信息等。</li>
@@ -3052,14 +3052,14 @@ SELECT * FROM `users` WHERE id=(&quot;1&quot;);#双引号加括号
 </li>
 <li><p><strong>show tables:</strong><br>显示指定数据库的所有表，使用该命令前需要使用 use 命令来选择要操作的数据库。</p>
 <p>显示database changed即调用成功。</p>
-<img src="../../source/images/MySQL/image-20211023004354414.png" alt="image-20211023004354414" style="zoom:50%;" /></li>
+<img src="/source/images/MySQL/image-20211023004354414.png" alt="image-20211023004354414" style="zoom:50%;" /></li>
 <li><p><strong>select * from 表名</strong>：</p>
 <p>显示指定表的所有信息</p>
-<img src="../../source/images/MySQL/image-20211023005121220.png" alt="image-20211023005121220" style="zoom:50%;" /></li>
+<img src="/source/images/MySQL/image-20211023005121220.png" alt="image-20211023005121220" style="zoom:50%;" /></li>
 <li><p><strong>show columns from 数据表:</strong><br>显示数据表的属性，属性类型，主键信息 ，是否为 NULL，默认值等其他信息。</p>
-<img src="../../source/images/MySQL/image-20211023005353974.png" alt="image-20211023005353974" style="zoom:50%;" /></li>
+<img src="/source/images/MySQL/image-20211023005353974.png" alt="image-20211023005353974" style="zoom:50%;" /></li>
 <li><p><strong>show index from 数据表:</strong><br>显示数据表的详细索引信息，包括PRIMARY KEY（主键）。</p>
-<img src="../../source/images/MySQL/image-20211023010131661.png" alt="image-20211023010131661" style="zoom:50%;" /></li>
+<img src="/source/images/MySQL/image-20211023010131661.png" alt="image-20211023010131661" style="zoom:50%;" /></li>
 <li></li>
 </ol>
 ]]></content>
