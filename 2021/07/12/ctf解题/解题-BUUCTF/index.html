@@ -97,7 +97,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.2k</span>
+            <span class="post-count">1.6k</span>
         </span>
     </span>
 
@@ -106,7 +106,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">4 min</span>
+            <span class="post-count">6 min</span>
         </span>
     </span>
 </div>
@@ -216,28 +216,61 @@ if($_GET[&#39;pleaseget&#39;] === &#39;1&#39;) &#123;//判断
 </code></pre>
 <p>思路：</p>
 <p>GET提交：?pleaseget=1<br>POST提交的第一部分：pleasepost=2&amp;md51[]=1&amp;md52[]=2<br>POST提交的第二部分：一个BUU类的实例化对象，且两个属性值在经过<code>$this-&gt;correct = base64_encode(uniqid());</code>这个之后，依然全等，那么这里我们可以把变化的correct属性的引用赋值给属性$input</p>
-<h3 id="BUU-BRUTE-1"><a href="#BUU-BRUTE-1" class="headerlink" title="BUU BRUTE 1"></a>BUU BRUTE 1</h3><p>爆破</p>
+<h4 id="BUU-BRUTE-1"><a href="#BUU-BRUTE-1" class="headerlink" title="BUU BRUTE 1"></a>BUU BRUTE 1</h4><p>爆破</p>
 <p>用户名：admin  密码：6490</p>
 <p>得到flag{dbb413d1-b360-4843-8766-00aec21823fa}</p>
-<h3 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h3><p>（1）签到题</p>
-<p><strong>题目：</strong></p>
+<h3 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h3><h4 id="签到题"><a href="#签到题" class="headerlink" title="签到题"></a>签到题</h4><p><strong>题目：</strong></p>
 <img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A21/QQ%E5%9B%BE%E7%89%8720210726183346.png" alt="QQ图片20210726183346" style="zoom:50%;" />
 
 
 
 <p><strong>解题：</strong>不要怀疑，就是题目所给的flag。</p>
-<p>（2）金三胖</p>
-<p><strong>题目：</strong></p>
+<h4 id="金三胖"><a href="#金三胖" class="headerlink" title="金三胖"></a>金三胖</h4><p><strong>题目：</strong></p>
 <img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A21/aaa_ABC%E7%9C%8B%E5%9B%BE.gif" alt="aaa_ABC看图" style="zoom: 67%;" />
 
 <p><strong>解题：</strong>可以将gif拖进ps中进行分解图层。（也可以借助其他工具，例：stegsolve）</p>
 <p>ps：分解图层后找flag所在图层（这里为了便于查看，我将flag所在图层调在一块了）解得flag{he11ohongke}（注意：这里是11（数字1）不是ll（L小写）哦）</p>
 <img src="/images/%E6%96%B0%E6%89%8B%E8%A7%A3%E9%A2%98%E5%8D%9A%E5%AE%A21/QQ%E5%9B%BE%E7%89%8720210726183957.png" alt="QQ图片20210726183957" style="zoom: 25%;" />
 
+<h3 id="web"><a href="#web" class="headerlink" title="web"></a>web</h3><h4 id="HCTF-2018-WarmUp"><a href="#HCTF-2018-WarmUp" class="headerlink" title="[HCTF 2018]WarmUp"></a>[HCTF 2018]WarmUp</h4><p><strong>题目</strong>：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-BUUCTF/image-20211026234601973.png" alt="image-20211026234601973" style="zoom:33%;" />
 
+<p><strong>解题</strong>：</p>
+<p><strong>phpmyadmin 4.8.1的一个远程文件包含的漏洞</strong>（还需理解）</p>
+<p>题目提示php和审计，右键打开查看网页源代码，发现source.php：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-BUUCTF/image-20211026234939115.png" alt="image-20211026234939115" style="zoom:50%;" />
 
+<p>在地址栏输入/source.php，注意将端口号去除：</p>
+<ol>
+<li><p>端口号未去除</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-BUUCTF/image-20211026235211140.png" alt="image-20211026235211140" style="zoom:50%;" /></li>
+<li><p>端口号去除，发现hint.php：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-BUUCTF/image-20211026235315521.png" alt="image-20211026235315521" style="zoom:50%;" />
 
+<p>尝试打开hint.php得到提示，猜测flag就在ffffllllaaaagggg里面：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-BUUCTF/image-20211026235440935.png" alt="image-20211026235440935" style="zoom:50%;" />
 
+<p>补充知识：<strong>checkfile函数</strong></p>
+<ul>
+<li>定义了一个白名单：source.php和hint.php，判断$page是否为空、是否为字符串。</li>
+<li>判断$page是否在白名单里，若存在返回true；</li>
+<li>考虑到page有参数的情况，$page 是取出其问号前的东西，然后再判断是否在白名单里，若存在则返回true；</li>
+<li>如果上一步判断失败，则又考虑了url编码的问题，因为url在传入以后服务器会自动进行一次解码。因此传入二次编码后的内容，就可以使checkfile返回true。</li>
+</ul>
+<p>分析完代码后开始构造payload：<br>需传递参数?file=hint.php?/../../../../../../ffffllllaaaagggg，进行目录穿越还要把?进行两次url编码(?为英文)：</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-BUUCTF/image-20211027002902131.png" alt="image-20211027002902131" style="zoom:33%;" />
+
+<img src="/source/images/%E8%A7%A3%E9%A2%98-BUUCTF/image-20211027002939253.png" alt="image-20211027002939253" style="zoom:33%;" />
+
+<img src="/source/images/%E8%A7%A3%E9%A2%98-BUUCTF/image-20211027003004415.png" alt="image-20211027003004415" style="zoom:33%;" />
+
+<p>所以最后的payload为?file=hint.php%253f/../../../../../../ffffllllaaaagggg。第一次验证肯定过不了，第二次截取完也过不了，第三次经过url解码后构造的payload就变成了?file=hint.php?/../../../../../../ffffllllaaaagggg，它是截取?前面的进行校验，source.php在白名单中，所以返回true，最后通过目录穿越到ffffllllaaaagggg里面的内容，即可得到flag：(source.php?file=hint.php%253f/../../../../../../ffffllllaaaagggg也可)</p>
+<img src="/source/images/%E8%A7%A3%E9%A2%98-BUUCTF/image-20211027004048530.png" alt="image-20211027004048530" style="zoom:33%;" />
+
+<h4 id="极客大挑战-2019-EasySQL1"><a href="#极客大挑战-2019-EasySQL1" class="headerlink" title="[极客大挑战 2019]EasySQL1"></a>[极客大挑战 2019]EasySQL1</h4><p><strong>题目</strong>：</p>
+<p><strong>解题</strong>：</p>
+</li>
+</ol>
  
       <!-- reward -->
       
