@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-10-23T07:55:55.471Z</updated>
+  <updated>2021-10-29T19:33:00.590Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>bugctf-web</title>
+    <link href="http://example.com/2021/10/30/ctf%E8%A7%A3%E9%A2%98/bugctf-web/"/>
+    <id>http://example.com/2021/10/30/ctf%E8%A7%A3%E9%A2%98/bugctf-web/</id>
+    <published>2021-10-29T19:04:40.000Z</published>
+    <updated>2021-10-29T19:33:00.590Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;BUGCTF&quot;&gt;&lt;a href=&quot;#BUGCTF&quot; class=&quot;headerlink&quot; title=&quot;BUGCTF&quot;&gt;&lt;/a&gt;BUGCTF&lt;/h2&gt;&lt;h3 id=&quot;滑稽&quot;&gt;&lt;a href=&quot;#滑稽&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="ctf解题" scheme="http://example.com/categories/ctf%E8%A7%A3%E9%A2%98/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>MySQL</title>
@@ -432,27 +455,6 @@
         
         
     <summary type="html">&lt;h2 id=&quot;RE初步学习&quot;&gt;&lt;a href=&quot;#RE初步学习&quot; class=&quot;headerlink&quot; title=&quot;RE初步学习&quot;&gt;&lt;/a&gt;RE初步学习&lt;/h2&gt;&lt;h3 id=&quot;X86汇编&quot;&gt;&lt;a href=&quot;#X86汇编&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>第十篇博客</title>
-    <link href="http://example.com/2021/08/14/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://example.com/2021/08/14/ctf%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E5%8D%81%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
-    <published>2021-08-14T15:52:45.000Z</published>
-    <updated>2021-10-06T16:24:35.566Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;sql注入&quot;&gt;&lt;a href=&quot;#sql注入&quot; class=&quot;headerlink&quot; title=&quot;sql注入&quot;&gt;&lt;/a&gt;sql注入&lt;/h2&gt;&lt;h3 id=&quot;常见注入姿势：&quot;&gt;&lt;a href=&quot;#常见注入姿势：&quot; class=&quot;headerlink&quot;</summary>
         
       
     

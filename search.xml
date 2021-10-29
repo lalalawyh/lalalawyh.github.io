@@ -3100,4 +3100,30 @@ SELECT * FROM `users` WHERE id=(&quot;1&quot;);#双引号加括号
         <category>工具安装指南</category>
       </categories>
   </entry>
+  <entry>
+    <title>bugctf-web</title>
+    <url>/2021/10/30/ctf%E8%A7%A3%E9%A2%98/bugctf-web/</url>
+    <content><![CDATA[<h2 id="BUGCTF"><a href="#BUGCTF" class="headerlink" title="BUGCTF"></a>BUGCTF</h2><h3 id="滑稽"><a href="#滑稽" class="headerlink" title="滑稽"></a>滑稽</h3><p>题目：</p>
+<img src="/source/images/bugctf-web/image-20211030031612302.png" alt="image-20211030031612302" style="zoom:23%;" />
+
+<p>解题：点击浏览器右上角的三条横线——更多工具——Web开发者工具，进行查看源代码，发现flag</p>
+<img src="/source/images/bugctf-web/image-20211030031649496.png" alt="image-20211030031649496" style="zoom:23%;" />
+
+<h3 id="计算器"><a href="#计算器" class="headerlink" title="计算器"></a>计算器</h3><p>题目：</p>
+<img src="/source/images/bugctf-web/image-20211030031504086.png" alt="image-20211030031504086" style="zoom:53%;" />
+
+<p>解题：</p>
+<p>方法一：如第一题打开web开发者工具查看代码即可发现flag</p>
+<img src="/source/images/bugctf-web/image-20211030032328094.png" alt="image-20211030032328094" style="zoom:23%;" />
+
+<p>方法二：输入数字发现只能输入一个数字，而题目需要输入正确答案。打开web开发者工具修改maxlength至正确的位数后，在框框内输入正确答案进行验证即可得到flag:</p>
+<img src="/source/images/bugctf-web/image-20211030032956369.png" alt="image-20211030032956369" style="zoom:33%;" />
+
+<h3 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h3><p>题目：</p>
+<p>解题：</p>
+]]></content>
+      <categories>
+        <category>ctf解题</category>
+      </categories>
+  </entry>
 </search>
