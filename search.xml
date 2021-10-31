@@ -3129,12 +3129,13 @@ SELECT * FROM `users` WHERE id=(&quot;1&quot;);#双引号加括号
   <entry>
     <title>sqlmap</title>
     <url>/2021/10/31/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/sqlmap/</url>
-    <content><![CDATA[<h2 id="sqlmap"><a href="#sqlmap" class="headerlink" title="sqlmap"></a>sqlmap</h2><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>注：后续使用到该工具时会再进行补充</p>
-<p>sqlmap 是一个开源渗透测试工具，它可以自动检测和利用 SQL 注入漏洞并获取数据库服务器的权限。它具有强大的检测引擎，同时有众多功能，包括数据库指纹识别、从数据库中获取数据、访问底层文件系统以及在操作系统上带内连接执行命令。带外连接。目前支持的数据库是MySQL, Oracle, PostgreSQL, Microsoft SQL Server, Microsoft Access, IBM DB2, SQLite, Firebird, Sybase和SAP MaxDB。采用五种独特的SQL注入技术，分别是：</p>
+    <content><![CDATA[<h2 id="sqlmap"><a href="#sqlmap" class="headerlink" title="sqlmap"></a>sqlmap</h2><p>注：后续使用到该工具时会再进行补充</p>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>sqlmap 是一个开源渗透测试工具，它可以自动检测和利用 SQL 注入漏洞并获取数据库服务器的权限。它具有强大的检测引擎，同时有众多功能，包括数据库指纹识别、从数据库中获取数据、访问底层文件系统以及在操作系统上带内连接执行命令。带外连接。目前支持的数据库是MySQL, Oracle, PostgreSQL, Microsoft SQL Server, Microsoft Access, IBM DB2, SQLite, Firebird, Sybase和SAP MaxDB。采用五种独特的SQL注入技术，分别是：</p>
 <p>   1）基于布尔的盲注，即可以根据返回页面判断条件真假的注入。<br>   2）基于时间的盲注，即不能根据页面返回内容判断任何信息，用条件语句查看时间延迟语句是否执行（即页面返回时间是否增加）来判断。<br>   3）基于报错注入，即页面会返回错误信息，或者把注入的语句的结果直接返回在页面中。<br>   4）联合查询注入，可以使用union的情况下的注入。<br>   5）堆查询注入，可以同时执行多条语句的执行时的注入。</p>
 <p>在CTF的Web类型的题目中经常会遇到注入类型的题目 。如果题目比较简单，甚至可以直接用sqlmap得到flag。但是，一般的题目还是需要进行绕过操作的，比如绕过空格或关键字检测等，这时候则可以调用sqlmap的一些Tamper, 或者自行编写Tamper来进行绕过，从而得到flag。Tamper通常用来绕过-些过滤或者WAF，Tamper脚本存放在Sqlmap目录下的tamper目录中。</p>
-<h4 id="安装与使用"><a href="#安装与使用" class="headerlink" title="安装与使用"></a>安装与使用</h4><p>下载地址：<a href="https://github.com/sqlmapproject/sqlmap">https://github.com/sqlmapproject/sqlmap</a></p>
-<p>下载源代码后解压打开文件夹，在有salmap.py文件的路径栏输入cmd进入命令窗口，再输入python sqlmap.py命令，如下图所示：（具体使用将在以后运用到进行更新）</p>
+<h4 id="安装与使用"><a href="#安装与使用" class="headerlink" title="安装与使用"></a>安装与使用</h4><p>注：</p>
+<p>下载地址：<a href="https://github.com/sqlmapproject/sqlmap">https://github.com/sqlmapproject/sqlmap</a></p>
+<p>下载源代码后解压打开文件夹，在有salmap.py文件的路径栏输入cmd进入命令窗口，再输入python sqlmap.py命令，如下图所示：</p>
 <img src="/source/images/sqlmap/image-20211031160307403.png" alt="image-20211031160307403" style="zoom:45%;" />
 
 <p>若输入python sqlmap.py命令显示如下，则说明系统已经将python细分，此时需要变为python3 sqlmap.py等：</p>
