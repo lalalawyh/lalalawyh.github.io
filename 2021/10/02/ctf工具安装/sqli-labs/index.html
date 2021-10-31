@@ -154,36 +154,36 @@
 <p>下载sqli-labs地址：<a target="_blank" rel="noopener" href="https://github.com/Audi-1/sqli-labs">https://github.com/Audi-1/sqli-labs</a></p>
 <p>下载phpstudy地址：<a target="_blank" rel="noopener" href="https://www.xp.cn/download.html">https://www.xp.cn/download.html</a></p>
 <p>将下载的 SQLi-Labs.zip 解压到phpstudy网站根目录下即WWW文件夹中。</p>
-<img src="../../source/images/sqli-labs/image-20211003014314499.png" alt="image-20211003014314499" style="zoom:50%;" />
+<img src="/source/images/sqli-labs/image-20211003014314499.png" alt="image-20211003014314499" style="zoom:50%;" />
 
 <p>修改 db-creds.inc 里（sqli-labs-master下的sql-connections文件夹中）的代码如下：因为phpstudy默认的mysql数据库地址是“127.0.0.1 或 localhost”，用户名和密码都是”root”。主要是修改’$dbpass‘为root。</p>
-<img src="../../source/images/sqli-labs/image-20211003014504175.png" alt="image-20211003014504175" style="zoom:50%;" />
+<img src="/source/images/sqli-labs/image-20211003014504175.png" alt="image-20211003014504175" style="zoom:50%;" />
 
 <p><strong>旧版</strong>：</p>
 <p>启动phpstudy.exe</p>
-<img src="../../source/images/sqli-labs/image-20211003015239021.png" alt="image-20211003015239021" style="zoom:50%;" />
+<img src="/source/images/sqli-labs/image-20211003015239021.png" alt="image-20211003015239021" style="zoom:50%;" />
 
 <p>在浏览器地址栏输入：<a target="_blank" rel="noopener" href="http://127.0.0.1/sqli-labs/%EF%BC%88%E5%9B%A0%E5%85%B7%E4%BD%93%E6%96%87%E4%BB%B6%E5%92%8C%E8%AE%BE%E7%BD%AE%E8%80%8C%E5%B7%B2%EF%BC%89">http://127.0.0.1/sqli-labs/（因具体文件和设置而已）</a></p>
-<img src="../../source/images/sqli-labs/image-20211003015514897.png" alt="image-20211003015514897" style="zoom:50%;" />
+<img src="/source/images/sqli-labs/image-20211003015514897.png" alt="image-20211003015514897" style="zoom:50%;" />
 
 <p><strong>新版</strong>：</p>
 <p>启动框框中的三个套件：</p>
-<img src="../../source/images/sqli-labs/image-20211003020935371.png" alt="image-20211003020935371" style="zoom:30%;" />
+<img src="/source/images/sqli-labs/image-20211003020935371.png" alt="image-20211003020935371" style="zoom:30%;" />
 
 <p>注意网站的物理路径和Nginx设置的网站目录要正确。</p>
 <p>在浏览器地址栏输入：<a target="_blank" rel="noopener" href="http://localhost/sqli-labs-master/">http://localhost/sqli-labs-master/</a></p>
-<img src="../../source/images/sqli-labs/image-20211003021439234.png" alt="image-20211003021439234" style="zoom:50%;" />
+<img src="/source/images/sqli-labs/image-20211003021439234.png" alt="image-20211003021439234" style="zoom:50%;" />
 
 
 
 <p>点击第一个，如下图所示即安装成功：</p>
-<img src="../../source/images/sqli-labs/image-20211003022438705.png" alt="image-20211003022438705" style="zoom:25%;" />
+<img src="/source/images/sqli-labs/image-20211003022438705.png" alt="image-20211003022438705" style="zoom:25%;" />
 
 <p>如果出现如下图错误，则进入软件管理选择php5版本安装，再进入网站——管理——php版本即可。</p>
-<img src="../../source/images/sqli-labs/image-20211003022738317.png" alt="image-20211003022738317" style="zoom:30%;" />
+<img src="/source/images/sqli-labs/image-20211003022738317.png" alt="image-20211003022738317" style="zoom:30%;" />
 
 <p>然后浏览器打开 “<a target="_blank" rel="noopener" href="http://localhost/sqli-labs-master&quot;%E5%90%91%E4%B8%8B%E7%BF%BB%EF%BC%8C%E5%B0%B1%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%E6%9C%89%E5%BE%88%E5%A4%9A%E4%B8%8D%E5%90%8C%E7%9A%84%E6%B3%A8%E5%85%A5%E7%82%B9%E4%BA%86%EF%BC%8C%E5%88%86%E4%B8%BA%E5%9F%BA%E6%9C%ACSQL%E6%B3%A8%E5%85%A5%E3%80%81%E9%AB%98%E7%BA%A7SQL%E6%B3%A8%E5%85%A5%E3%80%81SQL%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5%E3%80%81%E6%8C%91%E6%88%98%E5%9B%9B%E4%B8%AA%E9%83%A8%E4%BB%BD%EF%BC%8C%E6%80%BB%E5%85%B1%E7%BA%A675%E4%B8%AASQL%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E3%80%82">http://localhost/sqli-labs-master&quot;向下翻，就可以看到有很多不同的注入点了，分为基本SQL注入、高级SQL注入、SQL堆叠注入、挑战四个部份，总共约75个SQL注入漏洞。</a></p>
-<img src="../../source/images/sqli-labs/image-20211003023448081.png" alt="image-20211003023448081" style="zoom:30%;" />
+<img src="/source/images/sqli-labs/image-20211003023448081.png" alt="image-20211003023448081" style="zoom:30%;" />
 
  
       <!-- reward -->
