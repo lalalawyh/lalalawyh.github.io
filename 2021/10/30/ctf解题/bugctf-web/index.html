@@ -97,7 +97,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">139</span>
+            <span class="post-count">324</span>
         </span>
     </span>
 
@@ -138,6 +138,32 @@
 <img src="/source/images/bugctf-web/image-20211030032956369.png" alt="image-20211030032956369" style="zoom:33%;" />
 
 <h3 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h3><p>题目：</p>
+<img src="/source/images/bugctf-web/image-20211103003640121.png" alt="image-20211103003640121" style="zoom:70%;" />
+
+<p>解题：观察php代码，说明只要通过GET传参方式，变量what的值为flag即可，在网址后面接上/?what=flag：</p>
+<img src="/source/images/bugctf-web/image-20211103004042819.png" alt="image-20211103004042819" style="zoom:70%;" />
+
+<h3 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h3><p>题目：</p>
+<img src="/source/images/bugctf-web/image-20211103005411462.png" alt="image-20211103005411462" style="zoom:70%;" />
+
+<p>解题：观察题目发现是利用post方式进行传参，变量what的值为flag即可：</p>
+<p>方法一：利用浏览器的插件进行传递数据：</p>
+<img src="/source/images/bugctf-web/image-20211103005350171.png" alt="image-20211103005350171" style="zoom:50%;" />
+
+<p>方法二：利用Python的requests库来构造的HTTP连接：</p>
+<img src="/source/images/bugctf-web/image-20211103010755180.png" alt="image-20211103010755180" style="zoom:50%;" />
+
+<h3 id="矛盾"><a href="#矛盾" class="headerlink" title="矛盾"></a>矛盾</h3><p>题目：</p>
+<pre><code>$num=$_GET[&#39;num&#39;];//GET方式得到参数num值
+if(!is_numeric($num))//判断num是否为数字，如果不是则输出num的值
+&#123; echo $num;
+if($num==1)//如果num==1则输出FLAG
+echo &#39;flag&#123;**********&#125;&#39;; &#125;
+</code></pre>
+<p>解题：矛盾在于num既要不是数字又要是1，那么令num=1xx即可绕过验证得到flag：</p>
+<img src="/source/images/bugctf-web/image-20211103011713241.png" alt="image-20211103011713241" style="zoom:50%;" />
+
+<h3 id="alert"><a href="#alert" class="headerlink" title="alert"></a>alert</h3><p>题目：</p>
 <p>解题：</p>
  
       <!-- reward -->
