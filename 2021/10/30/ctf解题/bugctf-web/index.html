@@ -97,7 +97,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">324</span>
+            <span class="post-count">572</span>
         </span>
     </span>
 
@@ -106,7 +106,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">2 min</span>
         </span>
     </span>
 </div>
@@ -164,6 +164,44 @@ echo &#39;flag&#123;**********&#125;&#39;; &#125;
 <img src="/source/images/bugctf-web/image-20211103011713241.png" alt="image-20211103011713241" style="zoom:50%;" />
 
 <h3 id="alert"><a href="#alert" class="headerlink" title="alert"></a>alert</h3><p>题目：</p>
+<img src="/source/images/bugctf-web/image-20211104003827022.png" alt="image-20211104003827022" style="zoom:50%;" />
+
+<img src="/source/images/bugctf-web/image-20211104003802380.png" alt="image-20211104003802380" style="zoom:50%;" />
+
+<p>解题：</p>
+<p>观察页面源代码，发现中间是一堆的javascript代码，利用了alert()函数跳出弹窗，末尾存在一些以&amp;#开头;结尾的东西，是html实体：</p>
+<p><img src="/source/images/bugctf-web/image-20211104004848914.png" alt="image-20211104004848914"></p>
+<p>方法一：创建一个文本将html实体写入其中：</p>
+<img src="/source/images/bugctf-web/image-20211104005429115.png" alt="image-20211104005429115" style="zoom:50%;" />
+
+<p>将文件后缀名改为html后进行访问即可得到flag：</p>
+<img src="/source/images/bugctf-web/image-20211104005615720.png" alt="image-20211104005615720" style="zoom:50%;" />
+
+<p>方法二：将html实体即unicode编码解码为ASCII即可得到flag：</p>
+<img src="/source/images/bugctf-web/image-20211104010329443.png" alt="image-20211104010329443" style="zoom50%;" />
+
+<p>补充知识：</p>
+<p>猜测&amp;#后面的数字应该是Unicode编码值；在网页中以&amp;#开头的是HTML实体</p>
+<h3 id="你必须让他停下"><a href="#你必须让他停下" class="headerlink" title="你必须让他停下"></a>你必须让他停下</h3><p>题目：</p>
+<img src="/source/images/bugctf-web/image-20211104011954439.png" alt="image-20211104011954439" style="zoom:50%;" />
+
+<p>解题：</p>
+<p>方法一：禁用js（新版火狐浏览器）</p>
+<p>在浏览器地址栏输入about:config</p>
+<img src="/source/images/bugctf-web/image-20211104013037393.png" alt="image-20211104013037393" style="zoom:50%;" />
+
+<p>再输入javascript.enabled将true改为false即为禁用</p>
+<img src="/source/images/bugctf-web/image-20211104013227058.png" alt="image-20211104013227058" style="zoom:37%;" />
+
+<p>回到题目发现图片停止闪烁，此时观察页面源代码即可发现flag：</p>
+<img src="/source/images/bugctf-web/image-20211104013337194.png" alt="image-20211104013337194" style="zoom:35%;" />
+
+<p>方法二：bp抓包</p>
+<p>用bp进行抓包然后选择send to repeater再多go几次即可得到flag：</p>
+<img src="/source/images/bugctf-web/image-20211104014218408.png" alt="image-20211104014218408" style="zoom:30%;" />
+
+<p>补充知识：（js是什么？为何要禁用）</p>
+<h3 id="Simple-SSTI-1"><a href="#Simple-SSTI-1" class="headerlink" title="Simple_SSTI_1"></a>Simple_SSTI_1</h3><p>题目：</p>
 <p>解题：</p>
  
       <!-- reward -->
