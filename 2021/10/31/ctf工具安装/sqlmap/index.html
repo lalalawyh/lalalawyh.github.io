@@ -97,7 +97,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">537</span>
+            <span class="post-count">771</span>
         </span>
     </span>
 
@@ -106,7 +106,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">2 min</span>
         </span>
     </span>
 </div>
@@ -133,18 +133,26 @@
 <p>若输入python sqlmap.py命令显示如下，则说明系统已经将python细分，此时需要变为python3 sqlmap.py等：</p>
 <img src="/source/images/sqlmap/image-20211031160809219.png" alt="image-20211031160809219" style="zoom:50%;" />
 
-
-
-
-
-
-
-
-
-
-
-
-
+<h4 id="命令补充"><a href="#命令补充" class="headerlink" title="命令补充"></a>命令补充</h4><ol>
+<li>sql-labs的less-8中爆破数据库的命令：?id=1 –technique B –dbms mysql –dbs –batch –threads 10</li>
+</ol>
+<p>分析：</p>
+<ul>
+<li>–technique=TECH SQL注入技术选择 (默认 “BEUSTQ”) </li>
+</ul>
+<p>此参数后跟表示检测技术的大写字母，用于指定检测注入时所用技术</p>
+<p>默认情况下Sqlmap会使用自己支持的全部技术进行检测。</p>
+<p>B：Boolean-based blind（布尔型注入）</p>
+<p>E：Error-based（报错型注入）</p>
+<p>U：Union query-based（可联合查询注入）</p>
+<p>S：Stacked queries（可多语句查询注入）</p>
+<p>T：Time-based blind（基于时间延迟注入）</p>
+<p>Q：Inline queries（嵌套查询注入）</p>
+<p>可以用“–technique ES”来指定使用两种检测技术。“–technique BEUSTQ”与默认情况等效。</p>
+<ul>
+<li> –dbms=DBMS 将后端DBMS强制到此值。不仅可以指定数据库类型，还可以指定数据库版本。</li>
+<li>–batch 不需要用户输入，将会使用sqlmap提示的默认值一直运行下去。</li>
+</ul>
  
       <!-- reward -->
       
