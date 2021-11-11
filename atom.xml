@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-11-08T11:06:31.066Z</updated>
+  <updated>2021-11-11T12:41:37.955Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>class-1</title>
+    <link href="http://example.com/2021/11/11/ctf%E5%91%A8%E8%AF%BE/class-1/"/>
+    <id>http://example.com/2021/11/11/ctf%E5%91%A8%E8%AF%BE/class-1/</id>
+    <published>2021-11-11T07:55:59.000Z</published>
+    <updated>2021-11-11T12:41:37.955Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;sql联合查询-无列名注入&quot;&gt;&lt;a href=&quot;#sql联合查询-无列名注入&quot; class=&quot;headerlink&quot; title=&quot;sql联合查询+无列名注入&quot;&gt;&lt;/a&gt;sql联合查询+无列名注入&lt;/h2&gt;&lt;h4 id=&quot;解题思路&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="class周课" scheme="http://example.com/categories/class%E5%91%A8%E8%AF%BE/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Less-8</title>
@@ -443,29 +466,6 @@
         
         
     <summary type="html">&lt;h2 id=&quot;GitHack安装与使用&quot;&gt;&lt;a href=&quot;#GitHack安装与使用&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="工具安装指南" scheme="http://example.com/categories/%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>dirsearch</title>
-    <link href="http://example.com/2021/09/25/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dirsearch/"/>
-    <id>http://example.com/2021/09/25/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dirsearch/</id>
-    <published>2021-09-24T17:54:01.000Z</published>
-    <updated>2021-10-06T10:58:59.948Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;dirsearch安装与使用&quot;&gt;&lt;a href=&quot;#dirsearch安装与使用&quot; class=&quot;headerlink&quot; title=&quot;dirsearch安装与使用&quot;&gt;&lt;/a&gt;dirsearch安装与使用&lt;/h2&gt;&lt;h4 id=&quot;简介&quot;&gt;&lt;a</summary>
         
       
     

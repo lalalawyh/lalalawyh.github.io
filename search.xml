@@ -3393,4 +3393,120 @@ echo &#39;flag&#123;**********&#125;&#39;; &#125;
         <category>sqli-labs通关指南</category>
       </categories>
   </entry>
+  <entry>
+    <title>class-1</title>
+    <url>/2021/11/11/ctf%E5%91%A8%E8%AF%BE/class-1/</url>
+    <content><![CDATA[<h2 id="sql联合查询-无列名注入"><a href="#sql联合查询-无列名注入" class="headerlink" title="sql联合查询+无列名注入"></a>sql联合查询+无列名注入</h2><h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>联合查询注入：</p>
+<p>判断注入点——&gt;判断是整形还是字符型——&gt;判断查询列数——&gt;判断显位</p>
+<p>无列名注入：</p>
+<p>重点在于构造虚拟表便于查询</p>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>Information.schema是mysql版本高于5.0才会存在的一个库，可用用来查询库名、表名、列名、用户名、用户权限等等，几乎包括了所有操作。一般用Tables表和Columns表：</p>
+<img src="/source/images/class-1/image-20211111202950975.png" alt="image-20211111202950975" style="zoom:33%;" />
+
+<h4 id="常见注入语句"><a href="#常见注入语句" class="headerlink" title="常见注入语句"></a>常见注入语句</h4><ol>
+<li><p>查询库名</p>
+<p>-1’ union select 1,2,database();</p>
+</li>
+<li><p>查询表名</p>
+<p>-1’ union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=database();–+</p>
+</li>
+<li><p>查询字段名</p>
+<p>-1’ union select 1,2,group_concat(column_name) from information_schema.columns where table_name=表名;–+</p>
+</li>
+<li><p>查询数据</p>
+<p>-1’ union select 1,2,group_concat(一个或多个字段名，逗号隔开) from 表名;–+</p>
+</li>
+</ol>
+<h4 id="练手"><a href="#练手" class="headerlink" title="练手"></a>练手</h4><p><strong>nss的easy-sql</strong>（联合注入查询）</p>
+<p>题目：</p>
+<img src="/source/images/class-1/image-20211111163328835.png" alt="image-20211111163328835" style="zoom:23%;" />
+
+<p>根据提示可知参数是wllm：</p>
+<img src="/source/images/class-1/image-20211111164853729.png" alt="image-20211111164853729" style="zoom:53%;" />
+
+<p>利用hackbar进行注入查询：</p>
+<img src="/source/images/class-1/image-20211111163430060.png" alt="image-20211111163430060" style="zoom:53%;" />
+
+<p>闭合方式：</p>
+<img src="/source/images/class-1/image-20211111163459655.png" alt="image-20211111163459655" style="zoom:33%;" />
+
+<p>爆库名:</p>
+<img src="/source/images/class-1/image-20211111163537895.png" alt="image-20211111163537895" style="zoom:33%;" />
+
+<p>爆表名：</p>
+<img src="/source/images/class-1/image-20211111163736419.png" alt="image-20211111163736419" style="zoom:33%;" />
+
+<p>爆字段：</p>
+<img src="/source/images/class-1/image-20211111163903781.png" alt="image-20211111163903781" style="zoom:33%;" />
+
+<p>爆数据得到flag：</p>
+<img src="/source/images/class-1/image-20211111162905089.png" alt="image-20211111162905089" style="zoom:33%;" />
+
+<p><strong>buu的[SWPU2019]Web1</strong>（无列名注入）</p>
+<p>题目：</p>
+<img src="/source/images/class-1/image-20211111172341785.png" alt="image-20211111172341785" style="zoom:53%;" />
+
+<p>解题：</p>
+<p>点击立即注册后进行登录：</p>
+<img src="/source/images/class-1/image-20211111172504266.png" alt="image-20211111172504266" style="zoom:53%;" />
+
+<p>点击进入申请发布广告：</p>
+<img src="/source/images/class-1/image-20211111172613590.png" alt="image-20211111172613590" style="zoom:50%;" />
+
+
+
+<h4 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h4><p><strong>buu的[极客大挑战 2019]LoveSQL</strong></p>
+<p>题目：</p>
+<img src="/source/images/class-1/image-20211111165526197.png" alt="image-20211111165526197" style="zoom:33%;" />
+
+<p>方法一：联合注入查询</p>
+<p>输入用户名和密码尝试登录：</p>
+<img src="/source/images/class-1/image-20211111190239475.png" alt="image-20211111190239475" style="zoom:33%;" />
+
+<p>可使用万能密码’or’1’=’1进行进行登录：（这一步没必要）</p>
+<img src="/source/images/class-1/image-20211111192143412.png" alt="image-20211111192143412" style="zoom:33%;" />
+
+<p>接下来进行查询注入：<br>！注：有两个需要进行判断：1.闭合类型；2.有效注释符</p>
+<ol>
+<li><p>闭合类型</p>
+<p>以下为未登录成功，而非数据库报错，因而无影响：</p>
+<img src="/source/images/class-1/image-20211111195501131.png" alt="image-20211111195501131" style="zoom:33%;" />
+
+<p>加上单引号看回显可以判断闭合类型：本题为单引号</p>
+<img src="/source/images/class-1/image-20211111195611937.png" alt="image-20211111195611937" style="zoom:33%;" /></li>
+<li><p>有效注释符</p>
+<p>常见注释符：–+、#、%23……不知道的情况下挨个试一遍</p>
+<p>由下图可知：本题注释符为%23</p>
+<img src="/source/images/class-1/image-20211111195826566.png" alt="image-20211111195826566" style="zoom:33%;" />
+
+<img src="/source/images/class-1/image-20211111195801918.png" alt="image-20211111195801918" style="zoom:33%;" />
+
+<p>可以简单理解为“NO,Wrong username password!!!”为正确回显</p>
+</li>
+</ol>
+<p>判断字段数，由下图可知字段数为3：</p>
+<img src="/source/images/class-1/image-20211111200141518.png" alt="image-20211111200141518" style="zoom:33%;" />
+
+<img src="/source/images/class-1/image-20211111200258053.png" alt="image-20211111200258053" style="zoom:73%;" />
+
+<p>爆库名check.php?username=1&amp;password=1’ union select 1,2,database() %23：</p>
+<img src="/source/images/class-1/image-20211111200426788.png" alt="image-20211111200426788" style="zoom:33%;" />
+
+<p>爆表名，发现两个表geekuser和l0ve1ysq1：</p>
+<img src="/source/images/class-1/image-20211111200731278.png" alt="image-20211111200731278" style="zoom:33%;" />
+
+<p>分别爆字段，结果均如下图，猜测flag在l0ve1ysq1表中：</p>
+<img src="/source/images/class-1/image-20211111201133907.png" alt="image-20211111201133907" style="zoom:33%;" />
+
+<p>爆password数据即可得到flag：</p>
+<img src="/source/images/class-1/image-20211111202721525.png" alt="image-20211111202721525" style="zoom:33%;" />
+
+<img src="/source/images/class-1/image-20211111202646693.png" alt="image-20211111202646693" style="zoom:70%;" />
+
+<p>方法二：无列名注入</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3>]]></content>
+      <categories>
+        <category>class周课</category>
+      </categories>
+  </entry>
 </search>
