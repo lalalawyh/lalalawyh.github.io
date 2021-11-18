@@ -197,7 +197,7 @@
 <p>输入-1’ union select 1,2,3进行测试 发现问题：</p>
 <img src="/source/images/class-1/image-20211111221843821.png" alt="image-20211111221843821" style="zoom:67%;" />
 
-<p>测试敏感词汇 得出注释符 空格和or都被注释掉了：</p>
+<p>测试敏感词汇 得出注释符 空格和or都被过滤掉了：</p>
 <p>其中输入注释符和or会显示标题含有敏感词汇，在广告名处空格会自动删除</p>
 <p>空格用/**/绕过，order by改为group by，<code>&#39;/**/group/**/by/**/22,&#39;</code>，注释符则替换为在SQL语句后加一个单引号闭合后面的语句<code>limit 0,1;&#39;</code>或者可以采用闭合的方式代替，如group by  1,’2。（理解）</p>
 <p>输入<code>-1&#39;/**/group/**/by/**/22,&#39;</code>测试字段数发现未报错，可以简单理解为此页面为正确回显：</p>
@@ -353,6 +353,15 @@
 
    
   <nav class="article-nav">
+    
+      <a href="/2021/11/18/ctf%E5%91%A8%E8%AF%BE/class-2/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            class-2
+          
+        </div>
+      </a>
     
     
       <a href="/2021/11/08/sqli-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Less-8/" class="article-nav-link">

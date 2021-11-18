@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-11-11T17:18:24.487Z</updated>
+  <updated>2021-11-18T12:45:20.660Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>class-2</title>
+    <link href="http://example.com/2021/11/18/ctf%E5%91%A8%E8%AF%BE/class-2/"/>
+    <id>http://example.com/2021/11/18/ctf%E5%91%A8%E8%AF%BE/class-2/</id>
+    <published>2021-11-18T11:03:01.000Z</published>
+    <updated>2021-11-18T12:45:20.660Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;sql盲注&quot;&gt;&lt;a href=&quot;#sql盲注&quot; class=&quot;headerlink&quot; title=&quot;sql盲注&quot;&gt;&lt;/a&gt;sql盲注&lt;/h2&gt;&lt;h4 id=&quot;关键函数&quot;&gt;&lt;a href=&quot;#关键函数&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="class周课" scheme="http://example.com/categories/class%E5%91%A8%E8%AF%BE/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>class-1</title>
     <link href="http://example.com/2021/11/11/ctf%E5%91%A8%E8%AF%BE/class-1/"/>
     <id>http://example.com/2021/11/11/ctf%E5%91%A8%E8%AF%BE/class-1/</id>
     <published>2021-11-11T07:55:59.000Z</published>
-    <updated>2021-11-11T17:18:24.487Z</updated>
+    <updated>2021-11-14T13:30:36.169Z</updated>
     
     
       
@@ -186,7 +209,7 @@
     <link href="http://example.com/2021/10/19/sqli-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Less-5~Less-6/"/>
     <id>http://example.com/2021/10/19/sqli-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Less-5~Less-6/</id>
     <published>2021-10-18T16:59:33.000Z</published>
-    <updated>2021-11-04T12:14:49.410Z</updated>
+    <updated>2021-11-14T13:37:42.365Z</updated>
     
     
       
@@ -210,7 +233,7 @@
     <link href="http://example.com/2021/10/06/sqli-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Less-1~Less-4/"/>
     <id>http://example.com/2021/10/06/sqli-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Less-1~Less-4/</id>
     <published>2021-10-06T06:02:39.000Z</published>
-    <updated>2021-11-04T13:32:24.162Z</updated>
+    <updated>2021-11-14T13:37:06.710Z</updated>
     
     
       
@@ -442,29 +465,6 @@
         
         
     <summary type="html">&lt;h2 id=&quot;GitHack安装与使用&quot;&gt;&lt;a href=&quot;#GitHack安装与使用&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="工具安装指南" scheme="http://example.com/categories/%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>dirsearch</title>
-    <link href="http://example.com/2021/09/25/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dirsearch/"/>
-    <id>http://example.com/2021/09/25/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/dirsearch/</id>
-    <published>2021-09-24T17:54:01.000Z</published>
-    <updated>2021-10-06T10:58:59.948Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;dirsearch安装与使用&quot;&gt;&lt;a href=&quot;#dirsearch安装与使用&quot; class=&quot;headerlink&quot; title=&quot;dirsearch安装与使用&quot;&gt;&lt;/a&gt;dirsearch安装与使用&lt;/h2&gt;&lt;h4 id=&quot;简介&quot;&gt;&lt;a</summary>
         
       
     
