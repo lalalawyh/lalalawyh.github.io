@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>CTFHUB(WEB)-XSS |  云芽的博客</title>
+      <title>工具安装指南 |  云芽的博客</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -65,261 +65,63 @@
       
     <main class="content on">
       <section class="outer">
-  <article
-  id="post-ctf解题/CTFHUB-WEB-XSS"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
+  
+  
+  <article class="articles">
     
-    <header class="article-header">
+    
+    <h1 class="page-type-title">工具安装指南</h1>
+    
+    
+  
+  
+  
+  
+  
+  
+  <div class="archives-wrap">
+    <div class="archive-year-wrap">
+      <a href="/archives/2021" class="archive-year">2021</a>
+    </div>
+    <div class="archives">
+      
+      <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2021/07/10/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/VMware/" class="archive-article-date">
+  <time datetime="2021-07-10T08:33:23.000Z" itemprop="datePublished">07/10</time>
+</a>
        
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  CTFHUB(WEB)-XSS
-</h1>
+<h2 itemprop="name">
+  <a class="archive-article-title" href="/2021/07/10/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/VMware/"
+    >VMware</a> 
+</h2>
  
 
-      
     </header>
-     
-    <div class="article-meta">
-      <a href="/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-XSS/" class="article-date">
-  <time datetime="2021-10-03T16:53:45.000Z" itemprop="datePublished">2021-10-04</time>
-</a> 
+    
+      
   <div class="article-category">
-    <a class="article-category-link" href="/categories/ctf%E8%A7%A3%E9%A2%98/">ctf解题</a>
-  </div>
-  
-<div class="word_count">
-    <span class="post-time">
-        <span class="post-meta-item-icon">
-            <i class="ri-quill-pen-line"></i>
-            <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">948</span>
-        </span>
-    </span>
-
-    <span class="post-time">
-        &nbsp; | &nbsp;
-        <span class="post-meta-item-icon">
-            <i class="ri-book-open-line"></i>
-            <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">3 min</span>
-        </span>
-    </span>
-</div>
- 
-    </div>
-      
-    <div class="tocbot"></div>
-
-
-
-
-  
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="WEB工具配置"><a href="#WEB工具配置" class="headerlink" title="WEB工具配置"></a>WEB工具配置</h3><h4 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h4><h5 id="反射型"><a href="#反射型" class="headerlink" title="反射型"></a>反射型</h5><p>题目：</p>
-<img src="/source/images/CTFHUB-WEB-XSS/image-20211006003106095.png" alt="image-20211006003106095" style="zoom:30%;" />
-
-<span id="more"></span>
-
-<p>解题：</p>
-<p>发现第一个输入框与下面Hello后的内容相同，猜测可以通过该输入，改变页面内容。</p>
-<img src="/source/images/CTFHUB-WEB-XSS/image-20211006003153225.png" alt="image-20211006003153225" style="zoom:30%;" />
-
-<p>利用输入<code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code>进行测试：</p>
-<img src="/images/CTFHUB-WEB-XSS/image-20211004004910837.png" alt="image-20211004004910837" style="zoom:30%;" />
-
-<p>默认使用get方式发送Payload，成功弹窗:</p>
-<img src="/images/CTFHUB-WEB-XSS/image-20211004004810311.png" alt="image-20211004004810311" style="zoom:50%;" />
-
-<p>经过测试，第二个输入框输入URL时，返回successfully，猜测在后台进行访问。</p>
-<img src="/source/images/CTFHUB-WEB-XSS/image-20211006003641544.png" alt="image-20211006003641544" style="zoom:30%;" />
-
-<p>在xss测试平台上注册账号根据提示创建项目：<a target="_blank" rel="noopener" href="https://xss8.cc/login/%E6%88%96http://xsscom.com//index.php?do=login">https://xss8.cc/login/或http://xsscom.com//index.php?do=login</a></p>
-<img src="/source/images/CTFHUB-WEB-XSS/image-20211006004444569.png" alt="image-20211006004444569" style="zoom:30%;" />
-
-<p>把XSS测试平台给出的代码复制到第一个输入框中进行注入</p>
-<img src="/images/CTFHUB-WEB-XSS/image-20211004004113722.png" alt="image-20211004004113722" style="zoom:33%;" />
-
-<p>submit后在第二个框中访问第一个框注入XSS脚本后的网址</p>
-<img src="/images/CTFHUB-WEB-XSS/image-20211004004418547.png" alt="image-20211004004418547" style="zoom:33%;" />
-
-<p>点击send1后在XSS测试平台查看注入结果，即可得到flag。</p>
-<img src="/source/images/CTFHUB-WEB-XSS/image-20211006004336944.png" alt="image-20211006004336944" style="zoom:30%;" />
-
-<p><strong>总结</strong>：<br>xss一般的用途是获取他人的cookie。cookie相当于每个人的登录凭证，如果得到了别人的cookie就可以不用输账号密码，直接登录。所以flag一定不可能藏在自己的cookie里，自己的cookie能直接在浏览器的控制台里知道。题目应该是让我们获得别人的cookie，但这是ctf的题目，不是公共的服务，没有其他用户，所以ctf模拟了一个机器人。我们的目标就是获得这个机器人的cookie，然后”盗它的号”，所以flag也就藏在cookie里了。第二个文本框就是模拟别人点击这个包含xss的链接的情形。（简记：注入xss脚本在他人访问时获取cookie）</p>
-<p><strong>补充知识</strong>：</p>
-<p>XSS攻击（跨站脚本攻击）：</p>
-<p>通常指的是通过利用<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BD%91%E9%A1%B5/99347">网页</a>开发时留下的漏洞，通过巧妙的方法注入恶意指令代码到网页，使用户加载并执行攻击者</p>
-<p>恶意制造的网页程序。这些恶意网页程序通常是JavaScript，但实际上也可以包括Java、 VBScript、ActiveX、 </p>
-<p>Flash 或者甚至是普通的HTML。攻击成功后，攻击者可能得到包括但不限于更高的权限（如执行一些操作）、私</p>
-<p>密网页内容、会话和cookie等各种内容。</p>
-<p>从攻击代码的工作方式可以分为三个类型：</p>
-<p>（1）持久型跨站：最直接的危害类型，跨站代码存储在服务器（数据库）。</p>
-<p>（2）非持久型跨站：反射型跨站脚本漏洞，最普遍的类型。用户访问服务器-跨站链接-返回跨站代码。</p>
-<p>（3）DOM跨站（DOM XSS）：DOM（document object model文档对象模型），客户端脚本处理逻辑导致的安全问题。</p>
-<p>基于DOM的XSS漏洞是指受害者端的网页脚本在修改本地页面DOM环境时未进行合理的处置，而使得攻击脚本被执行。在整个攻击过程中，服务器响应的页面并没有发生变化，引起客户端脚本执行结果差异的原因是对本地DOM的恶意篡改利用。</p>
-<p>常用的XSS攻击手段和目的有：</p>
-<p>1、盗用<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/cookie/1119">cookie</a>，获取敏感信息。</p>
-<p>2、利用植入Flash，通过crossdomain权限设置进一步获取更高权限；或者利用<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Java/85979">Java</a>等得到类似的操作。</p>
-<p>3、利用<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/iframe/4446518">iframe</a>、frame、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/XMLHttpRequest/6788735">XMLHttpRequest</a>或上述Flash等方式，以（被攻击）用户的身份执行一些管理动作，或执行一些一般的如发微博、加好友、发私信等操作。</p>
-<p>4、利用可被攻击的域受到其他域信任的特点，以受信任来源的身份请求一些平时不允许的操作，如进行不当的投票活动。</p>
-<p>5、在访问量极大的一些页面上的XSS可以攻击一些小型网站，实现DDoS攻击的效果。</p>
- 
-      <!-- reward -->
-      
-      <div id="reword-out">
-        <div id="reward-btn">
-          Donate
-        </div>
-      </div>
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <div class="declare">
-      <ul class="post-copyright">
-        <li>
-          <i class="ri-copyright-line"></i>
-          <strong>Copyright： </strong>
-          
-          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
-          
-        </li>
-      </ul>
-    </div>
-    
-    <footer class="article-footer">
-       
-<div class="share-btn">
-      <span class="share-sns share-outer">
-        <i class="ri-share-forward-line"></i>
-        分享
-      </span>
-      <div class="share-wrap">
-        <i class="arrow"></i>
-        <div class="share-icons">
-          
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="ri-weibo-fill"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="ri-wechat-fill"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="ri-qq-fill"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="ri-douban-line"></i>
-          </a>
-          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a> -->
-          
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="ri-facebook-circle-fill"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="ri-twitter-fill"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="ri-google-fill"></i>
-          </a>
-        </div>
-      </div>
-</div>
-
-<div class="wx-share-modal">
-    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-XSS/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div id="share-mask"></div>  
-    </footer>
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/">工具安装指南</a>
   </div>
 
-   
-  <nav class="article-nav">
-    
-      <a href="/2021/10/06/sqli-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Less-1~Less-4/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Less-1~Less-4
-          
-        </div>
-      </a>
     
     
-      <a href="/2021/10/04/ctf%E8%A7%A3%E9%A2%98/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/" class="article-nav-link">
-        <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">CTFHUB(WEB)-SQL注入</div>
-      </a>
-    
-  </nav>
-
-   
-<!-- valine评论 -->
-<div id="vcomments-box">
-  <div id="vcomments"></div>
-</div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
-<script>
-  new Valine({
-    el: "#vcomments",
-    app_id: "",
-    app_key: "",
-    path: window.location.pathname,
-    avatar: "monsterid",
-    placeholder: "给我的文章加点评论吧~",
-    recordIP: true,
-  });
-  const infoEle = document.querySelector("#vcomments .info");
-  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
-    infoEle.childNodes.forEach(function (item) {
-      item.parentNode.removeChild(item);
-    });
-  }
-</script>
-<style>
-  #vcomments-box {
-    padding: 5px 30px;
-  }
-
-  @media screen and (max-width: 800px) {
-    #vcomments-box {
-      padding: 5px 0px;
-    }
-  }
-
-  #vcomments-box #vcomments {
-    background-color: #fff;
-  }
-
-  .v .vlist .vcard .vh {
-    padding-right: 20px;
-  }
-
-  .v .vlist .vcard {
-    padding-left: 10px;
-  }
-</style>
-
- 
-   
-     
+  </div>
 </article>
+      
+      
+    </div>
+  </div>
+  
+  
 
+  
+  <nav class="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/categories/%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/">上一页</a><a class="page-number" href="/categories/%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/">1</a><span class="page-number current">2</span>
+  </nav>
+  
 </section>
       <footer class="footer">
   <div class="outer">
@@ -448,22 +250,6 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
- 
-<script src="/js/tocbot.min.js"></script>
-
-<script>
-  tocbot.init({
-    tocSelector: ".tocbot",
-    contentSelector: ".article-entry",
-    headingSelector: "h1, h2, h3, h4, h5, h6",
-    hasInnerContainers: true,
-    scrollSmooth: true,
-    scrollContainer: "main",
-    positionFixedSelector: ".tocbot",
-    positionFixedClass: "is-position-fixed",
-    fixedSidebarOffset: "auto",
-  });
-</script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link
