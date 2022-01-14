@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/2022/01/14/gok2022%E5%AF%92/class-1/</loc>
+    
+    <lastmod>2022-01-14</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://example.com/2021/10/04/ctfhub%C2%B7web%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/XSS/</loc>
     
     <lastmod>2022-01-14</lastmod>
@@ -24,13 +31,6 @@
   
   <url>
     <loc>http://example.com/2021/10/04/ctfhub%C2%B7web%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/</loc>
-    
-    <lastmod>2022-01-14</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://example.com/2022/01/14/gok2022%E5%AF%92/class-1/</loc>
     
     <lastmod>2022-01-14</lastmod>
     

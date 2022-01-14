@@ -97,7 +97,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">0</span>
+            <span class="post-count">1.1k</span>
         </span>
     </span>
 
@@ -106,20 +106,40 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">4 min</span>
         </span>
     </span>
 </div>
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-   
+  <h2 id="class-1"><a href="#class-1" class="headerlink" title="class-1"></a>class-1</h2><h3 id="Linux常见发行版本"><a href="#Linux常见发行版本" class="headerlink" title="Linux常见发行版本"></a>Linux常见发行版本</h3><img src="/source/images/class-1/image-20220114215920195.png" alt="image-20220114215920195" style="zoom:25%;" />
+
+<h3 id="VMware虚拟机网卡类型"><a href="#VMware虚拟机网卡类型" class="headerlink" title="VMware虚拟机网卡类型"></a>VMware虚拟机网卡类型</h3><ol>
+<li>VMnet 0 （桥接模式）<pre><code>   将主机网卡与虚拟机虚拟的网卡利用虚拟网桥进行通信。在桥接的作用下，类似于把物理主机虚拟为一个交换机，所有桥接设置的虛拟机连接到这个交换机的一个接口上，物理主机也同样插在这个交换机当中，所以所有桥接下的网卡与网卡都是交换模式的，相互可以访问而不干扰。
+</code></pre>
+</li>
+<li>VMnet 1 （仅主机模式）<br>用于建立一个与世隔绝的网络环境所用到的，其中VMnet 1是一个虛拟的交换机，交换机的一个端口连接到你的主机上，另外一个端口连接到虚拟的DHCP服务器上（实际上是VMware的一个组件），另外剩下的端口就是连虚拟机了。</li>
+<li>VMnet 8 （NAT模式）<br>最简单的组网方式，从主机的“VMware Virtual Ethernet Adapter for VMnet8”虚拟网卡出来，连接到VMnet8虛拟交换机，虚拟交换机的另外的口连接到虚拟的NAT服务器（这也是一个VMware组件），还有一个口连接到虚拟DHCP服务器，其他的口连虚拟机。</li>
+</ol>
+<h3 id="kali"><a href="#kali" class="headerlink" title="kali"></a>kali</h3><h4 id="kali的基本介绍"><a href="#kali的基本介绍" class="headerlink" title="kali的基本介绍"></a>kali的基本介绍</h4><p>下载地址：<a target="_blank" rel="noopener" href="https://www.kali.org/">https://www.kali.org/</a></p>
+<p>Kali Linux是基于Debian的Linux发行版，设计用于数字取证操作系统。每一季度更新一次。由Offensive Security Ltd维护和资助。Kali Linux预装 了许多渗透测试软件，包括nmap、Wireshark 、John the Ripper，以及Aircrack -ng.用户可通过硬盘、live CD或live USB运行Kali Linux。Kali Linux既有32位和64位的镜像。</p>
+<h4 id="基本守则"><a href="#基本守则" class="headerlink" title="基本守则"></a>基本守则</h4><p>Linux系统大小写敏感。<br>文件名前面带”.”是隐藏文件。<br>Linux 系统下的“/”相当于Windows 下的“\”。<br>配置文件中，#开头代表是注释行，程序不执行该行。</p>
+<h4 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h4><p>pwd   //显示当前所在的目录位置<br>Is【参数】【对象】   //显示当前目录或指定目录中的文件<br>●-a   //显示所有文件(包含隐藏文件)<br>●-|   //显示文件与目录的详细信息<br>cd<br>●cd dir   //进入一个目录<br>●cd..   //进入当前目录的上一-级目录.<br>●cd-   //返回进入此目录之前所在目录<br>●cd   //返回桌面</p>
+<p>touch file/vi file   //创建文件<br>●Touch是立即生成，vi必须要保存才能生成相应的文件<br>mkdir目录   //创建目录<br>rmdir目录   //删除目录，但只能删除空目录<br>rm [参数]   //删除文件<br>●-i   //确认信息，删除文件或者目录前会进行一-次确认<br>●-r   //递归，删除目录时必须使用<br>●-f   //强制删除，不提示和确认</p>
+<p>cp [参数] sou dst   //复制文件（默认）或目录（需要加参数）<br>●-p   //保留原来的时间戳、拥有者信息等<br>●-r   //复制目录<br>●-a   //等同于同时使用-rp<br>mv [参数] file dst移动、重命名文件或目录<br>●dst仅是文件名，重命名<br>●dst是目录和文件名，但目录不是当前目录，移动并重命名<br>●dst仅是目录，此时是移动文件，此时可以移动多个文件<br>find [path] [expr]在路径path中查找符合表达式expr的文件。<br>●-name goktech   //文件名符合goktech的文件（加上-i忽略大小写，如find/-i name goktech）</p>
+<p>数据导出<br>●&gt;   导出（覆盖）echo ‘1’ &gt; goktech.txt<br>●&gt;&gt;   导出（追加） echo ‘2’ &gt;&gt; goktech.txt<br>cat显示文件的所有内容<br>●-A显示换行字符；<br>●-η显示行号；<br>●-b：和-n相似，但对空白行不编号；</p>
+<h4 id="文本编辑vi-vim"><a href="#文本编辑vi-vim" class="headerlink" title="文本编辑vi/vim"></a>文本编辑vi/vim</h4><p>三种模式<br>●命令模式：可移动光标位置，可修改、删除、复制、粘贴、搜索关键字。<br>●插入模式：输入新的字符，点esc键回到命令模式。<br>●扩展模式：命令模式下输入“:”进入扩展模式，保存、退出、搜索等。<br>命令模式进入插入模式<br>●a光标会跳到当前后一格位置<br>●i 光标位置不变<br>●A光标会停在当前行的最后位置<br>●1光标会停在当前行的最前面的位置<br>●o会在光标所在行的下面新增一行空白<br>●0会在光标所在行的上面新增一 行空白<br>●r替换光标所在位置的字符，但不进入插入模式<br>●R从光标所在位置开始替换，能替换多个字符</p>
+<p>扩展模式的命令<br>●:W   保存<br>●:w!   强制保存<br>●:q   退出<br>●:q!   强制离开<br>●:wq   保存及退出<br>●:wq!   强制保存离开</p>
+ 
       <!-- reward -->
       
       <div id="reword-out">
