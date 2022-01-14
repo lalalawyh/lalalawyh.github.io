@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>CTFHUB(WEB)-前置技能 |  云芽的博客</title>
+      <title>class-1 |  云芽的博客</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -66,7 +66,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-ctfhub通关指南/web/前置技能"
+  id="post-gok2022寒/class-1"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -77,7 +77,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  CTFHUB(WEB)-前置技能
+  class-1
 </h1>
  
 
@@ -85,11 +85,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/10/04/ctfhub%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/web/%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/" class="article-date">
-  <time datetime="2021-10-03T16:52:29.000Z" itemprop="datePublished">2021-10-04</time>
+      <a href="/2022/01/14/gok2022%E5%AF%92/class-1/" class="article-date">
+  <time datetime="2022-01-14T01:26:49.000Z" itemprop="datePublished">2022-01-14</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/ctf%E8%A7%A3%E9%A2%98/">ctf解题</a>
+    <a class="article-category-link" href="/categories/gok2022%E5%AF%92/">gok2022寒</a>
   </div>
   
 <div class="word_count">
@@ -97,7 +97,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">201</span>
+            <span class="post-count">32</span>
         </span>
     </span>
 
@@ -121,24 +121,7 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h3 id="WEB前置技能"><a href="#WEB前置技能" class="headerlink" title="WEB前置技能"></a>WEB前置技能</h3><h4 id="HTTP协议——请求方式"><a href="#HTTP协议——请求方式" class="headerlink" title="HTTP协议——请求方式"></a>HTTP协议——请求方式</h4><p>题目：</p>
-<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905194147045.png" alt="image-20210905194147045" style="zoom:33%;" />
-
-<p>解题：</p>
-<p>猜想CTF**B请求方式为ctfhub</p>
-<p>姿势1：burpsuite抓包</p>
-<p>使用burpsuite进行抓包，发送到repeatr把get方式改为CTFHUB的请求方式，点击send，就会返回含有flag的数据包。如下图。（图来自<a target="_blank" rel="noopener" href="https://blog.csdn.net/hgjiayou/article/details/106212933%EF%BC%89">https://blog.csdn.net/hgjiayou/article/details/106212933）</a></p>
-<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905195259986.png" alt="image-20210905195259986" style="zoom:60%;" />
-
-<p>姿势2：curl命令</p>
-<p>在cmd命令窗口中输入“curl -v -X CTFHUB <a target="_blank" rel="noopener" href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E2%80%9D%E5%8D%B3%E5%8F%AF%E5%BE%97%E5%88%B0flag%E4%BF%A1%E6%81%AF">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php”即可得到flag信息</a></p>
-<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905195437094.png" alt="image-20210905195437094" style="zoom:45%;" />
-
-<p>补充知识：</p>
-<p>curl</p>
-<p><strong>cURL</strong>是一个利用URL语法在<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%91%BD%E4%BB%A4%E8%A1%8C">命令行</a>下工作的文件传输工具。用来请求 Web 服务器。</p>
-<p>学习链接：<a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html">https://www.ruanyifeng.com/blog/2019/09/curl-reference.html</a></p>
-<p>curl -v -X CTFHUB <a target="_blank" rel="noopener" href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E8%A1%A8%E7%A4%BA%E4%BB%A5CTFHUB%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E8%AE%BF%E9%97%AEhttp://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E5%B9%B6%E6%9F%A5%E7%9C%8B%E9%80%9A%E4%BF%A1%E5%85%A8%E8%BF%87%E7%A8%8B%E3%80%82">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php表示以CTFHUB请求方式访问http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php并查看通信全过程。</a></p>
+  <h2 id="开班"><a href="#开班" class="headerlink" title="开班"></a>开班</h2><h4 id="01-实训目的"><a href="#01-实训目的" class="headerlink" title="01.实训目的"></a>01.实训目的</h4><p>02.公司简介<br>03.项目介绍<br>04.实训安排<br>05.班级组成<br>06.实训纪律</p>
  
       <!-- reward -->
       
@@ -209,7 +192,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/10/04/ctfhub%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/web/%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/01/14/gok2022%E5%AF%92/class-1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -220,19 +203,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2021/10/04/ctfhub%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/web/%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            CTFHUB(WEB)-信息泄露
-          
-        </div>
-      </a>
     
-    
-      <a href="/2021/10/03/ctf%E5%AD%A6%E4%B9%A0/sql%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/" class="article-nav-link">
+      <a href="/2022/01/13/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/DVWA/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">sql基础学习-2</div>
+        <div class="article-nav-title">DVWA</div>
       </a>
     
   </nav>

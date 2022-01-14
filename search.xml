@@ -2691,8 +2691,173 @@ print(flag)
       </categories>
   </entry>
   <entry>
+    <title>CTFHUB(WEB)-SQL注入</title>
+    <url>/2021/10/04/ctfhub%C2%B7web%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/SQL%E6%B3%A8%E5%85%A5/</url>
+    <content><![CDATA[<h3 id="WEB工具配置"><a href="#WEB工具配置" class="headerlink" title="WEB工具配置"></a>WEB工具配置</h3><h4 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h4><h5 id="整数型注入"><a href="#整数型注入" class="headerlink" title="整数型注入"></a>整数型注入</h5><p>题目：</p>
+<img src="/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211002152004693.png" alt="image-20211002152004693" style="zoom:33%;" />
+
+<p>解题：</p>
+<p>输入1得到回显：</p>
+<img src="/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211002152056741.png" alt="image-20211002152056741" style="zoom:33%;" />
+
+<p>判断有无注入点——利用恒真恒假来判断是否修改语句有用，输入1 and 1=2 （或者-1）无回显，代表有注入点：</p>
+<img src="/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211002155314940.png" alt="image-20211002155314940" style="zoom:33%;" />
+
+<p>判断字段数——利用order by来获取回显的信息判断字段数，发现输入1 order by 2有回显，而输入1 order by 3无回显，说明字段数为2：</p>
+<img src="/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211002155931833.png" alt="image-20211002155931833" style="zoom:33%;" />
+
+<img src="/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211002160120526.png" alt="image-20211002160120526" style="zoom:33%;" />
+
+<p> 利用1 and 1=2 （或者-1）恒假语句来把原先的sql语句不执行，执行我们union select语句</p>
+<p>查库名——输入命令：1 and 1=2  union select 1,database() ，发现数据库名为sqli</p>
+<img src="/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211002160309024.png" alt="image-20211002160309024" style="zoom:33%;" />
+
+<p>查该数据库的表——接下来输入命令：1 and 1=2  union select 1,group_concat(table_name) from information_schema.tables where table_schema=’sqli’查看sqli数据库里面的表，找到flag表</p>
+<img src="/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211002160512535.png" alt="image-20211002160512535" style="zoom:33%;" />
+
+<p>查看表字段——输入命令：1 and 1=2  union select 1,group_concat(column_name) from information_schema.columns where table_name=’flag’查看表里面flag里面的列的名字</p>
+<img src="/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211002161127931.png" alt="image-20211002161127931" style="zoom:33%;" />
+
+<p>查看数据——发现flag表里面的字段列是flag，便用sqli.flag查看里面的字段数据，输入命令：1 and 1=2  union select 1,flag from sqli.flag即可找到flag.</p>
+<img src="/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211002160942057.png" alt="image-20211002160942057" style="zoom:33%;" />
+
+<p>补充知识：</p>
+<table>
+<thead>
+<tr>
+<th>语句</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>union select</td>
+<td>联合查询，联合注入常用</td>
+</tr>
+<tr>
+<td>database()</td>
+<td>回显当前连接的数据库</td>
+</tr>
+<tr>
+<td>version()</td>
+<td>查看当前sql的版本如：mysql 1.2.3， mariadb-4.5.6</td>
+</tr>
+<tr>
+<td>group_concat()</td>
+<td>把产生的同一分组中的值用,连接，形成一个字符串</td>
+</tr>
+<tr>
+<td>information_schema</td>
+<td>存了很多mysql信息的数据库</td>
+</tr>
+<tr>
+<td>information_schema.schemata information_schema</td>
+<td>库的一个表,名为schemata</td>
+</tr>
+<tr>
+<td>schema_name schemata</td>
+<td>表中存储mysql所有数据库名字的字段</td>
+</tr>
+<tr>
+<td>information_schema.tables</td>
+<td>存了mysql所有的表</td>
+</tr>
+<tr>
+<td>table_schema tables</td>
+<td>表中存每个表对应的数据库名的字段</td>
+</tr>
+<tr>
+<td>table_name</td>
+<td>表的名字和table_schema一一对应</td>
+</tr>
+<tr>
+<td>information_schema.columns columns</td>
+<td>表存了所有的列的信息</td>
+</tr>
+<tr>
+<td>column_name</td>
+<td>当你知道一个表的名字时，可通过次字段获得表中的所有字段名(列名)</td>
+</tr>
+<tr>
+<td>table_name</td>
+<td>表的名字和column_name一一对应</td>
+</tr>
+<tr>
+<td>left(str,num)</td>
+<td>字符串从左开始截取num个字符</td>
+</tr>
+<tr>
+<td>right(str, num)</td>
+<td>字符串从右开始截取num个字符</td>
+</tr>
+<tr>
+<td>substr(str,N,M)</td>
+<td>字符串，从第N个字符开始，截取M个字符</td>
+</tr>
+<tr>
+<td>select updatexml(1,concat(0x7e,database(),0x7e),1);</td>
+<td>这里注意，只在databse()处改你想要的内容即可报错回显</td>
+</tr>
+</tbody></table>
+<h5 id="字符型注入"><a href="#字符型注入" class="headerlink" title="字符型注入"></a>字符型注入</h5><p>题目：</p>
+<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211013235431605.png" alt="image-20211013235431605" style="zoom:33%;" />
+
+<p>解题：</p>
+<p>SQL注入 字符型注入, 尝试获取数据库中的 flag。</p>
+<p>输入1得到回显：</p>
+<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211013235522840.png" alt="image-20211013235522840" style="zoom:33%;" />
+
+<p>输入1’判断闭合方式，发现有三个单引号，无法正常回显，则需将后面一个单引号注释掉：</p>
+<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211013235642999.png" alt="image-20211013235642999" style="zoom:33%;" />
+
+<p>注：常见的注释符：%23（#）、-–+（使用该注释符记得前面空格）、；%00、`、……</p>
+<p>使用-–+将多余的单引号注释掉，在输入框内输入1’–+会显示不正确，建议在地址栏直接改：</p>
+<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014000213654.png" alt="image-20211014000213654" style="zoom:33%;" />
+
+<p>判断字段数，输入order by 3 无法正常回显，降为2则回显正常：</p>
+<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014001217435.png" alt="image-20211014001217435" style="zoom:33%;" />
+
+<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014001050878.png" alt="image-20211014001050878" style="zoom:33%;" />
+
+<p>根据字段数进行测试和基本信息爆破（数据库和版本号）：</p>
+<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014001404291.png" alt="image-20211014001404291" style="zoom:33%;" />
+
+<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014001436309.png" alt="image-20211014001436309" style="zoom:33%;" />
+
+<p>输入命令查看该数据库的集合schema：</p>
+<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014001946611.png" alt="image-20211014001946611" style="zoom:33%;" />
+
+<p>爆表：</p>
+<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014002326052.png" alt="image-20211014002326052" style="zoom:33%;" />
+
+<p>爆列：</p>
+<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014002920228.png" alt="image-20211014002920228" style="zoom:33%;" />
+
+<p>爆数据：</p>
+<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014003105483.png" alt="image-20211014003105483" style="zoom:33%;" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><img src=""></p>
+]]></content>
+      <categories>
+        <category>ctf解题</category>
+      </categories>
+  </entry>
+  <entry>
     <title>CTFHUB(WEB)-信息泄露</title>
-    <url>/2021/10/04/ctfhub%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/web/%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/</url>
+    <url>/2021/10/04/ctfhub%C2%B7web%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/</url>
     <content><![CDATA[<h3 id="WEB工具配置"><a href="#WEB工具配置" class="headerlink" title="WEB工具配置"></a>WEB工具配置</h3><h4 id="信息泄露"><a href="#信息泄露" class="headerlink" title="信息泄露"></a>信息泄露</h4><h5 id="目录遍历"><a href="#目录遍历" class="headerlink" title="目录遍历"></a>目录遍历</h5><p>题目：</p>
 <img src="/source/images/CTFHUB-WEB-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/image-20211004013340391.png" alt="image-20211004013340391" style="zoom:35%;" />
 
@@ -2947,199 +3112,8 @@ print(flag)
       </categories>
   </entry>
   <entry>
-    <title>CTFHUB(WEB)-SQL注入</title>
-    <url>/2021/10/04/ctfhub%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/web/SQL%E6%B3%A8%E5%85%A5/</url>
-    <content><![CDATA[<h3 id="WEB工具配置"><a href="#WEB工具配置" class="headerlink" title="WEB工具配置"></a>WEB工具配置</h3><h4 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h4><h5 id="整数型注入"><a href="#整数型注入" class="headerlink" title="整数型注入"></a>整数型注入</h5><p>题目：</p>
-<img src="/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211002152004693.png" alt="image-20211002152004693" style="zoom:33%;" />
-
-<p>解题：</p>
-<p>输入1得到回显：</p>
-<img src="/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211002152056741.png" alt="image-20211002152056741" style="zoom:33%;" />
-
-<p>判断有无注入点——利用恒真恒假来判断是否修改语句有用，输入1 and 1=2 （或者-1）无回显，代表有注入点：</p>
-<img src="/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211002155314940.png" alt="image-20211002155314940" style="zoom:33%;" />
-
-<p>判断字段数——利用order by来获取回显的信息判断字段数，发现输入1 order by 2有回显，而输入1 order by 3无回显，说明字段数为2：</p>
-<img src="/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211002155931833.png" alt="image-20211002155931833" style="zoom:33%;" />
-
-<img src="/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211002160120526.png" alt="image-20211002160120526" style="zoom:33%;" />
-
-<p> 利用1 and 1=2 （或者-1）恒假语句来把原先的sql语句不执行，执行我们union select语句</p>
-<p>查库名——输入命令：1 and 1=2  union select 1,database() ，发现数据库名为sqli</p>
-<img src="/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211002160309024.png" alt="image-20211002160309024" style="zoom:33%;" />
-
-<p>查该数据库的表——接下来输入命令：1 and 1=2  union select 1,group_concat(table_name) from information_schema.tables where table_schema=’sqli’查看sqli数据库里面的表，找到flag表</p>
-<img src="/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211002160512535.png" alt="image-20211002160512535" style="zoom:33%;" />
-
-<p>查看表字段——输入命令：1 and 1=2  union select 1,group_concat(column_name) from information_schema.columns where table_name=’flag’查看表里面flag里面的列的名字</p>
-<img src="/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211002161127931.png" alt="image-20211002161127931" style="zoom:33%;" />
-
-<p>查看数据——发现flag表里面的字段列是flag，便用sqli.flag查看里面的字段数据，输入命令：1 and 1=2  union select 1,flag from sqli.flag即可找到flag.</p>
-<img src="/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211002160942057.png" alt="image-20211002160942057" style="zoom:33%;" />
-
-<p>补充知识：</p>
-<table>
-<thead>
-<tr>
-<th>语句</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>union select</td>
-<td>联合查询，联合注入常用</td>
-</tr>
-<tr>
-<td>database()</td>
-<td>回显当前连接的数据库</td>
-</tr>
-<tr>
-<td>version()</td>
-<td>查看当前sql的版本如：mysql 1.2.3， mariadb-4.5.6</td>
-</tr>
-<tr>
-<td>group_concat()</td>
-<td>把产生的同一分组中的值用,连接，形成一个字符串</td>
-</tr>
-<tr>
-<td>information_schema</td>
-<td>存了很多mysql信息的数据库</td>
-</tr>
-<tr>
-<td>information_schema.schemata information_schema</td>
-<td>库的一个表,名为schemata</td>
-</tr>
-<tr>
-<td>schema_name schemata</td>
-<td>表中存储mysql所有数据库名字的字段</td>
-</tr>
-<tr>
-<td>information_schema.tables</td>
-<td>存了mysql所有的表</td>
-</tr>
-<tr>
-<td>table_schema tables</td>
-<td>表中存每个表对应的数据库名的字段</td>
-</tr>
-<tr>
-<td>table_name</td>
-<td>表的名字和table_schema一一对应</td>
-</tr>
-<tr>
-<td>information_schema.columns columns</td>
-<td>表存了所有的列的信息</td>
-</tr>
-<tr>
-<td>column_name</td>
-<td>当你知道一个表的名字时，可通过次字段获得表中的所有字段名(列名)</td>
-</tr>
-<tr>
-<td>table_name</td>
-<td>表的名字和column_name一一对应</td>
-</tr>
-<tr>
-<td>left(str,num)</td>
-<td>字符串从左开始截取num个字符</td>
-</tr>
-<tr>
-<td>right(str, num)</td>
-<td>字符串从右开始截取num个字符</td>
-</tr>
-<tr>
-<td>substr(str,N,M)</td>
-<td>字符串，从第N个字符开始，截取M个字符</td>
-</tr>
-<tr>
-<td>select updatexml(1,concat(0x7e,database(),0x7e),1);</td>
-<td>这里注意，只在databse()处改你想要的内容即可报错回显</td>
-</tr>
-</tbody></table>
-<h5 id="字符型注入"><a href="#字符型注入" class="headerlink" title="字符型注入"></a>字符型注入</h5><p>题目：</p>
-<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211013235431605.png" alt="image-20211013235431605" style="zoom:33%;" />
-
-<p>解题：</p>
-<p>SQL注入 字符型注入, 尝试获取数据库中的 flag。</p>
-<p>输入1得到回显：</p>
-<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211013235522840.png" alt="image-20211013235522840" style="zoom:33%;" />
-
-<p>输入1’判断闭合方式，发现有三个单引号，无法正常回显，则需将后面一个单引号注释掉：</p>
-<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211013235642999.png" alt="image-20211013235642999" style="zoom:33%;" />
-
-<p>注：常见的注释符：%23（#）、-–+（使用该注释符记得前面空格）、；%00、`、……</p>
-<p>使用-–+将多余的单引号注释掉，在输入框内输入1’–+会显示不正确，建议在地址栏直接改：</p>
-<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014000213654.png" alt="image-20211014000213654" style="zoom:33%;" />
-
-<p>判断字段数，输入order by 3 无法正常回显，降为2则回显正常：</p>
-<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014001217435.png" alt="image-20211014001217435" style="zoom:33%;" />
-
-<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014001050878.png" alt="image-20211014001050878" style="zoom:33%;" />
-
-<p>根据字段数进行测试和基本信息爆破（数据库和版本号）：</p>
-<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014001404291.png" alt="image-20211014001404291" style="zoom:33%;" />
-
-<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014001436309.png" alt="image-20211014001436309" style="zoom:33%;" />
-
-<p>输入命令查看该数据库的集合schema：</p>
-<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014001946611.png" alt="image-20211014001946611" style="zoom:33%;" />
-
-<p>爆表：</p>
-<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014002326052.png" alt="image-20211014002326052" style="zoom:33%;" />
-
-<p>爆列：</p>
-<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014002920228.png" alt="image-20211014002920228" style="zoom:33%;" />
-
-<p>爆数据：</p>
-<img src="/source/images/CTFHUB-WEB-SQL%E6%B3%A8%E5%85%A5/image-20211014003105483.png" alt="image-20211014003105483" style="zoom:33%;" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<p><img src=""></p>
-]]></content>
-      <categories>
-        <category>ctf解题</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>CTFHUB(WEB)-前置技能</title>
-    <url>/2021/10/04/ctfhub%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/web/%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/</url>
-    <content><![CDATA[<h3 id="WEB前置技能"><a href="#WEB前置技能" class="headerlink" title="WEB前置技能"></a>WEB前置技能</h3><h4 id="HTTP协议——请求方式"><a href="#HTTP协议——请求方式" class="headerlink" title="HTTP协议——请求方式"></a>HTTP协议——请求方式</h4><p>题目：</p>
-<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905194147045.png" alt="image-20210905194147045" style="zoom:33%;" />
-
-<p>解题：</p>
-<p>猜想CTF**B请求方式为ctfhub</p>
-<p>姿势1：burpsuite抓包</p>
-<p>使用burpsuite进行抓包，发送到repeatr把get方式改为CTFHUB的请求方式，点击send，就会返回含有flag的数据包。如下图。（图来自<a href="https://blog.csdn.net/hgjiayou/article/details/106212933%EF%BC%89">https://blog.csdn.net/hgjiayou/article/details/106212933）</a></p>
-<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905195259986.png" alt="image-20210905195259986" style="zoom:60%;" />
-
-<p>姿势2：curl命令</p>
-<p>在cmd命令窗口中输入“curl -v -X CTFHUB <a href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E2%80%9D%E5%8D%B3%E5%8F%AF%E5%BE%97%E5%88%B0flag%E4%BF%A1%E6%81%AF">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php”即可得到flag信息</a></p>
-<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905195437094.png" alt="image-20210905195437094" style="zoom:45%;" />
-
-<p>补充知识：</p>
-<p>curl</p>
-<p><strong>cURL</strong>是一个利用URL语法在<a href="https://baike.baidu.com/item/%E5%91%BD%E4%BB%A4%E8%A1%8C">命令行</a>下工作的文件传输工具。用来请求 Web 服务器。</p>
-<p>学习链接：<a href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html">https://www.ruanyifeng.com/blog/2019/09/curl-reference.html</a></p>
-<p>curl -v -X CTFHUB <a href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E8%A1%A8%E7%A4%BA%E4%BB%A5CTFHUB%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E8%AE%BF%E9%97%AEhttp://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E5%B9%B6%E6%9F%A5%E7%9C%8B%E9%80%9A%E4%BF%A1%E5%85%A8%E8%BF%87%E7%A8%8B%E3%80%82">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php表示以CTFHUB请求方式访问http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php并查看通信全过程。</a></p>
-]]></content>
-      <categories>
-        <category>ctf解题</category>
-      </categories>
-  </entry>
-  <entry>
     <title>CTFHUB(WEB)-XSS</title>
-    <url>/2021/10/04/ctfhub%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/web/XSS/</url>
+    <url>/2021/10/04/ctfhub%C2%B7web%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/XSS/</url>
     <content><![CDATA[<h3 id="WEB工具配置"><a href="#WEB工具配置" class="headerlink" title="WEB工具配置"></a>WEB工具配置</h3><h4 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h4><h5 id="反射型"><a href="#反射型" class="headerlink" title="反射型"></a>反射型</h5><p>题目：</p>
 <img src="/source/images/CTFHUB-WEB-XSS/image-20211006003106095.png" alt="image-20211006003106095" style="zoom:30%;" />
 
@@ -3194,494 +3168,38 @@ print(flag)
       </categories>
   </entry>
   <entry>
-    <title>CTFHUB(WEB)-密码口令</title>
-    <url>/2021/10/04/ctfhub%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/web/%E5%AF%86%E7%A0%81%E5%8F%A3%E4%BB%A4/</url>
-    <content><![CDATA[<h3 id="WEB工具配置"><a href="#WEB工具配置" class="headerlink" title="WEB工具配置"></a>WEB工具配置</h3><h4 id="密码口令"><a href="#密码口令" class="headerlink" title="密码口令"></a>密码口令</h4><h5 id="弱口令"><a href="#弱口令" class="headerlink" title="弱口令"></a><strong>弱口令</strong></h5><p>题目：</p>
-<img src="/source/images/CTFHUB-WEB-%E5%AF%86%E7%A0%81%E5%8F%A3%E4%BB%A4/image-20211004011911966.png" alt="image-20211004011911966" style="zoom:50%;" />
+    <title>CTFHUB(WEB)-前置技能</title>
+    <url>/2021/10/04/ctfhub%C2%B7web%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/</url>
+    <content><![CDATA[<h3 id="WEB前置技能"><a href="#WEB前置技能" class="headerlink" title="WEB前置技能"></a>WEB前置技能</h3><h4 id="HTTP协议——请求方式"><a href="#HTTP协议——请求方式" class="headerlink" title="HTTP协议——请求方式"></a>HTTP协议——请求方式</h4><p>题目：</p>
+<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905194147045.png" alt="image-20210905194147045" style="zoom:33%;" />
 
-<p>解题：<br>通常认为容易被别人（他们有可能对你很了解）猜测到或被破解工具破解的口令均为弱口令。</p>
-<p>基本思路：需要利用burpsuite进行抓包并爆破（burpsuite安装与使用在另一篇）</p>
-<img src="/images/burpsuite/image-20210918011351469.png" alt="image-20210918011351469" style="zoom:40%;" />
-
-<p>注：提交flag时需要注意空格。</p>
-<h5 id="默认口令"><a href="#默认口令" class="headerlink" title="默认口令"></a>默认口令</h5><p>题目：<br><img src="/source/images/CTFHUB-WEB-%E5%AF%86%E7%A0%81%E5%8F%A3%E4%BB%A4/image-20211004012110480.png" alt="image-20211004012110480" style="zoom:50%;" /></p>
 <p>解题：</p>
-<p>题目是默认口令因此直接上网查找——账号：eyougw 密码：admin@(eyou)——登录成功即可得到flag</p>
-<img src="/source/images/CTFHUB-WEB-%E5%AF%86%E7%A0%81%E5%8F%A3%E4%BB%A4/image-20211004012708312.png" alt="image-20211004012708312" style="zoom:50%;" />
+<p>猜想CTF**B请求方式为ctfhub</p>
+<p>姿势1：burpsuite抓包</p>
+<p>使用burpsuite进行抓包，发送到repeatr把get方式改为CTFHUB的请求方式，点击send，就会返回含有flag的数据包。如下图。（图来自<a href="https://blog.csdn.net/hgjiayou/article/details/106212933%EF%BC%89">https://blog.csdn.net/hgjiayou/article/details/106212933）</a></p>
+<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905195259986.png" alt="image-20210905195259986" style="zoom:60%;" />
 
-<p>注：常见的网络安全设备默认密码：</p>
-<table>
-<thead>
-<tr>
-<th>设备</th>
-<th>默认账号</th>
-<th>默认密码</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>深信服产品</td>
-<td>sangfor</td>
-<td>sangfor sangfor@2018 sangfor@2019</td>
-</tr>
-<tr>
-<td>深信服科技 AD</td>
-<td></td>
-<td>dlanrecover</td>
-</tr>
-<tr>
-<td>深信服负载均衡 AD 3.6</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td>深信服WAC ( WNS V2.6)</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td>深信服VPN</td>
-<td>Admin</td>
-<td>Admin</td>
-</tr>
-<tr>
-<td>深信服ipsec-VPN (SSL 5.5)</td>
-<td>Admin</td>
-<td>Admin</td>
-</tr>
-<tr>
-<td>深信服AC6.0</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td>SANGFOR防火墙</td>
-<td>admin</td>
-<td>sangfor</td>
-</tr>
-<tr>
-<td>深信服AF(NGAF V2.2)</td>
-<td>admin</td>
-<td>sangfor</td>
-</tr>
-<tr>
-<td>深信服NGAF下一代应用防火墙(NGAF V4.3)</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td>深信服AD3.9</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td>深信服上网行为管理设备数据中心</td>
-<td>Admin</td>
-<td>密码为空</td>
-</tr>
-<tr>
-<td>SANGFOR_AD_v5.1</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td>网御漏洞扫描系统</td>
-<td>leadsec</td>
-<td>leadsec</td>
-</tr>
-<tr>
-<td>天阗入侵检测与管理系统 V7.0</td>
-<td>Admin</td>
-<td>venus70</td>
-</tr>
-<tr>
-<td></td>
-<td>Audit</td>
-<td>venus70</td>
-</tr>
-<tr>
-<td></td>
-<td>adm</td>
-<td>venus70</td>
-</tr>
-<tr>
-<td>天阗入侵检测与管理系统 V6.0</td>
-<td>Admin</td>
-<td>venus60</td>
-</tr>
-<tr>
-<td></td>
-<td>Audit</td>
-<td>venus60</td>
-</tr>
-<tr>
-<td></td>
-<td>adm</td>
-<td>venus60</td>
-</tr>
-<tr>
-<td>网御WAF集中控制中心(V3.0R5.0)</td>
-<td>admin</td>
-<td>leadsec.waf</td>
-</tr>
-<tr>
-<td></td>
-<td>audit</td>
-<td>leadsec.waf</td>
-</tr>
-<tr>
-<td></td>
-<td>adm</td>
-<td>leadsec.waf</td>
-</tr>
-<tr>
-<td>联想网御</td>
-<td>administrator</td>
-<td>administrator</td>
-</tr>
-<tr>
-<td>网御事件服务器</td>
-<td>admin</td>
-<td>admin123</td>
-</tr>
-<tr>
-<td>联想网御防火墙PowerV</td>
-<td>administrator</td>
-<td>administrator</td>
-</tr>
-<tr>
-<td>联想网御入侵检测系统</td>
-<td>lenovo</td>
-<td>default</td>
-</tr>
-<tr>
-<td>网络卫士入侵检测系统</td>
-<td>admin</td>
-<td>talent</td>
-</tr>
-<tr>
-<td>网御入侵检测系统V3.2.72.0</td>
-<td>adm</td>
-<td>leadsec32</td>
-</tr>
-<tr>
-<td></td>
-<td>admin</td>
-<td>leadsec32</td>
-</tr>
-<tr>
-<td>联想网御入侵检测系统IDS</td>
-<td>root</td>
-<td>111111</td>
-</tr>
-<tr>
-<td></td>
-<td>admin</td>
-<td>admin123</td>
-</tr>
-<tr>
-<td>科来网络回溯分析系统</td>
-<td>csadmin</td>
-<td>colasoft</td>
-</tr>
-<tr>
-<td>中控考勤机web3.0</td>
-<td>administrator</td>
-<td>123456</td>
-</tr>
-<tr>
-<td>H3C iMC</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td>H3C SecPath系列</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td>H3C S5120-SI</td>
-<td>test</td>
-<td>123</td>
-</tr>
-<tr>
-<td>H3C智能管理中心</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td>H3C ER3100</td>
-<td>admin</td>
-<td>adminer3100</td>
-</tr>
-<tr>
-<td>H3C ER3200</td>
-<td>admin</td>
-<td>adminer3200</td>
-</tr>
-<tr>
-<td>H3C ER3260</td>
-<td>admin</td>
-<td>adminer3260</td>
-</tr>
-<tr>
-<td>H3C</td>
-<td>admin</td>
-<td>adminer</td>
-</tr>
-<tr>
-<td></td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td></td>
-<td>admin</td>
-<td>h3capadmin</td>
-</tr>
-<tr>
-<td></td>
-<td>h3c</td>
-<td>h3c</td>
-</tr>
-<tr>
-<td>360天擎</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td>网神防火墙</td>
-<td>firewall</td>
-<td>firewall</td>
-</tr>
-<tr>
-<td>天融信防火墙NGFW4000</td>
-<td>superman</td>
-<td>talent</td>
-</tr>
-<tr>
-<td>黑盾防火墙</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td></td>
-<td>rule</td>
-<td>abc123</td>
-</tr>
-<tr>
-<td></td>
-<td>audit</td>
-<td>abc123</td>
-</tr>
-<tr>
-<td>华为防火墙</td>
-<td>telnetuser</td>
-<td>telnetpwd</td>
-</tr>
-<tr>
-<td>ftpuser</td>
-<td>ftppwd</td>
-<td></td>
-</tr>
-<tr>
-<td>方正防火墙</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td>飞塔防火墙</td>
-<td>admin</td>
-<td>密码为空</td>
-</tr>
-<tr>
-<td>Juniper_SSG__5防火墙</td>
-<td>netscreen</td>
-<td>netscreen</td>
-</tr>
-<tr>
-<td>中新金盾硬件防火墙</td>
-<td>admin</td>
-<td>123</td>
-</tr>
-<tr>
-<td>kill防火墙(冠群金辰)</td>
-<td>admin</td>
-<td>sys123</td>
-</tr>
-<tr>
-<td>天清汉马USG防火墙</td>
-<td>admin</td>
-<td>venus.fw</td>
-</tr>
-<tr>
-<td></td>
-<td>Audit</td>
-<td>venus.audit</td>
-</tr>
-<tr>
-<td></td>
-<td>useradmin</td>
-<td>venus.user</td>
-</tr>
-<tr>
-<td>阿姆瑞特防火墙</td>
-<td>admin</td>
-<td>manager</td>
-</tr>
-<tr>
-<td>山石网科</td>
-<td>hillstone</td>
-<td>hillstone</td>
-</tr>
-<tr>
-<td>绿盟安全审计系统</td>
-<td>weboper</td>
-<td>weboper</td>
-</tr>
-<tr>
-<td></td>
-<td>webaudit</td>
-<td>webaudit</td>
-</tr>
-<tr>
-<td></td>
-<td>conadmin</td>
-<td>conadmin</td>
-</tr>
-<tr>
-<td></td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td></td>
-<td>shell</td>
-<td>shell</td>
-</tr>
-<tr>
-<td>绿盟产品</td>
-<td></td>
-<td>nsfocus123</td>
-</tr>
-<tr>
-<td>TopAudit日志审计系统</td>
-<td>superman</td>
-<td>talent</td>
-</tr>
-<tr>
-<td>LogBase日志管理综合审计系统</td>
-<td>admin</td>
-<td>safetybase</td>
-</tr>
-<tr>
-<td>网神SecFox运维安全管理与审计系统</td>
-<td>admin</td>
-<td>!1fw@2soc#3vpn</td>
-</tr>
-<tr>
-<td>天融信数据库审计系统</td>
-<td>superman</td>
-<td>telent</td>
-</tr>
-<tr>
-<td>Hillstone安全审计平台</td>
-<td>hillstone</td>
-<td>hillstone</td>
-</tr>
-<tr>
-<td>网康日志中心</td>
-<td>ns25000</td>
-<td>ns25000</td>
-</tr>
-<tr>
-<td>网络安全审计系统（中科新业）</td>
-<td>admin</td>
-<td>123456</td>
-</tr>
-<tr>
-<td>天玥网络安全审计系统</td>
-<td>Admin</td>
-<td>cyberaudit</td>
-</tr>
-<tr>
-<td>明御WEB应用防火墙</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td></td>
-<td>admin</td>
-<td>adminadmin</td>
-</tr>
-<tr>
-<td>明御攻防实验室平台</td>
-<td>root</td>
-<td>123456</td>
-</tr>
-<tr>
-<td>明御安全网关</td>
-<td>admin</td>
-<td>adminadmin</td>
-</tr>
-<tr>
-<td>明御运维审计与册风险控制系统</td>
-<td>admin</td>
-<td>1q2w3e</td>
-</tr>
-<tr>
-<td></td>
-<td>system</td>
-<td>1q2w3e4r</td>
-</tr>
-<tr>
-<td></td>
-<td>auditor</td>
-<td>1q2w3e4r</td>
-</tr>
-<tr>
-<td></td>
-<td>operator</td>
-<td>1q2w3e4r</td>
-</tr>
-<tr>
-<td>明御网站卫士</td>
-<td>sysmanager</td>
-<td>sysmanager888</td>
-</tr>
-<tr>
-<td>亿邮邮件网关</td>
-<td>eyouuser</td>
-<td>eyou_admin</td>
-</tr>
-<tr>
-<td></td>
-<td>eyougw</td>
-<td>admin@(eyou)</td>
-</tr>
-<tr>
-<td></td>
-<td>admin</td>
-<td>+-ccccc</td>
-</tr>
-<tr>
-<td></td>
-<td>admin</td>
-<td>cyouadmin</td>
-</tr>
-<tr>
-<td>Websense邮件安全网关</td>
-<td>administrator</td>
-<td>admin</td>
-</tr>
-<tr>
-<td>梭子鱼邮件存储网关</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-</tbody></table>
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4>]]></content>
+<p>姿势2：curl命令</p>
+<p>在cmd命令窗口中输入“curl -v -X CTFHUB <a href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E2%80%9D%E5%8D%B3%E5%8F%AF%E5%BE%97%E5%88%B0flag%E4%BF%A1%E6%81%AF">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php”即可得到flag信息</a></p>
+<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905195437094.png" alt="image-20210905195437094" style="zoom:45%;" />
+
+<p>补充知识：</p>
+<p>curl</p>
+<p><strong>cURL</strong>是一个利用URL语法在<a href="https://baike.baidu.com/item/%E5%91%BD%E4%BB%A4%E8%A1%8C">命令行</a>下工作的文件传输工具。用来请求 Web 服务器。</p>
+<p>学习链接：<a href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html">https://www.ruanyifeng.com/blog/2019/09/curl-reference.html</a></p>
+<p>curl -v -X CTFHUB <a href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E8%A1%A8%E7%A4%BA%E4%BB%A5CTFHUB%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E8%AE%BF%E9%97%AEhttp://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E5%B9%B6%E6%9F%A5%E7%9C%8B%E9%80%9A%E4%BF%A1%E5%85%A8%E8%BF%87%E7%A8%8B%E3%80%82">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php表示以CTFHUB请求方式访问http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php并查看通信全过程。</a></p>
+]]></content>
       <categories>
         <category>ctf解题</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>class-1</title>
+    <url>/2022/01/14/gok2022%E5%AF%92/class-1/</url>
+    <content><![CDATA[<h2 id="开班"><a href="#开班" class="headerlink" title="开班"></a>开班</h2><h4 id="01-实训目的"><a href="#01-实训目的" class="headerlink" title="01.实训目的"></a>01.实训目的</h4><p>02.公司简介<br>03.项目介绍<br>04.实训安排<br>05.班级组成<br>06.实训纪律</p>
+]]></content>
+      <categories>
+        <category>gok2022寒</category>
       </categories>
   </entry>
 </search>

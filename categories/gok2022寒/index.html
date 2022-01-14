@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>sql基础学习-2 |  云芽的博客</title>
+      <title>gok2022寒 |  云芽的博客</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -65,266 +65,58 @@
       
     <main class="content on">
       <section class="outer">
-  <article
-  id="post-ctf学习/sql基础学习-2"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  sql基础学习-2
-</h1>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/10/03/ctf%E5%AD%A6%E4%B9%A0/sql%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/" class="article-date">
-  <time datetime="2021-10-03T09:59:06.000Z" itemprop="datePublished">2021-10-03</time>
-</a>   
-<div class="word_count">
-    <span class="post-time">
-        <span class="post-meta-item-icon">
-            <i class="ri-quill-pen-line"></i>
-            <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">528</span>
-        </span>
-    </span>
-
-    <span class="post-time">
-        &nbsp; | &nbsp;
-        <span class="post-meta-item-icon">
-            <i class="ri-book-open-line"></i>
-            <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
-        </span>
-    </span>
-</div>
- 
-    </div>
-      
-    <div class="tocbot"></div>
-
-
-
-
   
-    <div class="article-entry" itemprop="articleBody">
+  
+  <article class="articles">
+    
+    
+    <h1 class="page-type-title">gok2022寒</h1>
+    
+    
+  
+  
+  
+  
+  
+  
+  <div class="archives-wrap">
+    <div class="archive-year-wrap">
+      <a href="/archives/2022" class="archive-year">2022</a>
+    </div>
+    <div class="archives">
+      
+      <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2022/01/14/gok2022%E5%AF%92/class-1/" class="archive-article-date">
+  <time datetime="2022-01-14T01:26:49.000Z" itemprop="datePublished">01/14</time>
+</a>
        
-  <h2 id="sql基础学习"><a href="#sql基础学习" class="headerlink" title="sql基础学习"></a>sql基础学习</h2><p>注：为MYSQL 注入天书 –Sqli-labs 使用手册的学习笔记</p>
-<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><ol>
-<li><p>注入的分类</p>
-<p><strong>基于从服务器接收到的响应</strong> </p>
-<p>▲基于错误的 SQL 注入 </p>
-<p>▲联合查询的类型 </p>
-<p>▲堆查询注射 </p>
-<p>▲SQL 盲注</p>
-<p>•基于布尔 SQL 盲注</p>
-<p>•基于时间的 SQL 盲注 </p>
-<p>•基于报错的 SQL 盲注 </p>
-<p><strong>基于如何处理输入的</strong> <strong>SQL</strong> <strong>查询（数据类型）</strong> </p>
-<p>•基于字符串 </p>
-<p>•数字或整数为基础的 </p>
-<p><strong>基于程度和顺序的注入(哪里发生了影响)</strong> </p>
-<p>★一阶注射 </p>
-<p>★二阶注射 </p>
-<p>一阶注射是指输入的注射语句对 WEB 直接产生了影响，出现了结果；二阶注入类似存 储型 XSS，是指输入提交的语句，无法直接对 WEB 应用程序产生影响，通过其它的辅助间 接的对 WEB 产生危害，这样的就被称为是二阶注入. </p>
-<p><strong>基于注入点的位置上的</strong> </p>
-<p>▲通过用户输入的表单域的注射。 </p>
-<p>▲通过 cookie 注射。 </p>
-<p>▲通过服务器变量注射。 （基于头部信息的注射） </p>
-</li>
-<li><p>介绍几个常用函数： </p>
-<p>•version()——MySQL 版本 </p>
-<p>•user()——数据库用户名 </p>
-<p>•database()——数据库名 </p>
-<p>•@@datadir——数据库路径 </p>
-<p>•@@version_compile_os——操作系统版本</p>
-</li>
-<li><p>字符串连接函数</p>
-<p>函数具体介绍 <a target="_blank" rel="noopener" href="http://www.cnblogs.com/lcamry/p/5715634.html">http://www.cnblogs.com/lcamry/p/5715634.html</a> </p>
-<p>•concat(str1,str2,…)——没有分隔符地连接字符串 </p>
-<p>•concat_ws(separator,str1,str2,…)——含有分隔符地连接字符串 </p>
-<p>•group_concat(str1,str2,…)——连接一个组的所有字符串，并以逗号分隔每一条数据 </p>
-<p>上述三个函数能一次性查出所有信息。 </p>
-</li>
-<li><p>一般用于尝试的语句</p>
-<p>注：–+可以用#替换，url 提交过程中 Url 编码后的#为%23 </p>
-<p>or 1=1–+ </p>
-<p>‘or 1=1–+ </p>
-<p>“or 1=1–+ </p>
-<p>)or 1=1–+ </p>
-<p>‘)or 1=1–+ </p>
-<p>“) or 1=1–+ </p>
-<p>“))or 1=1–+ </p>
-<p>一般的代码为： </p>
-<p>$id=$_GET[‘id’]; </p>
-<p>$sql=”SELECT * FROM users WHERE id=’$id’ LIMIT 0,1”; </p>
-<p>此处考虑两个点，一个是闭合前面你的 </p>
-<p>‘ 另一个是处理后面的 </p>
-<p>‘ ，一般采用两种思 </p>
-<p>路，闭合后面的引号或者注释掉，注释掉采用–+ 或者 #（</p>
-<p>%23） </p>
-</li>
-<li></li>
-</ol>
+<h2 itemprop="name">
+  <a class="archive-article-title" href="/2022/01/14/gok2022%E5%AF%92/class-1/"
+    >class-1</a> 
+</h2>
  
-      <!-- reward -->
+
+    </header>
+    
       
-      <div id="reword-out">
-        <div id="reward-btn">
-          Donate
-        </div>
-      </div>
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <div class="declare">
-      <ul class="post-copyright">
-        <li>
-          <i class="ri-copyright-line"></i>
-          <strong>Copyright： </strong>
-          
-          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
-          
-        </li>
-      </ul>
-    </div>
-    
-    <footer class="article-footer">
-       
-<div class="share-btn">
-      <span class="share-sns share-outer">
-        <i class="ri-share-forward-line"></i>
-        分享
-      </span>
-      <div class="share-wrap">
-        <i class="arrow"></i>
-        <div class="share-icons">
-          
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="ri-weibo-fill"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="ri-wechat-fill"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="ri-qq-fill"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="ri-douban-line"></i>
-          </a>
-          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a> -->
-          
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="ri-facebook-circle-fill"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="ri-twitter-fill"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="ri-google-fill"></i>
-          </a>
-        </div>
-      </div>
-</div>
-
-<div class="wx-share-modal">
-    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/10/03/ctf%E5%AD%A6%E4%B9%A0/sql%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div id="share-mask"></div>  
-    </footer>
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/gok2022%E5%AF%92/">gok2022寒</a>
   </div>
 
-   
-  <nav class="article-nav">
-    
-      <a href="/2021/10/04/ctfhub%C2%B7web%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            CTFHUB(WEB)-前置技能
-          
-        </div>
-      </a>
     
     
-      <a href="/2021/10/02/ctf%E5%AD%A6%E4%B9%A0/sql%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-1/" class="article-nav-link">
-        <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">sql基础学习-1</div>
-      </a>
-    
-  </nav>
-
-   
-<!-- valine评论 -->
-<div id="vcomments-box">
-  <div id="vcomments"></div>
-</div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
-<script>
-  new Valine({
-    el: "#vcomments",
-    app_id: "",
-    app_key: "",
-    path: window.location.pathname,
-    avatar: "monsterid",
-    placeholder: "给我的文章加点评论吧~",
-    recordIP: true,
-  });
-  const infoEle = document.querySelector("#vcomments .info");
-  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
-    infoEle.childNodes.forEach(function (item) {
-      item.parentNode.removeChild(item);
-    });
-  }
-</script>
-<style>
-  #vcomments-box {
-    padding: 5px 30px;
-  }
-
-  @media screen and (max-width: 800px) {
-    #vcomments-box {
-      padding: 5px 0px;
-    }
-  }
-
-  #vcomments-box #vcomments {
-    background-color: #fff;
-  }
-
-  .v .vlist .vcard .vh {
-    padding-right: 20px;
-  }
-
-  .v .vlist .vcard {
-    padding-left: 10px;
-  }
-</style>
-
- 
-   
-     
+  </div>
 </article>
+      
+      
+    </div>
+  </div>
+  
+  
 
+  
 </section>
       <footer class="footer">
   <div class="outer">
@@ -453,22 +245,6 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
- 
-<script src="/js/tocbot.min.js"></script>
-
-<script>
-  tocbot.init({
-    tocSelector: ".tocbot",
-    contentSelector: ".article-entry",
-    headingSelector: "h1, h2, h3, h4, h5, h6",
-    hasInnerContainers: true,
-    scrollSmooth: true,
-    scrollContainer: "main",
-    positionFixedSelector: ".tocbot",
-    positionFixedClass: "is-position-fixed",
-    fixedSidebarOffset: "auto",
-  });
-</script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link

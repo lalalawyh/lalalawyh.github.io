@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>CTFHUB(WEB)-密码口令 |  云芽的博客</title>
+      <title>CTFHUB(WEB)-前置技能 |  云芽的博客</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -66,7 +66,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-ctfhub通关指南/web/密码口令"
+  id="post-ctfhub·web通关指南/前置技能"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -77,7 +77,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  CTFHUB(WEB)-密码口令
+  CTFHUB(WEB)-前置技能
 </h1>
  
 
@@ -85,8 +85,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/10/04/ctfhub%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/web/%E5%AF%86%E7%A0%81%E5%8F%A3%E4%BB%A4/" class="article-date">
-  <time datetime="2021-10-03T16:53:15.000Z" itemprop="datePublished">2021-10-04</time>
+      <a href="/2021/10/04/ctfhub%C2%B7web%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/" class="article-date">
+  <time datetime="2021-10-03T16:52:29.000Z" itemprop="datePublished">2021-10-04</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/ctf%E8%A7%A3%E9%A2%98/">ctf解题</a>
@@ -97,7 +97,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">825</span>
+            <span class="post-count">201</span>
         </span>
     </span>
 
@@ -106,7 +106,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">3 min</span>
+            <span class="post-count">1 min</span>
         </span>
     </span>
 </div>
@@ -121,490 +121,25 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h3 id="WEB工具配置"><a href="#WEB工具配置" class="headerlink" title="WEB工具配置"></a>WEB工具配置</h3><h4 id="密码口令"><a href="#密码口令" class="headerlink" title="密码口令"></a>密码口令</h4><h5 id="弱口令"><a href="#弱口令" class="headerlink" title="弱口令"></a><strong>弱口令</strong></h5><p>题目：</p>
-<img src="/source/images/CTFHUB-WEB-%E5%AF%86%E7%A0%81%E5%8F%A3%E4%BB%A4/image-20211004011911966.png" alt="image-20211004011911966" style="zoom:50%;" />
+  <h3 id="WEB前置技能"><a href="#WEB前置技能" class="headerlink" title="WEB前置技能"></a>WEB前置技能</h3><h4 id="HTTP协议——请求方式"><a href="#HTTP协议——请求方式" class="headerlink" title="HTTP协议——请求方式"></a>HTTP协议——请求方式</h4><p>题目：</p>
+<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905194147045.png" alt="image-20210905194147045" style="zoom:33%;" />
 
-<p>解题：<br>通常认为容易被别人（他们有可能对你很了解）猜测到或被破解工具破解的口令均为弱口令。</p>
-<p>基本思路：需要利用burpsuite进行抓包并爆破（burpsuite安装与使用在另一篇）</p>
-<img src="/images/burpsuite/image-20210918011351469.png" alt="image-20210918011351469" style="zoom:40%;" />
-
-<p>注：提交flag时需要注意空格。</p>
-<h5 id="默认口令"><a href="#默认口令" class="headerlink" title="默认口令"></a>默认口令</h5><p>题目：<br><img src="/source/images/CTFHUB-WEB-%E5%AF%86%E7%A0%81%E5%8F%A3%E4%BB%A4/image-20211004012110480.png" alt="image-20211004012110480" style="zoom:50%;" /></p>
 <p>解题：</p>
-<p>题目是默认口令因此直接上网查找——账号：eyougw 密码：admin@(eyou)——登录成功即可得到flag</p>
-<img src="/source/images/CTFHUB-WEB-%E5%AF%86%E7%A0%81%E5%8F%A3%E4%BB%A4/image-20211004012708312.png" alt="image-20211004012708312" style="zoom:50%;" />
+<p>猜想CTF**B请求方式为ctfhub</p>
+<p>姿势1：burpsuite抓包</p>
+<p>使用burpsuite进行抓包，发送到repeatr把get方式改为CTFHUB的请求方式，点击send，就会返回含有flag的数据包。如下图。（图来自<a target="_blank" rel="noopener" href="https://blog.csdn.net/hgjiayou/article/details/106212933%EF%BC%89">https://blog.csdn.net/hgjiayou/article/details/106212933）</a></p>
+<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905195259986.png" alt="image-20210905195259986" style="zoom:60%;" />
 
-<p>注：常见的网络安全设备默认密码：</p>
-<table>
-<thead>
-<tr>
-<th>设备</th>
-<th>默认账号</th>
-<th>默认密码</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>深信服产品</td>
-<td>sangfor</td>
-<td>sangfor sangfor@2018 sangfor@2019</td>
-</tr>
-<tr>
-<td>深信服科技 AD</td>
-<td></td>
-<td>dlanrecover</td>
-</tr>
-<tr>
-<td>深信服负载均衡 AD 3.6</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td>深信服WAC ( WNS V2.6)</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td>深信服VPN</td>
-<td>Admin</td>
-<td>Admin</td>
-</tr>
-<tr>
-<td>深信服ipsec-VPN (SSL 5.5)</td>
-<td>Admin</td>
-<td>Admin</td>
-</tr>
-<tr>
-<td>深信服AC6.0</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td>SANGFOR防火墙</td>
-<td>admin</td>
-<td>sangfor</td>
-</tr>
-<tr>
-<td>深信服AF(NGAF V2.2)</td>
-<td>admin</td>
-<td>sangfor</td>
-</tr>
-<tr>
-<td>深信服NGAF下一代应用防火墙(NGAF V4.3)</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td>深信服AD3.9</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td>深信服上网行为管理设备数据中心</td>
-<td>Admin</td>
-<td>密码为空</td>
-</tr>
-<tr>
-<td>SANGFOR_AD_v5.1</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td>网御漏洞扫描系统</td>
-<td>leadsec</td>
-<td>leadsec</td>
-</tr>
-<tr>
-<td>天阗入侵检测与管理系统 V7.0</td>
-<td>Admin</td>
-<td>venus70</td>
-</tr>
-<tr>
-<td></td>
-<td>Audit</td>
-<td>venus70</td>
-</tr>
-<tr>
-<td></td>
-<td>adm</td>
-<td>venus70</td>
-</tr>
-<tr>
-<td>天阗入侵检测与管理系统 V6.0</td>
-<td>Admin</td>
-<td>venus60</td>
-</tr>
-<tr>
-<td></td>
-<td>Audit</td>
-<td>venus60</td>
-</tr>
-<tr>
-<td></td>
-<td>adm</td>
-<td>venus60</td>
-</tr>
-<tr>
-<td>网御WAF集中控制中心(V3.0R5.0)</td>
-<td>admin</td>
-<td>leadsec.waf</td>
-</tr>
-<tr>
-<td></td>
-<td>audit</td>
-<td>leadsec.waf</td>
-</tr>
-<tr>
-<td></td>
-<td>adm</td>
-<td>leadsec.waf</td>
-</tr>
-<tr>
-<td>联想网御</td>
-<td>administrator</td>
-<td>administrator</td>
-</tr>
-<tr>
-<td>网御事件服务器</td>
-<td>admin</td>
-<td>admin123</td>
-</tr>
-<tr>
-<td>联想网御防火墙PowerV</td>
-<td>administrator</td>
-<td>administrator</td>
-</tr>
-<tr>
-<td>联想网御入侵检测系统</td>
-<td>lenovo</td>
-<td>default</td>
-</tr>
-<tr>
-<td>网络卫士入侵检测系统</td>
-<td>admin</td>
-<td>talent</td>
-</tr>
-<tr>
-<td>网御入侵检测系统V3.2.72.0</td>
-<td>adm</td>
-<td>leadsec32</td>
-</tr>
-<tr>
-<td></td>
-<td>admin</td>
-<td>leadsec32</td>
-</tr>
-<tr>
-<td>联想网御入侵检测系统IDS</td>
-<td>root</td>
-<td>111111</td>
-</tr>
-<tr>
-<td></td>
-<td>admin</td>
-<td>admin123</td>
-</tr>
-<tr>
-<td>科来网络回溯分析系统</td>
-<td>csadmin</td>
-<td>colasoft</td>
-</tr>
-<tr>
-<td>中控考勤机web3.0</td>
-<td>administrator</td>
-<td>123456</td>
-</tr>
-<tr>
-<td>H3C iMC</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td>H3C SecPath系列</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td>H3C S5120-SI</td>
-<td>test</td>
-<td>123</td>
-</tr>
-<tr>
-<td>H3C智能管理中心</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td>H3C ER3100</td>
-<td>admin</td>
-<td>adminer3100</td>
-</tr>
-<tr>
-<td>H3C ER3200</td>
-<td>admin</td>
-<td>adminer3200</td>
-</tr>
-<tr>
-<td>H3C ER3260</td>
-<td>admin</td>
-<td>adminer3260</td>
-</tr>
-<tr>
-<td>H3C</td>
-<td>admin</td>
-<td>adminer</td>
-</tr>
-<tr>
-<td></td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td></td>
-<td>admin</td>
-<td>h3capadmin</td>
-</tr>
-<tr>
-<td></td>
-<td>h3c</td>
-<td>h3c</td>
-</tr>
-<tr>
-<td>360天擎</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td>网神防火墙</td>
-<td>firewall</td>
-<td>firewall</td>
-</tr>
-<tr>
-<td>天融信防火墙NGFW4000</td>
-<td>superman</td>
-<td>talent</td>
-</tr>
-<tr>
-<td>黑盾防火墙</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td></td>
-<td>rule</td>
-<td>abc123</td>
-</tr>
-<tr>
-<td></td>
-<td>audit</td>
-<td>abc123</td>
-</tr>
-<tr>
-<td>华为防火墙</td>
-<td>telnetuser</td>
-<td>telnetpwd</td>
-</tr>
-<tr>
-<td>ftpuser</td>
-<td>ftppwd</td>
-<td></td>
-</tr>
-<tr>
-<td>方正防火墙</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td>飞塔防火墙</td>
-<td>admin</td>
-<td>密码为空</td>
-</tr>
-<tr>
-<td>Juniper_SSG__5防火墙</td>
-<td>netscreen</td>
-<td>netscreen</td>
-</tr>
-<tr>
-<td>中新金盾硬件防火墙</td>
-<td>admin</td>
-<td>123</td>
-</tr>
-<tr>
-<td>kill防火墙(冠群金辰)</td>
-<td>admin</td>
-<td>sys123</td>
-</tr>
-<tr>
-<td>天清汉马USG防火墙</td>
-<td>admin</td>
-<td>venus.fw</td>
-</tr>
-<tr>
-<td></td>
-<td>Audit</td>
-<td>venus.audit</td>
-</tr>
-<tr>
-<td></td>
-<td>useradmin</td>
-<td>venus.user</td>
-</tr>
-<tr>
-<td>阿姆瑞特防火墙</td>
-<td>admin</td>
-<td>manager</td>
-</tr>
-<tr>
-<td>山石网科</td>
-<td>hillstone</td>
-<td>hillstone</td>
-</tr>
-<tr>
-<td>绿盟安全审计系统</td>
-<td>weboper</td>
-<td>weboper</td>
-</tr>
-<tr>
-<td></td>
-<td>webaudit</td>
-<td>webaudit</td>
-</tr>
-<tr>
-<td></td>
-<td>conadmin</td>
-<td>conadmin</td>
-</tr>
-<tr>
-<td></td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td></td>
-<td>shell</td>
-<td>shell</td>
-</tr>
-<tr>
-<td>绿盟产品</td>
-<td></td>
-<td>nsfocus123</td>
-</tr>
-<tr>
-<td>TopAudit日志审计系统</td>
-<td>superman</td>
-<td>talent</td>
-</tr>
-<tr>
-<td>LogBase日志管理综合审计系统</td>
-<td>admin</td>
-<td>safetybase</td>
-</tr>
-<tr>
-<td>网神SecFox运维安全管理与审计系统</td>
-<td>admin</td>
-<td>!1fw@2soc#3vpn</td>
-</tr>
-<tr>
-<td>天融信数据库审计系统</td>
-<td>superman</td>
-<td>telent</td>
-</tr>
-<tr>
-<td>Hillstone安全审计平台</td>
-<td>hillstone</td>
-<td>hillstone</td>
-</tr>
-<tr>
-<td>网康日志中心</td>
-<td>ns25000</td>
-<td>ns25000</td>
-</tr>
-<tr>
-<td>网络安全审计系统（中科新业）</td>
-<td>admin</td>
-<td>123456</td>
-</tr>
-<tr>
-<td>天玥网络安全审计系统</td>
-<td>Admin</td>
-<td>cyberaudit</td>
-</tr>
-<tr>
-<td>明御WEB应用防火墙</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-<tr>
-<td></td>
-<td>admin</td>
-<td>adminadmin</td>
-</tr>
-<tr>
-<td>明御攻防实验室平台</td>
-<td>root</td>
-<td>123456</td>
-</tr>
-<tr>
-<td>明御安全网关</td>
-<td>admin</td>
-<td>adminadmin</td>
-</tr>
-<tr>
-<td>明御运维审计与册风险控制系统</td>
-<td>admin</td>
-<td>1q2w3e</td>
-</tr>
-<tr>
-<td></td>
-<td>system</td>
-<td>1q2w3e4r</td>
-</tr>
-<tr>
-<td></td>
-<td>auditor</td>
-<td>1q2w3e4r</td>
-</tr>
-<tr>
-<td></td>
-<td>operator</td>
-<td>1q2w3e4r</td>
-</tr>
-<tr>
-<td>明御网站卫士</td>
-<td>sysmanager</td>
-<td>sysmanager888</td>
-</tr>
-<tr>
-<td>亿邮邮件网关</td>
-<td>eyouuser</td>
-<td>eyou_admin</td>
-</tr>
-<tr>
-<td></td>
-<td>eyougw</td>
-<td>admin@(eyou)</td>
-</tr>
-<tr>
-<td></td>
-<td>admin</td>
-<td>+-ccccc</td>
-</tr>
-<tr>
-<td></td>
-<td>admin</td>
-<td>cyouadmin</td>
-</tr>
-<tr>
-<td>Websense邮件安全网关</td>
-<td>administrator</td>
-<td>admin</td>
-</tr>
-<tr>
-<td>梭子鱼邮件存储网关</td>
-<td>admin</td>
-<td>admin</td>
-</tr>
-</tbody></table>
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4> 
+<p>姿势2：curl命令</p>
+<p>在cmd命令窗口中输入“curl -v -X CTFHUB <a target="_blank" rel="noopener" href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E2%80%9D%E5%8D%B3%E5%8F%AF%E5%BE%97%E5%88%B0flag%E4%BF%A1%E6%81%AF">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php”即可得到flag信息</a></p>
+<img src="/images/CTFHUB-WEB-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/image-20210905195437094.png" alt="image-20210905195437094" style="zoom:45%;" />
+
+<p>补充知识：</p>
+<p>curl</p>
+<p><strong>cURL</strong>是一个利用URL语法在<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%91%BD%E4%BB%A4%E8%A1%8C">命令行</a>下工作的文件传输工具。用来请求 Web 服务器。</p>
+<p>学习链接：<a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html">https://www.ruanyifeng.com/blog/2019/09/curl-reference.html</a></p>
+<p>curl -v -X CTFHUB <a target="_blank" rel="noopener" href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E8%A1%A8%E7%A4%BA%E4%BB%A5CTFHUB%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E8%AE%BF%E9%97%AEhttp://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E5%B9%B6%E6%9F%A5%E7%9C%8B%E9%80%9A%E4%BF%A1%E5%85%A8%E8%BF%87%E7%A8%8B%E3%80%82">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php表示以CTFHUB请求方式访问http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php并查看通信全过程。</a></p>
+ 
       <!-- reward -->
       
       <div id="reword-out">
@@ -674,7 +209,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/10/04/ctfhub%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/web/%E5%AF%86%E7%A0%81%E5%8F%A3%E4%BB%A4/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/10/04/ctfhub%C2%B7web%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -685,19 +220,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2021/10/04/ctfhub%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/web/SQL%E6%B3%A8%E5%85%A5/" class="article-nav-link">
+      <a href="/2021/10/04/ctfhub%C2%B7web%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            CTFHUB(WEB)-SQL注入
+            CTFHUB(WEB)-信息泄露
           
         </div>
       </a>
     
     
-      <a href="/2021/10/04/ctfhub%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/web/%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2/" class="article-nav-link">
+      <a href="/2021/10/03/ctf%E5%AD%A6%E4%B9%A0/sql%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">CTFHUB(WEB)-信息泄露</div>
+        <div class="article-nav-title">sql基础学习-2</div>
       </a>
     
   </nav>
