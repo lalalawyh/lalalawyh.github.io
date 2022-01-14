@@ -2852,7 +2852,7 @@ print(flag)
 <p><img src=""></p>
 ]]></content>
       <categories>
-        <category>ctf解题</category>
+        <category>ctfhub·web通关指南</category>
       </categories>
   </entry>
   <entry>
@@ -3108,7 +3108,7 @@ print(flag)
 <img src="/source/images/%E8%A7%A3%E9%A2%98-CTFHUB-WEB/image-20211001220617369.png" alt="image-20211001220617369" style="zoom:50%;" />
 ]]></content>
       <categories>
-        <category>ctf解题</category>
+        <category>ctfhub·web通关指南</category>
       </categories>
   </entry>
   <entry>
@@ -3164,7 +3164,7 @@ print(flag)
 <p>5、在访问量极大的一些页面上的XSS可以攻击一些小型网站，实现DDoS攻击的效果。</p>
 ]]></content>
       <categories>
-        <category>ctf解题</category>
+        <category>ctfhub·web通关指南</category>
       </categories>
   </entry>
   <entry>
@@ -3190,7 +3190,7 @@ print(flag)
 <p>curl -v -X CTFHUB <a href="http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E8%A1%A8%E7%A4%BA%E4%BB%A5CTFHUB%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E8%AE%BF%E9%97%AEhttp://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php%E5%B9%B6%E6%9F%A5%E7%9C%8B%E9%80%9A%E4%BF%A1%E5%85%A8%E8%BF%87%E7%A8%8B%E3%80%82">http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php表示以CTFHUB请求方式访问http://challenge-61f16092c6f73cd5.sandbox.ctfhub.com:10800/index.php并查看通信全过程。</a></p>
 ]]></content>
       <categories>
-        <category>ctf解题</category>
+        <category>ctfhub·web通关指南</category>
       </categories>
   </entry>
   <entry>
