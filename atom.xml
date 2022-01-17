@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-17T14:11:46.164Z</updated>
+  <updated>2022-01-17T14:39:13.600Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,58 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>pass-02</title>
+    <link href="http://example.com/2022/01/17/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-02/"/>
+    <id>http://example.com/2022/01/17/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-02/</id>
+    <published>2022-01-17T14:34:28.000Z</published>
+    <updated>2022-01-17T14:39:13.600Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;pass-02&quot;&gt;&lt;a href=&quot;#pass-02&quot; class=&quot;headerlink&quot; title=&quot;pass-02&quot;&gt;&lt;/a&gt;pass-02&lt;/h3&gt;&lt;p&gt;题目：&lt;/p&gt;
+&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="upload-labs通关指南" scheme="http://example.com/categories/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>class-2</title>
+    <link href="http://example.com/2022/01/17/gok2022%E5%AF%92/class-2/"/>
+    <id>http://example.com/2022/01/17/gok2022%E5%AF%92/class-2/</id>
+    <published>2022-01-17T14:33:33.000Z</published>
+    <updated>2022-01-17T14:39:44.373Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;class-2&quot;&gt;&lt;a href=&quot;#class-2&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="gok2022寒" scheme="http://example.com/categories/gok2022%E5%AF%92/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>pass-01</title>
     <link href="http://example.com/2022/01/17/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-01/"/>
     <id>http://example.com/2022/01/17/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-01/</id>
     <published>2022-01-16T16:34:07.000Z</published>
-    <updated>2022-01-17T14:11:46.164Z</updated>
+    <updated>2022-01-17T14:37:48.290Z</updated>
     
     
       
@@ -428,51 +475,6 @@
     
     
     <category term="ctfhub·web通关指南" scheme="http://example.com/categories/ctfhub%C2%B7web%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>CTFHUB(WEB)-前置技能</title>
-    <link href="http://example.com/2021/10/04/ctfhub%C2%B7web%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/"/>
-    <id>http://example.com/2021/10/04/ctfhub%C2%B7web%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD/</id>
-    <published>2021-10-03T16:52:29.000Z</published>
-    <updated>2022-01-14T12:24:38.265Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;WEB前置技能&quot;&gt;&lt;a href=&quot;#WEB前置技能&quot; class=&quot;headerlink&quot; title=&quot;WEB前置技能&quot;&gt;&lt;/a&gt;WEB前置技能&lt;/h3&gt;&lt;h4 id=&quot;HTTP协议——请求方式&quot;&gt;&lt;a href=&quot;#HTTP协议——请求方式&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="ctfhub·web通关指南" scheme="http://example.com/categories/ctfhub%C2%B7web%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>sql基础学习-2</title>
-    <link href="http://example.com/2021/10/03/ctf%E5%AD%A6%E4%B9%A0/sql%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/"/>
-    <id>http://example.com/2021/10/03/ctf%E5%AD%A6%E4%B9%A0/sql%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/</id>
-    <published>2021-10-03T09:59:06.000Z</published>
-    <updated>2021-10-03T10:10:22.196Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;sql基础学习&quot;&gt;&lt;a href=&quot;#sql基础学习&quot; class=&quot;headerlink&quot; title=&quot;sql基础学习&quot;&gt;&lt;/a&gt;sql基础学习&lt;/h2&gt;&lt;p&gt;注：为MYSQL 注入天书 –Sqli-labs 使用手册的学习笔记&lt;/p&gt;
-&lt;h3</summary>
-        
-      
-    
-    
     
     
   </entry>

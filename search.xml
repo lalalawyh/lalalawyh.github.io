@@ -3290,10 +3290,13 @@ print(flag)
 
 <p>解题：（考验前端js绕过）</p>
 <p>思路：</p>
-<p>上传一句话木马（后缀为php）发现js限制（仅允许jpg或png或gif文件）</p>
+<p>上传一句话木马（后缀为php）猜想js限制（仅允许jpg或png或gif文件）</p>
+<p>查看提示进行验证发现想法正确</p>
 <p>更改后缀为jpg或png或gif从而绕过限制再次上传</p>
 <p>用burpsuite抓包后更改后缀为php再次进行抓包</p>
-<p>连接菜刀或蚁剑进行上传文件</p>
+<p>最后连接菜刀或蚁剑进行上传文件等</p>
+<img src="/source/images/pass-01/image-20220117223606481.png" alt="image-20220117223606481" style="zoom:67%;" />
+
 <p>具体步骤：</p>
 <p>尝试上传一句话木马<code>&lt;?php @eval($_POST[123])?&gt;</code>，发现类型限制</p>
 <img src="/source/images/pass-01/image-20220117213338249.png" alt="image-20220117213338249" style="zoom:67%;" />
@@ -3330,6 +3333,27 @@ print(flag)
 
 
 
+]]></content>
+      <categories>
+        <category>upload-labs通关指南</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>class-2</title>
+    <url>/2022/01/17/gok2022%E5%AF%92/class-2/</url>
+    <content><![CDATA[<h2 id="class-2"><a href="#class-2" class="headerlink" title="class-2"></a>class-2</h2>]]></content>
+      <categories>
+        <category>gok2022寒</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>pass-02</title>
+    <url>/2022/01/17/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-02/</url>
+    <content><![CDATA[<h3 id="pass-02"><a href="#pass-02" class="headerlink" title="pass-02"></a>pass-02</h3><p>题目：</p>
+<img src="/source/images/pass-02/image-20220117223849083.png" alt="image-20220117223849083" style="zoom:65%;" />
+
+<p>解题：</p>
+<p>思路：</p>
 ]]></content>
       <categories>
         <category>upload-labs通关指南</category>
