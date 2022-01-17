@@ -2163,11 +2163,12 @@ echo &#39;flag&#123;**********&#125;&#39;; &#125;
 <p>输入URL地址，连接密码以及编码设置，不设置编码器则默认为明文传输：</p>
 <img src="/source/images/AntSword/image-20211106121027031.png" alt="image-20211106121027031" style="zoom:33%;" />
 
-<p>例如sql-labs中的less-7，url地址填写<a href="http://localhost/sqli-labs-master/Less-7/sql.php%EF%BC%8C%E5%9B%A0%E4%B8%BA%E4%BC%A0%E5%85%A5%E7%9A%84%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E4%B8%BA">http://localhost/sqli-labs-master/Less-7/sql.php，因为传入的一句话木马为</a><?php @eval($_POST[sql]);?>，所以连接密码为sql，连接成功点击进入：</p>
+<p>例如sql-labs中的less-7，url地址填写<a href="http://localhost/sqli-labs-master/Less-7/sql.php%EF%BC%8C%E5%9B%A0%E4%B8%BA%E4%BC%A0%E5%85%A5%E7%9A%84%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E4%B8%BA%60">http://localhost/sqli-labs-master/Less-7/sql.php，因为传入的一句话木马为`</a><?php @eval($_POST[sql]);?>`，所以连接密码为sql，输入完成后点击左上角的添加进行连接：</p>
 <img src="/source/images/AntSword/image-20211106183132664.png" alt="image-20211106183132664" style="zoom:33%;" />
 
 <p>连接蚁剑成功可以查看文件：</p>
 <img src="/source/images/AntSword/image-20211106182657370.png" alt="image-20211106182657370" style="zoom:55%;" />
+
 ]]></content>
       <categories>
         <category>工具安装指南</category>
@@ -3279,6 +3280,59 @@ print(flag)
 ]]></content>
       <categories>
         <category>工具安装指南</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>pass-01</title>
+    <url>/2022/01/17/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-01/</url>
+    <content><![CDATA[<h3 id="pass-01"><a href="#pass-01" class="headerlink" title="pass-01"></a>pass-01</h3><p>题目：</p>
+<img src="/source/images/pass-01/image-20220117154339102.png" alt="image-20220117154339102" style="zoom:65%;" />
+
+<p>解题：（考验前端js绕过）</p>
+<p>思路：</p>
+<p>上传一句话木马（后缀为php）发现js限制（仅允许jpg或png或gif文件）</p>
+<p>更改后缀为jpg或png或gif从而绕过限制再次上传</p>
+<p>用burpsuite抓包后更改后缀为php再次进行抓包</p>
+<p>连接菜刀或蚁剑进行上传文件</p>
+<p>具体步骤：</p>
+<p>尝试上传一句话木马<code>&lt;?php @eval($_POST[123])?&gt;</code>，发现类型限制</p>
+<img src="/source/images/pass-01/image-20220117213338249.png" alt="image-20220117213338249" style="zoom:67%;" />
+
+<p>改jpeg后缀为jpg后再次进行尝试并打开burpsuite抓包（记得更改网页设置）</p>
+<img src="/source/images/pass-01/image-20220117214741839.png" alt="image-20220117214741839" style="zoom:50%;" />
+
+<p>能抓到包说明已经绕过了js的限制，更改文件后缀为php后发包即点击forward，把拦截关掉即点击intercept is on</p>
+<img src="/source/images/pass-01/image-20220117215220693.png" alt="image-20220117215220693" style="zoom:50%;" />
+
+<p>回到题目可以直接将文件拖到地址栏查看路径，便于连接菜刀或蚁剑</p>
+<p>例如我拖出来的路径为<a href="http://localhost/upload-labs-master/upload/pass01.php">http://localhost/upload-labs-master/upload/pass01.php</a></p>
+<img src="/source/images/pass-01/image-20220117215821440.png" alt="image-20220117215821440" style="zoom:50%;" />
+
+
+
+<p>蚁剑（或菜刀）登录成功后输入URL地址和密码进行连接</p>
+<p>URL地址即文件的路径，在本文为<a href="http://localhost/upload-labs-master/upload/pass01.php">http://localhost/upload-labs-master/upload/pass01.php</a></p>
+<p>密码为一句话木马中传入的密码，在本文中为123</p>
+<img src="/source/images/pass-01/image-20220117220607496.png" alt="image-20220117220607496" style="zoom:67%;" />
+
+<p>右键点击选择文件管理（或虚拟终端）即可上传文件</p>
+<img src="/source/images/pass-01/image-20220117221035341.png" alt="image-20220117221035341" style="zoom:35%;" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>upload-labs通关指南</category>
       </categories>
   </entry>
 </search>
