@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>pass-01 |  云芽的博客</title>
+      <title>pass-05 |  云芽的博客</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -66,7 +66,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-upload-labs通关指南/pass-01"
+  id="post-pass-05"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -77,7 +77,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  pass-01
+  pass-05
 </h1>
  
 
@@ -85,19 +85,15 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2022/01/17/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-01/" class="article-date">
-  <time datetime="2022-01-16T16:34:07.000Z" itemprop="datePublished">2022-01-17</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/">upload-labs通关指南</a>
-  </div>
-  
+      <a href="/2022/01/20/pass-05/" class="article-date">
+  <time datetime="2022-01-20T09:30:13.000Z" itemprop="datePublished">2022-01-20</time>
+</a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">324</span>
+            <span class="post-count">0</span>
         </span>
     </span>
 
@@ -113,63 +109,13 @@
  
     </div>
       
-    <div class="tocbot"></div>
-
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h3 id="pass-01"><a href="#pass-01" class="headerlink" title="pass-01"></a>pass-01</h3><p>题目：</p>
-<img src="/source/images/pass-01/image-20220117154339102.png" alt="image-20220117154339102" style="zoom:65%;" />
-
-<p>解题：（考验前端js绕过）</p>
-<p>思路：</p>
-<p>上传一句话木马（后缀为php）猜想js限制（仅允许jpg或png或gif文件）</p>
-<p>查看提示进行验证发现想法正确</p>
-<p>更改后缀为jpg或png或gif从而绕过限制再次上传</p>
-<p>用burpsuite抓包后更改后缀为php再次进行抓包</p>
-<p>最后连接菜刀或蚁剑进行上传文件等</p>
-<img src="/source/images/pass-01/image-20220117223606481.png" alt="image-20220117223606481" style="zoom:67%;" />
-
-<p>具体步骤：</p>
-<p>尝试上传一句话木马<code>&lt;?php @eval($_POST[123])?&gt;</code>，发现类型限制</p>
-<img src="/source/images/pass-01/image-20220117213338249.png" alt="image-20220117213338249" style="zoom:67%;" />
-
-<p>改jpeg后缀为jpg后再次进行尝试并打开burpsuite抓包（记得更改网页设置）</p>
-<img src="/source/images/pass-01/image-20220117214741839.png" alt="image-20220117214741839" style="zoom:50%;" />
-
-<p>能抓到包说明已经绕过了js的限制，更改文件后缀为php后发包即点击forward，把拦截关掉即点击intercept is on</p>
-<img src="/source/images/pass-01/image-20220117215220693.png" alt="image-20220117215220693" style="zoom:50%;" />
-
-<p>回到题目可以直接将文件拖到地址栏查看路径，便于连接菜刀或蚁剑</p>
-<p>例如我拖出来的路径为<a target="_blank" rel="noopener" href="http://localhost/upload-labs-master/upload/pass01.php">http://localhost/upload-labs-master/upload/pass01.php</a></p>
-<img src="/source/images/pass-01/image-20220117215821440.png" alt="image-20220117215821440" style="zoom:50%;" />
-
-
-
-<p>蚁剑（或菜刀）登录成功后输入URL地址和密码进行连接</p>
-<p>URL地址即文件的路径，在本文为<a target="_blank" rel="noopener" href="http://localhost/upload-labs-master/upload/pass01.php">http://localhost/upload-labs-master/upload/pass01.php</a></p>
-<p>密码为一句话木马中传入的密码，在本文中为123</p>
-<img src="/source/images/pass-01/image-20220117220607496.png" alt="image-20220117220607496" style="zoom:67%;" />
-
-<p>右键点击选择文件管理（或虚拟终端）即可上传文件</p>
-<img src="/source/images/pass-01/image-20220117221035341.png" alt="image-20220117221035341" style="zoom:35%;" />
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
+   
       <!-- reward -->
       
       <div id="reword-out">
@@ -239,7 +185,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/01/17/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-01/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/01/20/pass-05/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -250,19 +196,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2022/01/17/gok2022%E5%AF%92/class-2/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            class-2
-          
-        </div>
-      </a>
     
-    
-      <a href="/2022/01/16/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/kali2021/" class="article-nav-link">
+      <a href="/2022/01/20/ctf%E5%AD%A6%E4%B9%A0/%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">kali2021</div>
+        <div class="article-nav-title">一句话木马</div>
       </a>
     
   </nav>
