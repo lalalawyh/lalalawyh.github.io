@@ -3450,8 +3450,40 @@ print(flag)
 
 <p>后缀改为大小写即PhP等仍然不行</p>
 <p>查看apache的httpd.conf中的配置，前提是有类似下面的代码：<code>AddType application/x-httpd-php .php .phtml .phps .php5 .pht</code>或<code>AddType application/x-httpd-php .php .php3 .phtml</code>，如果有，则代表php/phtml/phps/php5/pht/php3在上传时均可以解析为php文件，所以可以用以上后缀代替php进行文件上传</p>
-<h3 id="pass-04"><a href="#pass-04" class="headerlink" title="pass-04"></a>pass-04</h3><p><strong>解题</strong>：</p>
-<p>尝试上传一句话木马（.php），查看提示发现限制</p>
+<p>上传成功后右击选择复制图片地址进行访问，发现可以正常访问即解析成功</p>
+<img src="/images/image-20220121144504833.png" alt="image-20220121144504833" style="zoom:50%;" />
+
+<h3 id="pass-04"><a href="#pass-04" class="headerlink" title="pass-04"></a>pass-04</h3><p><strong>解题</strong>：（.htaccess绕过原理）</p>
+<p>小知识：htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。通过htaccess文件，</p>
+<p>可以帮我们实现：网页301重定向、自定义404错误页面、改变文件扩展名、允许/阻止特定的用户或者目录的访</p>
+<p>问、禁止目录列表、配置默认文档等功能。</p>
+<p>尝试上传一句话木马（.php），查看提示发现限制，可上传的仅有被Apache默认支持的.htaccess文件。</p>
+<img src="/images/image-20220121144950721.png" alt="image-20220121144950721" style="zoom:67%;" />
+
+<p>编辑.htaccess文件写入以下内容：（针对Apache漏洞）</p>
+<pre><code>SetHandler application/x-httped-php
+/*
+当前目录所有文件都使用php解析
+只要内容符合PHP语法规范就会被当作PHP执行,不符合则会报错。
+*/
+或者
+&lt;FilesMatch &quot;文件名（包括后缀）&quot;&gt;//该文件使用php解析，后缀可为txt等
+SetHandler application/x-httpd-php
+&lt;/FilesMatch&gt;
+</code></pre>
+<p>成功上传文件后复制地址即可正常访问</p>
+<p>小知识：php的注释方式</p>
+<pre><code class="php">&lt;?php
+// 这是单行注释
+echo &#39;你好！&#39;; // 这是单行注释，写在一行代码后面也叫行尾注释
+/*
+这是多行大块注释
+这里面都是注释内容
+更多注释内容等
+*/
+# 较少用的风格
+?&gt;
+</code></pre>
 ]]></content>
       <categories>
         <category>upload-labs通关指南</category>
