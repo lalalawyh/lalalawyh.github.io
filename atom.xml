@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-20T09:30:13.567Z</updated>
+  <updated>2022-01-21T07:25:59.330Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -18,13 +18,15 @@
   
   <entry>
     <title>pass-05</title>
-    <link href="http://example.com/2022/01/20/pass-05/"/>
-    <id>http://example.com/2022/01/20/pass-05/</id>
+    <link href="http://example.com/2022/01/20/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-05/"/>
+    <id>http://example.com/2022/01/20/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-05/</id>
     <published>2022-01-20T09:30:13.000Z</published>
-    <updated>2022-01-20T09:30:13.567Z</updated>
+    <updated>2022-01-21T07:25:59.330Z</updated>
     
     
     
+    
+    <category term="upload-labs通关指南" scheme="http://example.com/categories/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/"/>
     
     
   </entry>
@@ -80,7 +82,7 @@
     <link href="http://example.com/2022/01/17/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-01~pass-04/"/>
     <id>http://example.com/2022/01/17/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-01~pass-04/</id>
     <published>2022-01-16T16:34:07.000Z</published>
-    <updated>2022-01-21T07:22:33.479Z</updated>
+    <updated>2022-01-21T07:26:08.826Z</updated>
     
     
       

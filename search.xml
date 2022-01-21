@@ -3395,11 +3395,6 @@ print(flag)
       </categories>
   </entry>
   <entry>
-    <title>pass-05</title>
-    <url>/2022/01/20/pass-05/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>pass-01</title>
     <url>/2022/01/17/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-01~pass-04/</url>
     <content><![CDATA[<h3 id="upload-labs靶场"><a href="#upload-labs靶场" class="headerlink" title="upload-labs靶场"></a>upload-labs靶场</h3><p>备注：所有题目的任务都一样，区别在于限制不同即绕过方式不同</p>
@@ -3485,6 +3480,14 @@ echo &#39;你好！&#39;; // 这是单行注释，写在一行代码后面也叫
 ?&gt;
 </code></pre>
 ]]></content>
+      <categories>
+        <category>upload-labs通关指南</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>pass-05</title>
+    <url>/2022/01/20/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-05/</url>
+    <content><![CDATA[]]></content>
       <categories>
         <category>upload-labs通关指南</category>
       </categories>
