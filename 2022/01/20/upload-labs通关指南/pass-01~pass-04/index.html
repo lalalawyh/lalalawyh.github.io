@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>pass-05 |  云芽的博客</title>
+      <title>pass-01~pass-04 |  云芽的博客</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -66,7 +66,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-upload-labs通关指南/pass-05"
+  id="post-upload-labs通关指南/pass-01~pass-04"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -77,7 +77,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  pass-05
+  pass-01~pass-04
 </h1>
  
 
@@ -85,8 +85,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2022/01/20/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-05/" class="article-date">
-  <time datetime="2022-01-20T09:30:13.000Z" itemprop="datePublished">2022-01-20</time>
+      <a href="/2022/01/20/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-01~pass-04/" class="article-date">
+  <time datetime="2022-01-19T16:34:07.000Z" itemprop="datePublished">2022-01-20</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/">upload-labs通关指南</a>
@@ -97,7 +97,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">0</span>
+            <span class="post-count">1.1k</span>
         </span>
     </span>
 
@@ -106,20 +106,104 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">4 min</span>
         </span>
     </span>
 </div>
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-   
+  <h3 id="upload-labs靶场"><a href="#upload-labs靶场" class="headerlink" title="upload-labs靶场"></a>upload-labs靶场</h3><p>备注：所有题目的任务都一样，区别在于限制不同即绕过方式不同</p>
+<p><strong>题目：</strong></p>
+<img src="/images/image-20220120172730392.png" alt="image-20220120172730392" style="zoom:67%;" />
+
+<h3 id="pass-01"><a href="#pass-01" class="headerlink" title="pass-01"></a>pass-01</h3><p><strong>解题</strong>：（前端上传绕过；客户端js检查）</p>
+<p>方法一：禁止JavaScript</p>
+<p>以谷歌浏览器为例，每个浏览器可能操作的流程不同</p>
+<p>右上角进入设置——隐私设置和安全性——网站设置——找到内容里的JavaScript——不允许网站使用JavaScript</p>
+<p>禁用JavaScript之后即可正常上传</p>
+<p>方法二：修改前端不使用该checkfile函数</p>
+<p>方法三：前端通过后端修改</p>
+<p>尝试上传一句话木马<code>&lt;?php @eval($_POST[123])?&gt;</code>，文件后缀为php，由反馈的提示猜想js限制</p>
+<img src="/source/images/pass-01/image-20220117213338249.png" alt="image-20220117213338249" style="zoom:67%;" />
+
+<p>改php后缀为jpg或png或gif从而绕过限制再次上传并打开burpsuite抓包（记得更改网页设置）</p>
+<img src="/source/images/pass-01/image-20220117214741839.png" alt="image-20220117214741839" style="zoom:50%;" />
+
+<p>能抓到包说明已经绕过了js的限制，更改文件后缀为php后发包即点击forward，把拦截关掉即点击intercept is on</p>
+<img src="/source/images/pass-01/image-20220117215220693.png" alt="image-20220117215220693" style="zoom:50%;" />
+
+<p>回到题目可以直接将文件拖到地址栏查看路径，便于连接菜刀或蚁剑</p>
+<p>例如我拖出来的路径为<a target="_blank" rel="noopener" href="http://localhost/upload-labs-master/upload/pass01.php">http://localhost/upload-labs-master/upload/pass01.php</a></p>
+<img src="/source/images/pass-01/image-20220117215821440.png" alt="image-20220117215821440" style="zoom:50%;" />
+
+<p>蚁剑（或菜刀）登录成功后输入URL地址和密码进行连接</p>
+<p>URL地址即文件的路径，在本文为<a target="_blank" rel="noopener" href="http://localhost/upload-labs-master/upload/pass01.php">http://localhost/upload-labs-master/upload/pass01.php</a></p>
+<p>密码为一句话木马中传入的密码，在本文中为123</p>
+<img src="/source/images/pass-01/image-20220117220607496.png" alt="image-20220117220607496" style="zoom:67%;" />
+
+<p>右键点击选择文件管理（或虚拟终端）即可上传文件</p>
+<img src="/source/images/pass-01/image-20220117221035341.png" alt="image-20220117221035341" style="zoom:35%;" />
+
+<h3 id="pass-02"><a href="#pass-02" class="headerlink" title="pass-02"></a>pass-02</h3><p><strong>解题</strong>：（服务端对数据包的MIME检查）白名单<br>尝试上传一句话木马（.php），发现报错提示，推测是对MIME文件类型的限制</p>
+<img src="/source/images/pass-01/image-20220120131343081.png" alt="image-20220120131343081" style="zoom:67%;" />
+
+<p>有两种绕过方式：</p>
+<ol>
+<li>修改request包的contenttype字段声明文件类型为图片然后上传php文件</li>
+<li>直接修改文件后级上传ipg png gif文件再改为php （与pass-01方式相同）</li>
+</ol>
+<p>小知识：</p>
+<p>MIME：多用途互联网邮件扩展，它是一个互联网标准，在1992年最早应用于电子邮件系统，但后来也应用到浏览器。服务器会将它们发送的多媒体数据的类型告诉浏览器，而通知手段就是说明该多媒体数据的MIME类型，从而让浏览器知道接收到的信息哪些是MP3文件，哪些是Shockwave文件等等。服务器将MIME标志符放入传送的数据中来告诉浏览器使用哪种插件读取相关文件。</p>
+<h3 id="pass-03"><a href="#pass-03" class="headerlink" title="pass-03"></a>pass-03</h3><p><strong>解题</strong>：（上传特殊可解析后缀）黑名单</p>
+<p>尝试上传一句话木马（.php），发现本题的文件类型限制</p>
+<img src="/images/image-20220120174106885.png" alt="image-20220120174106885" style="zoom:67%;" />
+
+<p>后缀改为大小写即PhP等仍然不行</p>
+<p>查看apache的httpd.conf中的配置，前提是有类似下面的代码：<code>AddType application/x-httpd-php .php .phtml .phps .php5 .pht</code>或<code>AddType application/x-httpd-php .php .php3 .phtml</code>，如果有，则代表php/phtml/phps/php5/pht/php3在上传时均可以解析为php文件，所以可以用以上后缀代替php进行文件上传</p>
+<p>上传成功后右击选择复制图片地址进行访问，发现可以正常访问即解析成功</p>
+<img src="/images/image-20220121144504833.png" alt="image-20220121144504833" style="zoom:50%;" />
+
+<h3 id="pass-04"><a href="#pass-04" class="headerlink" title="pass-04"></a>pass-04</h3><p><strong>解题</strong>：（.htaccess绕过原理）</p>
+<p>小知识：htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。通过htaccess文件，</p>
+<p>可以帮我们实现：网页301重定向、自定义404错误页面、改变文件扩展名、允许/阻止特定的用户或者目录的访</p>
+<p>问、禁止目录列表、配置默认文档等功能。</p>
+<p>尝试上传一句话木马（.php），查看提示发现限制，可上传的仅有被Apache默认支持的.htaccess文件。</p>
+<img src="/images/image-20220121144950721.png" alt="image-20220121144950721" style="zoom:67%;" />
+
+<p>编辑.htaccess文件写入以下内容：（针对Apache漏洞）</p>
+<pre><code>SetHandler application/x-httped-php
+/*
+当前目录所有文件都使用php解析
+只要内容符合PHP语法规范就会被当作PHP执行,不符合则会报错。
+*/
+或者
+&lt;FilesMatch &quot;文件名（包括后缀）&quot;&gt;//该文件使用php解析，后缀可为txt等
+SetHandler application/x-httpd-php
+&lt;/FilesMatch&gt;
+</code></pre>
+<p>成功上传文件后复制地址即可正常访问</p>
+<p>小知识：php的注释方式</p>
+<pre><code class="php">&lt;?php
+// 这是单行注释
+echo &#39;你好！&#39;; // 这是单行注释，写在一行代码后面也叫行尾注释
+/*
+这是多行大块注释
+这里面都是注释内容
+更多注释内容等
+*/
+# 较少用的风格
+?&gt;
+</code></pre>
+ 
       <!-- reward -->
       
       <div id="reword-out">
@@ -189,7 +273,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/01/20/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-05/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/01/20/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-01~pass-04/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -200,10 +284,19 @@
    
   <nav class="article-nav">
     
-    
       <a href="/2022/01/20/ctf%E5%AD%A6%E4%B9%A0/%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            一句话木马
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2022/01/17/gok2022%E5%AF%92/class-2/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">一句话木马</div>
+        <div class="article-nav-title">class-2</div>
       </a>
     
   </nav>
