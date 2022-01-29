@@ -3438,6 +3438,7 @@ print(flag)
 <li>直接修改文件后级上传ipg png gif文件再改为php （与pass-01方式相同）</li>
 </ol>
 <p>小知识：</p>
+<p>MIME信息具体表现在http头中的content-type信息中。</p>
 <p>MIME：多用途互联网邮件扩展，它是一个互联网标准，在1992年最早应用于电子邮件系统，但后来也应用到浏览器。服务器会将它们发送的多媒体数据的类型告诉浏览器，而通知手段就是说明该多媒体数据的MIME类型，从而让浏览器知道接收到的信息哪些是MP3文件，哪些是Shockwave文件等等。服务器将MIME标志符放入传送的数据中来告诉浏览器使用哪种插件读取相关文件。</p>
 <h3 id="pass-03"><a href="#pass-03" class="headerlink" title="pass-03"></a>pass-03</h3><p><strong>解题</strong>：（上传特殊可解析后缀）黑名单</p>
 <p>尝试上传一句话木马（.php），发现本题的文件类型限制</p>
@@ -3467,6 +3468,7 @@ SetHandler application/x-httpd-php
 &lt;/FilesMatch&gt;
 </code></pre>
 <p>成功上传文件后复制地址即可正常访问</p>
+<p>注意：.htaccess文件不能起名字，它就是.htaccess文件，如果改为4.htaccess或者其他的名字是不可以的，无法解析。在实战中有可能上传上去这个文件会被自动重命名，被重命名了就不可以了。如果以上操作都弄好了，还是出不来，那么去改phpstudy配置文件，其他选项菜单–打开配置文件—httpd.conf</p>
 <p>小知识：php的注释方式</p>
 <pre><code class="php">&lt;?php
 // 这是单行注释
@@ -3485,12 +3487,58 @@ echo &#39;你好！&#39;; // 这是单行注释，写在一行代码后面也叫
       </categories>
   </entry>
   <entry>
-    <title>pass-05</title>
-    <url>/2022/01/22/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-05/</url>
-    <content><![CDATA[<h3 id="pass-05"><a href="#pass-05" class="headerlink" title="pass-05"></a>pass-05</h3><p><strong>解题</strong>：</p>
+    <title>pass-05~pass-09</title>
+    <url>/2022/01/22/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-05~pass-09/</url>
+    <content><![CDATA[<h3 id="upload-labs靶场"><a href="#upload-labs靶场" class="headerlink" title="upload-labs靶场"></a>upload-labs靶场</h3><h3 id="pass-05"><a href="#pass-05" class="headerlink" title="pass-05"></a>pass-05</h3><p><strong>解题</strong>：</p>
+<h3 id="pass-06"><a href="#pass-06" class="headerlink" title="pass-06"></a>pass-06</h3><p><strong>解题</strong>：(大小写绕过)</p>
+<p>上传.php后缀文件，发现限制从而查看源代码</p>
+<img src="/images/image-20220129221804738.png" alt="image-20220129221804738" style="zoom: 67%;" />
+
+<p>发现是黑名单且加上了.htaccess，但没有将后缀进行大小写统一，于是进行大小写绕过，比如将后缀改为.phP</p>
+<pre><code>$file_name = trim($_FILES[&#39;upload_file&#39;][&#39;name&#39;]);
+$file_name = deldot($file_name);//删除文件名末尾的点
+$file_ext = strrchr($file_name, &#39;.&#39;);
+$file_ext = str_ireplace(&#39;::$DATA&#39;, &#39;&#39;, $file_ext);//去除字符串::$DATA
+$file_ext = trim($file_ext); //首尾去空
+</code></pre>
+<h3 id="pass-07"><a href="#pass-07" class="headerlink" title="pass-07"></a>pass-07</h3><p><strong>解题</strong>：（空绕过）</p>
+<p>直接查看源代码，发现没有进行首尾去空，则上传. php或.php后缀文件 即php前面放空或后面放空</p>
+<pre><code>$file_name = $_FILES[&#39;upload_file&#39;][&#39;name&#39;];
+$file_name = deldot($file_name);//删除文件名末尾的点
+$file_ext = strrchr($file_name, &#39;.&#39;);
+$file_ext = strtolower($file_ext); //转换为小写
+$file_ext = str_ireplace(&#39;::$DATA&#39;, &#39;&#39;, $file_ext);//去除字符串::$DATA
+</code></pre>
+<h3 id="pass-08"><a href="#pass-08" class="headerlink" title="pass-08"></a>pass-08</h3><p><strong>解题</strong>：（点绕过）</p>
+<p>查看源代码，发现没有删除文件名末尾的点，则试着上传.php.后缀文件</p>
+<pre><code>$file_name = trim($_FILES[&#39;upload_file&#39;][&#39;name&#39;]);
+$file_ext = strrchr($file_name, &#39;.&#39;);
+$file_ext = strtolower($file_ext); //转换为小写
+$file_ext = str_ireplace(&#39;::$DATA&#39;, &#39;&#39;, $file_ext);//去除字符串::$DATA
+$file_ext = trim($file_ext); //首尾去空
+</code></pre>
+<p>直接修改文件后缀名，发现末尾的点会自动去除，即.php.仍为.php</p>
+<p>尝试使用burpsuite抓包进行修改，更改后缀后点击两次forward后设置intercept is off</p>
+<img src="/images/image-20220129231957508.png" alt="image-20220129231957508" style="zoom:50%;" />
+
+<p>小知识：windows系统对于文件后缀名后面跟的”.”会自动去除，不管是添加一个还是多个效果都是一样的。</p>
+<h3 id="pass-09"><a href="#pass-09" class="headerlink" title="pass-09"></a>pass-09</h3><p><strong>解题</strong>：（::$DATA绕过）</p>
+<p>查看源代码，发现没有去除字符串::$DATA，</p>
+<pre><code>$file_name = trim($_FILES[&#39;upload_file&#39;][&#39;name&#39;]);
+$file_name = deldot($file_name);//删除文件名末尾的点
+$file_ext = strrchr($file_name, &#39;.&#39;);
+$file_ext = strtolower($file_ext); //转换为小写
+$file_ext = trim($file_ext); //首尾去空
+</code></pre>
+<p>在文件后缀名末尾加上::$DATA即可上传</p>
 ]]></content>
       <categories>
         <category>upload-labs通关指南</category>
       </categories>
+  </entry>
+  <entry>
+    <title>pass-10</title>
+    <url>/2022/01/30/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-10/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>

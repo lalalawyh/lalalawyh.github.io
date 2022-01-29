@@ -97,7 +97,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.1k</span>
+            <span class="post-count">1.2k</span>
         </span>
     </span>
 
@@ -162,6 +162,7 @@
 <li>直接修改文件后级上传ipg png gif文件再改为php （与pass-01方式相同）</li>
 </ol>
 <p>小知识：</p>
+<p>MIME信息具体表现在http头中的content-type信息中。</p>
 <p>MIME：多用途互联网邮件扩展，它是一个互联网标准，在1992年最早应用于电子邮件系统，但后来也应用到浏览器。服务器会将它们发送的多媒体数据的类型告诉浏览器，而通知手段就是说明该多媒体数据的MIME类型，从而让浏览器知道接收到的信息哪些是MP3文件，哪些是Shockwave文件等等。服务器将MIME标志符放入传送的数据中来告诉浏览器使用哪种插件读取相关文件。</p>
 <h3 id="pass-03"><a href="#pass-03" class="headerlink" title="pass-03"></a>pass-03</h3><p><strong>解题</strong>：（上传特殊可解析后缀）黑名单</p>
 <p>尝试上传一句话木马（.php），发现本题的文件类型限制</p>
@@ -191,6 +192,7 @@ SetHandler application/x-httpd-php
 &lt;/FilesMatch&gt;
 </code></pre>
 <p>成功上传文件后复制地址即可正常访问</p>
+<p>注意：.htaccess文件不能起名字，它就是.htaccess文件，如果改为4.htaccess或者其他的名字是不可以的，无法解析。在实战中有可能上传上去这个文件会被自动重命名，被重命名了就不可以了。如果以上操作都弄好了，还是出不来，那么去改phpstudy配置文件，其他选项菜单–打开配置文件—httpd.conf</p>
 <p>小知识：php的注释方式</p>
 <pre><code class="php">&lt;?php
 // 这是单行注释

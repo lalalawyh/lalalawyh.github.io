@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>pass-05 |  云芽的博客</title>
+      <title>pass-05~pass-09 |  云芽的博客</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -66,7 +66,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-upload-labs通关指南/pass-05"
+  id="post-upload-labs通关指南/pass-05~pass-09"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -77,7 +77,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  pass-05
+  pass-05~pass-09
 </h1>
  
 
@@ -85,7 +85,7 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2022/01/22/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-05/" class="article-date">
+      <a href="/2022/01/22/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-05~pass-09/" class="article-date">
   <time datetime="2022-01-22T09:30:13.000Z" itemprop="datePublished">2022-01-22</time>
 </a> 
   <div class="article-category">
@@ -97,7 +97,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">4</span>
+            <span class="post-count">461</span>
         </span>
     </span>
 
@@ -121,7 +121,48 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h3 id="pass-05"><a href="#pass-05" class="headerlink" title="pass-05"></a>pass-05</h3><p><strong>解题</strong>：</p>
+  <h3 id="upload-labs靶场"><a href="#upload-labs靶场" class="headerlink" title="upload-labs靶场"></a>upload-labs靶场</h3><h3 id="pass-05"><a href="#pass-05" class="headerlink" title="pass-05"></a>pass-05</h3><p><strong>解题</strong>：</p>
+<h3 id="pass-06"><a href="#pass-06" class="headerlink" title="pass-06"></a>pass-06</h3><p><strong>解题</strong>：(大小写绕过)</p>
+<p>上传.php后缀文件，发现限制从而查看源代码</p>
+<img src="/images/image-20220129221804738.png" alt="image-20220129221804738" style="zoom: 67%;" />
+
+<p>发现是黑名单且加上了.htaccess，但没有将后缀进行大小写统一，于是进行大小写绕过，比如将后缀改为.phP</p>
+<pre><code>$file_name = trim($_FILES[&#39;upload_file&#39;][&#39;name&#39;]);
+$file_name = deldot($file_name);//删除文件名末尾的点
+$file_ext = strrchr($file_name, &#39;.&#39;);
+$file_ext = str_ireplace(&#39;::$DATA&#39;, &#39;&#39;, $file_ext);//去除字符串::$DATA
+$file_ext = trim($file_ext); //首尾去空
+</code></pre>
+<h3 id="pass-07"><a href="#pass-07" class="headerlink" title="pass-07"></a>pass-07</h3><p><strong>解题</strong>：（空绕过）</p>
+<p>直接查看源代码，发现没有进行首尾去空，则上传. php或.php后缀文件 即php前面放空或后面放空</p>
+<pre><code>$file_name = $_FILES[&#39;upload_file&#39;][&#39;name&#39;];
+$file_name = deldot($file_name);//删除文件名末尾的点
+$file_ext = strrchr($file_name, &#39;.&#39;);
+$file_ext = strtolower($file_ext); //转换为小写
+$file_ext = str_ireplace(&#39;::$DATA&#39;, &#39;&#39;, $file_ext);//去除字符串::$DATA
+</code></pre>
+<h3 id="pass-08"><a href="#pass-08" class="headerlink" title="pass-08"></a>pass-08</h3><p><strong>解题</strong>：（点绕过）</p>
+<p>查看源代码，发现没有删除文件名末尾的点，则试着上传.php.后缀文件</p>
+<pre><code>$file_name = trim($_FILES[&#39;upload_file&#39;][&#39;name&#39;]);
+$file_ext = strrchr($file_name, &#39;.&#39;);
+$file_ext = strtolower($file_ext); //转换为小写
+$file_ext = str_ireplace(&#39;::$DATA&#39;, &#39;&#39;, $file_ext);//去除字符串::$DATA
+$file_ext = trim($file_ext); //首尾去空
+</code></pre>
+<p>直接修改文件后缀名，发现末尾的点会自动去除，即.php.仍为.php</p>
+<p>尝试使用burpsuite抓包进行修改，更改后缀后点击两次forward后设置intercept is off</p>
+<img src="/images/image-20220129231957508.png" alt="image-20220129231957508" style="zoom:50%;" />
+
+<p>小知识：windows系统对于文件后缀名后面跟的”.”会自动去除，不管是添加一个还是多个效果都是一样的。</p>
+<h3 id="pass-09"><a href="#pass-09" class="headerlink" title="pass-09"></a>pass-09</h3><p><strong>解题</strong>：（::$DATA绕过）</p>
+<p>查看源代码，发现没有去除字符串::$DATA，</p>
+<pre><code>$file_name = trim($_FILES[&#39;upload_file&#39;][&#39;name&#39;]);
+$file_name = deldot($file_name);//删除文件名末尾的点
+$file_ext = strrchr($file_name, &#39;.&#39;);
+$file_ext = strtolower($file_ext); //转换为小写
+$file_ext = trim($file_ext); //首尾去空
+</code></pre>
+<p>在文件后缀名末尾加上::$DATA即可上传</p>
  
       <!-- reward -->
       
@@ -192,7 +233,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/01/22/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-05/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/01/22/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-05~pass-09/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -202,6 +243,15 @@
 
    
   <nav class="article-nav">
+    
+      <a href="/2022/01/30/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-10/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            pass-10
+          
+        </div>
+      </a>
     
     
       <a href="/2022/01/20/ctf%E5%AD%A6%E4%B9%A0/%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC/" class="article-nav-link">
