@@ -2680,7 +2680,10 @@ print(flag)
 <p>upload-labs部分根据解压到www目录下的文件名改写。</p>
 <img src="/source/images/upload-labs/image-20220113222239602.png" alt="image-20220113222239602" style="zoom:25%;" />
 
-<h4 id="小知识："><a href="#小知识：" class="headerlink" title="小知识："></a>小知识：</h4><p>上传漏洞类型脑图上传漏洞类型脑图<br><img src="/source/images/upload-labs/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9iYXluay5ibG9nLmNzZG4ubmV0,size_16,color_FFFFFF,t_70.png" alt="在这里插入图片描述"><br>如何判断上传漏洞类型的脑图<br><img src="/source/images/upload-labs/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9iYXluay5ibG9nLmNzZG4ubmV0,size_16,color_FFFFFF,t_70-16420839513274.png" alt="在这里插入图片描述"></p>
+<h4 id="小知识："><a href="#小知识：" class="headerlink" title="小知识："></a>小知识：</h4><p>上传漏洞类型脑图上传漏洞类型脑图</p>
+<img src="/images/mind-map.png" alt="mind-map.png (914×655)" style="zoom: 67%;" />
+
+<p>如何判断上传漏洞类型的脑图<br><img src="/source/images/upload-labs/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9iYXluay5ibG9nLmNzZG4ubmV0,size_16,color_FFFFFF,t_70-16420839513274.png" alt="在这里插入图片描述"></p>
 <h3 id=""><a href="#" class="headerlink" title=""></a></h3>]]></content>
       <categories>
         <category>工具安装指南</category>
@@ -3487,15 +3490,120 @@ echo &#39;你好！&#39;; // 这是单行注释，写在一行代码后面也叫
       </categories>
   </entry>
   <entry>
-    <title>pass-05~pass-09</title>
-    <url>/2022/01/22/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-05~pass-09/</url>
-    <content><![CDATA[<h3 id="upload-labs靶场"><a href="#upload-labs靶场" class="headerlink" title="upload-labs靶场"></a>upload-labs靶场</h3><h3 id="pass-05"><a href="#pass-05" class="headerlink" title="pass-05"></a>pass-05</h3><p><strong>解题</strong>：</p>
+    <title>pass-11</title>
+    <url>/2022/01/30/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-11/</url>
+    <content><![CDATA[<h3 id="upload-labs靶场"><a href="#upload-labs靶场" class="headerlink" title="upload-labs靶场"></a>upload-labs靶场</h3><h3 id="pass-11"><a href="#pass-11" class="headerlink" title="pass-11"></a>pass-11</h3><p><strong>解题</strong>：（双写绕过）</p>
+<pre><code class="php">        $deny_ext = array(&quot;php&quot;,&quot;php5&quot;,&quot;php4&quot;,&quot;php3&quot;,&quot;php2&quot;,&quot;html&quot;,&quot;htm&quot;,&quot;phtml&quot;,&quot;pht&quot;,&quot;jsp&quot;,&quot;jspa&quot;,&quot;jspx&quot;,&quot;jsw&quot;,&quot;jsv&quot;,&quot;jspf&quot;,&quot;jtml&quot;,&quot;asp&quot;,&quot;aspx&quot;,&quot;asa&quot;,&quot;asax&quot;,&quot;ascx&quot;,&quot;ashx&quot;,&quot;asmx&quot;,&quot;cer&quot;,&quot;swf&quot;,&quot;htaccess&quot;,&quot;ini&quot;);
+
+        $file_name = trim($_FILES[&#39;upload_file&#39;][&#39;name&#39;]);//$_FILES[&#39;upload_file&#39;][&#39;name&#39;]获取上传文件的名称，trim($_FILES[&#39;upload_file&#39;][&#39;name&#39;])删除文件名称首尾的空白符
+        $file_name = str_ireplace($deny_ext,&quot;&quot;, $file_name);//删除变量$file_name中含有数组$deny_ext的字符串
+        $temp_file = $_FILES[&#39;upload_file&#39;][&#39;tmp_name&#39;];//在上传文件的时候，文件都会被存储在一个临时的文件夹下，我们不需要知道具体路径，只需要通过tmp_name参数获取路径即可
+        $img_path = UPLOAD_PATH.&#39;/&#39;.$file_name;//UPLOAD_PATH的值在config.php文件中定义       
+</code></pre>
+<p>可以构造一个后缀为<code>.pphphp</code>的一句话木马文件，因为置空的操作只执行一次，所以删除了一次中间的<code>php</code>字符串后，<code>p</code>与<code>hp</code>仍然组成了<code>.php</code>后缀，不可以改为<code>.phpphp</code>会被全删掉</p>
+<h3 id="pass-12"><a href="#pass-12" class="headerlink" title="pass-12"></a>pass-12</h3><p><strong>解题</strong>：</p>
+<pre><code class="php">    $ext_arr = array(&#39;jpg&#39;,&#39;png&#39;,&#39;gif&#39;);
+    $file_ext = substr($_FILES[&#39;upload_file&#39;][&#39;name&#39;],strrpos($_FILES[&#39;upload_file&#39;][&#39;name&#39;],&quot;.&quot;)+1);
+    if(in_array($file_ext,$ext_arr))&#123;
+        $temp_file = $_FILES[&#39;upload_file&#39;][&#39;tmp_name&#39;];
+        $img_path = $_GET[&#39;save_path&#39;].&quot;/&quot;.rand(10, 99).date(&quot;YmdHis&quot;).&quot;.&quot;.$file_ext;
+        if(move_uploaded_file($temp_file,$img_path))&#123;
+            $is_upload = true;
+        &#125;
+</code></pre>
+]]></content>
+      <categories>
+        <category>upload-labs通关指南</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>pass-05~pass-10</title>
+    <url>/2022/01/22/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-05~pass-10/</url>
+    <content><![CDATA[<h3 id="upload-labs靶场"><a href="#upload-labs靶场" class="headerlink" title="upload-labs靶场"></a>upload-labs靶场</h3><h3 id="pass-05"><a href="#pass-05" class="headerlink" title="pass-05"></a>pass-05</h3><p><strong>解题</strong>：（点+空格+点绕过/黑名单.user.ini绕过）</p>
+<pre><code class="php">$is_upload = false;
+$msg = null;
+if (isset($_POST[&#39;submit&#39;])) &#123;
+    if (file_exists(UPLOAD_PATH)) &#123;
+        $deny_ext = array(&quot;.php&quot;,&quot;.php5&quot;,&quot;.php4&quot;,&quot;.php3&quot;,&quot;.php2&quot;,&quot;.html&quot;,&quot;.htm&quot;,&quot;.phtml&quot;,&quot;.pht&quot;,&quot;.pHp&quot;,&quot;.pHp5&quot;,&quot;.pHp4&quot;,&quot;.pHp3&quot;,&quot;.pHp2&quot;,&quot;.Html&quot;,&quot;.Htm&quot;,&quot;.pHtml&quot;,&quot;.jsp&quot;,&quot;.jspa&quot;,&quot;.jspx&quot;,&quot;.jsw&quot;,&quot;.jsv&quot;,&quot;.jspf&quot;,&quot;.jtml&quot;,&quot;.jSp&quot;,&quot;.jSpx&quot;,&quot;.jSpa&quot;,&quot;.jSw&quot;,&quot;.jSv&quot;,&quot;.jSpf&quot;,&quot;.jHtml&quot;,&quot;.asp&quot;,&quot;.aspx&quot;,&quot;.asa&quot;,&quot;.asax&quot;,&quot;.ascx&quot;,&quot;.ashx&quot;,&quot;.asmx&quot;,&quot;.cer&quot;,&quot;.aSp&quot;,&quot;.aSpx&quot;,&quot;.aSa&quot;,&quot;.aSax&quot;,&quot;.aScx&quot;,&quot;.aShx&quot;,&quot;.aSmx&quot;,&quot;.cEr&quot;,&quot;.sWf&quot;,&quot;.swf&quot;,&quot;.htaccess&quot;);
+        $file_name = trim($_FILES[&#39;upload_file&#39;][&#39;name&#39;]);
+        $file_name = deldot($file_name);//删除变量$file_name中的最后一个小数点，当字符串的多个部分含有小数点时仅会删除末尾的小数点，如果字符串末尾是连续的小数点时会删除末尾连续的小数点
+        $file_ext = strrchr($file_name, &#39;.&#39;);//返回小数点和文件后缀组成的子串，假设文件名为php05.php.jpg，得到的$file_txt值就是.jpg
+        $file_ext = strtolower($file_ext); //转换为小写
+        $file_ext = str_ireplace(&#39;::$DATA&#39;, &#39;&#39;, $file_ext);//如果文件名+::$DATA会把::$DATA之后的数据当成文件流处理,不会检测后缀名。例如文件名为test.php::$DATA.jpg时，在windows中会删除::$DATA及之后的内容，即上传windows服务器后的文件名为test.php，str_ireplace(&#39;::$DATA&#39;, &#39;&#39;, $file_ext)将会用空字符来替换变量$file_ext中的::$DATA子串，防止了::$DATA的上传绕过
+        $file_ext = trim($file_ext); //首尾去空
+        
+        if (!in_array($file_ext, $deny_ext)) &#123;
+            $temp_file = $_FILES[&#39;upload_file&#39;][&#39;tmp_name&#39;];
+            $img_path = UPLOAD_PATH.&#39;/&#39;.$file_name;
+            if (move_uploaded_file($temp_file, $img_path)) &#123;
+                $is_upload = true;
+            &#125; else &#123;
+                $msg = &#39;上传出错！&#39;;
+            &#125;
+        &#125; else &#123;
+            $msg = &#39;此文件类型不允许上传！&#39;;
+        &#125;
+    &#125; else &#123;
+        $msg = UPLOAD_PATH . &#39;文件夹不存在,请手工创建！&#39;;
+    &#125;
+&#125;
+</code></pre>
+<p>方法一：改文件后缀为.php.（空格）.</p>
+<p>代码先是去除文件名末尾的<code>.</code>，再去除文件名前后的空格，然后通过strrchar函数寻找<code>.</code>来确认文件名的后缀，但是最后保存文件的时候没有重命名而使用的原始的文件名，导致可以更改后缀为<code>.php. .</code></p>
+<p>那么上传时先是去除文件名末尾的<code>.</code>变成<code>.php.（空格） </code> ，再去除文件名首尾的空格变成<code>.php.</code>，上传后保存在Windows系统上的文件名最后的一个空格会被去掉即自动更改后缀为<code>.php</code>可使解析成功</p>
+<p>小知识：  </p>
+<table>
+<thead>
+<tr>
+<th>PHP函数</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>file_exists(路径)</td>
+<td>判断指定的文件或目录是否存在，不存在返回true，否则返回false</td>
+</tr>
+<tr>
+<td>in_array(变量，数组)</td>
+<td>如果变量存在于数组就返回true，否则返回false</td>
+</tr>
+<tr>
+<td>isset(变量)</td>
+<td>如果变量存在且值不为null返回true，否则返回false</td>
+</tr>
+<tr>
+<td>move_uploaded_file(文件路径，文件夹路径)</td>
+<td>将文件移动到指定文件夹下</td>
+</tr>
+<tr>
+<td>strrchr(字符串，字符)</td>
+<td>如果字符存在于字符串时，返回第一次找到的字符至字符串末尾的子串。不存在于字符串时就返回false</td>
+</tr>
+<tr>
+<td>strtolower(字符串)</td>
+<td>将字符串全部转换成小写</td>
+</tr>
+<tr>
+<td>str_ireplace(字符串1，字符串2，字符串3)</td>
+<td>在字符串3中搜索，如果含有字符串1的子串就替换成字符串2</td>
+</tr>
+<tr>
+<td>trim(字符串)</td>
+<td>删除字符串前后的空白符，空白符： 空格、制表符（\t）、换行符（\n）、回车符（\r）、空字节符（\0）和垂直制表符（\x0B）</td>
+</tr>
+</tbody></table>
+<p>方法二：配置.user.ini文件中的auto_prepend_file属性</p>
+<img src="/images/image-20220205200418568.png" alt="image-20220205200418568" style="zoom:55%;" />
+
+<p>因为<code>.ini</code>后缀的文件可以上传，所以我们可以上传一个<code>.user.ini</code>文件来改变服务器配置。在<code>.user.ini</code>设置<code>auto_prepend_file</code>属性<code>auto_prepend_file=pass05.jpg</code>（上传一个一句话木马文件，名字需要与.user.ini配置的文件名相同，因为jpg没有在黑名单的限制之内，所以可以修改后缀名为jpg绕过上传限制），此配置的意思是在<code>.user.ini</code>相同的目录下，所有的php文件都包含<code>pass05.jpg</code>这个文件，之后我们就可以利用到<code>readme.php</code>包含一个我们上传的木马文件，再连接<code>readme.php</code>文件达到连接一句话木马的目的。</p>
+<p>小知识：</p>
+<p><code>.ini</code> 文件是Initialization File的缩写即初始化文件，是windows系统配置文件所采用的存储格式，统管windows的各项配置。在<code>upload</code>文件夹会存在三个文件，原先就存在的readme.php和上传的.user.ini、pass05.jpg。</p>
 <h3 id="pass-06"><a href="#pass-06" class="headerlink" title="pass-06"></a>pass-06</h3><p><strong>解题</strong>：(大小写绕过)</p>
 <p>上传.php后缀文件，发现限制从而查看源代码</p>
 <img src="/images/image-20220129221804738.png" alt="image-20220129221804738" style="zoom: 67%;" />
 
 <p>发现是黑名单且加上了.htaccess，但没有将后缀进行大小写统一，于是进行大小写绕过，比如将后缀改为.phP</p>
-<pre><code>$file_name = trim($_FILES[&#39;upload_file&#39;][&#39;name&#39;]);
+<pre><code class="php">$file_name = trim($_FILES[&#39;upload_file&#39;][&#39;name&#39;]);
 $file_name = deldot($file_name);//删除文件名末尾的点
 $file_ext = strrchr($file_name, &#39;.&#39;);
 $file_ext = str_ireplace(&#39;::$DATA&#39;, &#39;&#39;, $file_ext);//去除字符串::$DATA
@@ -3503,7 +3611,7 @@ $file_ext = trim($file_ext); //首尾去空
 </code></pre>
 <h3 id="pass-07"><a href="#pass-07" class="headerlink" title="pass-07"></a>pass-07</h3><p><strong>解题</strong>：（空绕过）</p>
 <p>直接查看源代码，发现没有进行首尾去空，则上传. php或.php后缀文件 即php前面放空或后面放空</p>
-<pre><code>$file_name = $_FILES[&#39;upload_file&#39;][&#39;name&#39;];
+<pre><code class="php">$file_name = $_FILES[&#39;upload_file&#39;][&#39;name&#39;];
 $file_name = deldot($file_name);//删除文件名末尾的点
 $file_ext = strrchr($file_name, &#39;.&#39;);
 $file_ext = strtolower($file_ext); //转换为小写
@@ -3511,7 +3619,7 @@ $file_ext = str_ireplace(&#39;::$DATA&#39;, &#39;&#39;, $file_ext);//去除字�
 </code></pre>
 <h3 id="pass-08"><a href="#pass-08" class="headerlink" title="pass-08"></a>pass-08</h3><p><strong>解题</strong>：（点绕过）</p>
 <p>查看源代码，发现没有删除文件名末尾的点，则试着上传.php.后缀文件</p>
-<pre><code>$file_name = trim($_FILES[&#39;upload_file&#39;][&#39;name&#39;]);
+<pre><code class="php">$file_name = trim($_FILES[&#39;upload_file&#39;][&#39;name&#39;]);
 $file_ext = strrchr($file_name, &#39;.&#39;);
 $file_ext = strtolower($file_ext); //转换为小写
 $file_ext = str_ireplace(&#39;::$DATA&#39;, &#39;&#39;, $file_ext);//去除字符串::$DATA
@@ -3522,23 +3630,29 @@ $file_ext = trim($file_ext); //首尾去空
 <img src="/images/image-20220129231957508.png" alt="image-20220129231957508" style="zoom:50%;" />
 
 <p>小知识：windows系统对于文件后缀名后面跟的”.”会自动去除，不管是添加一个还是多个效果都是一样的。</p>
+<p>上传后保存在Windows系统上的文件名最后的一个空格会被去掉即自动更改后缀为.php（但是目前还没成功）</p>
 <h3 id="pass-09"><a href="#pass-09" class="headerlink" title="pass-09"></a>pass-09</h3><p><strong>解题</strong>：（::$DATA绕过）</p>
 <p>查看源代码，发现没有去除字符串::$DATA，</p>
-<pre><code>$file_name = trim($_FILES[&#39;upload_file&#39;][&#39;name&#39;]);
+<pre><code class="php">$file_name = trim($_FILES[&#39;upload_file&#39;][&#39;name&#39;]);
 $file_name = deldot($file_name);//删除文件名末尾的点
 $file_ext = strrchr($file_name, &#39;.&#39;);
 $file_ext = strtolower($file_ext); //转换为小写
 $file_ext = trim($file_ext); //首尾去空
 </code></pre>
 <p>在文件后缀名末尾加上::$DATA即可上传</p>
+<h3 id="pass-10"><a href="#pass-10" class="headerlink" title="pass-10"></a>pass-10</h3><p><strong>解题</strong>：（黑名单点空点绕过）</p>
+<pre><code class="php">        $deny_ext = array(&quot;.php&quot;,&quot;.php5&quot;,&quot;.php4&quot;,&quot;.php3&quot;,&quot;.php2&quot;,&quot;.html&quot;,&quot;.htm&quot;,&quot;.phtml&quot;,&quot;.pht&quot;,&quot;.pHp&quot;,&quot;.pHp5&quot;,&quot;.pHp4&quot;,&quot;.pHp3&quot;,&quot;.pHp2&quot;,&quot;.Html&quot;,&quot;.Htm&quot;,&quot;.pHtml&quot;,&quot;.jsp&quot;,&quot;.jspa&quot;,&quot;.jspx&quot;,&quot;.jsw&quot;,&quot;.jsv&quot;,&quot;.jspf&quot;,&quot;.jtml&quot;,&quot;.jSp&quot;,&quot;.jSpx&quot;,&quot;.jSpa&quot;,&quot;.jSw&quot;,&quot;.jSv&quot;,&quot;.jSpf&quot;,&quot;.jHtml&quot;,&quot;.asp&quot;,&quot;.aspx&quot;,&quot;.asa&quot;,&quot;.asax&quot;,&quot;.ascx&quot;,&quot;.ashx&quot;,&quot;.asmx&quot;,&quot;.cer&quot;,&quot;.aSp&quot;,&quot;.aSpx&quot;,&quot;.aSa&quot;,&quot;.aSax&quot;,&quot;.aScx&quot;,&quot;.aShx&quot;,&quot;.aSmx&quot;,&quot;.cEr&quot;,&quot;.sWf&quot;,&quot;.swf&quot;,&quot;.htaccess&quot;,&quot;.ini&quot;);
+        $file_name = trim($_FILES[&#39;upload_file&#39;][&#39;name&#39;]);
+        $file_name = deldot($file_name);//删除文件名末尾的点
+        $file_ext = strrchr($file_name, &#39;.&#39;);
+        $file_ext = strtolower($file_ext); //转换为小写
+        $file_ext = str_ireplace(&#39;::$DATA&#39;, &#39;&#39;, $file_ext);//去除字符串::$DATA
+        $file_ext = trim($file_ext); //首尾去空
+</code></pre>
+<p>比pass-05增加文件后缀<code>.ini</code>的黑名单限制，与pass05相比不可使用方法二，仅能使用方法一中的点空点绕过</p>
 ]]></content>
       <categories>
         <category>upload-labs通关指南</category>
       </categories>
-  </entry>
-  <entry>
-    <title>pass-10</title>
-    <url>/2022/01/30/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-10/</url>
-    <content><![CDATA[]]></content>
   </entry>
 </search>
