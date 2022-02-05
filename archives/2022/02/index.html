@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>pass-11 |  云芽的博客</title>
+      <title>Archives: 2022/2 |  云芽的博客</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -65,223 +65,52 @@
       
     <main class="content on">
       <section class="outer">
-  <article
-  id="post-upload-labs通关指南/pass-11"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
+  
+  
+  <article class="articles">
     
-    <header class="article-header">
+    
+    <h1 class="page-type-title">2022/2</h1>
+    
+    
+  
+  
+  
+  
+  
+  
+  <div class="archives-wrap">
+    <div class="archive-year-wrap">
+      <a href="/archives/2022" class="archive-year">2022</a>
+    </div>
+    <div class="archives">
+      
+      <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2022/02/05/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-11~pass-13/" class="archive-article-date">
+  <time datetime="2022-02-04T16:02:24.000Z" itemprop="datePublished">02/05</time>
+</a>
        
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  pass-11
-</h1>
+<h2 itemprop="name">
+  <a class="archive-article-title" href="/2022/02/05/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-11~pass-13/"
+    >pass-11~pass-13</a> 
+</h2>
  
 
-      
     </header>
-     
-    <div class="article-meta">
-      <a href="/2022/01/30/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-11/" class="article-date">
-  <time datetime="2022-01-29T16:02:24.000Z" itemprop="datePublished">2022-01-30</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/">upload-labs通关指南</a>
+    
+    
   </div>
-  
-<div class="word_count">
-    <span class="post-time">
-        <span class="post-meta-item-icon">
-            <i class="ri-quill-pen-line"></i>
-            <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">372</span>
-        </span>
-    </span>
-
-    <span class="post-time">
-        &nbsp; | &nbsp;
-        <span class="post-meta-item-icon">
-            <i class="ri-book-open-line"></i>
-            <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
-        </span>
-    </span>
-</div>
- 
-    </div>
-      
-    <div class="tocbot"></div>
-
-
-
-
-  
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="upload-labs靶场"><a href="#upload-labs靶场" class="headerlink" title="upload-labs靶场"></a>upload-labs靶场</h3><h3 id="pass-11"><a href="#pass-11" class="headerlink" title="pass-11"></a>pass-11</h3><p><strong>解题</strong>：（双写绕过）</p>
-<pre><code class="php">        $deny_ext = array(&quot;php&quot;,&quot;php5&quot;,&quot;php4&quot;,&quot;php3&quot;,&quot;php2&quot;,&quot;html&quot;,&quot;htm&quot;,&quot;phtml&quot;,&quot;pht&quot;,&quot;jsp&quot;,&quot;jspa&quot;,&quot;jspx&quot;,&quot;jsw&quot;,&quot;jsv&quot;,&quot;jspf&quot;,&quot;jtml&quot;,&quot;asp&quot;,&quot;aspx&quot;,&quot;asa&quot;,&quot;asax&quot;,&quot;ascx&quot;,&quot;ashx&quot;,&quot;asmx&quot;,&quot;cer&quot;,&quot;swf&quot;,&quot;htaccess&quot;,&quot;ini&quot;);
-
-        $file_name = trim($_FILES[&#39;upload_file&#39;][&#39;name&#39;]);//$_FILES[&#39;upload_file&#39;][&#39;name&#39;]获取上传文件的名称，trim($_FILES[&#39;upload_file&#39;][&#39;name&#39;])删除文件名称首尾的空白符
-        $file_name = str_ireplace($deny_ext,&quot;&quot;, $file_name);//删除变量$file_name中含有数组$deny_ext的字符串
-        $temp_file = $_FILES[&#39;upload_file&#39;][&#39;tmp_name&#39;];//在上传文件的时候，文件都会被存储在一个临时的文件夹下，我们不需要知道具体路径，只需要通过tmp_name参数获取路径即可
-        $img_path = UPLOAD_PATH.&#39;/&#39;.$file_name;//UPLOAD_PATH的值在config.php文件中定义       
-</code></pre>
-<p>可以构造一个后缀为<code>.pphphp</code>的一句话木马文件，因为置空的操作只执行一次，所以删除了一次中间的<code>php</code>字符串后，<code>p</code>与<code>hp</code>仍然组成了<code>.php</code>后缀，不可以改为<code>.phpphp</code>会被全删掉</p>
-<h3 id="pass-12"><a href="#pass-12" class="headerlink" title="pass-12"></a>pass-12</h3><p><strong>解题</strong>：</p>
-<pre><code class="php">    $ext_arr = array(&#39;jpg&#39;,&#39;png&#39;,&#39;gif&#39;);
-    $file_ext = substr($_FILES[&#39;upload_file&#39;][&#39;name&#39;],strrpos($_FILES[&#39;upload_file&#39;][&#39;name&#39;],&quot;.&quot;)+1);
-    if(in_array($file_ext,$ext_arr))&#123;
-        $temp_file = $_FILES[&#39;upload_file&#39;][&#39;tmp_name&#39;];
-        $img_path = $_GET[&#39;save_path&#39;].&quot;/&quot;.rand(10, 99).date(&quot;YmdHis&quot;).&quot;.&quot;.$file_ext;
-        if(move_uploaded_file($temp_file,$img_path))&#123;
-            $is_upload = true;
-        &#125;
-</code></pre>
- 
-      <!-- reward -->
-      
-      <div id="reword-out">
-        <div id="reward-btn">
-          Donate
-        </div>
-      </div>
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <div class="declare">
-      <ul class="post-copyright">
-        <li>
-          <i class="ri-copyright-line"></i>
-          <strong>Copyright： </strong>
-          
-          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
-          
-        </li>
-      </ul>
-    </div>
-    
-    <footer class="article-footer">
-       
-<div class="share-btn">
-      <span class="share-sns share-outer">
-        <i class="ri-share-forward-line"></i>
-        分享
-      </span>
-      <div class="share-wrap">
-        <i class="arrow"></i>
-        <div class="share-icons">
-          
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="ri-weibo-fill"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="ri-wechat-fill"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="ri-qq-fill"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="ri-douban-line"></i>
-          </a>
-          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a> -->
-          
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="ri-facebook-circle-fill"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="ri-twitter-fill"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="ri-google-fill"></i>
-          </a>
-        </div>
-      </div>
-</div>
-
-<div class="wx-share-modal">
-    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/01/30/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-11/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div id="share-mask"></div>  
-    </footer>
-  </div>
-
-   
-  <nav class="article-nav">
-    
-    
-      <a href="/2022/01/22/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-05~pass-10/" class="article-nav-link">
-        <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">pass-05~pass-10</div>
-      </a>
-    
-  </nav>
-
-   
-<!-- valine评论 -->
-<div id="vcomments-box">
-  <div id="vcomments"></div>
-</div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
-<script>
-  new Valine({
-    el: "#vcomments",
-    app_id: "",
-    app_key: "",
-    path: window.location.pathname,
-    avatar: "monsterid",
-    placeholder: "给我的文章加点评论吧~",
-    recordIP: true,
-  });
-  const infoEle = document.querySelector("#vcomments .info");
-  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
-    infoEle.childNodes.forEach(function (item) {
-      item.parentNode.removeChild(item);
-    });
-  }
-</script>
-<style>
-  #vcomments-box {
-    padding: 5px 30px;
-  }
-
-  @media screen and (max-width: 800px) {
-    #vcomments-box {
-      padding: 5px 0px;
-    }
-  }
-
-  #vcomments-box #vcomments {
-    background-color: #fff;
-  }
-
-  .v .vlist .vcard .vh {
-    padding-right: 20px;
-  }
-
-  .v .vlist .vcard {
-    padding-left: 10px;
-  }
-</style>
-
- 
-   
-     
 </article>
+      
+      
+    </div>
+  </div>
+  
+  
 
+  
 </section>
       <footer class="footer">
   <div class="outer">
@@ -410,22 +239,6 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
- 
-<script src="/js/tocbot.min.js"></script>
-
-<script>
-  tocbot.init({
-    tocSelector: ".tocbot",
-    contentSelector: ".article-entry",
-    headingSelector: "h1, h2, h3, h4, h5, h6",
-    hasInnerContainers: true,
-    scrollSmooth: true,
-    scrollContainer: "main",
-    positionFixedSelector: ".tocbot",
-    positionFixedClass: "is-position-fixed",
-    fixedSidebarOffset: "auto",
-  });
-</script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link
