@@ -85,8 +85,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2022/02/05/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-11~pass-13/" class="article-date">
-  <time datetime="2022-02-04T16:02:24.000Z" itemprop="datePublished">2022-02-05</time>
+      <a href="/2022/02/03/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-11~pass-13/" class="article-date">
+  <time datetime="2022-02-02T16:02:24.000Z" itemprop="datePublished">2022-02-03</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/">upload-labs通关指南</a>
@@ -97,7 +97,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">700</span>
+            <span class="post-count">704</span>
         </span>
     </span>
 
@@ -148,7 +148,7 @@
 
 <h3 id="pass-13"><a href="#pass-13" class="headerlink" title="pass-13"></a>pass-13</h3><p><strong>解题</strong>：（文件路径二进制00截断）</p>
 <p><code>$img_path = $_POST[&#39;save_path&#39;].&quot;/&quot;.rand(10, 99).date(&quot;YmdHis&quot;).&quot;.&quot;.$file_ext;</code></p>
-<p>与pass12相比，save_path的值是通过POST方式传入的。POST不会像GET对%00进行自动解码，所以需要在二进制中进行修改。即利用Burpsuite的Hex功能将save_path改成…/upload/12.php【二进制00】形式</p>
+<p>与pass12相比，save_path的值是通过POST方式进行传入的。因为POST不会像GET对%00进行自动解码，所以需要在二进制中进行修改。即利用Burpsuite的Hex功能将save_path改成…/upload/12.php【二进制00】形式</p>
 <img src="/images/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDY3NzQwOQ==,size_16,color_FFFFFF,t_70.png" alt="img" style="zoom: 67%;" />
 
 
@@ -249,7 +249,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/02/05/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-11~pass-13/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/02/03/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-11~pass-13/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -259,6 +259,15 @@
 
    
   <nav class="article-nav">
+    
+      <a href="/2022/02/05/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-14-pass-18/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            pass-14~pass-18
+          
+        </div>
+      </a>
     
     
       <a href="/2022/01/22/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-05~pass-10/" class="article-nav-link">
